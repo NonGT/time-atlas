@@ -17,7 +17,7 @@ const AMERICAS_FROM: Record<string, string> = { '1492': '1500' }
 const BASE = 'https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/'
 const out = join(import.meta.dirname, '..', 'public', 'geo')
 const bordersDir = join(out, 'borders')
-const tmp = join(tmpdir(), 'civ-timelapse-geo')
+const tmp = join(tmpdir(), 'time-atlas-geo')
 mkdirSync(join(bordersDir, 'hi'), { recursive: true })
 mkdirSync(tmp, { recursive: true })
 

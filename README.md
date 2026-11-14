@@ -1,4 +1,4 @@
-# Time Atlas (civ-timelapse)
+# Time Atlas
 
 A 3D globe with a timeline showing cities and empires as they rise, grow and fall, from 10,000 BCE to today. The app is Thai first, with an English version.
 
