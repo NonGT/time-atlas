@@ -1,0 +1,17 @@
+# Smaller events kept for a later, more detailed layer (possibly month by month). Not loaded by the app.
+# The timeline only shows events that mattered to humanity as a whole: wars, states rising and falling, major disasters.
+
+- { id: la-wildfires-2025, year: 2025, title: ไฟป่าครั้งใหญ่ ที่ลอสแอนเจลิส, desc: "ไฟป่าปาลิเซดส์และอีตันในเดือนมกราคม ลมแรงพัดไฟเข้าเขตเมือง บ้านเรือนเสียหายนับหมื่นหลัง", city: los-angeles, tag: disaster, importance: 1 }
+- { id: pope-leo-xiv, year: 2025, title: พระสันตะปาปาลีโอที่ 14 องค์แรก จากสหรัฐอเมริกา, desc: "ได้รับเลือกในเดือนพฤษภาคม หลังสมเด็จพระสันตะปาปาฟรานซิสสิ้นพระชนม์ในเดือนเมษายน", city: rome, tag: religion, importance: 1 }
+- { id: thai-cambodia-border-2025, year: 2025, title: การปะทะ ตามแนวชายแดน ไทย–กัมพูชา, desc: "สู้รบกันห้าวันในเดือนกรกฎาคม แล้วปะทุอีกครั้งในเดือนธันวาคมนานราวสามสัปดาห์ จนลงนามหยุดยิงครั้งที่สองเมื่อ 27 ธันวาคม มีผู้อพยพหนีภัยราวหนึ่งล้านคน", lat: 14.35, lon: 103.3, zoom: 7, tag: war, importance: 2 }
+- { id: queen-sirikit, year: 2025, title: สมเด็จพระพันปีหลวง เสด็จสวรรคต, desc: "สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พระบรมราชชนนีพันปีหลวง เสด็จสวรรคตเมื่อ 24 ตุลาคม สิริพระชนมพรรษา 93 พรรษา", city: bangkok, tag: politics, importance: 1 }
+- { id: thai-election-2026, year: 2026, title: เลือกตั้งทั่วไป และประชามติ รัฐธรรมนูญใหม่, desc: "เลือกตั้งเมื่อ 8 กุมภาพันธ์ พรรคภูมิใจไทยได้ที่นั่งมากที่สุด อนุทิน ชาญวีรกูล กลับมาเป็นนายกรัฐมนตรี ประชามติที่จัดพร้อมกันเห็นชอบให้เริ่มร่างรัฐธรรมนูญฉบับใหม่", city: bangkok, tag: politics, importance: 1 }
+- { id: artemis-2, year: 2026, title: อาร์ทิมิส 2 พามนุษย์ ไปรอบดวงจันทร์, desc: "ลูกเรือสี่คนบินอ้อมดวงจันทร์แล้วกลับโลกในเดือนเมษายน เป็นครั้งแรกที่มนุษย์เดินทางไปถึงดวงจันทร์นับตั้งแต่ ค.ศ. 1972", lat: 28.627, lon: -80.621, zoom: 9, tag: tech, importance: 2 }
+- { id: spirit-cave, year: -9000, title: มีคนอาศัย ในถ้ำผีแมน, desc: "ถ้ำบนเขาในแม่ฮ่องสอน พบเครื่องมือหินแบบโหบินเหียน และเมล็ดพืชหลายชนิดที่คนเก็บมากิน", lat: 19.57, lon: 98.27, zoom: 9, tag: culture, importance: 1, uncertain: "ชั้นดินที่เก่าที่สุดหาอายุได้ราว 10,000–7,000 ปีก่อน ค.ศ. ส่วนข้อเสนอเดิมว่าที่นี่มีการปลูกพืชแล้วไม่ได้รับการยอมรับ", range: [-10000, -7000] }
+- { id: mehrgarh-founded, year: -7000, title: หมู่บ้านเกษตร ที่เมห์รการห์, city: mehrgarh, tag: founding, importance: 1 }
+- { id: jiahu-flutes, year: -6700, title: ขลุ่ยกระดูก และเหล้าหมักที่เจียหู, city: jiahu, tag: culture, importance: 1 }
+- { id: cold-event-6200, year: -6200, title: โลกหนาวลง อย่างฉับพลัน, desc: "น้ำจืดจากทะเลสาบที่ธารน้ำแข็งละลายไหลลงมหาสมุทรแอตแลนติกเหนือ อากาศเย็นลงราว 200 ปี ชุมชนเกษตรหลายแห่งในตะวันออกใกล้ทิ้งถิ่นหรือย้ายที่", tag: disaster, importance: 1 }
+- { id: barnenez, year: -4800, title: สร้างเนินหินบาร์เนอเนซ, lat: 48.6681, lon: -3.8569, zoom: 14, tag: culture, importance: 1 }
+- { id: varna-gold, year: -4500, title: ทองคำในสุสานวาร์นา, desc: "เครื่องประดับทองคำที่เก่าที่สุดในโลก ฝังมากับศพไม่กี่คน เป็นหลักฐานยุคแรกของความเหลื่อมล้ำทางชนชั้น", lat: 43.21, lon: 27.91, zoom: 8, tag: culture, importance: 1 }
+- { id: trypillia-megasites, year: -3900, title: นิคมใหญ่ ของกูกูเตนี-ตรือปิลลียา, city: talianki, tag: founding, importance: 1 }
+- { id: ggantija, year: -3600, title: สร้างวิหารจกันติยา บนเกาะมอลตา, lat: 36.0472, lon: 14.2689, zoom: 14, tag: religion, importance: 1 }

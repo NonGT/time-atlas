@@ -1,0 +1,36 @@
+{
+  "name": "civ-timelapse",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && vite build",
+    "preview": "vite preview",
+    "check": "tsc && tsx scripts/validate-data.ts",
+    "validate": "tsx scripts/validate-data.ts",
+    "fetch-geo": "tsx scripts/fetch-geo.ts",
+    "i18n": "tsx scripts/i18n.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "maplibre-gl": "^6.18.0",
+    "three": "^0.187.0",
+    "topojson-client": "^3.1.0",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^26.6.6",
+    "@types/three": "^0.187.0",
+    "@types/topojson-client": "^3.1.5",
+    "mapshaper": "^0.7.101",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}

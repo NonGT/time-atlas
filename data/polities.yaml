@@ -1,0 +1,223 @@
+# Thai names and colors for polities in historical-basemaps.
+# match: exact English name in the source data, or a list of names.
+# civ: take the color from civilizations.yaml, or set color directly.
+# kind: state, culture (drawn faint) or hidden.
+# from: hide in snapshots older than this year, where the source uses a name from a later era.
+# Names not listed here show in English and their kind is guessed from the name.
+
+- { match: [city-states, Ur], name: นครรัฐสุเมเรียน, civ: sumer }
+- { match: Egypt, name: อียิปต์, civ: egypt }
+- { match: Norte Chico, name: นอร์เตชิโก, civ: norte-chico, from: -3000 }
+- { match: Indus valley civilization, name: อารยธรรมลุ่มแม่น้ำสินธุ, civ: indus }
+- { match: Elam, name: เอลาม, color: "#a88a6a", from: -3200 }
+- { match: Minoan, name: มิโนอัน, color: "#7aa6c9" }
+- { match: Hittites, name: ฮิตไทต์, color: "#b98b5e" }
+- { match: Assyria, name: อัสซีเรีย, color: "#c46b4e" }
+- { match: Babylonia, name: บาบิโลเนีย, civ: babylonia }
+- { match: Kush, name: คุช, color: "#b0815a" }
+- { match: [Zhoa, Zhou states], name: ราชวงศ์โจว, civ: shang }
+- { match: Olmec, name: โอลเมก, color: "#6fb07a" }
+- { match: [Greek city-states, Greek colonies], name: นครรัฐกรีก, civ: greek }
+- { match: Achaemenid Empire, name: จักรวรรดิอะคีเมนิด, color: "#c99a4e" }
+- { match: [Carthaginian Empire, Carthage], name: คาร์เธจ, civ: phoenicia }
+- { match: [Rome, Roman Republic], name: สาธารณรัฐโรมัน, civ: roman }
+- { match: [Roman Empire, Western Roman Empire, "Rome (Constantinus)", "Rome (Diocletianus)", "Rome (Galerius)", "Rome (Maximian)"], name: จักรวรรดิโรมัน, civ: roman }
+- { match: [Eastern Roman Empire, Byzantine Empire], name: จักรวรรดิไบแซนไทน์, civ: byzantine }
+- { match: Mauryan Empire, name: จักรวรรดิโมริยะ, civ: maurya }
+- { match: Magadha, name: มคธ, civ: maurya }
+- { match: Seleucid Kingdom, name: จักรวรรดิเซลูซิด, color: "#9a8fd0" }
+- { match: Ptolemaic Kingdom, name: ราชวงศ์ทอเลมี, civ: egypt }
+- { match: Qin, name: ราชวงศ์ฉิน, civ: chinese }
+- { match: [Han, Han Empire], name: ราชวงศ์ฮั่น, civ: chinese }
+- { match: [Sui Empire], name: ราชวงศ์สุย, civ: chinese }
+- { match: [Tang Empire], name: ราชวงศ์ถัง, civ: chinese }
+- { match: Song Empire, name: ราชวงศ์ซ่ง, civ: chinese }
+- { match: [Ming Empire, Ming Chinese Empire], name: ราชวงศ์หมิง, civ: chinese }
+- { match: Xiongnu, name: ซยงหนู, color: "#9c9a6a" }
+- { match: [Parthia, Parthian Empire], name: จักรวรรดิพาร์เธีย, color: "#b88a5a" }
+- { match: Persia, name: เปอร์เซีย, color: "#c48a4a" }
+- { match: [Sasanian Empire], name: จักรวรรดิซาสซานิยะห์, color: "#c48a4a" }
+- { match: Gupta Empire, name: จักรวรรดิคุปตะ, civ: maurya }
+- { match: Kushan Empire, name: จักรวรรดิกุษาณะ, color: "#b89a6a" }
+- { match: Teotihuacan, name: เตโอติวากัน, civ: teotihuacan }
+- { match: [Maya states, Maya city-states, Maya chiefdoms and states], name: นครรัฐมายา, color: "#58b49a" }
+- { match: Umayyad Caliphate, name: ราชวงศ์อุมัยยะฮ์, civ: abbasid }
+- { match: Abbasid Caliphate, name: ราชวงศ์อับบาซียะฮ์, civ: abbasid }
+- { match: Fatimid Caliphate, name: ราชวงศ์ฟาฏิมียะฮ์, color: "#4fa59a" }
+- { match: Funan, name: ฟูนัน, civ: khmer }
+- { match: Dvaravati, name: ทวารวดี, color: "#e6b85c" }
+- { match: Khmer Empire, name: อาณาจักรเขมร, civ: khmer }
+- { match: Srivijaya Empire, name: ศรีวิชัย, color: "#d7a04a" }
+- { match: [Pagan, Kingdom of Pagan], name: อาณาจักรพุกาม, color: "#c9a25a" }
+- { match: [Champa, Champa City States], name: จามปา, color: "#c98a6a" }
+- { match: Haripunjaya, name: หริภุญชัย, color: "#e0b060" }
+- { match: [Kingdom of Sukhotai, Sukhothai], name: อาณาจักรสุโขทัย, civ: sukhothai }
+- { match: Ayutthaya, name: อาณาจักรอยุธยา, civ: ayutthaya }
+- { match: [Thai, Thai Kingdoms], name: กลุ่มเมืองไท, civ: sukhothai }
+- { match: Holy Roman Empire, name: จักรวรรดิโรมันอันศักดิ์สิทธิ์, color: "#c9a96a" }
+- { match: [Frankish Kingdom, Franks], name: อาณาจักรแฟรงก์, color: "#8a9fc4" }
+- { match: [Mongol Empire, Mongols], name: จักรวรรดิมองโกล, color: "#b07a4a" }
+- { match: [Ilkhanate], name: อิลข่าน, color: "#a87a5a" }
+- { match: [Golden Horde, Khanate of the Golden Horde], name: โกลเดนฮอร์ด, color: "#c9a04a" }
+- { match: Ottoman Empire, name: จักรวรรดิออตโตมัน, color: "#4f9a6a" }
+- { match: [Mamluke Sultanate], name: รัฐสุลต่านมัมลุก, color: "#c7b06a" }
+- { match: Sultanate of Delhi, name: รัฐสุลต่านเดลี, color: "#5aa07a" }
+- { match: [Chola, Cholas, Chola Empire], name: อาณาจักรโจฬะ, color: "#d07a5a" }
+- { match: Vijayanagara, name: วิชัยนคร, color: "#d0905a" }
+- { match: [Tiahuanaco Empire], name: ติวานากู, color: "#9ab86a" }
+- { match: [Huari Empire, Wari], name: วารี, color: "#a8c46a" }
+- { match: Inca Empire, name: จักรวรรดิอินคา, civ: inca }
+- { match: Aztec Empire, name: จักรวรรดิแอซเท็ก, civ: aztec }
+- { match: Great Zimbabwe, name: เกรตซิมบับเว, civ: zimbabwe }
+- { match: [Mali], name: จักรวรรดิมาลี, color: "#d6b45a" }
+- { match: [Empire of Ghana, Ghana], name: จักรวรรดิกานา, color: "#c9a04a" }
+- { match: Songhai, name: จักรวรรดิซงไฮ, color: "#d0a050" }
+- { match: Axum, name: อักซุม, color: "#b07a6a" }
+- { match: [Yamato, "Imperial Japan (Fujiwara)", "Shogun Japan (Kamakura)"], name: ญี่ปุ่น, color: "#d68a9a" }
+- { match: [Silla, Koguryo, Paekche], name: เกาหลี, color: "#8ab0d0" }
+- { match: Korea, name: เกาหลี, civ: korea }
+- { match: [Tibetan Empire, Tibet], name: ทิเบต, color: "#b09ac4" }
+- { match: [Kingdom of Lan Na, Lan Na, Lanna], name: อาณาจักรล้านนา, civ: lanna }
+- { match: Majapahit, name: มัชปาหิต, civ: majapahit }
+- { match: [Mataram], name: มาตารัม, civ: mataram }
+- { match: [Kingdom of Kush], name: คุช, color: "#b0815a" }
+
+# ---- modern ----
+- { match: [Siam, Thailand, Rattanakosin Kingdom], name: สยาม · ไทย, civ: siam }
+- { match: [Burma, Burmese kingdoms, Toungoo Empire, Konbaung Dynasty], name: พม่า, color: "#c9a25a" }
+- { match: [Laos, Lan Xang], name: ลาว, color: "#d48a6a" }
+- { match: [Cambodia], name: กัมพูชา, civ: khmer }
+- { match: [Vietnam, Dai Viet, Annam], name: เวียดนาม, color: "#d06a6a" }
+- { match: [Cochin China], name: โคชินไชนา, color: "#9a9ac8" }
+- { match: [Qing Empire, China], name: จีน, civ: chinese }
+- { match: [Mughal Empire], name: จักรวรรดิโมกุล, civ: mughal }
+- { match: [British Raj, India], name: อินเดีย, civ: india }
+- { match: [United Kingdom, United Kingdom of Great Britain and Ireland, England], name: สหราชอาณาจักร, civ: england }
+- { match: [Spain], name: สเปน, civ: spain }
+- { match: [Portugal], name: โปรตุเกส, civ: portugal }
+- { match: [Dutch Republic, Netherlands], name: เนเธอร์แลนด์, civ: netherlands }
+- { match: [Dutch East Indies, Netherlands Indies, Indonesia], name: อินโดนีเซีย, civ: indonesia }
+- { match: [France, Kingdom of France], name: ฝรั่งเศส, civ: france }
+- { match: [Prussia, Germany], name: เยอรมนี, civ: germany }
+- { match: [Russian Empire, Russia, USSR, Soviet Union], name: รัสเซีย, civ: russia }
+- { match: [Japan, Japan (Warring States), Imperial Japan], name: ญี่ปุ่น, civ: japan }
+- { match: ["Korea, Republic of", Joseon], name: เกาหลีใต้, civ: korea }
+- { match: ["Korea, Democratic People's Republic of"], name: เกาหลีเหนือ, color: "#9a7a9a" }
+- { match: Iran, name: อิหร่าน, color: "#c48a4a" }
+- { match: [Turkey], name: ตุรกี, color: "#4f9a6a" }
+- { match: [United States of America, United States], name: สหรัฐอเมริกา, civ: usa }
+- { match: [Viceroyalty of New Spain, Mexico], name: เม็กซิโก, civ: mexico }
+- { match: [Viceroyalty of Brazil, Kingdom of Brazil, Brazil], name: บราซิล, civ: brazil }
+- { match: [Argentina], name: อาร์เจนตินา, civ: argentina }
+- { match: [Australia], name: ออสเตรเลีย, civ: australia }
+- { match: [Nigeria], name: ไนจีเรีย, civ: nigeria }
+- { match: [Philippines], name: ฟิลิปปินส์, civ: philippines }
+- { match: [Manchu Empire], name: แมนจู, civ: chinese }
+- { match: [Ceylon, Sri Lanka], name: ศรีลังกา, civ: anuradhapura }
+- { match: [Malaya, Malaysia], name: มลายู · มาเลเซีย, color: "#c47a5a" }
+- { match: Taiwan, name: ไต้หวัน, color: "#7a9ac0" }
+- { match: Mongolia, name: มองโกเลีย, civ: mongol }
+- { match: Nepal, name: เนปาล, color: "#c08a6a" }
+- { match: Afghanistan, name: อัฟกานิสถาน, color: "#a89070" }
+- { match: Pakistan, name: ปากีสถาน, color: "#5a9a6a" }
+- { match: Bangladesh, name: บังกลาเทศ, color: "#6aaa7a" }
+- { match: [Saudi Arabia], name: ซาอุดีอาระเบีย, color: "#7aa87a" }
+- { match: [Iraq], name: อิรัก, civ: abbasid }
+- { match: [Syria], name: ซีเรีย, color: "#a0907a" }
+- { match: [Israel], name: อิสราเอล, color: "#8aa0c8" }
+- { match: [Jordan], name: จอร์แดน, color: "#b09a70" }
+- { match: [Yemen], name: เยเมน, color: "#a8906a" }
+- { match: [Oman], name: โอมาน, color: "#b08a6a" }
+- { match: [Kazakhstan], name: คาซัคสถาน, color: "#6aa0c0" }
+- { match: [Uzbekistan], name: อุซเบกิสถาน, civ: sogdia }
+- { match: [Italy], name: อิตาลี, civ: roman }
+- { match: [Greece], name: กรีซ, civ: greek }
+- { match: [Sweden], name: สวีเดน, color: "#7a9ad0" }
+- { match: [Norway], name: นอร์เวย์, color: "#8a8ad0" }
+- { match: [Finland], name: ฟินแลนด์, color: "#9ab0d8" }
+- { match: [Denmark], name: เดนมาร์ก, color: "#c87a7a" }
+- { match: [Poland], name: โปแลนด์, color: "#c88a9a" }
+- { match: [Ukraine], name: ยูเครน, color: "#c8b05a" }
+- { match: [Belarus], name: เบลารุส, color: "#a0a07a" }
+- { match: [Romania], name: โรมาเนีย, color: "#b0a06a" }
+- { match: [Hungary], name: ฮังการี, color: "#9ab07a" }
+- { match: [Austria, Austria-Hungary, Austrian Empire, Habsburg Empire], name: ออสเตรีย, color: "#c9a96a" }
+- { match: [Switzerland], name: สวิตเซอร์แลนด์, color: "#c07a7a" }
+- { match: [Belgium], name: เบลเยียม, color: "#b0a080" }
+- { match: [Ireland], name: ไอร์แลนด์, color: "#6ab07a" }
+- { match: [Iceland], name: ไอซ์แลนด์, color: "#9ab0c8" }
+- { match: [Greenland], name: กรีนแลนด์, color: "#a0b8c8" }
+- { match: [Canada], name: แคนาดา, color: "#c87070" }
+- { match: [Cuba], name: คิวบา, color: "#7a9ac8" }
+- { match: [Guatemala], name: กัวเตมาลา, civ: maya }
+- { match: [Colombia], name: โคลอมเบีย, color: "#d0b050" }
+- { match: [Venezuela], name: เวเนซุเอลา, color: "#c0a060" }
+- { match: [Peru], name: เปรู, civ: inca }
+- { match: [Bolivia], name: โบลิเวีย, color: "#9ab86a" }
+- { match: [Chile], name: ชิลี, color: "#c07a8a" }
+- { match: [Ecuador], name: เอกวาดอร์, color: "#c0b06a" }
+- { match: [Paraguay], name: ปารากวัย, color: "#8ab0a0" }
+- { match: [Uruguay], name: อุรุกวัย, color: "#8ab8d8" }
+- { match: [New Zealand], name: นิวซีแลนด์, color: "#7ab08a" }
+- { match: [Papua New Guinea], name: ปาปัวนิวกินี, color: "#a08a6a" }
+- { match: [Morocco], name: โมร็อกโก, color: "#c08a5a" }
+- { match: [Algeria], name: แอลจีเรีย, color: "#7aa87a" }
+- { match: [Tunisia], name: ตูนิเซีย, color: "#c07a6a" }
+- { match: [Libya], name: ลิเบีย, color: "#a8a070" }
+- { match: [Sudan], name: ซูดาน, color: "#b0906a" }
+- { match: [Ethiopia, Abyssinia], name: เอธิโอเปีย, civ: aksum }
+- { match: [Kenya], name: เคนยา, color: "#9a7a6a" }
+- { match: ["Tanzania, United Republic of"], name: แทนซาเนีย, civ: swahili }
+- { match: [Uganda], name: ยูกันดา, color: "#c0a06a" }
+- { match: [Congo, Zaire, "Congo, DRC"], name: คองโก, color: "#7a9a6a" }
+- { match: [Angola], name: แองโกลา, color: "#b07a6a" }
+- { match: [Mozambique], name: โมซัมบิก, color: "#a0906a" }
+- { match: [Zimbabwe], name: ซิมบับเว, civ: zimbabwe }
+- { match: [Zambia], name: แซมเบีย, color: "#7aa06a" }
+- { match: [South Africa], name: แอฟริกาใต้, color: "#8ab07a" }
+- { match: [Namibia], name: นามิเบีย, color: "#a09a7a" }
+- { match: [Botswana], name: บอตสวานา, color: "#7aa8c0" }
+- { match: [Madagascar], name: มาดากัสการ์, color: "#c08a6a" }
+- { match: [Niger], name: ไนเจอร์, color: "#c0a07a" }
+- { match: [Chad], name: ชาด, color: "#a0a07a" }
+- { match: [Mauritania], name: มอริเตเนีย, color: "#b0a07a" }
+- { match: [Senegal], name: เซเนกัล, color: "#6aa07a" }
+- { match: [Cameroon], name: แคเมอรูน, color: "#6a9a7a" }
+- { match: [Somalia], name: โซมาเลีย, color: "#8ab0c8" }
+
+# prehistoric cultures in the 10000, 8000 and 5000 BCE snapshots
+# Before about 3500 BCE there are no states, so the early farming cultures are drawn as states to stand out.
+- { match: Kerma, name: เคอร์มา, color: "#b0815a", from: -2500 }
+- { match: Hunters-gatherers, name: นักล่าสัตว์และเก็บของป่า, kind: culture }
+- { match: Steppe Mesolithic Hunter-Foragers, name: นักล่าสัตว์แห่งทุ่งสเตปป์, kind: culture }
+- { match: Alluvial Lowland Mesolithic Hunter-Foragers, name: นักล่าสัตว์ที่ราบลุ่มแม่น้ำ, kind: culture }
+- { match: Highland Mesolithic Hunter-Foragers, name: นักล่าสัตว์ที่สูง, kind: culture }
+- { match: Coastal and Woodland Mesolithic Hunter-Foragers, name: นักล่าสัตว์ชายฝั่งและป่า, kind: culture }
+- { match: Levantine Corridor (Neolithic Farmers), name: ชาวนายุคหินใหม่แห่งลิแวนต์, civ: neolithic-near-east, kind: state }
+- { match: Neolithic Farmers, name: ชาวนายุคหินใหม่, civ: neolithic-near-east, kind: state }
+- { match: Austronesians, name: ออสโตรนีเซียน, kind: culture, from: -3000 }
+- { match: Aboriginal Tasmanians, name: ชาวพื้นเมืองแทสเมเนีย, kind: culture }
+- { match: Aboriginal tribes, name: ชาวพื้นเมืองออสเตรเลีย, kind: culture }
+- { match: Jōmon, name: วัฒนธรรมโจมง, kind: culture }
+- { match: Ainu, name: ไอนุ, kind: culture, from: 1200 }
+- { match: Okhotsk culture, name: วัฒนธรรมโอค็อตสค์, kind: culture, from: 500 }
+- { match: Khoisan, name: คอยซาน, kind: culture }
+- { match: Bantu, name: บันตู, kind: culture, from: -2000 }
+- { match: Dravidians, name: ดราวิเดียน, kind: culture }
+- { match: Dapenkeng culture, name: วัฒนธรรมต้าเผินเคิง, kind: culture, from: -4000 }
+- { match: [Kelteminar, Kelteminar culture], name: วัฒนธรรมเคลเตมินาร์, kind: culture }
+- { match: Hurrian Kingdoms, name: ชาวเฮอร์เรียน, kind: culture, from: -2300 }
+- { match: Valdivia, name: วัฒนธรรมวัลดิเวีย, kind: culture, from: -3800 }
+- { match: Namazga, name: วัฒนธรรมนามาซกา, color: "#c49a6a", kind: state }
+- { match: Naquada I, name: วัฒนธรรมนะกาดา, civ: egypt, kind: state, from: -4000 }
+- { match: Ubaid, name: วัฒนธรรมอูไบด์, civ: sumer, kind: state }
+- { match: Ghassul, name: วัฒนธรรมกัสซูล, color: "#b9a46a", kind: state }
+- { match: Amuq D, name: วัฒนธรรมอามุก, color: "#9fb87a", kind: state }
+- { match: La Almagra culture, name: วัฒนธรรมลาอัลมากรา, kind: culture }
+- { match: Dimini, name: วัฒนธรรมดิมินี, color: "#8fa8d0", kind: state }
+- { match: Volga-Kamm, name: วัฒนธรรมวอลกา-คามา, kind: culture }
+- { match: Stentinello culture, name: วัฒนธรรมสเตนตีเนลโล, kind: culture }
+- { match: Early combware, name: วัฒนธรรมเครื่องปั้นลายหวี, kind: culture }
+- { match: Narva, name: วัฒนธรรมนาร์วา, kind: culture }
+- { match: Funnel-Beaker, name: วัฒนธรรมถ้วยปากแตร, civ: megalithic-europe, kind: state, from: -4300 }
+- { match: Nemay, kind: culture }

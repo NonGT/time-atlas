@@ -1,0 +1,26 @@
+# English for data/events/prehistory.yaml, keyed by event id.
+
+ice-age-ends:
+  title: The last ice age ends
+  desc: The climate warms and the sea rises by tens of metres, drowning land bridges such as Sundaland, which had joined Thailand to Borneo and Java.
+gobekli-tepe:
+  title: Göbekli Tepe is built
+  desc: Huge stone rings raised before farming or pottery, which made archaeologists rethink whether religion might have come before settled life.
+farming-begins:
+  title: Farming and herding begin
+  desc: In the Fertile Crescent people begin growing wheat, barley and lentils and keeping goats, sheep, cattle and pigs. Farming arose independently in several other places over the following millennia.
+  uncertain: Farming developed gradually over thousands of years, so there is no single starting date.
+jericho-tower:
+  title: Jericho builds a stone tower and wall
+catalhoyuk-founded:
+  title: Settlement begins at Çatalhöyük
+rice-farming:
+  title: Rice farming begins in the Yangtze valley
+  desc: Wild rice slowly becomes a crop, and spreads across Asia, reaching what is now Thailand thousands of years later.
+  uncertain: Rice farming developed slowly over about 2,000 years.
+eridu-founded:
+  title: Eridu is founded
+  desc: Later Sumerians held it to be the first city in the world.
+copper-smelting:
+  title: Copper smelting begins
+  desc: The oldest known copper slag, found at Belovode in Serbia, marks the start of the age of metals.

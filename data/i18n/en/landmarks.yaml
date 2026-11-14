@@ -1,0 +1,40 @@
+# English for data/landmarks.yaml. The name comes from the en field there.
+
+ziggurat-of-ur:
+  desc: Built under King Ur-Nammu for the moon god Nanna.
+great-pyramid:
+  desc: The tomb of the pharaoh Khufu, the tallest structure in the world for nearly 4,000 years.
+etemenanki:
+  desc: The ziggurat of Marduk, thought to be the origin of the Tower of Babel story.
+wild-goose-pagoda:
+  desc: Built to hold the scriptures Xuanzang brought back from India.
+karnak:
+  desc: The largest temple complex of ancient Egypt, added to over nearly 2,000 years.
+pharos:
+  desc: One of the Seven Wonders of the Ancient World, brought down by earthquakes.
+library-alexandria:
+  desc: The largest library of the ancient world, in the royal quarter of the Brucheion.
+  uncertain: "No remains of the building have been found, so its place on the map is an estimate. Nor is it known when the library disappeared: it may have declined anywhere from after the fire in Caesar's time to the destruction of the Brucheion around 270 CE."
+serapeum:
+  desc: The temple of Serapis, which held the library's daughter collection.
+todaiji:
+  desc: Home of the great bronze Vairocana Buddha.
+qutb-minar:
+  desc: The tallest brick minaret in the world, about 73 metres high.
+borobudur:
+  desc: The largest Buddhist monument in the world, built under the Shailendra dynasty on Java.
+taj-mahal:
+  desc: The tomb Emperor Shah Jahan built for his wife Mumtaz Mahal.
+wat-arun:
+  desc: A great prang on the Chao Phraya, finished in the reign of Rama III.
+burj-khalifa:
+  desc: The tallest building in the world, 828 metres high.
+gobekli-tepe:
+  desc: Rings of T-shaped stone pillars carved with animals, raised by hunter-gatherers before farming began. Abandoned and slowly buried over time.
+tower-of-jericho:
+  desc: A stone tower about 8.5 metres high with a staircase inside, one of the oldest stone structures in the world.
+  uncertain: No one knows what it was for. It may have guarded against floods, served in rituals, or stood as a symbol of the community.
+barnenez:
+  desc: A 72-metre stone cairn in Brittany holding 11 burial chambers, one of the oldest buildings in Europe.
+ggantija:
+  desc: Megalithic temples on Gozo, Malta. Local legend says giants built them.

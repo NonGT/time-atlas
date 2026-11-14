@@ -1,0 +1,74 @@
+# Civilizations. Their colors are used for cities, landmarks and borders.
+- { id: sumer, name: สุเมเรียน, en: Sumer, color: "#e2a45a" }
+- { id: egypt, name: อียิปต์โบราณ, en: Ancient Egypt, color: "#ecc97c" }
+- { id: norte-chico, name: นอร์เตชิโก, en: Norte Chico, color: "#c9b27a" }
+- { id: indus, name: ลุ่มแม่น้ำสินธุ, en: Indus Valley, color: "#d68d60" }
+- { id: shang, name: ราชวงศ์ซาง, en: Shang, color: "#d4574a" }
+- { id: babylonia, name: บาบิโลเนีย, en: Babylonia, color: "#d9935a" }
+- { id: greek, name: กรีกโบราณ, en: Ancient Greece, color: "#8fb3e0" }
+- { id: phoenicia, name: ฟินิเชียน · พิวนิก, en: Phoenicia, color: "#c27ac9" }
+- { id: roman, name: โรมัน, en: Rome, color: "#e06464" }
+- { id: maurya, name: จักรวรรดิโมริยะ, en: Maurya, color: "#ee9a4c" }
+- { id: chinese, name: จีน, en: China, color: "#e8735a" }
+- { id: teotihuacan, name: เตโอติวากัน, en: Teotihuacan, color: "#7fcf8f" }
+- { id: byzantine, name: ไบแซนไทน์, en: Byzantine, color: "#b4a1ea" }
+- { id: abbasid, name: ราชวงศ์อับบาซียะฮ์, en: Abbasid, color: "#5fc0ae" }
+- { id: khmer, name: อาณาจักรเขมร, en: Khmer Empire, color: "#d9b44a" }
+- { id: sukhothai, name: อาณาจักรสุโขทัย, en: Sukhothai, color: "#f0c95a" }
+- { id: ayutthaya, name: อาณาจักรอยุธยา, en: Ayutthaya, color: "#f2a93b" }
+- { id: mississippian, name: มิสซิสซิปเปียน, en: Mississippian, color: "#bfc56f" }
+- { id: zimbabwe, name: อาณาจักรซิมบับเว, en: Kingdom of Zimbabwe, color: "#d6aa7e" }
+- { id: aztec, name: แอซเท็ก, en: Aztec, color: "#5cc48a" }
+- { id: inca, name: อินคา, en: Inca, color: "#b1d46c" }
+- { id: minoan, name: มิโนอัน, en: Minoan, color: "#6fa9d0" }
+- { id: hittite, name: ฮิตไทต์, en: Hittites, color: "#b98b5e" }
+- { id: assyria, name: อัสซีเรีย, en: Assyria, color: "#c46b4e" }
+- { id: persia, name: เปอร์เซีย (อะคีเมนิด), en: Achaemenid Persia, color: "#c9a04e" }
+- { id: hellenistic, name: เฮลเลนิสติก · ทอเลมี, en: Hellenistic Egypt, color: "#9fc0e4" }
+- { id: japan, name: ญี่ปุ่น, en: Japan, color: "#e08aa0" }
+- { id: silla, name: ชิลลา, en: Silla, color: "#8ab0d8" }
+- { id: maya, name: มายา, en: Maya, color: "#4fb79a" }
+- { id: chimu, name: ชิมู, en: Chimú, color: "#9cc25e" }
+- { id: aksum, name: อักซุม, en: Aksum, color: "#b9806e" }
+- { id: mali, name: จักรวรรดิมาลี, en: Mali Empire, color: "#dcb85a" }
+- { id: swahili, name: นครรัฐสวาฮิลี, en: Swahili coast, color: "#c4a072" }
+- { id: andalus, name: อัลอันดะลุส, en: Al-Andalus, color: "#47a894" }
+- { id: islamic-egypt, name: อียิปต์ (ฟาฏิมียะฮ์–มัมลุก), en: Fatimid–Mamluk Egypt, color: "#c7b06a" }
+- { id: france, name: ฝรั่งเศส, en: France, color: "#8aa2d6" }
+- { id: venice, name: สาธารณรัฐเวนิส, en: Venice, color: "#d08a8a" }
+- { id: sogdia, name: เอเชียกลาง (ซอกเดีย–ติมูริด), en: Sogdia–Timurid, color: "#4a9ac0" }
+- { id: mongol, name: มองโกล, en: Mongol Empire, color: "#b4824e" }
+- { id: delhi, name: รัฐสุลต่านเดลี, en: Delhi Sultanate, color: "#5aa87a" }
+- { id: vijayanagara, name: วิชัยนคร, en: Vijayanagara, color: "#e0905a" }
+- { id: anuradhapura, name: อนุราธปุระ, en: Anuradhapura, color: "#dda070" }
+- { id: pagan, name: อาณาจักรพุกาม, en: Pagan, color: "#d0a85a" }
+- { id: srivijaya, name: ศรีวิชัย, en: Srivijaya, color: "#d79a44" }
+- { id: mataram, name: มาตารัม (ไศเลนทร์), en: Mataram (Shailendra), color: "#cba85c" }
+- { id: majapahit, name: มัชปาหิต, en: Majapahit, color: "#c9853a" }
+- { id: dvaravati, name: ทวารวดี, en: Dvaravati, color: "#e6bc66" }
+- { id: haripunjaya, name: หริภุญชัย, en: Haripunjaya, color: "#e8b060" }
+- { id: lanna, name: อาณาจักรล้านนา, en: Lanna, color: "#ee9e4a" }
+- { id: england, name: อังกฤษ · สหราชอาณาจักร, en: England / UK, color: "#c96a6a" }
+- { id: netherlands, name: เนเธอร์แลนด์, en: Netherlands, color: "#e8944a" }
+- { id: portugal, name: โปรตุเกส, en: Portugal, color: "#5fa07a" }
+- { id: spain, name: สเปน, en: Spain, color: "#e0b040" }
+- { id: russia, name: รัสเซีย, en: Russia, color: "#9a7ac0" }
+- { id: germany, name: เยอรมนี, en: Germany, color: "#a0a0a0" }
+- { id: korea, name: เกาหลี (โชซอน–ปัจจุบัน), en: Korea, color: "#7aa8e0" }
+- { id: india, name: อินเดีย, en: India, color: "#f09a50" }
+- { id: siam, name: รัตนโกสินทร์ · ไทย, en: Siam / Thailand, color: "#f5c040" }
+- { id: singapore, name: สิงคโปร์, en: Singapore, color: "#e06a7a" }
+- { id: indonesia, name: บาตาเวีย · อินโดนีเซีย, en: Batavia / Indonesia, color: "#d4884a" }
+- { id: philippines, name: ฟิลิปปินส์, en: Philippines, color: "#6a9ae0" }
+- { id: usa, name: สหรัฐอเมริกา, en: United States, color: "#7ab0e8" }
+- { id: mexico, name: เม็กซิโก, en: Mexico, color: "#5cc48a" }
+- { id: brazil, name: บราซิล, en: Brazil, color: "#6ac46a" }
+- { id: argentina, name: อาร์เจนตินา, en: Argentina, color: "#8ac8e8" }
+- { id: nigeria, name: ไนจีเรีย, en: Nigeria, color: "#7ac08a" }
+- { id: australia, name: ออสเตรเลีย, en: Australia, color: "#e0c070" }
+- { id: uae, name: สหรัฐอาหรับเอมิเรตส์, en: UAE, color: "#c0a070" }
+- { id: mughal, name: จักรวรรดิโมกุล, en: Mughal Empire, color: "#5ab08a" }
+- { id: neolithic-near-east, name: ชาวนายุคหินใหม่ตะวันออกใกล้, en: Near Eastern Neolithic, color: "#a9c46a" }
+- { id: neolithic-china, name: จีนยุคหินใหม่, en: Neolithic China, color: "#d98f6f" }
+- { id: cucuteni, name: กูกูเตนี-ตรือปิลลียา, en: Cucuteni–Trypillia, color: "#c4a0d8" }
+- { id: megalithic-europe, name: วัฒนธรรมหินใหญ่ยุโรป, en: European Megalithic, color: "#9ab4c8" }

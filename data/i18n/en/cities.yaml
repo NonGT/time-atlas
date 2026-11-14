@@ -1,0 +1,263 @@
+# English for data/cities.yaml. The name comes from the en field there; set name here to override it.
+
+uruk:
+  peak: c. 2800 BCE
+  desc: One of the first cities in the world and the birthplace of cuneiform. At its height it may have held close to 100,000 people.
+ur:
+  peak: c. 2100 BCE
+  desc: A city-state on the Euphrates with a great ziggurat. Under the Third Dynasty of Ur it was the largest city in the world.
+memphis:
+  peak: c. 500 BCE
+  desc: The first capital of a united Egypt, near the pyramid fields of Giza and Saqqara.
+caral:
+  peak: c. 2600–2000 BCE
+  desc: The oldest city in the Americas. Its pyramid mounds were raised at the same time as the pyramids of Egypt.
+mohenjo-daro:
+  peak: c. 2300 BCE
+  desc: Laid out on a grid with covered drains and a public bath. It was abandoned for reasons still not clear.
+anyang:
+  peak: c. 1200 BCE
+  desc: The late Shang capital, where oracle bones carved with early Chinese writing were found.
+babylon:
+  peak: c. 600 BCE
+  desc: The city of Hammurabi and Nebuchadnezzar II, with the Ishtar Gate and the tower of Etemenanki.
+athens:
+  peak: c. 430 BCE
+  desc: The city-state that pioneered democracy. In its golden age under Pericles it built the Parthenon on the Acropolis.
+carthage:
+  peak: c. 300–150 BCE
+  desc: A Phoenician port and Rome's great rival. Destroyed in 146 BCE and rebuilt as a Roman city.
+rome:
+  peak: c. 100–200 CE
+  desc: From a settlement on the Tiber to the first city of around a million people, then much smaller after the Western Empire fell.
+pataliputra:
+  peak: c. 300–200 BCE
+  desc: The Maurya capital in Ashoka's time, and possibly the largest city in the world around 300 BCE.
+changan:
+  peak: c. 750 CE
+  desc: Capital of the Han and Tang and the eastern end of the Silk Road. Under the Tang it held about a million people.
+teotihuacan:
+  peak: c. 500 CE
+  desc: City of the Pyramids of the Sun and Moon. At its height it was the largest city in the Americas.
+constantinople:
+  peak: c. 540 CE
+  desc: Once Byzantium, it was the Eastern Roman capital for over a thousand years. The Ottomans took it in 1453 and kept it as their capital until 1922.
+baghdad:
+  peak: c. 900 CE
+  desc: The round city of the Abbasids and a world centre of learning until the Mongols destroyed it in 1258.
+angkor:
+  peak: c. 1150 CE
+  desc: Capital of the Khmer empire, with Angkor Wat and huge barays for storing water.
+sukhothai:
+  peak: c. 1300 CE
+  desc: An early Thai capital. Under Ram Khamhaeng it left stone inscriptions in the Thai script.
+ayutthaya:
+  peak: after 1500 CE
+  desc: Founded in 1351 on an island ringed by rivers, it grew into an international trading port.
+cahokia:
+  peak: c. 1050 CE
+  desc: The largest city north of Mexico before Columbus, built around Monks Mound.
+great-zimbabwe:
+  peak: c. 1300 CE
+  desc: A stone-walled Shona city at the centre of the gold trade with the Indian Ocean coast.
+tenochtitlan:
+  peak: c. 1500 CE
+  desc: An island city in Lake Texcoco joined to the shore by causeways. Around 1500 it was among the largest cities in the world.
+cusco:
+  peak: c. 1500 CE
+  desc: The heart of the Inca empire, high in the Andes at over 3,400 metres.
+harappa:
+  peak: c. 2300 BCE
+  desc: Mohenjo-daro's twin city. Its name is used for the whole Indus Valley civilisation.
+knossos:
+  peak: c. 1700 BCE
+  desc: The centre of Minoan Crete, with a palace of hundreds of rooms linked to the legend of the labyrinth.
+hattusa:
+  peak: c. 1250 BCE
+  desc: The Hittite capital on the Anatolian plateau, abandoned in the Bronze Age collapse.
+thebes:
+  peak: c. 1350 BCE
+  desc: Egypt's religious capital in the New Kingdom, home to Karnak, Luxor and the Valley of the Kings.
+nineveh:
+  peak: c. 700–650 BCE
+  desc: Capital of the Assyrian empire and home of the library of Ashurbanipal. Destroyed in 612 BCE.
+persepolis:
+  peak: c. 400 BCE
+  desc: The ceremonial capital of the Achaemenid empire, burned by Alexander the Great.
+alexandria:
+  peak: c. 30 BCE – 100 CE
+  desc: Founded by Alexander the Great, home of the Great Library and the Pharos lighthouse, the scholarly centre of the ancient world.
+luoyang:
+  peak: c. 150 and 750 CE
+  desc: Capital of many dynasties, among them the Eastern Zhou, Eastern Han and Northern Wei. Destroyed and rebuilt many times.
+kaifeng:
+  peak: c. 1100 CE
+  desc: The Northern Song capital and the busiest trading city of its day, until the Jin took it in 1127.
+hangzhou:
+  peak: c. 1270 CE
+  desc: The Southern Song capital beside West Lake. Marco Polo called it the finest city in the world.
+nara:
+  peak: c. 750 CE
+  desc: Japan's first permanent capital, laid out on the plan of Chang'an, where Buddhism flourished.
+kyoto:
+  peak: c. 1000 CE
+  desc: Japan's capital for over a thousand years. The Heian period was the golden age of court literature such as The Tale of Genji.
+gyeongju:
+  peak: c. 880 CE
+  desc: Capital of Silla for nearly a thousand years. After Silla unified Korea it was one of the great cities of Asia.
+tikal:
+  peak: c. 750 CE
+  desc: One of the most powerful Maya city-states, deep in the Guatemalan rainforest, with temple pyramids over 60 metres tall.
+chichen-itza:
+  peak: c. 900 CE
+  desc: A later Maya city on the Yucatán peninsula, with the El Castillo pyramid built to an astronomical calendar.
+chan-chan:
+  peak: c. 1450 CE
+  desc: The largest adobe city in the Americas and capital of the Chimú kingdom until the Inca took it.
+aksum:
+  peak: c. 500 CE
+  desc: The centre of a trading kingdom between Rome, India and Arabia, known for its giant stone obelisks.
+timbuktu:
+  peak: after 1500 CE
+  desc: A trading city for gold and salt across the Sahara and a centre of Islamic learning in West Africa.
+kilwa:
+  peak: c. 1450 CE
+  desc: An island port off the coast of Tanzania that controlled the gold trade from Zimbabwe to the Indian Ocean.
+cordoba:
+  peak: c. 1000 CE
+  desc: Capital of the Caliphate of Córdoba, once the largest and most advanced city in Western Europe.
+cairo:
+  peak: c. 1340 CE
+  desc: It began as Fustat, then the Fatimids founded Cairo in 969 and it became the largest city of the Islamic world.
+paris:
+  peak: c. 1328 CE
+  desc: From a small Roman town on an island in the Seine to the largest city in medieval Western Europe.
+venice:
+  peak: c. 1330 CE
+  desc: A trading republic on islands in a lagoon that controlled the spice trade between Europe and the East.
+samarkand:
+  peak: c. 1400 CE
+  desc: A city in the middle of the Silk Road. Genghis Khan destroyed it in 1220 and Timur rebuilt it as a splendid capital.
+karakorum:
+  peak: c. 1260 CE
+  desc: The Mongol capital on the steppe, drawing merchants and clergy from all over Eurasia.
+delhi:
+  peak: c. 1340 CE
+  desc: Capital of the Delhi Sultanate, sacked by Timur in 1398.
+vijayanagara:
+  peak: after 1500 CE
+  desc: Capital of a Hindu empire in southern India. Around 1500 it was among the largest cities in the world.
+anuradhapura:
+  peak: c. 400 CE
+  desc: Sri Lanka's capital for over a thousand years and a centre of the Theravada Buddhism that spread to Southeast Asia.
+bagan:
+  peak: c. 1200 CE
+  desc: The Burmese capital on the Irrawaddy, where more than two thousand temples and stupas still stand.
+palembang:
+  peak: c. 900 CE
+  desc: The centre of Srivijaya, a maritime kingdom that held the Strait of Malacca, and a centre of Buddhist learning.
+trowulan:
+  peak: c. 1400 CE
+  desc: Capital of Majapahit, the largest maritime empire of the Indonesian islands.
+nakhon-pathom:
+  peak: c. 700 CE
+  desc: A major town of the Dvaravati culture, one of the earliest Buddhist communities in what is now Thailand.
+lamphun:
+  peak: c. 1200 CE
+  desc: By legend ruled by Queen Chamadevi. The Buddhist centre of the north until Mangrai took it.
+chiang-mai:
+  peak: c. 1480 CE
+  desc: Mangrai built it as the capital of Lanna in 1296. Its golden age came under King Tilokaraj.
+london:
+  peak: today
+  desc: Founded by the Romans as Londinium. In the 19th century it was the largest city in the world as the centre of the British Empire.
+amsterdam:
+  peak: today
+  desc: A city on a dam across the Amstel. In the 17th century it was the trading and financial centre of the world, and VOC ships reached Ayutthaya.
+lisbon:
+  peak: today
+  desc: The departure point of the Age of Discovery. The Portuguese were the first Westerners to reach Ayutthaya, in 1511. Destroyed by an earthquake in 1755.
+madrid:
+  peak: today
+  desc: Capital of the Spanish empire from 1561, with colonies from the Americas to the Philippines.
+moscow:
+  peak: today
+  desc: From a small wooden fort to the heart of Russia. It burned during Napoleon's invasion in 1812.
+berlin:
+  peak: c. 1939 and today
+  desc: Capital of Prussia and Germany, split in two by the Berlin Wall from 1961 to 1989.
+tokyo:
+  peak: today
+  desc: As Edo it was the seat of the Tokugawa shogunate and was renamed Tokyo in 1868. Today it is the largest metropolitan area in the world.
+beijing:
+  peak: today
+  desc: Capital of the Yuan, Ming and Qing. The Ming built the Forbidden City in 1420.
+shanghai:
+  peak: today
+  desc: A fishing town on the Huangpu, opened as a treaty port after the Opium War, that grew into China's financial capital.
+seoul:
+  peak: today
+  desc: The Joseon dynasty made it the capital in 1394. After the Korean War it grew rapidly into a megacity.
+mumbai:
+  peak: today
+  desc: Islands that Portugal handed to Britain, joined by land reclamation into India's largest port.
+kolkata:
+  peak: today
+  desc: Base of the British East India Company and capital of the British Raj until 1911.
+bangkok:
+  peak: today
+  desc: Once a customs post called Bangkok on the Chao Phraya. Thonburi was the capital on the west bank, then Rama I founded Rattanakosin in 1782.
+singapore:
+  peak: today
+  desc: Stamford Raffles set it up as a British port in 1819. Independent since 1965.
+jakarta:
+  peak: today
+  desc: The Dutch founded it as Batavia, the VOC's base in Asia. Today it is the capital of Indonesia.
+manila:
+  peak: today
+  desc: Spain made it the centre of its colony in 1571. For two centuries galleons linked Manila with Acapulco in Mexico.
+new-york:
+  peak: today
+  desc: It began as Dutch New Amsterdam and became the gateway for immigrants and the first city of more than 10 million people.
+los-angeles:
+  peak: today
+  desc: From a Spanish village it grew on oil, railways and the film industry.
+mexico-city:
+  peak: today
+  desc: Spain built a new city on the ruins of Tenochtitlan and drained almost all of Lake Texcoco.
+sao-paulo:
+  peak: today
+  desc: It grew on coffee and immigration and is now the largest city in the Southern Hemisphere.
+buenos-aires:
+  peak: today
+  desc: A port on the Río de la Plata that took in huge numbers of European immigrants in the early 20th century.
+lagos:
+  peak: today
+  desc: A port on islands in a lagoon and one of the fastest-growing megacities in the world.
+sydney:
+  peak: today
+  desc: Britain's first penal colony in Australia, founded in 1788.
+dubai:
+  peak: today
+  desc: A village of fishing and pearl diving that became a metropolis after oil was found in the 1960s.
+agra:
+  peak: c. 1600 CE
+  desc: The Mughal capital under Akbar and Shah Jahan, and the site of the Taj Mahal.
+jericho:
+  peak: c. 8000 BCE
+  desc: A settlement beside a spring in the Jordan valley that built stone walls and a tower in the Neolithic. One of the longest continuously inhabited places in the world.
+catalhoyuk:
+  peak: c. 6700 BCE
+  desc: A Neolithic town of houses packed wall to wall with no streets, entered through the roofs. Walls were painted and decorated with bull horns.
+mehrgarh:
+  peak: c. 4500 BCE
+  desc: One of the first farming villages of South Asia, growing barley and herding cattle. It has the oldest known evidence of tooth drilling, and led on to the Indus Valley civilisation.
+jiahu:
+  peak: c. 6000 BCE
+  desc: A Neolithic village in the Huai valley where crane-bone flutes that can still be played were found, along with the oldest known traces of a fermented drink of rice and honey.
+eridu:
+  peak: c. 4000 BCE
+  desc: The Sumerians believed it was the first city to which kingship came down from heaven. The temple of Enki was rebuilt on the same spot more than ten times over thousands of years.
+talianki:
+  peak: c. 3800 BCE
+  desc: The largest settlement of the Cucuteni–Trypillia culture in Ukraine, with over a thousand houses in oval rings. Bigger than any Mesopotamian city of its time, it was abandoned within a few generations.

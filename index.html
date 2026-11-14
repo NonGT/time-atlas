@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="th" class="booting">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>แผนที่เวลา</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#05070d">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- the stylesheet arrives with the JS bundle, so the page stays hidden behind this until the app reveals it -->
+  <style>
+    html, body { background: #05070d; }
+    body > * { transition: opacity .7s ease; }
+    .booting body > :not(#boot) { opacity: 0; pointer-events: none; }
+    #boot { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; color: #9b9584; font: 13px system-ui, sans-serif; letter-spacing: .04em; pointer-events: none; }
+    html:not(.booting) #boot { opacity: 0; }
+    #boot span { animation: boot 1.4s ease-in-out infinite alternate; }
+    @keyframes boot { from { opacity: .35; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { body > *, #boot span { transition: none; animation: none; } }
+  </style>
+  <script>setTimeout(() => document.documentElement.classList.remove('booting'), 12000)</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@500;700&display=swap">
+</head>
+<body>
+  <div id="boot"><span>กำลังโหลดแผนที่…</span></div>
+  <script>
+    // the module script runs too late for the loading text, so pick the language here as well
+    try {
+      const l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang')
+      if (l === 'en') { document.documentElement.lang = 'en'; document.querySelector('#boot span').textContent = 'Loading map…' }
+    } catch {}
+  </script>
+  <div id="map"></div>
+
+  <header class="brand">
+    <div class="brand-row"><h1 data-t="title">แผนที่เวลา</h1><select id="lang" class="lang" data-t-label="language" aria-label="ภาษา"></select></div>
+    <p data-t="tagline">เลื่อนเวลาดูเมืองและอาณาจักรของโลก ตั้งแต่ 12,000 ปีก่อนถึงวันนี้ ซูมเข้าเพื่อดูตัวเมือง</p>
+  </header>
+
+  <div class="panel toolbar">
+    <div class="seg" role="group" data-t-label="cityStyle" aria-label="รูปแบบการแสดงเมือง">
+      <button type="button" data-mode="city" data-t="mode3d">ตัวเมือง 3D</button>
+      <button type="button" data-mode="glow" data-t="modeGlow">แสงเท่านั้น</button>
+    </div>
+    <label class="chk"><input type="checkbox" id="opt-borders" checked> <span data-t="borders">เขตแดน</span></label>
+    <label class="chk" data-t-tip="uncertainHint" title="เหตุการณ์ สิ่งก่อสร้าง และเขตแดนที่ปีหรือตำแหน่งยังไม่แน่ชัด"><input type="checkbox" id="opt-unc" checked> <span data-t="uncertain">ไม่แน่ชัด</span></label>
+  </div>
+
+  <aside class="panel rank">
+    <p class="eyebrow" data-t="largestNow">เมืองใหญ่ที่สุด ณ ปีนี้</p>
+    <ol id="rank"></ol>
+  </aside>
+
+  <section class="panel info" id="info" hidden>
+    <button type="button" class="x" id="info-x" data-t-label="close" aria-label="ปิด">×</button>
+    <div id="info-body"></div>
+  </section>
+
+  <button type="button" class="panel toast" id="toast" hidden></button>
+  <div class="ev-tip" id="ev-tip" hidden></div>
+
+  <section class="panel timeline" data-t-label="timeline" aria-label="เส้นเวลา">
+    <div class="tl-head">
+      <div class="transport">
+        <button type="button" class="icon" id="prev-ev" data-t-label="prevEvent" aria-label="เหตุการณ์ก่อนหน้า">‹</button>
+        <button type="button" class="btn" id="play"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span data-t="play">เล่น</span></button>
+        <button type="button" class="icon" id="next-ev" data-t-label="nextEvent" aria-label="เหตุการณ์ถัดไป">›</button>
+      </div>
+      <div class="year"><strong id="y-main"></strong><span id="y-be"></span></div>
+      <button type="button" class="event-now" id="event-now" hidden></button>
+      <label class="chk"><input type="checkbox" id="opt-stop" checked> <span data-t="stopAtEvents">หยุดที่เหตุการณ์สำคัญ</span></label>
+      <div class="tl-zoom" role="group" data-t-label="tlZoom" aria-label="ย่อขยายเส้นเวลา">
+        <button type="button" class="icon" id="tl-out" data-t-label="tlOut" data-t-tip="tlOutTip" aria-label="ซูมออกเส้นเวลา" title="ซูมออก (−)">−</button>
+        <div class="tl-mini" id="tl-mini" data-t-tip="tlMiniTip" title="ลากเพื่อเลื่อนช่วงเวลาที่ดู"><div id="tl-win"></div><i id="tl-now"></i></div>
+        <button type="button" class="icon" id="tl-in" data-t-label="tlIn" data-t-tip="tlInTip" aria-label="ซูมเข้าเส้นเวลา" title="ซูมเข้า (+)">+</button>
+        <button type="button" class="icon" id="tl-fit" data-t-label="tlFit" data-t-tip="tlFitTip" aria-label="ดูเส้นเวลาทั้งหมด" title="ดูทั้งหมด (0)"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      </div>
+    </div>
+    <div class="track">
+      <canvas id="spark"></canvas>
+      <div class="eras" id="eras"></div>
+      <div class="ev-marks" id="ev-marks"></div>
+      <input type="range" id="slider" min="0" max="1000" step="1" data-t-label="yearSlider" aria-label="ปี">
+      <div class="ticks" id="ticks"></div>
+    </div>
+  </section>
+
+  <div id="data-error" hidden></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

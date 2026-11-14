@@ -1,0 +1,276 @@
+# English for data/events/core.yaml, keyed by event id. Fields: title, desc, uncertain.
+
+mesopotamia-cities:
+  title: Mesopotamian villages grow into cities
+  desc: Irrigation from the Tigris and Euphrates produced a food surplus, and farming villages grew into cities with temples and ruling classes.
+uruk-cuneiform:
+  title: Uruk develops cuneiform
+  desc: It began as tallies of goods on clay tablets and grew into the first writing system.
+  uncertain: The date comes from the soil layers the earliest tablets were found in, not from any record.
+egypt-unified:
+  title: Egypt becomes one kingdom
+  desc: Upper and Lower Egypt are joined, with Memphis as the capital.
+caral-rises:
+  title: Caral rises in Peru
+  desc: The first city in the Americas, grown up independently of the Old World.
+  uncertain: Radiocarbon dates from sites across the Supe valley are widely spread.
+great-pyramid:
+  title: The Great Pyramid of Giza is built
+indus-cities:
+  title: Indus Valley cities flourish
+  desc: Mohenjo-daro and Harappa share grid plans, drains and the same standard brick across the region.
+ziggurat-of-ur:
+  title: The Ziggurat of Ur is built
+hammurabi-code:
+  title: Code of Hammurabi
+  desc: One of the earliest written law codes, carved on a basalt stele.
+oracle-bones:
+  title: Oracle bone script at Anyang
+  desc: The oldest Chinese writing yet found.
+shang-falls:
+  title: The Shang dynasty falls
+ishtar-gate:
+  title: The Ishtar Gate is completed
+athenian-democracy:
+  title: Athens reforms toward democracy
+parthenon:
+  title: The Parthenon is completed
+ashoka-buddhism:
+  title: Ashoka turns to Buddhism
+  desc: After the Kalinga war, Ashoka spreads Buddhism across Asia.
+carthage-destroyed:
+  title: Rome destroys Carthage
+  desc: The Third Punic War ends with the whole city razed.
+silk-road:
+  title: The Silk Road opens
+  desc: The Han dynasty links its trade with Central Asia and on to the Mediterranean.
+colosseum:
+  title: The Colosseum opens
+constantinople-founded:
+  title: Constantine moves the capital to Byzantium
+serapeum-destroyed:
+  title: The Serapeum, the library's last branch, is destroyed
+western-rome-falls:
+  title: The Western Roman Empire falls
+teotihuacan-peak:
+  title: Teotihuacan is the largest city in the Americas
+hagia-sophia:
+  title: Hagia Sophia is completed
+baghdad-founded:
+  title: The Round City of Baghdad is founded
+house-of-wisdom:
+  title: The House of Wisdom in Baghdad
+  desc: A centre for translating Greek, Persian and Indian texts that laid the groundwork for later mathematics and astronomy.
+angkor-wat:
+  title: Work begins on Angkor Wat
+sukhothai-founded:
+  title: Sukhothai is founded
+baghdad-sacked:
+  title: The Mongols destroy Baghdad
+thai-script:
+  title: Ram Khamhaeng creates the Thai script
+tenochtitlan-founded:
+  title: The Aztecs found Tenochtitlan
+ayutthaya-founded:
+  title: Ayutthaya is founded
+angkor-taken:
+  title: Ayutthaya takes Angkor
+inca-expansion:
+  title: The Inca begin building an empire
+constantinople-falls:
+  title: The Ottomans take Constantinople
+columbus:
+  title: Columbus crosses the Atlantic
+knossos-palace:
+  title: The palace of Knossos is built
+hattusa-capital:
+  title: The Hittites make Hattusa their capital
+ban-chiang:
+  title: Ban Chiang culture in northeast Thailand
+  desc: A farming community that cast bronze and made red-painted pottery.
+  uncertain: Archaeologists still argue over its age; the first datings came out nearly a thousand years older than later ones.
+kadesh:
+  title: Battle of Kadesh
+  desc: Egypt and the Hittites fight to a draw, and later sign one of the oldest surviving peace treaties.
+bronze-age-collapse:
+  title: Bronze Age collapse
+  desc: Kingdoms around the eastern Mediterranean fall one after another, Hattusa is abandoned and trade networks break down.
+nineveh-falls:
+  title: Nineveh is destroyed and the Assyrian empire falls
+buddha-enlightenment:
+  title: The Buddha's enlightenment at Bodh Gaya
+  desc: The year follows the Thai Buddhist Era reckoning.
+  uncertain: Some historians place the Buddha's lifetime about a century later.
+cyrus-babylon:
+  title: Cyrus of Persia takes Babylon
+persepolis-begun:
+  title: Work begins on Persepolis
+alexandria-founded:
+  title: Alexander the Great founds Alexandria
+persepolis-burned:
+  title: Persepolis is burned
+euclid-elements:
+  title: Euclid writes the Elements in Alexandria
+  uncertain: Almost nothing is recorded of Euclid's life beyond working in Alexandria under Ptolemy I.
+library-founded:
+  title: The Library of Alexandria is founded
+  desc: The Ptolemies set up the library and the Mouseion to gather scholars from across the Greek world. Every ship entering the harbour had its books copied.
+  uncertain: No founding date is recorded; it may have begun under Ptolemy I or II. Claimed numbers of scrolls range from tens of thousands to hundreds of thousands.
+pharos:
+  title: The Pharos lighthouse is built
+mahinda-lanka:
+  title: Mahinda brings Buddhism to Sri Lanka
+eratosthenes:
+  title: Eratosthenes measures the Earth
+  desc: The library's chief librarian compared the sun's shadow at Alexandria and Syene and got a circumference close to the real one.
+alexandria-fire:
+  title: Alexandria burns during Caesar's civil war
+  desc: Fire spreads from the harbour and burns warehouses of books.
+  uncertain: It is not known whether the fire reached the library itself, and ancient sources disagree widely on how many books were lost. The library most likely declined over the following centuries rather than vanishing in one night.
+qin-unification:
+  title: Qin Shi Huang unifies China
+  desc: Qin conquers the other states, standardises writing, weights and measures, and begins the Great Wall.
+han-luoyang:
+  title: The Eastern Han move the capital to Luoyang
+hijra:
+  title: The Hijra
+  desc: The Prophet Muhammad migrates from Mecca to Medina, the start of the Islamic calendar.
+alexandria-arab-conquest:
+  title: The Arabs take Alexandria
+silla-unification:
+  title: Silla unifies the Korean peninsula
+nara-capital:
+  title: Japan makes Nara its capital
+todaiji-buddha:
+  title: The Great Buddha of Tōdai-ji is dedicated
+heian-capital:
+  title: Japan's capital moves to Heian (Kyoto)
+borobudur:
+  title: Borobudur is completed
+cairo-founded:
+  title: The Fatimids build Cairo
+anawrahta-bagan:
+  title: Anawrahta unites Burma at Bagan
+first-crusade:
+  title: The First Crusade
+  desc: The first of the religious wars between Christian Europe and the Muslim states of the Middle East, which dragged on for nearly two centuries.
+kaifeng-falls:
+  title: The Jin take Kaifeng and the Song move south
+genghis-khan:
+  title: Genghis Khan unites the Mongol tribes
+  desc: The start of the largest contiguous empire in history.
+samarkand-destroyed:
+  title: The Mongols destroy Samarkand
+hangzhou-falls:
+  title: The Mongols take Hangzhou and the Southern Song falls
+haripunjaya-taken:
+  title: Mangrai takes Haripunjaya
+majapahit-founded:
+  title: The Majapahit kingdom is founded
+chiang-mai-founded:
+  title: Mangrai builds Chiang Mai
+mansa-musa:
+  title: Mansa Musa's pilgrimage
+  desc: The king of Mali carried so much gold and spent so freely on the way that the price of gold in Cairo fell.
+vijayanagara-founded:
+  title: The Vijayanagara empire is founded
+black-death:
+  title: The Black Death
+  desc: Plague spreads from Central Asia to the Middle East and Europe. Europe loses roughly a third to a half of its people.
+delhi-sacked:
+  title: Timur sacks Delhi
+zheng-he:
+  title: Zheng He's first voyage
+  desc: The Ming treasure fleet sails to Ayutthaya, India, Arabia and the coast of East Africa.
+printing-press:
+  title: Gutenberg's printing press
+  desc: Movable metal type makes books common across Europe.
+tilokaraj:
+  title: Tilokaraj takes the throne of Lanna
+vasco-da-gama:
+  title: Vasco da Gama reaches India by sea
+  desc: The route around Africa links Europe directly to Asia and opens Europe's seaborne spice trade.
+malacca-ayutthaya:
+  title: Portugal takes Malacca and sends envoys to Ayutthaya
+  desc: The first Western nation in contact with the Ayutthaya court.
+tenochtitlan-falls:
+  title: Spain takes Tenochtitlan
+  desc: Hernán Cortés and his native allies capture the Aztec capital. Smallpox brought by the Europeans kills huge numbers.
+magellan:
+  title: Magellan's fleet completes the first circumnavigation
+mughal-empire:
+  title: Babur founds the Mughal empire
+inca-conquest:
+  title: Spain conquers the Inca empire
+talikota:
+  title: Battle of Talikota, Vijayanagara is sacked
+ayutthaya-falls-1569:
+  title: First fall of Ayutthaya
+edo-shogunate:
+  title: The Tokugawa shogunate settles in Edo
+qing-beijing:
+  title: The Qing take Beijing
+taj-mahal:
+  title: The Taj Mahal is completed
+principia:
+  title: Newton publishes the Principia
+lisbon-earthquake:
+  title: The great Lisbon earthquake
+ayutthaya-falls-1767:
+  title: Second fall of Ayutthaya
+  desc: The Burmese army burns Ayutthaya, ending a capital that had stood for 417 years.
+steam-engine:
+  title: James Watt improves the steam engine
+  desc: A turning point of the Industrial Revolution. English towns grow fast around factories.
+us-independence:
+  title: The United States declares independence
+rattanakosin:
+  title: Rattanakosin (Bangkok) is founded
+  desc: Rama I moves the capital from Thonburi to the east bank of the Chao Phraya.
+french-revolution:
+  title: The French Revolution
+napoleon-moscow:
+  title: Napoleon invades Moscow
+tambora:
+  title: Mount Tambora erupts
+  desc: The most powerful eruption in recorded history. The next year brought the "Year Without a Summer" around the world.
+singapore-founded:
+  title: Raffles founds the port of Singapore
+opium-war:
+  title: The First Opium War ends and China opens treaty ports
+bowring-treaty:
+  title: The Bowring Treaty
+  desc: Siam opens free trade with Britain, and the rice economy and Bangkok grow quickly.
+meiji-restoration:
+  title: The Meiji Restoration
+suez-canal:
+  title: The Suez Canal opens
+world-war-1:
+  title: World War I
+spanish-flu:
+  title: The Spanish flu pandemic
+siam-revolution:
+  title: Siam becomes a constitutional monarchy
+world-war-2:
+  title: World War II
+hiroshima-nagasaki:
+  title: Atomic bombs on Hiroshima and Nagasaki, World War II ends
+india-pakistan:
+  title: India and Pakistan become independent
+prc-founded:
+  title: The People's Republic of China is founded
+moon-landing:
+  title: Humans land on the Moon
+  desc: Apollo 11 lifts off from Cape Canaveral.
+berlin-wall:
+  title: The Berlin Wall falls
+ussr-dissolved:
+  title: The Soviet Union dissolves
+bibliotheca-alexandrina:
+  title: The Bibliotheca Alexandrina opens
+  desc: A modern library built near the old site in memory of the ancient one.
+urban-majority:
+  title: City dwellers outnumber rural people for the first time
+  desc: By UN estimates, most people now live in cities.
+covid-19:
+  title: The COVID-19 pandemic

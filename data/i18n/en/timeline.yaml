@@ -1,0 +1,12 @@
+# Era names, keyed by era id.
+
+eras:
+  neolithic: Neolithic
+  copper-age: Copper Age
+  early-cities: First cities
+  bronze-age: Bronze Age
+  iron-classical: Iron Age · Classical
+  middle-ages: Middle Ages
+  early-modern: Early modern
+  industrial: Industrial age
+  modern: Modern era

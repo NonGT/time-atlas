@@ -1,0 +1,10 @@
+# From the end of the last ice age to the first cities. Dates are radiocarbon estimates.
+
+- { id: ice-age-ends, year: -9700, title: ยุคน้ำแข็งสิ้นสุด, desc: "อากาศอุ่นขึ้นและระดับทะเลสูงขึ้นหลายสิบเมตร สะพานแผ่นดินหลายแห่งจมหาย เช่น ซุนดาแลนด์ที่เคยเชื่อมไทยกับเกาะบอร์เนียวและชวา", tag: disaster, importance: 2 }
+- { id: gobekli-tepe, year: -9500, title: สร้างเกอเบกลีเตเป, desc: "วงเสาหินขนาดใหญ่ที่สร้างก่อนมีการเกษตรและเครื่องปั้นดินเผา ทำให้นักโบราณคดีต้องคิดใหม่ว่าศาสนาอาจมาก่อนการตั้งถิ่นฐาน", lat: 37.2231, lon: 38.9225, zoom: 14, tag: religion, importance: 2 }
+- { id: farming-begins, year: -9000, title: เริ่มปลูกพืช และเลี้ยงสัตว์, desc: "ในดินแดนพระจันทร์เสี้ยวอันอุดมสมบูรณ์ คนเริ่มปลูกข้าวสาลี ข้าวบาร์เลย์ และถั่ว แล้วเลี้ยงแพะ แกะ วัว และหมู การเกษตรเกิดขึ้นเองอีกหลายแห่งทั่วโลกในหลายพันปีต่อมา", lat: 36.5, lon: 40.0, zoom: 4.5, tag: tech, importance: 3, uncertain: "การเกษตรค่อยๆ พัฒนาขึ้นตลอดหลายพันปี ไม่มีปีที่เริ่มแน่นอน", range: [-9500, -8500] }
+- { id: jericho-tower, year: -8000, title: เจริโคสร้าง หอคอยและกำแพงหิน, city: jericho, tag: founding, importance: 2 }
+- { id: catalhoyuk-founded, year: -7100, title: เริ่มมีชุมชน ที่ชาทัลเฮอยึค, city: catalhoyuk, tag: founding, importance: 2 }
+- { id: rice-farming, year: -7000, title: เริ่มปลูกข้าว ในลุ่มแม่น้ำแยงซี, desc: "ข้าวป่าค่อยๆ กลายเป็นข้าวปลูก แล้วแพร่ไปทั่วเอเชีย รวมถึงดินแดนไทยในอีกหลายพันปีต่อมา", lat: 30.0, lon: 112.0, zoom: 5, tag: tech, importance: 2, uncertain: "การปลูกข้าวพัฒนาขึ้นช้าๆ ตลอดราว 2,000 ปี", range: [-8000, -6000] }
+- { id: eridu-founded, year: -5400, title: ก่อตั้งเอริดู, desc: "ชาวสุเมเรียนในยุคหลังถือว่าเป็นเมืองแรกของโลก", city: eridu, tag: founding, importance: 2 }
+- { id: copper-smelting, year: -5000, title: เริ่มถลุงทองแดง, desc: "ตะกรันถลุงทองแดงที่เก่าที่สุดพบที่เบโลโวเด ประเทศเซอร์เบีย เป็นจุดเริ่มของยุคโลหะ", lat: 44.25, lon: 21.45, zoom: 7, tag: tech, importance: 2 }

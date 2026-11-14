@@ -1,0 +1,40 @@
+# English for data/detail/events.yaml.
+
+la-wildfires-2025:
+  title: Great wildfires in Los Angeles
+  desc: In January the Palisades and Eaton fires, driven by strong winds, burned into the city and destroyed thousands of homes.
+pope-leo-xiv:
+  title: Leo XIV, the first pope from the United States
+  desc: Elected in May, after Pope Francis died in April.
+thai-cambodia-border-2025:
+  title: Thai–Cambodian border clashes
+  desc: Five days of fighting in July, then about three more weeks in December before a second ceasefire on 27 December. Around a million people fled their homes.
+queen-sirikit:
+  title: Queen Mother Sirikit dies
+  desc: Queen Sirikit, widow of King Bhumibol and mother of King Vajiralongkorn, died on 24 October aged 93.
+thai-election-2026:
+  title: Thai general election and new-constitution referendum
+  desc: In the 8 February election Bhumjaithai won the most seats and Anutin Charnvirakul returned as prime minister. A referendum held alongside it approved starting work on a new constitution.
+artemis-2:
+  title: Artemis II takes people around the Moon
+  desc: Four astronauts flew around the Moon and back in April, the first people to travel to the Moon since 1972.
+spirit-cave:
+  title: People live in Spirit Cave
+  desc: A hillside cave in Mae Hong Son with Hoabinhian stone tools and the seeds of many plants that people gathered for food.
+  uncertain: The oldest layers date to roughly 10,000–7,000 BCE. An early claim that plants were farmed here has not held up.
+mehrgarh-founded:
+  title: A farming village at Mehrgarh
+jiahu-flutes:
+  title: Bone flutes and fermented drink at Jiahu
+cold-event-6200:
+  title: A sudden global cold spell
+  desc: Fresh water from a glacial lake pours into the North Atlantic and the climate cools for about 200 years. Many farming villages in the Near East are abandoned or move.
+barnenez:
+  title: The Cairn of Barnenez is built
+varna-gold:
+  title: Gold in the Varna graves
+  desc: The oldest gold jewellery in the world, buried with only a few of the dead, early evidence of social rank.
+trypillia-megasites:
+  title: Cucuteni–Trypillia mega-sites
+ggantija:
+  title: The Ġgantija temples are built on Malta

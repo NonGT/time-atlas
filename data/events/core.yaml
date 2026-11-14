@@ -1,0 +1,521 @@
+# Timeline events. Every .yaml file in this folder is read, so new sets (wars.yaml, pandemics.yaml...) can go in their own file.
+# id: a-z0-9- name, unique across all event files. Translations in data/i18n/<lang>/events/ are keyed by it.
+# importance: 1 minor, 2 major, 3 very major (playback stops there when that option is on).
+#   Where marks overlap on the timeline the smaller ones step aside, so minor events show up as you zoom in.
+# tag: founding, culture, war, tech, religion, politics, disaster
+# end: last year of something that lasted (a war, a pandemic). Drawn as a bar on the timeline.
+# Place: city uses that city's position, or give lat/lon (zoom optional).
+# uncertain: what is unclear about it. Hidden by the "uncertain" toggle.
+# range: [from, to] possible years, drawn as a hatched band on the timeline. Needs uncertain.
+
+- id: mesopotamia-cities
+  year: -3500
+  title: ชุมชนในเมโสโปเตเมีย เริ่มขยายเป็นเมือง
+  desc: ชลประทานจากแม่น้ำไทกริสและยูเฟรทีสทำให้ผลิตอาหารได้เกินพอ ชุมชนเกษตรจึงขยายเป็นเมืองที่มีวิหารและชนชั้นปกครอง
+  city: uruk
+  tag: founding
+  importance: 3
+
+- id: uruk-cuneiform
+  year: -3200
+  title: อูรุกพัฒนาอักษรรูปลิ่ม
+  desc: เริ่มจากการจดบัญชีสินค้าบนแผ่นดินเหนียว แล้วพัฒนาเป็นระบบการเขียนแรกของโลก
+  uncertain: ปีกำหนดจากการเทียบชั้นดินของแผ่นจารึกยุคแรก ไม่ได้มาจากบันทึก
+  range: [-3400, -3100]
+  city: uruk
+  tag: tech
+  importance: 3
+
+- id: egypt-unified
+  year: -3100
+  title: อียิปต์รวมเป็น อาณาจักรเดียว
+  desc: อียิปต์บนและล่างรวมกัน โดยมีเมมฟิสเป็นเมืองหลวง
+  city: memphis
+  tag: politics
+  importance: 2
+
+- id: caral-rises
+  year: -2600
+  title: การัลเกิดขึ้นในเปรู
+  desc: เมืองแรกของทวีปอเมริกาเกิดขึ้นอย่างเป็นอิสระจากโลกเก่า
+  uncertain: ค่าคาร์บอนกัมมันตรังสีของแหล่งต่างๆ ในหุบเขาซูเปกระจายกว้าง
+  range: [-3000, -2500]
+  city: caral
+  tag: founding
+  importance: 2
+
+- id: great-pyramid
+  year: -2560
+  title: สร้างมหาพีระมิดแห่งกีซา
+  city: memphis
+  lat: 29.9792
+  lon: 31.1342
+  zoom: 10
+  tag: culture
+  importance: 3
+
+- id: indus-cities
+  year: -2500
+  title: เมืองในลุ่มแม่น้ำสินธุ รุ่งเรือง
+  desc: โมเฮนโจ-ดาโรและฮารัปปามีผังเมืองตาราง ท่อระบายน้ำ และมาตรฐานอิฐเดียวกันทั้งภูมิภาค
+  city: mohenjo-daro
+  tag: culture
+  importance: 2
+
+- id: ziggurat-of-ur
+  year: -2100
+  title: สร้างซิกกูแรตแห่งอูร์
+  city: ur
+  tag: religion
+  importance: 1
+
+- id: hammurabi-code
+  year: -1754
+  title: ประมวลกฎหมายฮัมมูราบี
+  desc: กฎหมายลายลักษณ์อักษรชุดแรกๆ ของโลก จารึกบนแท่งหินบะซอลต์
+  city: babylon
+  tag: politics
+  importance: 2
+
+- id: oracle-bones
+  year: -1250
+  title: อักษรบนกระดูกเสี่ยงทาย ที่อันหยาง
+  desc: หลักฐานอักษรจีนที่เก่าที่สุดที่พบ
+  city: anyang
+  tag: tech
+  importance: 2
+
+- id: shang-falls
+  year: -1046
+  title: ราชวงศ์ซางล่มสลาย
+  city: anyang
+  tag: war
+  importance: 1
+
+- id: ishtar-gate
+  year: -575
+  title: ประตูอิชทาร์สร้างเสร็จ
+  city: babylon
+  tag: culture
+  importance: 1
+
+- id: athenian-democracy
+  year: -508
+  title: เอเธนส์ปฏิรูป สู่ประชาธิปไตย
+  city: athens
+  tag: politics
+  importance: 2
+
+- id: parthenon
+  year: -432
+  title: วิหารพาร์เธนอนสร้างเสร็จ
+  city: athens
+  tag: culture
+  importance: 2
+
+- id: ashoka-buddhism
+  year: -260
+  title: พระเจ้าอโศกหันมา นับถือพุทธศาสนา
+  desc: หลังสงครามกลิงคะ พระเจ้าอโศกเผยแผ่พุทธศาสนาไปทั่วเอเชีย
+  city: pataliputra
+  tag: religion
+  importance: 3
+
+- id: carthage-destroyed
+  year: -146
+  title: โรมทำลายคาร์เธจ
+  desc: สงครามพิวนิกครั้งที่ 3 จบลงด้วยการทำลายเมืองทั้งเมือง
+  city: carthage
+  tag: war
+  importance: 3
+
+- id: silk-road
+  year: -130
+  title: เส้นทางสายไหมเปิดใช้
+  desc: ราชวงศ์ฮั่นเชื่อมการค้ากับเอเชียกลางจนถึงโลกเมดิเตอร์เรเนียน
+  city: changan
+  tag: politics
+  importance: 2
+
+- id: colosseum
+  year: 80
+  title: โคลอสเซียมเปิดใช้
+  city: rome
+  tag: culture
+  importance: 2
+
+- id: constantinople-founded
+  year: 330
+  title: คอนสแตนติน ย้ายเมืองหลวง ไปไบแซนเทียม
+  city: constantinople
+  tag: politics
+  importance: 2
+
+- { id: serapeum-destroyed, year: 391, title: วิหารเซราเปียม หอสมุดสาขาสุดท้าย ถูกทำลาย, city: alexandria, tag: religion, importance: 1 }
+- id: western-rome-falls
+  year: 476
+  title: จักรวรรดิโรมันตะวันตก ล่มสลาย
+  city: rome
+  tag: war
+  importance: 3
+
+- id: teotihuacan-peak
+  year: 500
+  title: เตโอติวากัน เป็นเมืองใหญ่ที่สุด ในทวีปอเมริกา
+  city: teotihuacan
+  tag: culture
+  importance: 1
+
+- id: hagia-sophia
+  year: 537
+  title: สร้างฮาเกียโซเฟียเสร็จ
+  city: constantinople
+  tag: religion
+  importance: 2
+
+- id: baghdad-founded
+  year: 762
+  title: ก่อตั้งนครทรงกลมแบกแดด
+  city: baghdad
+  tag: founding
+  importance: 2
+
+- id: house-of-wisdom
+  year: 830
+  title: บ้านแห่งปัญญาในแบกแดด
+  desc: ศูนย์แปลตำราจากกรีก เปอร์เซีย และอินเดีย เป็นรากฐานคณิตศาสตร์และดาราศาสตร์ยุคต่อมา
+  city: baghdad
+  tag: tech
+  importance: 2
+
+- id: angkor-wat
+  year: 1113
+  title: เริ่มสร้างนครวัด
+  city: angkor
+  tag: religion
+  importance: 2
+
+- id: sukhothai-founded
+  year: 1238
+  title: สถาปนากรุงสุโขทัย
+  city: sukhothai
+  tag: founding
+  importance: 3
+
+- id: baghdad-sacked
+  year: 1258
+  title: มองโกลทำลายแบกแดด
+  city: baghdad
+  tag: war
+  importance: 3
+
+- id: thai-script
+  year: 1283
+  title: พ่อขุนรามคำแหง ประดิษฐ์ลายสือไทย
+  city: sukhothai
+  tag: tech
+  importance: 2
+
+- id: tenochtitlan-founded
+  year: 1325
+  title: แอซเท็กก่อตั้งเตนอชติตลัน
+  city: tenochtitlan
+  tag: founding
+  importance: 2
+
+- id: ayutthaya-founded
+  year: 1351
+  title: สถาปนากรุงศรีอยุธยา
+  city: ayutthaya
+  tag: founding
+  importance: 3
+
+- id: angkor-taken
+  year: 1431
+  title: อยุธยายึดเมืองพระนคร
+  city: angkor
+  tag: war
+  importance: 2
+
+- id: inca-expansion
+  year: 1438
+  title: อินคาเริ่มขยาย เป็นจักรวรรดิ
+  city: cusco
+  tag: politics
+  importance: 2
+
+- id: constantinople-falls
+  year: 1453
+  title: ออตโตมันยึด คอนสแตนติโนเปิล
+  city: constantinople
+  tag: war
+  importance: 3
+
+- id: columbus
+  year: 1492
+  title: โคลัมบัสข้าม มหาสมุทรแอตแลนติก
+  lat: 24.06
+  lon: -74.53
+  zoom: 4
+  tag: politics
+  importance: 3
+
+# ---- more ----
+
+- { id: knossos-palace, year: -1900, title: สร้างพระราชวังคนอสซอส, city: knossos, tag: culture, importance: 1 }
+- { id: hattusa-capital, year: -1600, title: ฮิตไทต์ตั้งเมืองหลวง ที่ฮัตตูซา, city: hattusa, tag: politics, importance: 1 }
+- id: ban-chiang
+  year: -1500
+  title: วัฒนธรรมบ้านเชียงในอีสาน
+  desc: ชุมชนเกษตรที่รู้จักหล่อสำริดและทำภาชนะดินเผาลายเขียนสีแดง
+  uncertain: นักโบราณคดียังเถียงกันเรื่องอายุ ผลหาอายุรุ่นแรกเก่ากว่ารุ่นหลังเกือบพันปี
+  range: [-2100, -1000]
+  lat: 17.407
+  lon: 103.241
+  zoom: 8
+  tag: culture
+  importance: 2
+- id: kadesh
+  year: -1274
+  title: ศึกคาเดช
+  desc: อียิปต์กับฮิตไทต์รบกันจนไม่มีฝ่ายใดชนะ ต่อมาทำสนธิสัญญาสันติภาพที่เก่าแก่ที่สุดฉบับหนึ่งที่เหลืออยู่
+  lat: 34.57
+  lon: 36.51
+  zoom: 7
+  tag: war
+  importance: 2
+- id: bronze-age-collapse
+  year: -1177
+  title: การล่มสลายของยุคสำริด
+  desc: อาณาจักรรอบทะเลเมดิเตอร์เรเนียนตะวันออกล่มสลายต่อเนื่องกัน ฮัตตูซาถูกทิ้งร้าง เครือข่ายการค้าพังทลาย
+  lat: 35.0
+  lon: 30.0
+  zoom: 4
+  tag: disaster
+  importance: 3
+- { id: nineveh-falls, year: -612, title: นิเนเวห์ถูกทำลาย จักรวรรดิอัสซีเรียล่มสลาย, city: nineveh, tag: war, importance: 2 }
+- id: buddha-enlightenment
+  year: -588
+  title: พระพุทธเจ้าตรัสรู้ ที่พุทธคยา
+  desc: ปีนี้นับตามคติพุทธศักราชแบบไทย
+  uncertain: นักประวัติศาสตร์บางส่วนประมาณช่วงพุทธกาลไว้หลังจากนี้ราว 100 ปี
+  range: [-588, -445]
+  lat: 24.696
+  lon: 84.991
+  zoom: 9
+  tag: religion
+  importance: 3
+- { id: cyrus-babylon, year: -539, title: พระเจ้าไซรัสแห่งเปอร์เซีย ยึดบาบิโลน, city: babylon, tag: politics, importance: 2 }
+- { id: persepolis-begun, year: -515, title: เริ่มสร้างเปอร์เซโปลิส, city: persepolis, tag: culture, importance: 1 }
+- { id: alexandria-founded, year: -331, title: อเล็กซานเดอร์มหาราช ก่อตั้งอะเล็กซานเดรีย, city: alexandria, tag: founding, importance: 2 }
+- { id: persepolis-burned, year: -330, title: เปอร์เซโปลิสถูกเผา, city: persepolis, tag: war, importance: 2 }
+- { id: euclid-elements, year: -300, title: ยุคลิดเขียนตำรา "มูลฐานเรขาคณิต" ที่อะเล็กซานเดรีย, uncertain: แทบไม่มีบันทึกชีวิตของยุคลิด รู้แค่ว่าทำงานในอะเล็กซานเดรียสมัยทอเลมีที่ 1, range: [-325, -265], city: alexandria, tag: tech, importance: 1 }
+- id: library-founded
+  year: -285
+  title: ก่อตั้งหอสมุด แห่งอะเล็กซานเดรีย
+  desc: ราชวงศ์ทอเลมีตั้งหอสมุดและสถาบันมูเซียนเป็นที่รวมนักปราชญ์จากทั่วโลกกรีก เรือทุกลำที่เข้าท่าต้องให้คัดลอกหนังสือที่นำมา
+  uncertain: ไม่มีบันทึกปีก่อตั้ง อาจเริ่มสมัยทอเลมีที่ 1 หรือที่ 2 จำนวนม้วนหนังสือที่อ้างกันก็ต่างกันตั้งแต่หลายหมื่นถึงหลายแสน
+  range: [-295, -246]
+  city: alexandria
+  tag: culture
+  importance: 3
+- { id: pharos, year: -280, title: สร้างประภาคารฟารอส, city: alexandria, tag: tech, importance: 1 }
+- { id: mahinda-lanka, year: -247, title: พระมหินทเถระ นำพุทธศาสนาสู่ลังกา, city: anuradhapura, tag: religion, importance: 2 }
+- id: eratosthenes
+  year: -240
+  title: เอราทอสเทนีส วัดเส้นรอบวงโลก
+  desc: บรรณารักษ์ใหญ่ของหอสมุดเทียบมุมเงาแดดที่อะเล็กซานเดรียกับเมืองไซยีน ได้ค่าเส้นรอบวงโลกใกล้เคียงความจริง
+  city: alexandria
+  tag: tech
+  importance: 2
+- { id: alexandria-fire, year: -48, title: ไฟไหม้อะเล็กซานเดรีย ระหว่างสงครามของซีซาร์, desc: ไฟลามจากท่าเรือ เผาโกดังหนังสือ, uncertain: ไม่รู้ว่าไฟลามถึงตัวหอสมุดหรือไม่ แหล่งข้อมูลโบราณให้ตัวเลขหนังสือที่เสียหายต่างกันมาก หอสมุดน่าจะค่อยๆ เสื่อมในหลายศตวรรษต่อมา ไม่ได้หายไปในคืนเดียว, city: alexandria, tag: war, importance: 2 }
+- id: qin-unification
+  year: -221
+  title: จิ๋นซีฮ่องเต้รวมแผ่นดินจีน
+  desc: รัฐฉินพิชิตรัฐอื่นทั้งหมด กำหนดมาตรฐานตัวอักษร มาตราชั่งตวงวัด และเริ่มสร้างกำแพงเมืองจีน
+  lat: 34.33
+  lon: 108.71
+  zoom: 7
+  tag: politics
+  importance: 3
+- { id: han-luoyang, year: 25, title: ราชวงศ์ฮั่นตะวันออก ย้ายเมืองหลวงไปลั่วหยาง, city: luoyang, tag: politics, importance: 1 }
+- id: hijra
+  year: 622
+  title: ฮิจเราะห์
+  desc: ท่านนบีมุฮัมมัดอพยพจากมักกะฮ์ไปมะดีนะฮ์ เป็นจุดเริ่มต้นของศักราชอิสลาม
+  lat: 24.47
+  lon: 39.61
+  zoom: 7
+  tag: religion
+  importance: 3
+- { id: alexandria-arab-conquest, year: 642, title: ชาวอาหรับยึด อะเล็กซานเดรีย, city: alexandria, tag: war, importance: 1 }
+- { id: silla-unification, year: 676, title: ชิลลารวมคาบสมุทรเกาหลี, city: gyeongju, tag: politics, importance: 2 }
+- { id: nara-capital, year: 710, title: ญี่ปุ่นตั้งเมืองหลวงที่นาระ, city: nara, tag: founding, importance: 1 }
+- { id: todaiji-buddha, year: 752, title: ฉลองพระพุทธรูปไวโรจนะ ที่วัดโทไดจิ, city: nara, tag: religion, importance: 1 }
+- { id: heian-capital, year: 794, title: ย้ายเมืองหลวงญี่ปุ่นไปเฮอัน (เกียวโต), city: kyoto, tag: founding, importance: 2 }
+- { id: borobudur, year: 825, title: บุโรพุทโธสร้างเสร็จ, lat: -7.6079, lon: 110.2038, zoom: 10, tag: religion, importance: 2 }
+- { id: cairo-founded, year: 969, title: ราชวงศ์ฟาฏิมียะฮ์ สร้างเมืองไคโร, city: cairo, tag: founding, importance: 2 }
+- { id: anawrahta-bagan, year: 1044, title: พระเจ้าอโนรธา รวมพม่าที่พุกาม, city: bagan, tag: politics, importance: 2 }
+- id: first-crusade
+  year: 1095
+  end: 1099
+  title: สงครามครูเสดครั้งที่ 1
+  desc: สงครามศาสนาระหว่างยุโรปคริสเตียนกับรัฐมุสลิมในตะวันออกกลาง ยืดเยื้อเกือบสองศตวรรษ
+  lat: 31.78
+  lon: 35.23
+  zoom: 6
+  tag: war
+  importance: 2
+- { id: kaifeng-falls, year: 1127, title: ราชวงศ์จินยึดไคเฟิง ซ่งย้ายลงใต้, city: kaifeng, tag: war, importance: 2 }
+- id: genghis-khan
+  year: 1206
+  title: เจงกิสข่าน รวมชนเผ่ามองโกล
+  desc: จุดเริ่มต้นของจักรวรรดิที่มีดินแดนติดต่อกันกว้างใหญ่ที่สุดในประวัติศาสตร์
+  lat: 47.9
+  lon: 106.9
+  zoom: 4
+  tag: politics
+  importance: 3
+- { id: samarkand-destroyed, year: 1220, title: มองโกลทำลายซามาร์คันด์, city: samarkand, tag: war, importance: 2 }
+- { id: hangzhou-falls, year: 1276, title: มองโกลยึดหางโจว ราชวงศ์ซ่งใต้ล่มสลาย, city: hangzhou, tag: war, importance: 2 }
+- { id: haripunjaya-taken, year: 1292, title: พญามังรายยึดหริภุญชัย, city: lamphun, tag: war, importance: 1 }
+- { id: majapahit-founded, year: 1293, title: สถาปนาอาณาจักรมัชปาหิต, city: trowulan, tag: founding, importance: 2 }
+- { id: chiang-mai-founded, year: 1296, title: พญามังราย สร้างเมืองเชียงใหม่, city: chiang-mai, tag: founding, importance: 3 }
+- id: mansa-musa
+  year: 1324
+  title: มานซา มูซาเดินทางไปแสวงบุญ
+  desc: กษัตริย์แห่งมาลีนำทองคำจำนวนมหาศาลไปด้วย ใช้จ่ายระหว่างทางจนราคาทองในไคโรตก
+  city: timbuktu
+  tag: culture
+  importance: 2
+- { id: vijayanagara-founded, year: 1336, title: ก่อตั้งจักรวรรดิวิชัยนคร, city: vijayanagara, tag: founding, importance: 2 }
+- id: black-death
+  year: 1347
+  end: 1351
+  title: กาฬโรคระบาดใหญ่
+  desc: โรคระบาดแพร่จากเอเชียกลางสู่ตะวันออกกลางและยุโรป ประชากรยุโรปลดลงราวหนึ่งในสามถึงครึ่งหนึ่ง
+  lat: 45.0
+  lon: 15.0
+  zoom: 3.5
+  tag: disaster
+  importance: 3
+- { id: delhi-sacked, year: 1398, title: ติมูร์ปล้นเดลี, city: delhi, tag: war, importance: 2 }
+- id: zheng-he
+  year: 1405
+  title: เจิ้งเหอออกเดินเรือครั้งแรก
+  desc: กองเรือมหาสมบัติของราชวงศ์หมิงแล่นไปถึงอยุธยา อินเดีย อาหรับ และชายฝั่งแอฟริกาตะวันออก
+  lat: 32.06
+  lon: 118.79
+  zoom: 4
+  tag: politics
+  importance: 2
+- id: printing-press
+  year: 1440
+  title: กูเทนแบร์กพัฒนาแท่นพิมพ์
+  desc: การพิมพ์ด้วยตัวเรียงโลหะทำให้หนังสือแพร่หลายในยุโรป
+  lat: 50.0
+  lon: 8.27
+  zoom: 8
+  tag: tech
+  importance: 3
+- { id: tilokaraj, year: 1442, title: พระเจ้าติโลกราช ขึ้นครองล้านนา, city: chiang-mai, tag: politics, importance: 1 }
+
+# ---- modern ----
+
+- id: vasco-da-gama
+  year: 1498
+  title: วัชกู ดา กามาเดินเรือถึงอินเดีย
+  desc: เส้นทางเดินเรืออ้อมแอฟริกาเชื่อมยุโรปกับเอเชียโดยตรง เปิดยุคการค้าเครื่องเทศทางทะเลของยุโรป
+  lat: 11.25
+  lon: 75.78
+  zoom: 6
+  tag: politics
+  importance: 2
+- id: malacca-ayutthaya
+  year: 1511
+  title: โปรตุเกสยึดมะละกา และส่งทูตมาอยุธยา
+  desc: ชาวตะวันตกชาติแรกที่ติดต่อกับราชสำนักอยุธยา
+  city: ayutthaya
+  tag: politics
+  importance: 2
+- id: tenochtitlan-falls
+  year: 1521
+  title: สเปนยึดเตนอชติตลัน
+  desc: เอร์นัน กอร์เตสพร้อมพันธมิตรชาวพื้นเมืองยึดเมืองหลวงแอซเท็กได้ โรคไข้ทรพิษที่มากับชาวยุโรปคร่าชีวิตคนจำนวนมาก
+  city: tenochtitlan
+  tag: war
+  importance: 3
+- id: magellan
+  year: 1522
+  title: เรือของมาเจลลัน เดินทางรอบโลกสำเร็จ
+  lat: 36.78
+  lon: -6.35
+  zoom: 4
+  tag: tech
+  importance: 2
+- { id: mughal-empire, year: 1526, title: บาบูร์สถาปนา จักรวรรดิโมกุล, city: delhi, tag: politics, importance: 2 }
+- { id: inca-conquest, year: 1533, title: สเปนพิชิตจักรวรรดิอินคา, city: cusco, tag: war, importance: 2 }
+- { id: talikota, year: 1565, title: ยุทธการตาลิโกฏ วิชัยนครถูกปล้นทำลาย, city: vijayanagara, tag: war, importance: 1 }
+- { id: ayutthaya-falls-1569, year: 1569, title: เสียกรุงศรีอยุธยาครั้งที่ 1, city: ayutthaya, tag: war, importance: 2 }
+- { id: edo-shogunate, year: 1603, title: รัฐบาลโชกุนโทกูงาวะ ตั้งที่เอโดะ, city: tokyo, tag: politics, importance: 2 }
+- { id: qing-beijing, year: 1644, title: ราชวงศ์ชิงยึดปักกิ่ง, city: beijing, tag: war, importance: 2 }
+- { id: taj-mahal, year: 1648, title: สร้างทัชมาฮาลเสร็จ, city: agra, tag: culture, importance: 2 }
+- { id: principia, year: 1687, title: นิวตันตีพิมพ์ปรินซิเปีย, city: london, tag: tech, importance: 2 }
+- { id: lisbon-earthquake, year: 1755, title: แผ่นดินไหวครั้งใหญ่ ที่ลิสบอน, city: lisbon, tag: disaster, importance: 1 }
+- { id: ayutthaya-falls-1767, year: 1767, title: เสียกรุงศรีอยุธยาครั้งที่ 2, desc: กองทัพพม่าเผาทำลายกรุงศรีอยุธยา สิ้นสุดราชธานีที่ยืนยาว 417 ปี, city: ayutthaya, tag: war, importance: 3 }
+- id: steam-engine
+  year: 1769
+  title: เจมส์ วัตต์ปรับปรุงเครื่องจักรไอน้ำ
+  desc: จุดเร่งของการปฏิวัติอุตสาหกรรม เมืองในอังกฤษเติบโตอย่างรวดเร็วด้วยโรงงาน
+  lat: 52.48
+  lon: -1.90
+  zoom: 7
+  tag: tech
+  importance: 3
+- { id: us-independence, year: 1776, title: สหรัฐอเมริกา ประกาศเอกราช, lat: 39.95, lon: -75.15, zoom: 6, tag: politics, importance: 2 }
+- { id: rattanakosin, year: 1782, title: สถาปนากรุงรัตนโกสินทร์, desc: รัชกาลที่ 1 ย้ายราชธานีจากกรุงธนบุรีมาฝั่งตะวันออกของแม่น้ำเจ้าพระยา, city: bangkok, tag: founding, importance: 3 }
+- { id: french-revolution, year: 1789, title: การปฏิวัติฝรั่งเศส, city: paris, tag: politics, importance: 3 }
+- { id: napoleon-moscow, year: 1812, title: นโปเลียนบุกมอสโก, city: moscow, tag: war, importance: 2 }
+- id: tambora
+  year: 1815
+  title: ภูเขาไฟตัมโบราระเบิด
+  desc: การระเบิดของภูเขาไฟที่รุนแรงที่สุดในประวัติศาสตร์ที่มีบันทึก ปีถัดมาทั่วโลกเกิด "ปีที่ไม่มีฤดูร้อน"
+  lat: -8.25
+  lon: 118.0
+  zoom: 6
+  tag: disaster
+  importance: 2
+- { id: singapore-founded, year: 1819, title: แรฟเฟิลส์ตั้ง เมืองท่าสิงคโปร์, city: singapore, tag: founding, importance: 1 }
+- { id: opium-war, year: 1842, title: สงครามฝิ่นครั้งที่ 1 จบลง จีนเปิดเมืองท่า, city: shanghai, tag: war, importance: 2 }
+- { id: bowring-treaty, year: 1855, title: สนธิสัญญาเบาว์ริง, desc: สยามเปิดการค้าเสรีกับอังกฤษ เศรษฐกิจข้าวและกรุงเทพฯ เติบโตอย่างรวดเร็ว, city: bangkok, tag: politics, importance: 2 }
+- { id: meiji-restoration, year: 1868, title: การปฏิรูปเมจิ, city: tokyo, tag: politics, importance: 2 }
+- { id: suez-canal, year: 1869, title: เปิดคลองสุเอซ, lat: 30.6, lon: 32.3, zoom: 7, tag: tech, importance: 2 }
+- id: world-war-1
+  year: 1914
+  end: 1918
+  title: สงครามโลกครั้งที่ 1
+  lat: 50.0
+  lon: 5.0
+  zoom: 4
+  tag: war
+  importance: 3
+- { id: spanish-flu, year: 1918, end: 1920, title: ไข้หวัดใหญ่สเปน ระบาดทั่วโลก, lat: 40.0, lon: 0.0, zoom: 2.5, tag: disaster, importance: 2 }
+- { id: siam-revolution, year: 1932, title: การเปลี่ยนแปลง การปกครองของสยาม, city: bangkok, tag: politics, importance: 2 }
+- id: world-war-2
+  year: 1939
+  end: 1945
+  title: สงครามโลกครั้งที่ 2
+  lat: 52.0
+  lon: 15.0
+  zoom: 4
+  tag: war
+  importance: 3
+- { id: hiroshima-nagasaki, year: 1945, title: ระเบิดปรมาณู ที่ฮิโรชิมะและนางาซากิ สงครามโลกครั้งที่ 2 ยุติ, lat: 34.39, lon: 132.45, zoom: 7, tag: war, importance: 3 }
+- { id: india-pakistan, year: 1947, title: อินเดียและปากีสถาน ได้รับเอกราช, city: delhi, tag: politics, importance: 2 }
+- { id: prc-founded, year: 1949, title: สถาปนาสาธารณรัฐ ประชาชนจีน, city: beijing, tag: politics, importance: 2 }
+- { id: moon-landing, year: 1969, title: มนุษย์ลงเหยียบดวงจันทร์, desc: ยานอะพอลโล 11 ออกเดินทางจากแหลมคะแนเวอรัล, lat: 28.57, lon: -80.65, zoom: 7, tag: tech, importance: 3 }
+- { id: berlin-wall, year: 1989, title: กำแพงเบอร์ลินถูกทลาย, city: berlin, tag: politics, importance: 3 }
+- { id: ussr-dissolved, year: 1991, title: สหภาพโซเวียตล่มสลาย, city: moscow, tag: politics, importance: 2 }
+- { id: bibliotheca-alexandrina, year: 2002, title: เปิดหอสมุด บิบลิโอเทกาอะเล็กซานดรินา, desc: หอสมุดสมัยใหม่สร้างใกล้ที่ตั้งเดิมเพื่อรำลึกถึงหอสมุดโบราณ, city: alexandria, tag: culture, importance: 1 }
+- { id: urban-majority, year: 2007, title: ประชากรเมือง แซงหน้าประชากรชนบท เป็นครั้งแรก, desc: ตามการประเมินของสหประชาชาติ มนุษย์ส่วนใหญ่อาศัยอยู่ในเมืองแล้ว, lat: 20.0, lon: 60.0, zoom: 1.8, tag: culture, importance: 3 }
+- { id: covid-19, year: 2020, end: 2023, title: การระบาดของโควิด-19, lat: 20.0, lon: 100.0, zoom: 2, tag: disaster, importance: 2 }

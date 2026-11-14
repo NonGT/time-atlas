@@ -1,0 +1,33 @@
+# Full range of the slider. Negative years are BCE.
+start: -10000
+end: 2026
+initialYear: -450
+# Seconds to play from start to end.
+playSeconds: 100
+
+# Slider scale as [year, position 0–1]. The early millennia have few events, so they get less room.
+# Prehistory (6,500 years) gets the first 15%.
+scale:
+  - [-10000, 0]
+  - [-3500, 0.15]
+  - [-1000, 0.354]
+  - [500, 0.575]
+  - [1500, 0.762]
+  - [1800, 0.864]
+  - [2026, 1]
+
+eras:
+  - { id: neolithic, from: -10000, name: ยุคหินใหม่ }
+  - { id: copper-age, from: -5000, name: ยุคทองแดง }
+  - { id: early-cities, from: -3500, name: ยุคเริ่มเมือง }
+  - { id: bronze-age, from: -3000, name: ยุคสำริด }
+  - { id: iron-classical, from: -1200, name: ยุคเหล็ก · คลาสสิก }
+  - { id: middle-ages, from: 500, name: ยุคกลาง }
+  - { id: early-modern, from: 1500, name: ยุคใหม่ตอนต้น }
+  - { id: industrial, from: 1800, name: ยุคอุตสาหกรรม }
+  - { id: modern, from: 1945, name: ยุคปัจจุบัน }
+
+ticks: [-8000, -5000, -3000, -2000, -1000, 0, 500, 1000, 1500, 1800, 1900, 2000]
+
+# Camera on page load.
+initialView: { lat: 30, lon: 35, zoom: 2.2 }

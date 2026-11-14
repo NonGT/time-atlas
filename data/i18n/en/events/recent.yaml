@@ -1,0 +1,8 @@
+# English for data/events/recent.yaml, keyed by event id.
+
+myanmar-earthquake-2025:
+  title: Magnitude 7.7 earthquake in Myanmar
+  desc: A quake on the Sagaing Fault on 28 March killed thousands in Myanmar. The shaking reached Bangkok, where a tower under construction collapsed.
+iran-war-2026:
+  title: War in Iran
+  desc: The United States and Israel attacked Iran on 28 February. Supreme Leader Ali Khamenei was killed in the first strikes and his son Mojtaba succeeded him.

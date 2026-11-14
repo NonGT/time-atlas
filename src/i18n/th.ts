@@ -1,0 +1,83 @@
+const n = (x: number) => Math.round(x).toLocaleString('en-US')
+
+export const th = {
+  title: 'แผนที่เวลา',
+  tagline: 'เลื่อนเวลาดูเมืองและอาณาจักรของโลก ตั้งแต่ 12,000 ปีก่อนถึงวันนี้ ซูมเข้าเพื่อดูตัวเมือง',
+  loading: 'กำลังโหลดแผนที่…',
+  language: 'ภาษา',
+  cityStyle: 'รูปแบบการแสดงเมือง',
+  mode3d: 'ตัวเมือง 3D',
+  modeGlow: 'แสงเท่านั้น',
+  borders: 'เขตแดน',
+  uncertain: 'ไม่แน่ชัด',
+  uncertainHint: 'เหตุการณ์ สิ่งก่อสร้าง และเขตแดนที่ปีหรือตำแหน่งยังไม่แน่ชัด',
+  largestNow: 'เมืองใหญ่ที่สุด ณ ปีนี้',
+  noCities: 'ยังไม่มีเมืองในช่วงเวลานี้',
+  close: 'ปิด',
+  timeline: 'เส้นเวลา',
+  prevEvent: 'เหตุการณ์ก่อนหน้า',
+  nextEvent: 'เหตุการณ์ถัดไป',
+  play: 'เล่น',
+  pause: 'หยุด',
+  stopAtEvents: 'หยุดที่เหตุการณ์สำคัญ',
+  tlZoom: 'ย่อขยายเส้นเวลา',
+  tlOut: 'ซูมออกเส้นเวลา',
+  tlOutTip: 'ซูมออก (−)',
+  tlIn: 'ซูมเข้าเส้นเวลา',
+  tlInTip: 'ซูมเข้า (+)',
+  tlFit: 'ดูเส้นเวลาทั้งหมด',
+  tlFitTip: 'ดูทั้งหมด (0)',
+  tlMiniTip: 'ลากเพื่อเลื่อนช่วงเวลาที่ดู',
+  yearSlider: 'ปี',
+
+  tags: {
+    founding: 'สถาปนา',
+    culture: 'วัฒนธรรม',
+    war: 'สงคราม · ล่มสลาย',
+    tech: 'วิทยาการ',
+    religion: 'ศาสนา',
+    politics: 'การเมือง',
+    disaster: 'ภัยพิบัติ · โรคระบาด',
+  },
+  city: 'เมือง',
+  landmark: 'สิ่งก่อสร้างสำคัญ',
+  notFounded: 'ยังไม่ก่อตั้ง',
+  abandoned: 'ร้างแล้ว',
+  atPeak: 'รุ่งเรืองสูงสุด',
+  growing: 'กำลังเติบโต',
+  declining: 'กำลังเสื่อม',
+  stable: 'ทรงตัว',
+  notBuilt: 'ยังไม่สร้าง',
+  standing: 'ตั้งอยู่',
+  destroyed: 'ถูกทำลายแล้ว',
+  largest: (when: string, pop: string) => `ช่วงที่ใหญ่ที่สุด: ${when} · ประมาณ ${pop}`,
+  zoomToCity: 'ซูมไปที่เมือง',
+  built: (year: string, approx: boolean) => `สร้าง ${approx ? 'ราว ' : ''}${year}`,
+  maybeBuilt: (span: string) => `อาจสร้างในช่วง ${span}`,
+  gone: (year: string) => `ถูกทำลาย/ทิ้งร้าง ${year}`,
+  goneSpan: (span: string, year: string) => `ถูกทำลาย/ทิ้งร้าง ช่วง ${span} (บนแผนที่ใช้ ${year})`,
+  realSize: (m: string) => `ขนาดจริงราว ${m} เมตร (บนแผนที่ขยายให้ใหญ่ขึ้นเพื่อให้มองเห็น)`,
+  goLook: 'ไปดู',
+  googleImages: 'ค้นรูปใน Google ↗',
+  photoBy: (credit: string) => `ภาพ: ${credit}`,
+  photoFrom: (page: string) => `จากหน้า ${page} · อาจไม่ตรงกับสภาพในปีที่เลือก`,
+  goToPlace: 'ไปยังสถานที่',
+  about: 'ราว ',
+
+  dataError: (count: number) => `ข้อมูลในโฟลเดอร์ data มีปัญหา ${count} จุด`,
+  dataErrorHint: 'แก้ไฟล์ตามรายการด้านล่างแล้วบันทึก หน้านี้จะโหลดใหม่เอง',
+
+  year: (y: number) => (y < 0 ? `${n(-y)} ปีก่อน ค.ศ.` : `ค.ศ. ${Math.round(Math.max(1, y))}`),
+  span: (a: number, b: number) =>
+    a < 0 && b < 0 ? `${n(-a)}–${n(-b)} ปีก่อน ค.ศ.` : a > 0 ? `ค.ศ. ${a}–${b}` : `${th.year(a)} – ${th.year(b)}`,
+  yearShort: (y: number) => (y < 0 ? `${n(-y)} BC` : y === 0 ? '1 AD' : `${y}`),
+  // Buddhist Era: 1 CE = BE 544, and neither calendar has a year 0
+  yearAlt: (y: number) => {
+    const be = y < 0 ? 544 + y : y + 543
+    return be > 0 ? `พ.ศ. ${be}` : `${n(1 - be)} ปีก่อน พ.ศ.`
+  },
+  pop: (k: number) => (k <= 0 ? '—' : k < 1 ? '< 1,000 คน' : `≈ ${n(Math.round(k) * 1000)} คน`),
+  popShort: (k: number) => (k >= 1000 ? (k / 1000).toFixed(1).replace(/\.0$/, '') + ' ล้าน' : `${Math.round(k)}k`),
+}
+
+export type Dict = typeof th
