@@ -1,33 +1,33 @@
-# แผนที่เวลา (civ-timelapse)
+# Time Atlas (civ-timelapse)
 
-ลูกโลก 3D พร้อมเส้นเวลา แสดงเมืองและอาณาจักรที่ก่อตัว เติบโต และร้างไป ตั้งแต่ 10,000 ปีก่อน ค.ศ. ถึงปัจจุบัน
-ซูมออกจะเห็นเป็นลูกโลกที่มีแสงของเมืองและเขตแดนตามยุค ซูมเข้าแผนที่จะคลี่เป็นแผ่นแบนและเห็นตัวเมืองแบบ low-poly
+A 3D globe with a timeline showing cities and empires as they rise, grow and fall, from 10,000 BCE to today. The app is Thai first, with an English version.
+
+Zoomed out you see a globe with glowing cities and the borders of the era. Zoom in and the map flattens out to show the cities themselves as low-poly buildings.
 
 ```
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # ตรวจ type + ข้อมูล แล้ว build ไปที่ dist/
-npm run validate   # ตรวจเฉพาะไฟล์ข้อมูล
-npm run i18n       # ดูว่าคำแปลไหนขาด หรือข้อความไทยเปลี่ยนไปหลังแปล
+npm run build      # type check and data check, then build to dist/
+npm run validate   # check the data files only
+npm run i18n       # report missing translations and Thai text changed since translating
 ```
 
-## แก้ไขข้อมูล
+## Editing the data
 
-ข้อมูลทั้งหมดอยู่ในโฟลเดอร์ `data/` เป็นไฟล์ YAML แก้แล้วบันทึก หน้าเว็บที่เปิดด้วย `npm run dev` จะโหลดใหม่เอง
-ถ้าข้อมูลผิดรูปแบบ หน้าเว็บจะแสดงรายการว่าผิดที่ไฟล์ไหน รายการไหน ฟิลด์อะไร
+All data lives in `data/` as YAML. Save a file and a page opened with `npm run dev` reloads. If something is malformed, the page lists the file, item and field at fault.
 
-- `cities.yaml` เมือง พิกัด และจำนวนประชากรตามปี (หน่วยพันคน) จำนวนตึกที่เห็นคำนวณจากประชากร
-- `landmarks.yaml` สิ่งก่อสร้างสำคัญ วางที่พิกัดจริง มีปีที่สร้าง (`built`) และปีที่หายไป (`gone`)
-- `events/` เหตุการณ์บนเส้นเวลา ทุกไฟล์ในโฟลเดอร์นี้ถูกอ่านรวมกัน จะแยกเป็น `wars.yaml` หรือ `pandemics.yaml` ก็ได้ ทุกเหตุการณ์ต้องมี `id` ที่ไม่ซ้ำกัน `importance: 3` จะหยุดการเล่นอัตโนมัติ เหตุการณ์ที่กินเวลาหลายปีใส่ `end` ได้ จะวาดเป็นแถบบนเส้นเวลา ถ้าจุดบนเส้นเวลาซ้อนกัน จุดที่ importance ต่ำกว่าจะหลบไป และโผล่มาเมื่อซูมเข้า
+- `cities.yaml`: cities, their position and population by year (in thousands). The number of buildings drawn comes from the population.
+- `landmarks.yaml`: major buildings at their real position, with the year built (`built`) and gone (`gone`).
+- `events/`: timeline events. Every file in the folder is read, so new sets can go in their own file (`wars.yaml`, `pandemics.yaml`). Each event needs a unique `id`. `importance: 3` stops playback. Events that lasted several years can have an `end` and are drawn as a bar. Where marks overlap, the less important ones step aside and show up as you zoom in.
+- `civilizations.yaml`: civilizations and their colors.
+- `polities.yaml`: Thai names and colors for border polities, matched by their English name in the border data. The source data sometimes labels land with a name from a later era (Bantu in 8000 BCE, for example); `from` hides such a name before the given year.
+- `timeline.yaml`: the year range, slider scale, eras and starting camera.
+- `i18n/`: translations, see below.
+- `detail/`: smaller events kept for a later, more detailed layer. The app doesn't load them. The timeline only shows events that mattered to the world as a whole: wars, states rising and falling, major disasters.
 
-เหตุการณ์หรือสิ่งก่อสร้างที่ปีหรือตำแหน่งยังไม่แน่ชัดให้ใส่ `uncertain` เป็นข้อความอธิบาย และใส่ช่วงปีที่เป็นไปได้ได้ (`range` สำหรับเหตุการณ์, `builtRange` กับ `goneRange` สำหรับสิ่งก่อสร้าง) รายการเหล่านี้จะแสดงต่างจากรายการอื่นและซ่อนได้ด้วยตัวเลือก "ไม่แน่ชัด" บนแถบเครื่องมือ เขตแดนที่ข้อมูลต้นทางระบุว่าเป็นการประมาณ (`BORDERPRECISION` 1 ซึ่งคือทุกสมัยก่อนราว ค.ศ. 1650) ก็อยู่ในชั้นนี้ด้วย และวาดเป็นเส้นประ
-- `civilizations.yaml` อารยธรรมและสีที่ใช้
-- `polities.yaml` ชื่อไทยและสีของเขตแดน จับคู่กับชื่อภาษาอังกฤษในข้อมูลเขตแดน ข้อมูลต้นทางบางทีใช้ชื่อจากยุคหลังมาแปะในยุคก่อน (เช่น บันตู 8,000 ปีก่อน ค.ศ.) ใส่ `from` เพื่อซ่อนชื่อนั้นในช่วงก่อนปีที่กำหนด
-- `i18n/` คำแปล (ดูหัวข้อภาษา)
-- `detail/` เหตุการณ์ย่อยที่เก็บไว้ทำชั้นรายละเอียดทีหลัง แอปยังไม่โหลด บนเส้นเวลาตอนนี้ใส่เฉพาะเรื่องใหญ่ระดับโลก เช่น สงคราม การเกิดและล่มสลายของรัฐ ภัยพิบัติร้ายแรง
-- `timeline.yaml` ช่วงปี สเกลของ slider ยุค และมุมกล้องเริ่มต้น
+Events and landmarks whose date or place is not settled get an `uncertain` note, and optionally a range of possible years (`range` for events, `builtRange` and `goneRange` for landmarks). They are drawn differently and can be hidden with the "Uncertain" toggle. Borders the source marks as approximate (`BORDERPRECISION` 1, which is everything before about 1650) belong to the same layer and are drawn dashed.
 
-ปีติดลบหมายถึงก่อน ค.ศ. ตัวอย่างเพิ่มเมือง:
+Negative years are BCE. Adding a city:
 
 ```yaml
 - id: xian-yang
@@ -40,37 +40,35 @@ npm run i18n       # ดูว่าคำแปลไหนขาด หรื�
   population: [[-350, 0], [-340, 20], [-221, 100], [-206, 0]]
 ```
 
-landmark ใช้รูปทรงที่มีให้เลือก: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral
-ถ้าต้องการรูปทรงใหม่ ให้เพิ่มใน `src/map/shapes.ts` และเพิ่มชื่อใน `SHAPES` ที่ `src/data/schema.ts`
+Landmark shapes: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral. A new shape goes in `src/map/shapes.ts` and its name in `SHAPES` in `src/data/schema.ts`.
 
-## ภาษา
+## Languages
 
-ข้อมูลหลักเป็นภาษาไทย คำแปลอยู่ที่ `data/i18n/<ภาษา>/` แยกไฟล์ตามโครงสร้างเดียวกับ `data/` เช่น `data/i18n/en/events/core.yaml` คู่กับ `data/events/core.yaml` อ้างถึงรายการด้วย `id`
+The source data is in Thai. Translations live in `data/i18n/<lang>/`, in files that mirror `data/`, keyed by `id`. For example `data/i18n/en/events/core.yaml` goes with `data/events/core.yaml`:
 
 ```yaml
-# data/i18n/en/events/core.yaml
 black-death:
   title: The Black Death
   desc: Plague spreads from Central Asia...
 ```
 
-- ชื่อเมือง สิ่งก่อสร้าง และอารยธรรม ใช้ฟิลด์ `en` ในข้อมูลหลัก ไม่ต้องแปลซ้ำ
-- อะไรที่ยังไม่แปลจะแสดงเป็นภาษาไทย
-- นอกจากภาษาไทย เขตแดนใช้ชื่อจากข้อมูลต้นทาง `i18n/<ภาษา>/polities.yaml` ใช้แก้ชื่อที่อ่านไม่รู้เรื่อง
-- หน้าเว็บโหลดเฉพาะไฟล์ของภาษาที่เลือก เลือกได้จากปุ่มข้างชื่อแอป หรือใส่ `?lang=en` ใน URL
-- ข้อความในหน้าเว็บ (ปุ่ม ป้าย รูปแบบปี) อยู่ใน `src/i18n/th.ts` และ `en.ts` ถ้าเพิ่ม key แล้วลืมแปล `tsc` จะแจ้ง
+- City, landmark and civilization names come from the `en` field in the source data and don't need translating.
+- Anything untranslated shows in Thai.
+- Outside Thai, borders use the source dataset's own names. `i18n/<lang>/polities.yaml` fixes the awkward ones.
+- The page loads only the chosen language. Pick it with the button next to the title or with `?lang=en` in the URL.
+- UI text (buttons, labels, year formats) is in `src/i18n/th.ts` and `en.ts`. A key missing from a language fails `tsc`.
 
-`npm run i18n` บอกว่าอะไรยังไม่แปล อะไรแปลไว้แต่ id หายไปแล้ว และอะไรที่ข้อความไทยถูกแก้หลังจากแปล (เทียบกับ `source-hashes.json`) ตรวจคำแปลแล้วรัน `npm run i18n -- --update` เพื่อบันทึกว่าแปลตรงกับข้อความไทยปัจจุบันแล้ว
+`npm run i18n` lists what is untranslated, translations whose id no longer exists, and Thai text edited since it was translated (checked against `source-hashes.json`). After reviewing, `npm run i18n -- --update` records the translations as current.
 
-เพิ่มภาษาใหม่: สร้าง `data/i18n/<ภาษา>/` เพิ่มไฟล์ใน `src/i18n/` และเพิ่มชื่อใน `LOCALES` ที่ `src/i18n/index.ts`
+To add a language, create `data/i18n/<lang>/`, add a file in `src/i18n/` and add it to `LOCALES` in `src/i18n/index.ts`.
 
-## ข้อมูลภูมิศาสตร์
+## Geographic data
 
-`public/geo/` สร้างจาก `npm run fetch-geo` (ดาวน์โหลดใหม่และ simplify เขตแดน)
+`public/geo/` is built by `npm run fetch-geo`, which downloads and simplifies the borders.
 
-- เขตแดน: [historical-basemaps](https://github.com/aourednik/historical-basemaps) สัญญาอนุญาต GPL-3.0 เป็น snapshot ราว 50 ช่วงปี (ล่าสุด ค.ศ. 2010) เขตแดนจึงเปลี่ยนเป็นช่วงๆ ไม่ต่อเนื่องทุกปี มีสองชุด: `borders/` ลดความละเอียดไว้ใช้ตอนดูลูกโลก และ `borders/hi/` ละเอียดเต็มตามต้นฉบับ โหลดเฉพาะปีที่กำลังดูเมื่อซูมเข้า เขตแดนวาดอยู่ใต้ชั้นทะเลของแผนที่ฐาน แนวชายฝั่งจึงตามแผนที่ฐานซึ่งละเอียดทุกระดับซูม ทวีปอเมริกาในชุดปี 1492 ใช้ข้อมูลจากชุดปี 1500 แทน เพราะต้นฉบับปีนั้นแบ่งเป็นดินแดนชนพื้นเมืองละเอียดกว่าชุดก่อนและหลังมาก (สั่ง `npx tsx scripts/fetch-geo.ts --patch-only` เพื่อแก้ไฟล์ที่มีอยู่โดยไม่ดาวน์โหลดใหม่)
-- แผ่นดินสำหรับกันตึกไม่ให้ลงน้ำ: Natural Earth 10m ผ่าน world-atlas (public domain)
-- แผนที่ฐาน: OpenFreeMap / OpenMapTiles / © OpenStreetMap contributors (ODbL)
-- ภูมิประเทศ: Mapzen Terrain Tiles บน AWS Open Data
+- Borders: [historical-basemaps](https://github.com/aourednik/historical-basemaps), GPL-3.0. About 50 snapshots (the latest is 2010), so borders change in steps, not every year. `borders/` is simplified for the globe and `borders/hi/` is full detail, loaded only for the year in view when zoomed in. Borders are drawn under the base map's water layer, so coastlines follow the base map at every zoom. The Americas in the 1492 snapshot are taken from 1500, because the source splits that year into far finer native territories than the snapshots around it (`npx tsx scripts/fetch-geo.ts --patch-only` patches existing files without downloading).
+- Land mask that keeps buildings out of the water: Natural Earth 10m via world-atlas (public domain).
+- Base map: OpenFreeMap / OpenMapTiles / © OpenStreetMap contributors (ODbL).
+- Terrain: Mapzen Terrain Tiles on AWS Open Data.
 
-ตัวเลขประชากรใน `cities.yaml` ตอนนี้เป็นค่าประมาณคร่าวๆ หลัง ค.ศ. 1950 เป็นประชากรเขตมหานคร ควรแทนด้วยข้อมูลจาก Reba et al. (2016), "Spatializing 6,000 years of global urbanization"
+Populations in `cities.yaml` are rough estimates, and metro-area figures after 1950. They should be replaced with data from Reba et al. (2016), "Spatializing 6,000 years of global urbanization".
