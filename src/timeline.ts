@@ -253,6 +253,57 @@ export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void) {
   }, { passive: false })
   track.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null })
 
+  // One finger on touch screens: the slider can't tell a scrub from a pan, so it ignores touch (see CSS)
+  // and this decides. Starting on the thumb scrubs the year, starting elsewhere pans, a tap jumps there.
+  const THUMB_REACH = 24, PAN_SLOP = 6
+  let drag1: { mode: 'scrub' | 'pending' | 'pan'; x: number; a: number; onMark: boolean; vel: number; lx: number; lt: number } | null = null
+  // keep gliding after a flick, slowing down like a normal scroll view
+  const fling = (vel: number) => {
+    let last = performance.now()
+    const step = (now: number) => {
+      const dt = Math.min(now - last, 50); last = now
+      vel *= Math.pow(0.997, dt)
+      const before = v0, a = v0 - (vel * dt / track.offsetWidth) * span()
+      setView(a, a + span())
+      if (Math.abs(vel) > 0.02 && v0 !== before) tween = requestAnimationFrame(step)
+    }
+    tween = requestAnimationFrame(step)
+  }
+  const yearAtX = (clientX: number) => scale.toYear(v0 + frac(clientX, track) * span())
+  track.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) { drag1 = null; return }
+    cancelAnimationFrame(tween)
+    const x = e.touches[0].clientX, r = track.getBoundingClientRect()
+    const nearThumb = Math.abs(x - (r.left + vx(yearPos()) * r.width)) <= THUMB_REACH
+    // marks are dense on a phone, so a drag may well start on one; away from the thumb a plain tap still clicks it
+    const onMark = !nearThumb && !!(e.target as HTMLElement).closest('.ev')
+    if (!onMark) e.preventDefault()
+    drag1 = { mode: nearThumb ? 'scrub' : 'pending', x, a: v0, onMark, vel: 0, lx: x, lt: e.timeStamp }
+    if (drag1.mode === 'scrub') store.setPlaying(false)
+  }, { passive: false })
+  track.addEventListener('touchmove', e => {
+    if (!drag1 || e.touches.length !== 1) return
+    e.preventDefault()
+    const x = e.touches[0].clientX, dx = x - drag1.x
+    if (drag1.mode === 'scrub') return store.setYear(yearAtX(x))
+    if (drag1.mode === 'pending' && Math.abs(dx) < PAN_SLOP) return
+    drag1.mode = 'pan'
+    const dt = e.timeStamp - drag1.lt
+    if (dt > 0) { drag1.vel = 0.7 * ((x - drag1.lx) / dt) + 0.3 * drag1.vel; drag1.lx = x; drag1.lt = e.timeStamp }
+    const a = drag1.a - (dx / track.offsetWidth) * span()
+    setView(a, a + span())
+  }, { passive: false })
+  track.addEventListener('touchend', e => {
+    if (drag1?.mode === 'pending' && !drag1.onMark && e.touches.length === 0) {
+      store.setPlaying(false)
+      store.setYear(yearAtX(drag1.x))
+    }
+    // a finger that stopped before lifting shouldn't fling
+    if (drag1?.mode === 'pan' && e.touches.length === 0 && e.timeStamp - drag1.lt < 80) fling(drag1.vel)
+    if (e.touches.length === 0) drag1 = null
+  })
+  track.addEventListener('touchcancel', () => (drag1 = null))
+
   // Safari's trackpad pinch only comes through as gesture events
   let lastF = 0.5, gesture: { p: number; s: number; f: number } | null = null
   track.addEventListener('pointermove', e => (lastF = frac(e.clientX, track)))

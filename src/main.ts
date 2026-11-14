@@ -147,7 +147,9 @@ async function start() {
   requestAnimationFrame(loop)
 
   if (resume) store.select(findSelection(store, resume.sel))
-  else store.select({ kind: 'city', city: store.cityById.get('athens') ?? store.data.cities[0] })
+  // on a phone the card would cover most of the map before the user has done anything
+  else if (!matchMedia('(max-width: 680px), (max-height: 520px)').matches)
+    store.select({ kind: 'city', city: store.cityById.get('athens') ?? store.data.cities[0] })
 
   // wait for fonts and the first border draw so the page doesn't build itself up on screen
   await within(2500, Promise.all([document.fonts.ready, map.once('idle')]))

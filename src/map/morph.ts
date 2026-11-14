@@ -50,6 +50,8 @@ function shapes(fc: FeatureCollection) {
       let ring = poly[0].slice(0, -1).map(p => [p[0], p[1]] as Pt)
       if (ring.length < 3) continue
       const a = signedArea(ring)
+      // shapes collapsed to a point by an interrupted morph are invisible, drop them
+      if (!a) continue
       if (a < 0) ring = ring.reverse()
       for (const [x, y] of ring) {
         s.box[0] = Math.min(s.box[0], x); s.box[1] = Math.min(s.box[1], y)
@@ -68,10 +70,12 @@ function resample(r: Pt[], n: number): Pt[] {
     const p = r[i - 1], q = r[i % r.length]
     d.push(d[i - 1] + Math.hypot(q[0] - p[0], q[1] - p[1]))
   }
-  const total = d[r.length] || 1, out: Pt[] = []
+  const total = d[r.length], out: Pt[] = []
+  // a ring already shrunk to a point (restarting from a mid-morph frame) has no length to walk
+  if (!(total > 0)) return Array.from({ length: n }, () => [r[0][0], r[0][1]] as Pt)
   for (let k = 0, i = 0; k < n; k++) {
     const t = (k / n) * total
-    while (d[i + 1] < t) i++
+    while (i < r.length - 1 && d[i + 1] < t) i++
     const p = r[i], q = r[(i + 1) % r.length], s = (t - d[i]) / (d[i + 1] - d[i] || 1)
     out.push([p[0] + (q[0] - p[0]) * s, p[1] + (q[1] - p[1]) * s])
   }

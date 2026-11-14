@@ -46,6 +46,9 @@ export function setupUI(store: Store, act: Actions) {
   $<HTMLInputElement>('opt-stop').addEventListener('change', e => (store.stopAtEvents = (e.target as HTMLInputElement).checked))
 
   const timeline = setupTimeline(store, e => act.goToEvent(e))
+  // panels above the timeline sit on its real height, which changes with wrapping and screen size
+  const tlPanel = document.querySelector<HTMLElement>('.timeline')!
+  new ResizeObserver(() => document.documentElement.style.setProperty('--tl-h', `${tlPanel.offsetHeight}px`)).observe(tlPanel)
 
   const eventNow = $<HTMLButtonElement>('event-now')
   let currentEvent: HistEvent | null = null
