@@ -112,9 +112,11 @@ async function start() {
   await map.once('load')
   const isLand = await loadLandMask(`${BASE}geo/land-10m.json`)
   addCityGlow(map, store, id => store.select({ kind: 'city', city: store.cityById.get(id)! }))
-  map.addLayer(new Cities3D(store, isLand))
+  const cities3d = new Cities3D(store, isLand)
+  map.addLayer(cities3d)
+  if (import.meta.env.DEV) Object.assign(window, { __c3d: cities3d })
   await new Borders(map, store, `${BASE}geo/borders`).init('water')
-  labels = addLabels(map, store)
+  labels = addLabels(map, store, l => cities3d.placeOf(l))
 
   let last = 0
   // not rounded: where a frame moves less than half a year (stretched scale, 120 Hz), rounding stalled playback

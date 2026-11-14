@@ -1,4 +1,5 @@
 # Landmarks at their real coordinates. They appear in `built` and disappear in `gone`, if set.
+# shape is the generic model; a landmark with its own model in src/map/models/ (keyed by id) uses that instead.
 # shape: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral
 # Use civ instead of city for a landmark outside any city (e.g. Borobudur).
 # size: rough real width in meters; it is drawn larger so it can be seen.

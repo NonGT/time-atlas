@@ -1,28 +1,37 @@
 import * as THREE from 'three'
 import type { Shape } from '../data/schema'
+import { MODELS } from './models'
 
 /**
  * Low-poly landmark models. Each is built Y-up at unit footprint (about 1 x 1) with its base at y=0,
  * then wrapped so that Y becomes Z (the map's up axis).
  * To add a shape: add a case here and its name to SHAPES in data/schema.ts.
+ * A landmark with a model registered under its id in models/ uses that instead of its generic shape.
  */
-export function buildShape(shape: Shape, color: string): THREE.Object3D {
+export function buildShape(shape: Shape, color: string, id?: string): THREE.Object3D {
   const g = new THREE.Group()
   const base = new THREE.Color(color)
   const mat = new THREE.MeshLambertMaterial({
     color: base.clone().lerp(new THREE.Color('#fff4dc'), 0.55),
     emissive: base.clone().multiplyScalar(0.3),
   })
-  const add = (geo: THREE.BufferGeometry, y: number, x = 0, z = 0) => {
-    const m = new THREE.Mesh(geo, mat)
+  const dark = new THREE.MeshLambertMaterial({
+    color: base.clone().lerp(new THREE.Color('#fff4dc'), 0.2).multiplyScalar(0.6),
+    emissive: base.clone().multiplyScalar(0.18),
+  })
+  const add = (geo: THREE.BufferGeometry, y: number, x = 0, z = 0, material: THREE.Material = mat) => {
+    const m = new THREE.Mesh(geo, material)
     m.position.set(x, y, z)
     g.add(m)
     return m
   }
-  const box = (w: number, h: number, d: number, y: number, x = 0, z = 0) => add(new THREE.BoxGeometry(w, h, d), y + h / 2, x, z)
+  const box = (w: number, h: number, d: number, y: number, x = 0, z = 0, material: THREE.Material = mat) =>
+    add(new THREE.BoxGeometry(w, h, d), y + h / 2, x, z, material)
   const cone4 = (r: number, h: number) => { const c = new THREE.ConeGeometry(r, h, 4); c.rotateY(Math.PI / 4); return c }
 
-  switch (shape) {
+  const model = id ? MODELS[id] : undefined
+  if (model) model({ g, mat, dark, add, box })
+  else switch (shape) {
     case 'pyramid':
       add(cone4(0.72, 0.9), 0.45)
       add(cone4(0.32, 0.4), 0.2, 0.75, 0.5)

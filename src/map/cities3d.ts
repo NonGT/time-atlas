@@ -31,7 +31,8 @@ const smooth = (a: number, b: number, x: number) => { const t = Math.min(1, Math
 
 interface Building { i: number; x: number; y: number; w: number; h: number; yaw: number; s: number; spd: number }
 interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds: Building[]; vis: number }
-interface LandmarkModel { lm: Landmark; obj: THREE.Object3D; size: number; s: number }
+// reach: how far the model extends from its anchor, as a multiple of size
+interface LandmarkModel { lm: Landmark; obj: THREE.Object3D; size: number; reach: number; s: number }
 
 // Mercator y points south. The flip to north lives in the camera (see render) rather than in each object,
 // because three.js reverses face culling for mirrored objects and doesn't know the camera mirrors too.
@@ -59,6 +60,7 @@ export class Cities3D implements CustomLayerInterface {
   private landmarks: LandmarkModel[] = []
   private last = performance.now()
   private wasVisible = false
+  private placed = new Map<string, [number, number]>()
 
   constructor(private store: Store, private isLand: IsLand) {}
 
@@ -72,11 +74,11 @@ export class Cities3D implements CustomLayerInterface {
     sun.position.set(0.35, -0.55, 1)
     this.scene.add(sun)
 
-    const lmByCity = new Map<string, Landmark[]>()
-    for (const l of this.store.data.landmarks) if (l.city) (lmByCity.get(l.city) ?? lmByCity.set(l.city, []).get(l.city)!).push(l)
-
-    for (const c of this.store.data.cities) this.buildCity(c, lmByCity.get(c.id) ?? [])
     for (const l of this.store.data.landmarks) this.buildLandmark(l)
+    this.fitLandmarks()
+    const lmByCity = new Map<string, LandmarkModel[]>()
+    for (const m of this.landmarks) if (m.lm.city) (lmByCity.get(m.lm.city) ?? lmByCity.set(m.lm.city, []).get(m.lm.city)!).push(m)
+    for (const c of this.store.data.cities) this.buildCity(c, lmByCity.get(c.id) ?? [])
     this.store.on('year', () => this.onYear())
     this.store.on('mode', () => map.triggerRepaint())
     this.store.on('uncertain', () => map.triggerRepaint())
@@ -85,13 +87,16 @@ export class Cities3D implements CustomLayerInterface {
     for (const l of this.landmarks) l.s = this.store.landmarkShown(l.lm) ? 1 : 0
   }
 
-  private buildCity(c: City, lms: Landmark[]) {
+  private buildCity(c: City, lms: LandmarkModel[]) {
     const pmax = this.store.pmax.get(c.id)!
     const N = Math.round(3.2 * Math.sqrt(pmax)) + 2
     const Rc = cityRadius(pmax)
     const sp = Rc * Math.sqrt(Math.PI / N)
     const kx = M_PER_DEG_LON * Math.cos((c.lat * Math.PI) / 180)
-    const avoid = lms.map(l => ({ x: (l.lon - c.lon) * kx, y: (l.lat - c.lat) * M_PER_DEG_LAT, r: landmarkSize(l) * 0.75 }))
+    const avoid = lms.map(({ lm, size, reach }) => {
+      const [lon, lat] = this.placeOf(lm)
+      return { x: (lon - c.lon) * kx, y: (lat - c.lat) * M_PER_DEG_LAT, r: size * reach }
+    })
     const rnd = mulberry(hash(c.id))
     const yaw0 = rnd() * Math.PI
     const blds: Building[] = []
@@ -120,7 +125,7 @@ export class Cities3D implements CustomLayerInterface {
   }
 
   private buildLandmark(l: Landmark) {
-    const obj = buildShape(l.shape, this.store.colorOfLandmark(l))
+    const obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id)
     if (l.uncertain) obj.traverse(o => {
       const m = (o as THREE.Mesh).material as THREE.Material | undefined
       if (m) { m.transparent = true; m.opacity = 0.45; m.depthWrite = false }
@@ -129,7 +134,67 @@ export class Cities3D implements CustomLayerInterface {
     g.add(obj)
     obj.visible = false
     this.scene.add(g)
-    this.landmarks.push({ lm: l, obj, size: landmarkSize(l), s: 0 })
+    obj.updateMatrixWorld(true)
+    const b = new THREE.Box3().setFromObject(obj)
+    const reach = Math.hypot(Math.max(-b.min.x, b.max.x), Math.max(-b.min.y, b.max.y))
+    this.landmarks.push({ lm: l, obj, size: landmarkSize(l), reach, s: 0 })
+  }
+
+  /**
+   * Landmarks are drawn far larger than life, so neighbours standing at the same time would overlap.
+   * Shrink them first, but not below half size so they don't vanish next to the city's blocks,
+   * then push whatever still overlaps apart along the line between them.
+   */
+  private fitLandmarks() {
+    const GAP = 0.9, MIN_SCALE = 0.5
+    const L = this.landmarks, base = L.map(m => m.size)
+    // offsets in meters from each landmark's real spot
+    const off = L.map(() => ({ x: 0, y: 0 }))
+    const apart = (i: number, j: number) => {
+      const a = L[i].lm, b = L[j].lm, kx = M_PER_DEG_LON * Math.cos((((a.lat + b.lat) / 2) * Math.PI) / 180)
+      return { x: (b.lon - a.lon) * kx + off[j].x - off[i].x, y: (b.lat - a.lat) * M_PER_DEG_LAT + off[j].y - off[i].y }
+    }
+    const pairs: [number, number][] = []
+    for (let i = 0; i < L.length; i++) for (let j = i + 1; j < L.length; j++) {
+      const a = L[i].lm, b = L[j].lm
+      if (a.built >= (b.gone ?? Infinity) || b.built >= (a.gone ?? Infinity)) continue
+      if (Math.abs(a.lat - b.lat) > 0.5 || Math.abs(a.lon - b.lon) > 0.5) continue
+      pairs.push([i, j])
+    }
+    const need = (i: number, j: number) => L[i].size * L[i].reach + L[j].size * L[j].reach
+    for (const [i, j] of pairs) {
+      const v = apart(i, j), d = Math.hypot(v.x, v.y)
+      const f = Math.max(MIN_SCALE, (d * GAP) / (base[i] * L[i].reach + base[j] * L[j].reach))
+      if (f >= 1) continue
+      L[i].size = Math.min(L[i].size, base[i] * f)
+      L[j].size = Math.min(L[j].size, base[j] * f)
+    }
+    for (let it = 0; it < 30; it++) {
+      let moved = false
+      for (const [i, j] of pairs) {
+        const { x: dx, y: dy } = apart(i, j), d = Math.hypot(dx, dy) || 1
+        const short = need(i, j) / GAP - d
+        if (short <= 1) continue
+        moved = true
+        // the bigger one moves less
+        const wi = L[j].size / (L[i].size + L[j].size), wj = 1 - wi
+        off[i].x -= (dx / d) * short * wi; off[i].y -= (dy / d) * short * wi
+        off[j].x += (dx / d) * short * wj; off[j].y += (dy / d) * short * wj
+      }
+      if (!moved) break
+    }
+    L.forEach((m, i) => {
+      if (!off[i].x && !off[i].y) return
+      const lat = m.lm.lat + off[i].y / M_PER_DEG_LAT, lon = m.lm.lon + off[i].x / (M_PER_DEG_LON * Math.cos((m.lm.lat * Math.PI) / 180))
+      this.placed.set(m.lm.id, [lon, lat])
+      const g = anchor(lon, lat)
+      m.obj.parent!.matrix.copy(g.matrix)
+    })
+  }
+
+  /** Where a landmark is actually drawn, which differs from its real spot when it had to make room for a neighbour. */
+  placeOf(l: Landmark): [number, number] {
+    return this.placed.get(l.id) ?? [l.lon, l.lat]
   }
 
   private onYear() {

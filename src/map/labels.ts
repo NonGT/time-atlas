@@ -1,10 +1,11 @@
 import { onFarSide } from './farSide'
 import { Marker, type Map as MLMap } from 'maplibre-gl'
+import type { Landmark } from '../data/schema'
 import type { Store } from '../store'
 import { fmtPopShort } from '../time'
 
 /** HTML labels (Thai text renders properly here, unlike in WebGL symbol layers). */
-export function addLabels(map: MLMap, store: Store) {
+export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [number, number] = l => [l.lon, l.lat]) {
   const cities = store.data.cities.map(c => {
     const el = document.createElement('button')
     el.type = 'button'
@@ -24,7 +25,7 @@ export function addLabels(map: MLMap, store: Store) {
     el.textContent = l.name
     el.addEventListener('click', e => { e.stopPropagation(); store.select({ kind: 'landmark', landmark: l }) })
     const marker = new Marker({ element: el, anchor: 'top', offset: [0, 8], opacityWhenCovered: '0' })
-      .setLngLat([l.lon, l.lat]).addTo(map)
+      .setLngLat(placeOf(l)).addTo(map)
     return { l, el, marker }
   })
 
