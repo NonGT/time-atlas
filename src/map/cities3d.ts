@@ -14,6 +14,7 @@ const LM_MIN = 1400
 const LM_MAX = 5000
 // heights follow the real height/footprint ratio, a little taller so they still read from the tilted camera
 const HEIGHT_EXAG = 1.3
+const WARM_PER_FRAME = 2
 // drawn taller on purpose (long, low structures that are a sliver at true proportions), or whose `size`
 // covers more ground than the model shows, so the ratio would squash them
 const DRAWN_TALL: ReadonlySet<string> = new Set(['forth-bridge', 'aqueduct-of-segovia', 'great-wall', 'aksum-obelisk'])
@@ -332,6 +333,7 @@ export class Cities3D implements CustomLayerInterface {
     }
     // with a thousand-odd landmarks, skip the ones far outside the view (city zoom shows a few tens of km)
     const c = this.map.getCenter(), far = 4 / Math.cos((c.lat * Math.PI) / 180)
+    const warm: THREE.Object3D[] = []
     for (const l of this.landmarks) {
       const near = Math.abs(l.lm.lat - c.lat) < 4 && Math.abs(((l.lm.lon - c.lng + 540) % 360) - 180) < far
       const t = this.store.landmarkShown(l.lm) ? 1 : 0
@@ -341,13 +343,24 @@ export class Cities3D implements CustomLayerInterface {
       l.s = step(l.s, t, 2.5)
       if (Math.abs(t - l.s) > 0.003) animating = true
       const s = l.s * zf
-      const o = l.objs[l.phase] ?? (s > 0.003 ? this.phaseObj(l, l.phase) : undefined)
+      const o = l.objs[l.phase] ?? (s > 0.003 || (t && warm.length < WARM_PER_FRAME) ? this.phaseObj(l, l.phase) : undefined)
       if (!o) continue
       o.visible = s > 0.003
       o.scale.set(l.size * Math.min(1, s * 2), l.size * Math.min(1, s * 2), l.size * s * (l.zf ?? 1))
+      if (o.visible) o.userData.warm = true
+      else if (t && !o.userData.warm && warm.length < WARM_PER_FRAME) warm.push(o)
     }
     this.wasVisible = visible
-    if (!visible) return
+    if (!visible && !warm.length) return
+    // Models about to come into view are drawn once at a speck's size first, so their buffers reach the GPU
+    // a couple at a time while the camera is still on its way, not all in the frame they appear.
+    const culled: THREE.Object3D[] = []
+    for (const o of warm) {
+      o.visible = true
+      o.scale.setScalar(1e-3)
+      o.userData.warm = true
+      o.traverse(x => { if (x.frustumCulled) { x.frustumCulled = false; culled.push(x) } })
+    }
 
     const o = MercatorCoordinate.fromLngLat(c, 0)
     this.origin.makeTranslation(o.x, -o.y, 0)
@@ -357,6 +370,8 @@ export class Cities3D implements CustomLayerInterface {
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert()
     this.renderer.resetState()
     this.renderer.render(this.scene, this.camera)
-    if (animating) this.map.triggerRepaint()
+    for (const o of warm) o.visible = false
+    for (const x of culled) x.frustumCulled = true
+    if (animating || warm.length) this.map.triggerRepaint()
   }
 }
