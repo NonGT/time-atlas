@@ -17,7 +17,7 @@ npm run i18n       # report missing translations and Thai text changed since tra
 All data lives in `data/` as YAML. Save a file and a page opened with `npm run dev` reloads. If something is malformed, the page lists the file, item and field at fault.
 
 - `cities.yaml`: cities, their position and population by year (in thousands). The number of buildings drawn comes from the population.
-- `landmarks.yaml`: major buildings at their real position, with the year built (`built`) and gone (`gone`).
+- `landmarks.yaml`: major buildings at their real position, with the year built (`built`) and gone (`gone`). The cultural UNESCO World Heritage sites are in `landmarks/`, one file per region, with their site number (`whs`) and year inscribed (`inscribed`). Landmarks also show as small dots on the timeline once it is zoomed in, below events in priority; a dot at a round year may slide a little to find room.
 - `events/`: timeline events. Every file in the folder is read, so new sets can go in their own file (`wars.yaml`, `pandemics.yaml`). Each event needs a unique `id`. `importance: 3` stops playback. Events that lasted several years can have an `end` and are drawn as a bar. Where marks overlap, the less important ones step aside and show up as you zoom in.
 - `civilizations.yaml`: civilizations and their colors.
 - `polities.yaml`: Thai names and colors for border polities, matched by their English name in the border data. The source data sometimes labels land with a name from a later era (Bantu in 8000 BCE, for example); `from` hides such a name before the given year.
@@ -40,7 +40,7 @@ Negative years are BCE. Adding a city:
   population: [[-350, 0], [-340, 20], [-221, 100], [-206, 0]]
 ```
 
-Landmark shapes: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral. A new shape goes in `src/map/shapes.ts` and its name in `SHAPES` in `src/data/schema.ts`.
+Landmark shapes: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral, town, cave, terrace, bridge, castle, wall, factory, monolith, mosque, church, garden. A new shape goes in `src/map/shapes.ts` and its name in `SHAPES` in `src/data/schema.ts`. A landmark can have its own model in `src/map/models/`, keyed by id; a model wrapped in `staged([years], ...)` is rebuilt for each of those years, so it can show a building growing, being altered or falling into ruin.
 
 ## Languages
 

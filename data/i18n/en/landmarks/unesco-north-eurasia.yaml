@@ -1,0 +1,208 @@
+# English for data/landmarks/unesco-north-eurasia.yaml.
+
+roros-mining-town:
+  desc: "A highland copper-mining town worked for 333 years (1644–1977), its 17th–18th century wooden houses still intact."
+urnes-stave-church:
+  desc: "Norway's oldest stave church, its Viking-style animal carvings linking Viking art with Christianity."
+bryggen:
+  desc: "The row of wooden wharf buildings of the Hanseatic League's trading post in Bergen, rebuilt in the old style after the fire of 1702."
+alta-rock-carvings:
+  desc: "Thousands of Stone Age hunters' carvings near the Arctic Circle showing reindeer, boats and hunting."
+  uncertain: "The age of the oldest carvings is estimated from ancient shorelines, so it can be off by several centuries."
+saint-sophia-kyiv:
+  desc: "The cathedral of Kyivan Rus from the reign of Yaroslav the Wise, still with its 11th century mosaics; listed together with the Pechersk Lavra cave monastery."
+vilnius-old-town:
+  desc: "Capital of the Grand Duchy of Lithuania, with Gothic, Renaissance and Baroque churches on a medieval street plan."
+itchan-kala:
+  desc: "The mud-walled inner town of Khiva, capital of the Khanate of Khiva, its mosques, madrasas and minarets mostly from the 18th–19th centuries."
+kizhi-pogost:
+  desc: "A 22-domed wooden church on an island in Lake Onega, paired with a second wooden church and a bell tower; a masterpiece of Russian carpentry."
+moscow-kremlin:
+  desc: "The fortress at the centre of Russian power; its brick walls were built by Italian masters in the late 15th century, beside Red Square and St Basil's Cathedral."
+birka:
+  desc: "A Viking Age trading town on an island in Lake Mälaren, about 750–975, paired with the royal estate on Hovgården."
+engelsberg-ironworks:
+  desc: "An ironworks founded in 1681, when Sweden was a leading iron producer in Europe; its furnace and buildings are still complete."
+tanum-rock-carvings:
+  desc: "Thousands of Bronze Age rock carvings of boats, people, animals and carts, showing life in ancient Scandinavia."
+skogskyrkogarden:
+  desc: "A cemetery in a pine forest in Stockholm designed by Gunnar Asplund and Sigurd Lewerentz, a model for modern cemeteries worldwide."
+drottningholm-palace:
+  desc: "Residence of the Swedish royal family in the manner of Versailles, with a court theatre of 1766 still using its original scenery and machinery."
+sammallahdenmaki:
+  desc: "More than 30 Bronze Age burial cairns on a granite ridge, showing the burial rites of Scandinavia over 3,000 years ago."
+old-rauma:
+  desc: "The largest wooden town in the Nordic countries, about 600 wooden houses on a medieval street plan."
+suomenlinna:
+  desc: "A sea fortress on islands off Helsinki that Sweden began in 1748 as a defence against Russia."
+petajavesi-old-church:
+  desc: "A wooden Lutheran church built by a village builder in 1763–1765, mixing Renaissance and Gothic forms with Finnish log building."
+historic-bukhara:
+  desc: "A Silk Road city with monuments spanning a thousand years, from the Samanid Mausoleum to the Kalyan Minaret and Shaybanid madrasas."
+registan-samarkand:
+  desc: "The central square of Samarkand framed by three madrasas from the Timurid era and after, the emblem of a city at the crossroads of cultures."
+novgorod-kremlin:
+  desc: "The heart of the medieval Novgorod Republic, with St Sophia Cathedral (1050), one of the oldest stone churches in Russia."
+mir-castle:
+  desc: "A Gothic brick castle with Renaissance additions built by the Ilinich and Radziwiłł families in the former Grand Duchy of Lithuania."
+solovetsky-monastery:
+  desc: "A monastery on islands in the White Sea founded in 1436, its walls of huge boulders built in the late 16th century; later one of the first Gulag camps."
+vladimir-dormition-cathedral:
+  desc: "One of the 12th–13th century white limestone churches of Vladimir-Suzdal, the model for later Russian church architecture."
+kolomenskoye-ascension-church:
+  desc: "Built to celebrate the birth of Ivan IV, the first stone church in Russia with a tall tent roof."
+trinity-lavra-sergiev-posad:
+  desc: "The most important monastery in Russia, founded by St Sergius in 1337; the blue-and-gold-starred Dormition Cathedral was finished in 1585."
+roskilde-cathedral:
+  desc: "An early Gothic brick cathedral of Scandinavia, burial place of Danish kings and queens since the 15th century."
+kronborg:
+  desc: "A Renaissance castle commanding the Øresund strait to collect ship tolls, and the setting of Hamlet."
+jelling-stones:
+  desc: "Burial mounds and runestones of kings Gorm and Harald Bluetooth, recording the conversion of Denmark to Christianity."
+svetitskhoveli-cathedral:
+  desc: "The cathedral of Mtskheta, the old capital where Georgia adopted Christianity in the 4th century; the present building dates from 1029."
+upper-svaneti:
+  desc: "Caucasus mountain villages where each house has a medieval stone defence tower; Ushguli is one of the highest villages in Europe."
+  uncertain: "The towers were built over several centuries and have no exact dates."
+gelati-monastery:
+  desc: "A monastery founded by King David the Builder in 1106 and a medieval centre of learning; Bagrati Cathedral was removed from the listing in 2017."
+visby:
+  desc: "A Hanseatic port town on Gotland whose 3.4 km town wall and medieval churches still stand."
+verla-mill:
+  desc: "A groundwood and board mill in rural Finland, closed in 1964 with its machinery and brick buildings left intact."
+gammelstad-church-town:
+  desc: "Over 400 wooden cottages around a 15th century stone church, where distant villagers stayed overnight when they came for Sunday services."
+laponia:
+  desc: "Mountains and valleys in northern Sweden where the Sámi still move their reindeer with the seasons."
+  uncertain: "The Sámi and their ancestors have lived here for thousands of years; there is no clear starting date."
+haghpat-monastery:
+  desc: "Twin Armenian monasteries of the 10th–13th centuries, centres of learning under the Kiurikian dynasty."
+old-town-tallinn:
+  desc: "A Hanseatic port whose medieval street plan, walls and merchant houses survive almost intact."
+old-riga:
+  desc: "A Hanseatic port on the Daugava with a medieval core and the largest collection of Art Nouveau buildings in Europe."
+old-town-lviv:
+  desc: "A trading city shared by Ukrainians, Poles, Armenians and Jews; the market square was rebuilt in Renaissance style after the fire of 1527."
+karlskrona:
+  desc: "A naval base town founded by Sweden in 1680, a model of the planned European naval base of the 17th–18th centuries."
+shahrisabz-ak-saray:
+  desc: "Ruins of Timur's summer palace in his home town; only part of its blue-tiled gateway, about 40 m high, survives."
+merv:
+  desc: "A Silk Road oasis city lived in for over 2,000 years, at its height as a Seljuk capital before the Mongols destroyed it in 1221."
+old-city-baku:
+  desc: "The walled old town on the Caspian, with the 15th century Palace of the Shirvanshahs and the Maiden Tower."
+geghard-monastery:
+  desc: "An Armenian monastery with several chapels carved into the cliff; the main church was built in 1215."
+southern-oland:
+  desc: "Farmland on a limestone island used continuously since the Iron Age, its stone walls and villages keeping their old layout."
+kazan-kremlin:
+  desc: "The Kazan fortress rebuilt by Russia after it took the Khanate of Kazan in 1552, holding both an Orthodox cathedral and a Tatar mosque."
+bolgar:
+  desc: "The town of the Volga Bulgars, who adopted Islam in 922, later a major Golden Horde city; ruins of its mosque and mausoleums remain."
+ferapontov-monastery:
+  desc: "A monastery in northern Russia with Dionisius' frescoes of 1502, among the most complete of their kind."
+curonian-spit:
+  desc: "A 98 km sand spit in the Baltic where people have held back shifting dunes by planting forest since the 19th century."
+etchmiadzin-cathedral:
+  desc: "Mother church of the Armenian Church, first built around 301 after Armenia made Christianity its state religion; listed with the ruins of Zvartnots."
+falun-mine:
+  desc: "A copper mine that produced two-thirds of Europe's copper in the 17th century; its Great Pit formed when the mine collapsed in 1687."
+derbent-citadel:
+  desc: "A citadel and double wall built by Sasanian Persia in the 6th century to close the pass between the Caucasus and the Caspian."
+gobustan-rock-art:
+  desc: "Over 6,000 rock carvings on rocky hills by the Caspian showing hunters, boats and dancing, from the late Paleolithic on."
+  uncertain: "The oldest carvings may go back to the late Paleolithic, before the start of the map; exact ages are hard to fix."
+orkhon-valley:
+  desc: "Grasslands that were the centre of nomadic empires, with 8th century Turkic inscriptions and the ruins of Karakorum, the Mongol capital."
+novodevichy-convent:
+  desc: "A convent built to mark the capture of Smolensk in 1524, mostly in Moscow Baroque style, home to women of the royal family."
+khoja-ahmed-yasawi-mausoleum:
+  desc: "A mausoleum Timur ordered over the grave of a 12th century Sufi saint, left unfinished when Timur died in 1405."
+grimeton-radio-station:
+  desc: "A 1924 very-low-frequency station for transatlantic telegraphy, with the only working machine transmitter of its kind in the world."
+kernave:
+  desc: "Five hill forts on the Neris river, site of Lithuania's first capital in the 13th century, inhabited for thousands of years."
+sarazm:
+  desc: "A Copper Age farming and metal-working settlement of the 4th millennium BC, trading with the steppe, Iran and the Indus."
+vega-archipelago:
+  desc: "Small islands near the Arctic Circle where fishermen have kept eider ducks for their down for over a thousand years."
+tamgaly-petroglyphs:
+  desc: "About 5,000 rock carvings in a gorge from the Bronze Age on, including sun-headed deities, a ritual place of herding peoples."
+thingvellir:
+  desc: "Meeting place of Iceland's Althing from 930, one of the oldest parliaments in the world, set in a rift valley."
+yaroslavl-historic-centre:
+  desc: "A Volga town with 17th century churches and a neoclassical plan from the town-planning reform of Catherine the Great in 1763."
+struve-geodetic-arc:
+  desc: "A chain of survey points from Norway to the Black Sea used in 1816–1855 to measure the size and shape of the Earth, starting at the Tartu Observatory."
+nesvizh-castle:
+  desc: "Residence of the Radziwiłł family, great magnates of the Polish-Lithuanian Commonwealth, begun in 1583."
+konye-urgench:
+  desc: "Capital of the Khwarazmian Empire destroyed by the Mongols in 1221; the Kutlug Timur minaret, about 60 m tall, still stands."
+sulaiman-too:
+  desc: "A mountain in the city of Osh worshipped for thousands of years, with rock carvings, caves and both pre-Islamic and Islamic shrines."
+nisa-parthian:
+  desc: "Fortresses of the Parthian Empire from the 3rd century BC, mixing Greek and Central Asian art; many carved ivory rhyta were found here."
+halsingland-farmhouses:
+  desc: "Wooden houses of wealthy farmers whose rooms were painted with folk art in the 19th century, as fine as manor houses."
+chernivtsi-residence:
+  desc: "The red-brick residence of the Orthodox metropolitans under Austria-Hungary, designed by Josef Hlávka; now Chernivtsi University."
+mongolian-altai-petroglyphs:
+  desc: "Rock carvings in the high valleys of the Altai recording the life of hunters and herders over about 12,000 years."
+  uncertain: "The earliest images are estimated at about 11,000–6,000 BC."
+chersonesus:
+  desc: "A Greek city-state on the Black Sea in Crimea founded about 422 BC, with farmland divided into Greek plots."
+burkhan-khaldun:
+  desc: "The mountain Genghis Khan worshipped and believed to be his burial place, still honoured at its ovoo cairns today."
+christiansfeld:
+  desc: "A town laid out by the Moravian Church in 1773, its plain yellow-brick buildings reflecting ideals of equality."
+par-force-hunting-landscape:
+  desc: "Hunting forests of the Danish kings cut with star-shaped Baroque rides for hunting deer with hounds on horseback."
+rjukan-notodden:
+  desc: "Norsk Hydro's early 20th century hydropower plants, fertiliser factories and company towns, making nitrogen fertiliser from air."
+mirozhsky-cathedral-pskov:
+  desc: "One of the churches of the Pskov school; a 12th century cathedral with its Byzantine-style frescoes almost complete."
+sviyazhsk-monastery:
+  desc: "An island monastery founded by Ivan IV during the conquest of Kazan, with rare 16th century frescoes."
+kujataa:
+  desc: "A subarctic farming landscape begun by the Norse in 985, where Inuit farmers took up sheep farming again in the 18th century."
+sheki-historic-centre:
+  desc: "A town at the foot of the Caucasus on caravan routes, rebuilt after an 18th century mudflow, with the Khan's Palace and its stained glass."
+aasivissuit-nipisat:
+  desc: "Caribou hunting grounds and settlements of the Inuit and their predecessors in west Greenland over more than 4,200 years."
+deer-stones-mongolia:
+  desc: "Bronze Age standing stones carved with stylised flying deer, the heart of a steppe nomad culture."
+  uncertain: "The stones were raised over roughly 1200–600 BC."
+ancient-khuttal:
+  desc: "Sites of the Khuttal kingdom in the Vakhsh valley, including the Hulbuk palace and the Buddhist monastery of Ajina Tepa, 5th–12th centuries."
+onega-white-sea-petroglyphs:
+  desc: "About 4,500 Neolithic rock carvings by northern hunters, showing swans, boats and whale hunts."
+old-town-kuldiga:
+  desc: "A town of the Duchy of Courland with 17th–19th century wooden and brick houses beside the widest waterfall in Europe."
+trelleborg-ring-fortress:
+  desc: "A perfectly circular fortress built by Harald Bluetooth around 980, one of Denmark's five Viking ring fortresses."
+modernist-kaunas:
+  desc: "Lithuania's temporary capital between the world wars, where thousands of modernist buildings went up in just 20 years."
+ancient-panjakent:
+  desc: "A Sogdian city of the 5th–8th centuries on the Zarafshan stretch of the Silk Road, famous for its wall paintings."
+kazan-university-observatories:
+  desc: "Kazan University's observatory opened in 1837 and the Engelhardt Observatory outside town, a leading centre of 19th century Russian astronomy."
+kenozero-lake:
+  desc: "Northern Russian farming villages with 17th–19th century wooden churches and chapels among sacred groves."
+khinalig:
+  desc: "A Caucasus village over 2,000 m up whose people still move their flocks along the Köç Yolu route each season."
+  uncertain: "The village is many centuries old; when it was settled is not known."
+historic-centre-odesa:
+  desc: "A Black Sea port founded in 1794, with a grid plan, 19th century neoclassical buildings and the Potemkin Stairs."
+kapova-cave:
+  desc: "A cave in the Urals with Paleolithic red paintings of mammoths, horses and woolly rhinos."
+  uncertain: "The paintings are roughly 36,000–14,000 years old, older than the map's time span."
+aalto-works:
+  desc: "Buildings by the architect Alvar Aalto, such as the Paimio Sanatorium (1933), who gave modern architecture a warm, human touch."
+xiongnu-noble-cemeteries:
+  desc: "Ramped earthen tombs of the Xiongnu elite, the first nomad empire of the Mongolian steppe, such as those at Noyon Uul."
+  uncertain: "The tombs were built over a span of roughly the 1st–2nd centuries BC and AD."
+mangystau-rock-mosques:
+  desc: "Mosques cut into the rock with surrounding necropolises in the Mangystau desert, such as Shopan-Ata, pilgrimage places of nomadic Sufis."
+  uncertain: "The earliest rock mosques are dated from legend and the nearby graves, roughly the 10th–12th centuries."
+tashkent-modernism:
+  desc: "Modernist buildings put up after the 1966 earthquake, mixing Soviet concrete with Central Asian ornament."

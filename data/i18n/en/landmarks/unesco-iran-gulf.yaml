@@ -1,0 +1,114 @@
+# English for data/landmarks/unesco-iran-gulf.yaml.
+
+chogha-zanbil:
+  desc: An Elamite ziggurat built by King Untash-Napirisha, the best preserved ziggurat outside Mesopotamia.
+naqsh-e-jahan-square:
+  desc: The great square at the heart of Isfahan built by Shah Abbas I, lined by the Shah Mosque, the Sheikh Lotfollah Mosque and the Ali Qapu palace.
+shibam:
+  desc: A walled town in the Hadramawt valley packed with tall mud-brick tower houses, nicknamed the Manhattan of the desert.
+samarra:
+  desc: The 9th-century Abbasid capital, with its Great Mosque and the famous spiral Malwiya minaret.
+old-city-of-sanaa:
+  desc: A highland city in Yemen lived in for over 2,500 years, with more than 6,000 mud tower houses decorated in white plaster.
+bahla-fort:
+  desc: A huge mud-brick fort of the Banu Nebhan tribe, in the Bahla oasis enclosed by a wall about 12 km long.
+bat-al-khutm-al-ayn:
+  desc: Stone beehive tombs and towers of the Bronze Age, one of the most complete groups of settlements and cemeteries from the 3rd millennium BCE.
+zabid:
+  desc: Yemen's capital from the 13th to 15th centuries and a centre of Islamic learning with an old university.
+land-of-frankincense:
+  desc: The port of Sumhuram and frankincense trees, the harbours and oases on the incense route from Oman to the ancient world.
+  uncertain: The founding date of Sumhuram is not certain, somewhere in the 3rd to 1st century BCE.
+takht-e-soleyman:
+  desc: The Sasanian fire temple of Adur Gushnasp, inside an oval wall around a hot-spring lake, a centre of Zoroastrianism.
+pasargadae:
+  desc: The first capital of the Achaemenid Empire, built by Cyrus the Great, where his tomb stands.
+ashur:
+  desc: The first capital of Assyria on the Tigris and the centre of the cult of the god Ashur.
+soltaniyeh:
+  desc: The mausoleum of the Ilkhan Öljaitü, one of the largest double-shell brick domes in the world.
+qalat-al-bahrain:
+  desc: A layered mound of the Dilmun capital, topped by a 16th-century Portuguese fort.
+aflaj-of-oman:
+  desc: Channels and tunnels that bring groundwater to Oman's date gardens and villages, still in use today.
+  uncertain: It is not known when the first aflaj were dug. Some evidence points to the Bronze Age, others say around 500 CE.
+arg-e-bam:
+  desc: The largest mud-brick fortified town in the world, on the Silk Road. Badly damaged by the 2003 earthquake and being restored.
+  uncertain: The fort goes back to around the Achaemenid period, but most of what stands was built and repaired up to Safavid times.
+behistun:
+  desc: Darius I's relief and trilingual inscription on a cliff face, the key to deciphering cuneiform.
+saint-thaddeus-monastery:
+  desc: One of the oldest Armenian monasteries, the main site of the Armenian monastic ensembles in northwest Iran.
+hegra:
+  desc: The southernmost city of the Nabataeans, with over 100 tombs cut into sandstone, Saudi Arabia's first World Heritage Site.
+shushtar-hydraulic-system:
+  desc: Sasanian dams, canals and water mills, said to have been built by Roman prisoners after the battle of 260 CE.
+at-turaif:
+  desc: The mud-brick palace district of Diriyah, first capital of the Saudi dynasty, destroyed in 1818.
+al-ain-cultural-sites:
+  desc: The Hafit tombs, the Bronze Age settlement of Hili and oases still watered by aflaj, evidence of desert settlement since the Neolithic.
+sheikh-safi-shrine:
+  desc: The tomb and retreat of the Sufi master in Ardabil, ancestor of the Safavid dynasty.
+tabriz-bazaar:
+  desc: One of the largest covered brick bazaars in the world, a Silk Road trading centre for centuries.
+historic-jeddah:
+  desc: The port where pilgrims arriving by sea set off for Mecca, with tall coral-stone houses and carved wooden balconies.
+persian-garden:
+  desc: Gardens divided in four by water channels, like the Safavid Fin Garden at Kashan, the model for gardens across the Islamic world.
+jameh-mosque-isfahan:
+  desc: Isfahan's congregational mosque. Its Seljuk domes and four-iwan plan became a model for mosques across Central Asia.
+gonbad-e-qabus:
+  desc: The 53 m brick tomb tower of the ruler Qabus, the tallest tower built of brick alone in the world.
+al-zubarah:
+  desc: The ruins of an 18th-century pearl-trading port on the Persian Gulf, abandoned in the early 20th century.
+golestan-palace:
+  desc: The Qajar royal palace in central Tehran, blending Persian and European art.
+erbil-citadel:
+  desc: A town on an oval mound lived in for thousands of years, known in Assyrian times as Arbela.
+susa:
+  desc: One of the oldest cities in the world, capital of Elam and royal city of Darius I.
+shahr-e-sukhteh:
+  desc: The Bronze Age "Burnt City" in Sistan, a trading centre between Mesopotamia and the Indus Valley.
+hail-rock-art:
+  desc: Thousands of carvings of people and animals on cliffs at Jubbah and Shuwaymis, a record of life in Arabia over ten thousand years.
+  uncertain: The age of the earliest carvings is estimated from their style, around 10,000 to 8,000 years ago.
+persian-qanat:
+  desc: Underground channels that carry water from the foothills to dry plains. The Qasabeh qanat at Gonabad is over 300 m deep.
+  uncertain: The Qasabeh qanat is thought to date from around the Achaemenid period; there is no firm date.
+qalhat:
+  desc: A major port of the Kingdom of Hormuz visited by Marco Polo and Ibn Battuta, burned by the Portuguese in 1508.
+dilmun-burial-mounds:
+  desc: Tens of thousands of Bronze Age burial mounds of the Dilmun civilization, including the large royal tombs at A'ali.
+historic-city-of-yazd:
+  desc: A mud-brick desert city of windcatchers, qanats and a Zoroastrian community that has kept much of its traditional form.
+al-ahsa-oasis:
+  desc: The largest date-palm oasis in the world, with springs, canals and the Jawatha Mosque, lived in since the Neolithic.
+  uncertain: It is not known when farming in the oasis began; the year given is an estimate.
+bishapur:
+  desc: The city Shapur I built after defeating the emperor Valerian, part of the Sasanian landscape of Fars together with Firuzabad.
+trans-iranian-railway:
+  desc: A 1,394 km railway from the Caspian Sea to the Persian Gulf, crossing the mountains on bridges like the Veresk Bridge.
+bir-hima:
+  desc: Hunting scenes and inscriptions in several scripts on an ancient caravan route near Najran, made over more than 7,000 years.
+  uncertain: The earliest carvings are estimated at about 7,000 years old.
+hawraman:
+  desc: Stepped Kurdish villages in the Zagros, where the roof of one house is the yard of the one above.
+  uncertain: The villages grew over many centuries and have no clear founding date.
+persian-caravanserai:
+  desc: 54 roadside inns for caravans on trade routes across Iran, such as Deyr-e Gachin here, one of the largest.
+kingdom-of-saba-marib:
+  desc: Temples and the Marib Dam of the Kingdom of Saba (Sheba), which grew rich on the incense trade of southern Arabia.
+  uncertain: The temples and dam are dated from inscriptions to roughly the early 1st millennium BCE.
+qaryat-al-faw:
+  desc: The capital of the Kingdom of Kinda on the edge of the Empty Quarter, a stop on the incense caravan route.
+ecbatana:
+  desc: Capital of the Median Empire and later the summer capital of the Achaemenid kings, beneath modern Hamadan.
+  uncertain: The founding date comes from Herodotus; most excavated remains are later.
+jebel-faya:
+  desc: A rock shelter with stone tools about 125,000 years old, evidence that people left Africa through Arabia.
+  uncertain: The oldest layers are about 125,000 years old, older than the map can show.
+khorramabad-valley:
+  desc: Caves and rock shelters in the Zagros lived in by Neanderthals and modern humans for tens of thousands of years.
+  uncertain: The caves hold traces of people from about 60,000 years ago, older than the map can show.
+alamut-castle:
+  desc: A clifftop fortress taken by Hassan-i Sabbah in 1090, the base of the Nizari Ismailis until the Mongols destroyed it in 1256.

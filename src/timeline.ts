@@ -1,4 +1,4 @@
-import type { HistEvent } from './data/schema'
+import type { HistEvent, Landmark } from './data/schema'
 import type { Store } from './store'
 import { fmtYear, fmtYearShort, valueAt } from './time'
 import { TAG_INFO, eventWhen } from './ui'
@@ -20,7 +20,7 @@ function niceStep(raw: number) {
 }
 
 // The track shows a window [v0, v1] of the slider's 0–1 scale, which can be zoomed and panned.
-export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void) {
+export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void, goToLandmark: (l: Landmark) => void) {
   const { data, scale } = store
   const tl = data.timeline
   const track = document.querySelector<HTMLElement>('.track')!
@@ -78,6 +78,37 @@ export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void) {
   })
   // bigger events claim their spot first
   const byImportance = [...markEls].sort((a, b) => b.e.importance - a.e.importance)
+
+  // Landmarks get a small dot at the year they were built, below every event in priority, and only once the
+  // timeline is zoomed in. Their dates are known to the year at best, and round years are rough guesses, so
+  // a dot may slide within that slack to find a free spot rather than vanish behind a neighbour.
+  // A dot whose own year is off screen stays hidden, so they don't pile up at the edges.
+  const slack = (l: Landmark): [number, number] => {
+    const y = l.built, tol = y % 1000 === 0 ? 100 : y % 100 === 0 ? 25 : y % 50 === 0 ? 10 : y % 10 === 0 ? 3 : 0
+    return [y - tol, y + 1 + tol]
+  }
+  const lmMarks = data.landmarks.map(l => {
+    const b = document.createElement('button')
+    b.type = 'button'
+    b.className = `lm-mark${l.uncertain ? ' unc' : ''}`
+    b.style.setProperty('--c', store.colorOfLandmark(l))
+    b.setAttribute('aria-label', `${fmtYear(l.built)}: ${l.name}`)
+    b.addEventListener('click', () => { store.select({ kind: 'landmark', landmark: l }); goToLandmark(l) })
+    b.addEventListener('pointerenter', () => {
+      tip.innerHTML = `<b>${t.built(fmtYear(l.built), !!l.builtRange)}</b>${esc(l.name)}${l.whs ? `<em>${t.unesco(l.inscribed!)}</em>` : ''}`
+      tip.hidden = false
+      const r = b.getBoundingClientRect(), tr = tip.getBoundingClientRect()
+      tip.style.left = `${Math.min(innerWidth - tr.width - 12, Math.max(12, r.left + r.width / 2 - tr.width / 2))}px`
+      tip.style.top = `${r.top - tr.height - 8}px`
+    })
+    b.addEventListener('pointerleave', () => (tip.hidden = true))
+    b.hidden = true
+    marksEl.appendChild(b)
+    const [lo, hi] = slack(l)
+    return { l, el: b, pos: scale.toPos(l.built + 0.5), lo: scale.toPos(lo), hi: scale.toPos(hi), rank: l.size }
+  }).sort((a, b) => b.rank - a.rank)
+  // don't bother below this zoom: the whole span shows millennia per pixel
+  const LM_SPAN = 0.5
 
   const tickYears = (): number[] => {
     const W = track.offsetWidth
@@ -167,6 +198,24 @@ export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void) {
         band.el.style.left = `${l * 100}%`
         band.el.style.width = `${(r - l) * 100}%`
       }
+    }
+    const lmOn = span() < LM_SPAN
+    for (const m of lmMarks) {
+      let px: number | null = null
+      if (lmOn && m.pos >= v0 && m.pos <= v1 && store.shows(m.l)) {
+        const lo = Math.max(0, vx(m.lo) * W), hi = Math.min(W, vx(m.hi) * W), want = Math.min(hi, Math.max(lo, vx(m.pos) * W))
+        // nearest free spot within the slack, trying each side of the true year in turn
+        for (let k = 0; px === null && k <= 40; k++) {
+          const c = want + (k % 2 ? 1 : -1) * Math.ceil(k / 2) * MARK_GAP
+          if (c < lo - 0.5 || c > hi + 0.5) { if (Math.ceil(k / 2) * MARK_GAP > hi - lo) break; continue }
+          if (!crowded(c)) px = c
+        }
+      }
+      m.el.hidden = px === null
+      if (px === null) continue
+      const cell = Math.floor(px / MARK_GAP)
+      taken.set(cell, [...(taken.get(cell) ?? []), px])
+      m.el.style.left = `${(px / W) * 100}%`
     }
     drawTicks()
     drawSpark()
@@ -276,7 +325,7 @@ export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void) {
     const x = e.touches[0].clientX, r = track.getBoundingClientRect()
     const nearThumb = Math.abs(x - (r.left + vx(yearPos()) * r.width)) <= THUMB_REACH
     // marks are dense on a phone, so a drag may well start on one; away from the thumb a plain tap still clicks it
-    const onMark = !nearThumb && !!(e.target as HTMLElement).closest('.ev')
+    const onMark = !nearThumb && !!(e.target as HTMLElement).closest('.ev, .lm-mark')
     if (!onMark) e.preventDefault()
     drag1 = { mode: nearThumb ? 'scrub' : 'pending', x, a: v0, onMark, vel: 0, lx: x, lt: e.timeStamp }
     if (drag1.mode === 'scrub') store.setPlaying(false)

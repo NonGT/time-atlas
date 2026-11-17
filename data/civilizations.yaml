@@ -72,3 +72,45 @@
 - { id: neolithic-china, name: จีนยุคหินใหม่, en: Neolithic China, color: "#d98f6f" }
 - { id: cucuteni, name: กูกูเตนี-ตรือปิลลียา, en: Cucuteni–Trypillia, color: "#c4a0d8" }
 - { id: megalithic-europe, name: วัฒนธรรมหินใหญ่ยุโรป, en: European Megalithic, color: "#9ab4c8" }
+# Cultures added for UNESCO World Heritage sites that don't belong to a civilization above.
+- { id: paleolithic, name: มนุษย์ยุคหินเก่า, en: Paleolithic, color: "#b8a888" }
+- { id: celtic, name: เคลต์ · ยุคเหล็กยุโรป, en: Celtic / Iron Age Europe, color: "#7fae9a" }
+- { id: etruscan, name: อีทรัสคัน, en: Etruscan, color: "#c98a5a" }
+- { id: norse, name: นอร์ส · สแกนดิเนเวีย, en: Norse / Scandinavia, color: "#7a9ec8" }
+- { id: italy, name: รัฐอิตาลี · อิตาลี, en: Italian states / Italy, color: "#d88a6a" }
+- { id: habsburg, name: ออสเตรีย · ฮาพส์บวร์ค, en: Austria / Habsburg, color: "#d0b0a0" }
+- { id: central-europe, name: โปแลนด์ · โบฮีเมีย · ฮังการี, en: Poland / Bohemia / Hungary, color: "#c88aa8" }
+- { id: low-countries, name: เบลเยียม · ลักเซมเบิร์ก, en: Belgium / Luxembourg, color: "#d8a868" }
+- { id: switzerland, name: สวิตเซอร์แลนด์, en: Switzerland, color: "#d87a7a" }
+- { id: balkans, name: บอลข่าน, en: Balkans, color: "#a890c8" }
+- { id: baltic, name: บอลติก, en: Baltic, color: "#8ab8b0" }
+- { id: ottoman, name: จักรวรรดิออตโตมัน, en: Ottoman Empire, color: "#4fa898" }
+- { id: caucasus, name: อาร์มีเนีย · จอร์เจีย · คอเคซัส, en: Armenia / Georgia / Caucasus, color: "#c8906a" }
+- { id: central-asia, name: เอเชียกลาง (ติมูร์ · คานาเตะ), en: Central Asia, color: "#68b8c0" }
+- { id: arabia, name: คาบสมุทรอาหรับ, en: Arabia, color: "#c8a868" }
+- { id: levant, name: ลิแวนต์ · อิสราเอลโบราณ, en: Levant, color: "#b8b070" }
+- { id: nabataea, name: นาบาเทีย, en: Nabataea, color: "#d88870" }
+- { id: maghreb, name: มัฆริบ · เบอร์เบอร์, en: Maghreb / Berber, color: "#60b890" }
+- { id: kush, name: นูเบีย · คูช, en: Nubia / Kush, color: "#c8945a" }
+- { id: ethiopia, name: เอธิโอเปีย, en: Ethiopia, color: "#a8b060" }
+- { id: west-africa, name: แอฟริกาตะวันตก, en: West Africa, color: "#b8a050" }
+- { id: central-africa, name: แอฟริกากลางและใต้, en: Central & Southern Africa, color: "#a8a070" }
+- { id: east-africa, name: แอฟริกาตะวันออก, en: East Africa, color: "#88b878" }
+- { id: south-asia, name: อนุทวีปอินเดีย (ยุคกลาง), en: Medieval South Asia, color: "#e8a070" }
+- { id: himalaya, name: เนปาล · ทิเบต, en: Nepal / Tibet, color: "#d878a0" }
+- { id: dai-viet, name: ไดเวียด · เวียดนาม, en: Dai Viet / Vietnam, color: "#e87870" }
+- { id: champa, name: จามปา, en: Champa, color: "#d8a080" }
+- { id: lan-xang, name: ล้านช้าง · ลาว, en: Lan Xang / Laos, color: "#e8b880" }
+- { id: malay, name: มลายู · มะละกา, en: Malay / Melaka, color: "#c8b060" }
+- { id: ban-chiang, name: วัฒนธรรมบ้านเชียง, en: Ban Chiang culture, color: "#c89a70" }
+- { id: pyu, name: ปยู, en: Pyu, color: "#d8a870" }
+- { id: polynesia, name: โพลินีเซีย · แปซิฟิก, en: Polynesia / Pacific, color: "#70b8c8" }
+- { id: aboriginal, name: ชนพื้นเมืองออสเตรเลีย, en: Aboriginal Australia, color: "#c87858" }
+- { id: mesoamerica, name: เมโสอเมริกา (โอลเมก · ซาโปเตก), en: Mesoamerica, color: "#8ac878" }
+- { id: andean, name: แอนดีส (โมเช · นาซกา · ตีวานากู), en: Andean cultures, color: "#b8a878" }
+- { id: native-north-america, name: ชนพื้นเมืองอเมริกาเหนือ, en: Native North America, color: "#a8b880" }
+- { id: canada, name: แคนาดา, en: Canada, color: "#d86060" }
+- { id: caribbean, name: แคริบเบียน, en: Caribbean, color: "#60c0b0" }
+- { id: latin-america, name: ละตินอเมริกา, en: Latin America, color: "#78c098" }
+- { id: modern, name: สถาปัตยกรรมสมัยใหม่, en: Modern architecture, color: "#9aa8b8" }
+- { id: tambralinga, name: ตามพรลิงค์ · นครศรีธรรมราช, en: Tambralinga, color: "#e0a868" }

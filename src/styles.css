@@ -85,6 +85,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .lm-photo img { display: block; width: 100%; max-height: 220px; object-fit: contain; border-radius: 4px; background: rgba(255, 255, 255, .04); }
 .lm-photo figcaption { margin-top: 4px; font-size: 11px; color: var(--muted); }
 .lm-photo figcaption a { color: inherit; }
+.info .whs { display: inline-block; margin-top: 8px; font-size: 12px; color: #7fb8e8; text-decoration: none; }
+.info .whs::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border: 1.5px solid currentColor; transform: rotate(45deg); vertical-align: 1px; }
+.info .whs:hover { text-decoration: underline; }
 .pill { font-size: 11px; padding: 2px 8px; border-radius: 10px; border: 1px solid currentColor; white-space: nowrap; }
 .pill.up { color: #8fd19e; } .pill.down { color: #e59a7c; } .pill.peak { color: var(--accent); } .pill.none { color: var(--muted); }
 
@@ -125,6 +128,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .ev-3 { width: 12px; height: 12px; box-shadow: 0 0 0 2px rgba(5, 7, 13, .9), 0 0 10px var(--c); opacity: 1; }
 .ev:hover { opacity: 1; outline: 2px solid var(--fg); }
 .ev.unc { background: var(--bg, #05070d); border: 1.5px dashed var(--c); opacity: 1; box-shadow: none; }
+.lm-mark { position: absolute; top: 50%; width: 6px; height: 6px; padding: 0; border: 1px solid rgba(5, 7, 13, .8); border-radius: 50%; background: var(--c); transform: translate(-50%, -50%); cursor: pointer; opacity: .75; }
+.lm-mark:hover { opacity: 1; outline: 2px solid var(--fg); }
+.lm-mark.unc { background: transparent; border: 1.5px dashed var(--c); }
 .ev-range { position: absolute; top: 50%; height: 6px; transform: translateY(-50%); border-radius: 3px; pointer-events: none;
   background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--c) 45%, transparent) 0 3px, transparent 3px 6px); }
 .ev-span { position: absolute; top: 50%; height: 4px; transform: translateY(-50%); border-radius: 2px; pointer-events: none; background: color-mix(in srgb, var(--c) 55%, transparent); }

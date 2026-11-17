@@ -1,0 +1,197 @@
+# English for data/landmarks/unesco-west-europe.yaml.
+
+mont-saint-michel:
+  desc: "An abbey on a rocky tidal island in a Normandy bay, a major pilgrimage site since the Middle Ages."
+chartres-cathedral:
+  desc: "A Gothic cathedral that keeps almost all of its 13th-century stained glass, the model of High Gothic."
+palace-of-versailles:
+  desc: "The palace of Louis XIV, centre of power of the French court and the model for royal palaces across Europe."
+vezelay-abbey:
+  desc: "A Romanesque hilltop church in Burgundy holding relics of Mary Magdalene, a starting point of the pilgrimage to Santiago."
+lascaux-vezere-valley:
+  desc: "A valley with over 140 Paleolithic sites, including Lascaux cave with animal paintings about 17,000 years old."
+  uncertain: "The Lascaux paintings are about 17,000 years old, older than the map's timeline."
+palace-of-fontainebleau:
+  desc: "A residence of French kings for over 800 years, rebuilt by Francis I and a starting point of Renaissance art in France."
+chateau-de-chambord:
+  desc: "The Renaissance château of Francis I with its famous double-helix staircase; merged into the Loire Valley site in 2000."
+loire-valley:
+  desc: "A 280 km stretch of the Loire valley full of Renaissance châteaux, old towns and vineyards."
+amiens-cathedral:
+  desc: "The largest Gothic cathedral in France, with the greatest interior volume of any in the country."
+roman-theatre-of-orange:
+  desc: "A Roman theatre whose 37 m stage wall still stands complete, together with an Augustan triumphal arch."
+arles-roman-monuments:
+  desc: "A Roman city in Provence with an amphitheatre, a theatre and the Romanesque church of Saint-Trophime."
+fontenay-abbey:
+  desc: "One of the oldest and most complete Cistercian abbeys, reflecting the order's plain way of life."
+royal-saltworks-arc-et-senans:
+  desc: "A semicircular saltworks designed by Claude-Nicolas Ledoux, an example of Enlightenment industrial architecture."
+place-stanislas:
+  desc: "A classical square built by Duke Stanislas; its gilded wrought-iron gates are a highlight of the Enlightenment."
+saint-savin-sur-gartempe:
+  desc: "A Romanesque church with the largest set of 11th–12th-century murals, called the Sistine Chapel of the Romanesque."
+pont-du-gard:
+  desc: "A three-tier Roman aqueduct bridge, 49 m high, that carried water to Nîmes; the tallest surviving Roman aqueduct bridge."
+cite-de-carcassonne:
+  desc: "A medieval fortified town with double walls and 52 towers, restored by Viollet-le-Duc in the 19th century."
+durham-cathedral:
+  desc: "A Norman cathedral with some of the earliest rib vaults, paired with the bishops' castle on a hill above the River Wear."
+ironbridge-gorge:
+  desc: "The world's first cast-iron bridge, in a gorge seen as the birthplace of the Industrial Revolution."
+fountains-abbey:
+  desc: "The largest Cistercian abbey ruins in England, dissolved in 1539 and later made part of a Georgian landscape garden."
+stonehenge:
+  desc: "A Neolithic stone circle aligned with the midsummer sunrise, listed together with the Avebury stone circle."
+castles-of-edward-gwynedd:
+  desc: "Castles Edward I built after conquering Wales, such as Caernarfon and Conwy, peaks of medieval military architecture."
+st-kilda:
+  desc: "Remote islands off Scotland, lived on for over 2,000 years until evacuated in 1930, and a major European seabird colony."
+blenheim-palace:
+  desc: "A Baroque country house given by the nation to the Duke of Marlborough, and the birthplace of Winston Churchill."
+city-of-bath:
+  desc: "A city with Roman baths fed by hot springs and honey-coloured Georgian buildings such as the Royal Crescent."
+new-lanark:
+  desc: "A cotton-mill village where Robert Owen tried out an ideal workers' community, with schools and welfare."
+strasbourg-grande-ile:
+  desc: "The old-town island with a Gothic cathedral spire 142 m tall, extended by the Neustadt built under German rule."
+canterbury-cathedral:
+  desc: "Seat of the Archbishop of Canterbury, head of the Church of England, where Thomas Becket was murdered in 1170."
+neolithic-orkney:
+  desc: "The Ring of Brodgar, the Stones of Stenness, the Maeshowe tomb and the Skara Brae village, Neolithic sites over 5,000 years old."
+reims-cathedral:
+  desc: "The Gothic cathedral where French kings were crowned for centuries, decorated with over 2,300 statues."
+bourges-cathedral:
+  desc: "A Gothic cathedral with no transept, five stepped aisles and early 13th-century stained glass."
+bru-na-boinne:
+  desc: "Neolithic passage tombs in Ireland; Newgrange lets the midwinter sunrise into its chamber and is older than Stonehenge."
+luxembourg-fortress:
+  desc: "A fortress city called the Gibraltar of the North, with 17 km of tunnels in the rock; most of it was pulled down after 1867."
+old-new-towns-edinburgh:
+  desc: "Scotland's capital, with a medieval old town below the castle and a Georgian new town planned in the 18th century."
+schokland:
+  desc: "A former island in the Zuiderzee whose people fought the sea until they were evacuated in 1859; now inside a polder."
+skellig-michael:
+  desc: "An early Christian monastery on top of a rock island in the Atlantic, with its stone beehive huts still intact."
+  uncertain: "The founding date is not known, somewhere in the 6th to 8th century."
+dutch-water-defence-lines:
+  desc: "Lines of forts and land that could be flooded to stop an enemy, around Amsterdam and Utrecht, built in the 19th and early 20th centuries."
+canal-du-midi:
+  desc: "A 240 km canal linking the Mediterranean to the Atlantic, a great engineering work of the reign of Louis XIV."
+pyrenees-mont-perdu:
+  desc: "Limestone mountains on the French–Spanish border with sheer cirques like Gavarnie and traditional mountain herding."
+  uncertain: "The herding landscape grew over many centuries; there is no single date."
+maritime-greenwich:
+  desc: "A Thames-side district with Wren's Royal Naval College, the Royal Observatory and the Prime Meridian."
+kinderdijk-windmills:
+  desc: "Nineteen windmills built around 1740 to pump water out of the lowlands, a symbol of Dutch water management."
+flemish-beguinages:
+  desc: "Walled communities of Beguines, women living a religious life without taking vows, with houses, church and gardens."
+canal-du-centre-boat-lifts:
+  desc: "Four hydraulic boat lifts built 1888–1917 and still working, raising boats 15–17 m."
+grand-place-brussels:
+  desc: "The central square of Brussels, ringed by the Gothic town hall and guild houses rebuilt after the French bombardment of 1695."
+wouda-pumping-station:
+  desc: "The largest steam pumping station still in use, built in 1920 to drain Friesland."
+santiago-routes-france:
+  desc: "Over 70 churches, bridges and hospices along the medieval pilgrim routes to Santiago de Compostela."
+historic-lyon:
+  desc: "A city lived in for over 2,000 years, from Roman Lugdunum to its Renaissance quarter and silk-weavers' district."
+provins:
+  desc: "A medieval trade-fair town of the Counts of Champagne that keeps its walls and Caesar's Tower."
+beemster-polder:
+  desc: "A lake drained in 1612, its roads, canals and fields laid out in a geometric grid."
+saint-emilion:
+  desc: "A medieval town among vineyards near Bordeaux, grown with vines since Roman times, with a church carved from the rock."
+belfries-belgium-france:
+  desc: "Belfries of more than 50 towns, symbols of the power of citizens and merchant guilds in the Middle Ages."
+rietveld-schroder-house:
+  desc: "A house by Gerrit Rietveld in the De Stijl style, with sliding walls that change the plan; a landmark of modern architecture."
+st-george-bermuda:
+  desc: "The oldest continuously inhabited English town in the New World, founded in 1612, with forts around the island."
+blaenavon:
+  desc: "Ironworks and coal mines in South Wales, among the world's major producers of iron and coal in the 19th century."
+historic-bruges:
+  desc: "A medieval trading city with its canals and Gothic buildings intact, birthplace of Early Netherlandish painting."
+horta-town-houses:
+  desc: "Four Brussels houses by Victor Horta that pioneered Art Nouveau architecture with curving iron and glass."
+spiennes-flint-mines:
+  desc: "The largest Neolithic flint mines in Europe, with shafts over 10 m deep dug for axe-making stone."
+tournai-cathedral:
+  desc: "A cathedral mixing Romanesque and Gothic, known for the five towers over its transept."
+saltaire:
+  desc: "A workers' village Titus Salt built around his wool mill, an example of a Victorian paternalist industrial town."
+derwent-valley-mills:
+  desc: "Richard Arkwright's water-powered cotton mills at Cromford, the model for the modern factory system."
+kew-gardens:
+  desc: "A botanic garden founded in 1759 with one of the world's largest plant collections and Victorian glasshouses."
+liverpool-maritime:
+  desc: "A global trading port of the 18th–19th centuries with the Albert Dock and waterfront buildings; delisted in 2021 over waterfront development."
+causses-cevennes:
+  desc: "Limestone plateaus and valleys in southern France shaped by seasonal sheep herding over thousands of years."
+  uncertain: "The landscape grew over many centuries; there is no single date."
+madriu-valley:
+  desc: "A valley in Andorra used by mountain people for herding, iron smelting and terraced farming for a thousand years."
+  uncertain: "The landscape grew over many centuries; there is no single date."
+le-havre:
+  desc: "A city centre flattened in the Second World War and rebuilt in concrete to Auguste Perret's plan."
+plantin-moretus-museum:
+  desc: "The printing house and home of the Plantin family in Antwerp, with the oldest surviving printing presses in the world."
+cornwall-mining:
+  desc: "Tin and copper mines that boomed in the 18th–19th centuries; cliff-top engine houses are a symbol of Cornwall."
+bordeaux-port-of-the-moon:
+  desc: "A wine-trading port on a crescent bend of the Garonne, lined with uniform 18th-century classical buildings."
+fortifications-of-vauban:
+  desc: "Twelve star forts along France's borders by the engineer Vauban under Louis XIV, such as the octagonal town of Neuf-Brisach."
+stoclet-palace:
+  desc: "A Brussels mansion designed by Josef Hoffmann in the Vienna Secession style, with mosaics by Gustav Klimt inside."
+pontcysyllte-aqueduct:
+  desc: "Thomas Telford's cast-iron aqueduct carrying a canal 38 m above the Dee valley, the highest canal aqueduct in the world."
+episcopal-city-of-albi:
+  desc: "A red-brick town on the Tarn whose Sainte-Cécile Cathedral, built after the crushing of the Cathars, is the largest brick building in the world."
+wallonia-mining-sites:
+  desc: "Four Belgian coal mines, including the Grand-Hornu workers' estate and Bois du Cazier, scene of the 1956 disaster."
+amsterdam-canal-ring:
+  desc: "Three fan-shaped canals dug in the 17th-century Dutch Golden Age, lined with narrow gabled merchants' houses."
+nord-pas-de-calais-mining:
+  desc: "A coalfield worked for over 270 years, with pyramid-shaped slag heaps, pitheads and miners' towns along 120 km."
+climats-of-burgundy:
+  desc: "Over 1,200 vineyard plots on the Côte d'Or slopes, divided by soil and sun by monks and growers since the Middle Ages."
+chauvet-cave:
+  desc: "A cave with animal paintings about 36,000 years old, among the oldest and best preserved cave art in the world."
+  uncertain: "The paintings are about 36,000 years old, older than the map's timeline."
+van-nelle-factory:
+  desc: "A glass-walled tea, coffee and tobacco factory in Rotterdam, a model of modernist industrial architecture."
+champagne-hillsides:
+  desc: "The birthplace of champagne, with hillside vineyards, the champagne houses of Épernay and cellars in old chalk pits."
+forth-bridge:
+  desc: "A steel cantilever railway bridge across the Firth of Forth in Scotland, 2.5 km long, opened in 1890."
+gorhams-cave:
+  desc: "Sea caves on Gibraltar where Neanderthals lived for over 100,000 years, with a rock engraving that may be their art."
+  uncertain: "Neanderthals lived here about 125,000 to 40,000 years ago, older than the map's timeline."
+taputapuatea-marae:
+  desc: "A stone ceremonial site on Raiatea, the religious and voyaging centre of eastern Polynesia."
+  uncertain: "The marae was begun around 1000 and kept growing; the exact date is unknown."
+colonies-of-benevolence:
+  desc: "Farming colonies founded from 1818 to give poor people work and homes, a large European experiment against poverty."
+maison-carree:
+  desc: "One of the best preserved Roman temples, built under Augustus and in use ever since."
+d-day-beaches:
+  desc: "The beaches where the Allies landed on 6 June 1944, with remains of the Mulberry harbour, gun batteries and war cemeteries."
+jodrell-bank:
+  desc: "A radio observatory whose 76 m Lovell Telescope, built in 1957, tracked Sputnik and pioneered radio astronomy."
+cordouan-lighthouse:
+  desc: "A Renaissance lighthouse at sea off the Gironde estuary, completed in 1611 and nicknamed the Versailles of the sea."
+slate-landscape-wales:
+  desc: "Slate quarries that roofed the world in the 19th century, leaving terraced quarries and workers' towns in Snowdonia."
+nice-winter-resort:
+  desc: "A Riviera town where the British and European elite wintered from the 18th century, with the Promenade des Anglais."
+eise-eisinga-planetarium:
+  desc: "A mechanical model of the solar system in a house ceiling in Franeker, finished in 1781; the oldest working planetarium."
+marquesas-islands:
+  desc: "Volcanic Pacific islands with ceremonial platforms and stone tiki statues of the Marquesans, who sailed out to settle Polynesia."
+  uncertain: "Most platforms and statues were made between the 14th and 18th centuries; exact dates are unknown."
+carnac-stones:
+  desc: "Over 3,000 standing stones in rows kilometres long in Brittany, raised by Neolithic communities around 4500 BCE."
+capetian-fortresses-languedoc:
+  desc: "Clifftop castles on the old Aragon border that French kings rebuilt after the crusade against the Cathars, such as Peyrepertuse."

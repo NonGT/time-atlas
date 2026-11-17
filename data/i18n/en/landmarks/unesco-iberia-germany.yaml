@@ -1,0 +1,205 @@
+# English for data/landmarks/unesco-iberia-germany.yaml.
+
+aachen-cathedral:
+  desc: "Charlemagne's octagonal Palatine Chapel and his burial place; more than 30 German kings were crowned here."
+speyer-cathedral:
+  desc: "The largest surviving Romanesque cathedral, burial place of the Salian emperors."
+wurzburg-residence:
+  desc: "Baroque palace of the prince-bishops of Würzburg; Tiepolo's fresco over the grand staircase is the largest in the world."
+st-michaels-hildesheim:
+  desc: "Ottonian Romanesque church from Bishop Bernward's time, together with the cathedral and its masterly bronze doors and column."
+angra-do-heroismo:
+  desc: "Mid-Atlantic port in the Azores, a stopover for fleets returning from India and the Americas."
+batalha-monastery:
+  desc: "Built to commemorate Portugal's victory at Aljubarrota in 1385; a masterpiece of Portuguese Gothic and Manueline art."
+convent-of-christ-tomar:
+  desc: "A Knights Templar castle that later became the seat of the Order of Christ, which backed Portugal's voyages of discovery."
+wieskirche:
+  desc: "Rococo pilgrimage church in a Bavarian meadow, the work of the Zimmermann brothers."
+lubeck:
+  desc: "Queen of the Hanseatic League, a Baltic trading city full of brick Gothic churches and houses."
+augustusburg-palace:
+  desc: "Rococo palaces of the Elector of Cologne at Brühl, with a grand staircase designed by Balthasar Neumann."
+altamira:
+  desc: "Red and black bison painted on the cave ceiling; the first Paleolithic cave art to be recognised, and the most famous."
+  uncertain: "The paintings span roughly 36,000 to 13,000 years ago, the bison about 14,000; older than the map can show."
+santa-maria-del-naranco:
+  desc: "Pre-Romanesque building of the Kingdom of Asturias, the Christian realm that held out in the north after the Muslim conquest of Spain."
+alhambra:
+  desc: "Fortress and palaces of the Nasrid dynasty of Granada, the last Muslim state in Iberia before it fell to Spain in 1492."
+burgos-cathedral:
+  desc: "One of Spain's great Gothic cathedrals, burial place of El Cid, hero of the Reconquista."
+el-escorial:
+  desc: "Monastery, palace and royal pantheon built by Philip II at the height of the Spanish Empire."
+santiago-de-compostela:
+  desc: "The end of the Way of St James; its cathedral is believed to hold the tomb of the apostle James."
+walls-of-avila:
+  desc: "Spain's most complete medieval town walls, about 2.5 km long with 87 round towers."
+evora:
+  desc: "A city that flourished in the 16th century as a royal residence, with a Roman temple and white houses with azulejo tiles."
+roman-trier:
+  desc: "Trier was a capital of the Western Roman Empire; the Porta Nigra, Constantine's basilica and Roman baths survive."
+mudejar-teruel:
+  desc: "Brick bell towers and churches decorated with glazed tiles, built by Muslim craftsmen under Christian Aragonese rule."
+toledo:
+  desc: "Former capital of the Visigoths and of Castile, where Christians, Muslims and Jews lived side by side for centuries."
+salamanca:
+  desc: "Spain's oldest university town, founded in 1218, with golden sandstone buildings in the Plateresque style."
+seville-cathedral:
+  desc: "The world's largest Gothic cathedral, built on the site of a mosque whose minaret became the Giralda bell tower."
+caceres:
+  desc: "Walled town with fortified noble houses and over 30 medieval towers, mixing Roman, Islamic, Gothic and Renaissance work."
+hadrians-wall:
+  desc: "A 118 km wall across Britain, part of the frontiers of the Roman Empire together with the German Limes."
+galle-fort:
+  desc: "A seaside fortified town in Sri Lanka begun by the Portuguese and enlarged by the Dutch in the 17th century; a European town in South Asia."
+alcobaca-monastery:
+  desc: "Portugal's first Cistercian abbey, the country's largest Gothic church and the tomb of Pedro and Inês."
+lorsch-abbey:
+  desc: "A Carolingian abbey whose surviving gatehouse is one of the most intact buildings of that era."
+poblet-abbey:
+  desc: "Large Cistercian abbey in Catalonia, burial place of the kings of Aragon."
+ubeda-baeza:
+  desc: "Two Andalusian towns with 16th-century Renaissance ensembles that became a model for architecture in Latin America."
+potsdam-sanssouci:
+  desc: "Frederick the Great's Sanssouci and the palaces and parks of the Prussian kings around Potsdam."
+dessau-worlitz:
+  desc: "One of the first English-style landscape gardens on the European continent, laid out on Enlightenment ideas."
+quedlinburg:
+  desc: "A centre of the Ottonian kings, with a hilltop collegiate church and more than 1,300 half-timbered houses."
+maulbronn-monastery:
+  desc: "The most complete medieval Cistercian monastery north of the Alps."
+rammelsberg-goslar:
+  desc: "Silver, copper and lead mine worked for over 1,000 years, the wealth behind Goslar, a residence of German emperors."
+bamberg:
+  desc: "A town on seven hills that keeps its medieval plan, with a cathedral and an old town hall standing in the river."
+roman-merida:
+  desc: "Augusta Emerita, capital of Roman Lusitania, with a theatre, amphitheatre and a Roman bridge still in use."
+guadalupe-monastery:
+  desc: "Pilgrimage monastery of Our Lady of Guadalupe, visited by Columbus after his first voyage; the name spread across Latin America."
+volklingen-ironworks:
+  desc: "The only intact integrated ironworks left from the industrial heyday in Western Europe; it closed in 1986."
+sintra:
+  desc: "Hill retreat of Portuguese kings, with the Romantic Pena Palace, a Moorish castle and misty gardens."
+bauhaus-dessau:
+  desc: "The art and design school that laid the foundations of modern architecture; Walter Gropius designed its Dessau building."
+porto:
+  desc: "Port city on the Douro that gave its name to Portugal and to port wine."
+cuenca-spain:
+  desc: "A medieval fortified town on a ridge between two gorges, with its hanging houses jutting over the cliff."
+lonja-de-la-seda:
+  desc: "Late Gothic silk exchange whose hall of twisted columns shows the wealth of Valencia's 15th-century merchants."
+luther-wittenberg:
+  desc: "The house and churches where Martin Luther lived and taught, where the Protestant Reformation began in 1517."
+las-medulas:
+  desc: "The Roman Empire's largest gold mine, where water power brought down mountains and left red earth pinnacles."
+palau-musica-catalana:
+  desc: "Catalan Art Nouveau concert hall by Lluís Domènech i Montaner, listed with his Hospital de Sant Pau."
+san-millan-monasteries:
+  desc: "The monasteries where the oldest known written notes in Spanish and Basque were found in the margins of a manuscript."
+classical-weimar:
+  desc: "The town of Goethe and Schiller, the centre of German literature and thought around 1800."
+coa-valley:
+  desc: "Thousands of horses, aurochs and ibex engraved on open-air rocks, the largest open-air Paleolithic art site."
+  uncertain: "Most engravings date from about 25,000 to 12,000 years ago, older than the map can show."
+levantine-rock-art:
+  desc: "Scenes of hunters, dancers and animals in over 700 rock shelters across eastern Spain, such as Roca dels Moros."
+  uncertain: "The age is still debated, roughly 8000 to 3500 BCE."
+tarraco:
+  desc: "Capital of Hispania Tarraconensis and one of Rome's first bases in Spain, with an amphitheatre by the sea."
+alcala-de-henares:
+  desc: "The first planned university town, founded by Cardinal Cisneros in 1499, and the birthplace of Cervantes."
+museum-island:
+  desc: "Five museums on an island in the Spree, built between 1830 and 1930, including the Pergamon Museum."
+wartburg:
+  desc: "Medieval hilltop castle above Eisenach where Luther hid and translated the New Testament into German."
+la-laguna:
+  desc: "An unwalled town on Tenerife whose grid plan became the model for colonial towns in the Americas."
+palmeral-of-elche:
+  desc: "Groves of hundreds of thousands of date palms in the town, watered by irrigation laid out by the Arabs around the 10th century."
+reichenau-island:
+  desc: "An island in Lake Constance with a Benedictine abbey, a centre of Carolingian and Ottonian art, and three Romanesque churches."
+zollverein:
+  desc: "Ruhr coal mine that was once the world's largest; its Bauhaus-style Shaft XII was called the most beautiful mine in the world."
+walls-of-lugo:
+  desc: "The most complete Roman town walls in the world, about 2 km long; you can still walk all the way round on top."
+vall-de-boi:
+  desc: "Nine stone Romanesque churches in a Pyrenean valley; the Christ painted at Sant Climent de Taüll is a masterpiece."
+atapuerca:
+  desc: "Caves holding the oldest human remains in Western Europe, more than a million years old."
+  uncertain: "Humans lived here from about 1.2 million years ago, older than the map can show."
+guimaraes:
+  desc: "Seen as the birthplace of Portugal, where Afonso I founded the kingdom in the 12th century."
+aranjuez:
+  desc: "Spring palace of the Spanish kings on the Tagus, surrounded by gardens, woods and Enlightenment-era model farms."
+alto-douro:
+  desc: "Terraced vineyards on the slopes of the Douro, home of port wine and the world's first demarcated wine region (1756)."
+upper-middle-rhine:
+  desc: "The stretch of the Rhine with hilltop medieval castles, vineyards and the Lorelei rock that inspired Romantic artists."
+stralsund-wismar:
+  desc: "Hanseatic ports on the Baltic, showcases of brick Gothic, and once under Swedish rule."
+bremen-town-hall:
+  desc: "A Gothic town hall with a Renaissance front, and the Roland statue, symbol of the city's freedom."
+pico-vineyards:
+  desc: "Thousands of small vineyard plots walled with lava stone on a volcanic island in the Azores."
+muskau-park:
+  desc: "Prince Pückler's landscape park spanning the Neisse on the German–Polish border."
+regensburg:
+  desc: "Germany's best-preserved medieval trading city, with a 12th-century stone bridge and merchants' tower houses."
+vizcaya-bridge:
+  desc: "The world's first transporter bridge, near Bilbao, still carrying people and cars every day."
+berlin-modernism-estates:
+  desc: "Affordable housing estates of the Weimar Republic, such as the Horseshoe Estate, models of modern social housing."
+tower-of-hercules:
+  desc: "Roman lighthouse at A Coruña, the only Roman lighthouse still in use."
+elvas-fortifications:
+  desc: "Garrison town on the Spanish border with the world's largest dry-ditch bulwarked fortifications in the Dutch style."
+fagus-factory:
+  desc: "A shoe-last factory by Walter Gropius whose glass walls turn corners without posts, a prototype of modern architecture."
+serra-de-tramuntana:
+  desc: "Mountains on Mallorca where farmers built terraces, dry-stone walls and water channels over many centuries."
+margravial-opera-house:
+  desc: "Europe's best-preserved Baroque theatre, with an auditorium made entirely of wood."
+university-of-coimbra:
+  desc: "Portugal's oldest university, housed in a former royal palace on a hilltop, with the Baroque Joanina Library."
+bergpark-wilhelmshohe:
+  desc: "Hillside Baroque park with the Hercules monument and stepped cascades; all its fountains run on gravity."
+corvey-abbey:
+  desc: "Carolingian abbey whose church westwork of 873–885 is one of the few buildings of that age still standing."
+speicherstadt:
+  desc: "The world's largest warehouse district of brick on timber piles along canals, with the ship-prow-shaped Expressionist Chilehaus."
+antequera-dolmens:
+  desc: "Megalithic tombs under earth mounds; the Menga dolmen uses stones of over 150 tonnes and faces a mountain shaped like a face."
+swabian-jura-caves:
+  desc: "Caves where ivory figurines and bone flutes about 40,000 years old were found, the oldest human figures and instruments known."
+  uncertain: "Paleolithic people used these caves from about 43,000 years ago, older than the map can show."
+talayotic-menorca:
+  desc: "Stone villages, talayot towers, T-shaped taula monuments and naveta tombs of the Bronze and Iron Age islanders."
+  uncertain: "The structures were built at different times between about 1500 and 500 BCE."
+hedeby-danevirke:
+  desc: "A Viking trading town and the Danish earthwork across the Jutland peninsula, linking the North Sea and the Baltic."
+madinat-al-zahra:
+  desc: "Palace city built by Caliph Abd al-Rahman III outside Córdoba, sacked during the civil war of 1010."
+palace-of-mafra:
+  desc: "The vast Baroque palace, basilica and monastery of King John V, paid for with Brazilian gold."
+risco-caido:
+  desc: "Caves cut by the native Canary Islanders before the Spanish arrived; light through an opening in the roof marked the seasons."
+  uncertain: "It is not known when the cave temple was cut, only that it was before the Spanish conquest of the island in 1483."
+augsburg-water:
+  desc: "Canals, water towers and fountains developed since the 14th century, giving the city clean drinking water and water power."
+bom-jesus-do-monte:
+  desc: "Hilltop pilgrimage church above Braga, reached by a zigzag Baroque stairway with chapels telling the Passion of Christ."
+mathildenhohe:
+  desc: "Art Nouveau artists' colony founded in 1899, marked by its Wedding Tower; one of the starting points of modern architecture."
+paseo-del-prado:
+  desc: "Enlightenment boulevard with the Prado Museum and botanical garden beside the Retiro park, planned as a quarter for arts and sciences."
+lower-germanic-limes:
+  desc: "Rome's frontier along the lower Rhine, with hundreds of camps, forts and towns from Germany to the North Sea."
+shum-sites:
+  desc: "The cradle of Ashkenazi Jewry in Europe, with medieval synagogues, mikveh ritual baths and Jewish cemeteries."
+old-synagogue-erfurt:
+  desc: "One of Europe's most intact medieval synagogues, with a mikveh and a Jewish stone house."
+schwerin-palace:
+  desc: "A Romantic palace on an island in Lake Schwerin, the residence of the Grand Dukes of Mecklenburg."
+neuschwanstein:
+  desc: "The fairy-tale castle of King Ludwig II of Bavaria, one of his four palaces listed together."

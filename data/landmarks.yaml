@@ -1,6 +1,8 @@
 # Landmarks at their real coordinates. They appear in `built` and disappear in `gone`, if set.
 # shape is the generic model; a landmark with its own model in src/map/models/ (keyed by id) uses that instead.
-# shape: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral
+# shape: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral,
+#   town, cave, terrace, bridge, castle, wall, factory, monolith, mosque, church, garden
+# whs, inscribed: UNESCO World Heritage site number and the year it was inscribed. More sites are in landmarks/.
 # Use civ instead of city for a landmark outside any city (e.g. Borobudur).
 # size: rough real width in meters; it is drawn larger so it can be seen.
 # city or civ is required, it sets the color.
@@ -18,6 +20,8 @@
   lon: 45.6375
   built: -3500
   size: 70
+  whs: 1481
+  inscribed: 2016
 
 - id: ziggurat-of-ur
   name: ซิกกูแรตแห่งอูร์
@@ -29,6 +33,8 @@
   built: -2100
   size: 64
   desc: สร้างสมัยกษัตริย์อูร์-นัมมู เพื่อบูชาเทพจันทร์นันนา
+  whs: 1481
+  inscribed: 2016
 
 - id: great-pyramid
   name: มหาพีระมิดแห่งกีซา
@@ -40,6 +46,8 @@
   built: -2560
   size: 230
   desc: สุสานของฟาโรห์คูฟู สิ่งก่อสร้างที่สูงที่สุดในโลกนานเกือบ 4,000 ปี
+  whs: 86
+  inscribed: 1979
 
 - id: caral-pyramid
   wiki: "Caral"
@@ -51,6 +59,8 @@
   lon: -77.5200
   built: -2600
   size: 150
+  whs: 1269
+  inscribed: 2009
 
 - id: great-bath
   wiki: "Great Bath, Mohenjo-daro"
@@ -62,6 +72,8 @@
   lon: 68.1386
   built: -2500
   size: 80
+  whs: 138
+  inscribed: 1980
 
 - id: yinxu-palace
   wiki: "Yinxu"
@@ -74,6 +86,8 @@
   built: -1300
   gone: -1046
   size: 100
+  whs: 1114
+  inscribed: 2006
 
 - id: etemenanki
   name: หอคอยเอเตเมนอันกี
@@ -86,6 +100,8 @@
   gone: -300
   size: 91
   desc: ซิกกูแรตของเทพมาร์ดุก เชื่อกันว่าเป็นต้นเรื่องหอคอยบาเบล
+  whs: 278
+  inscribed: 2019
 
 - id: parthenon
   name: วิหารพาร์เธนอน
@@ -96,6 +112,8 @@
   lon: 23.7267
   built: -438
   size: 70
+  whs: 404
+  inscribed: 1987
 
 - id: byrsa
   name: เนินเบอร์ซา
@@ -107,6 +125,8 @@
   built: -700
   gone: -146
   size: 80
+  whs: 37
+  inscribed: 1979
 
 - id: colosseum
   name: โคลอสเซียม
@@ -117,6 +137,8 @@
   lon: 12.4922
   built: 80
   size: 190
+  whs: 91
+  inscribed: 1980
 
 - id: pantheon
   wiki: "Pantheon, Rome"
@@ -128,6 +150,8 @@
   lon: 12.4769
   built: 125
   size: 58
+  whs: 91
+  inscribed: 1980
 
 - id: kumhrar
   wiki: "Kumhrar"
@@ -151,6 +175,8 @@
   built: 652
   size: 45
   desc: สร้างเพื่อเก็บพระคัมภีร์ที่พระถังซัมจั๋งนำกลับมาจากอินเดีย
+  whs: 1442
+  inscribed: 2014
 
 - id: pyramid-of-the-sun
   name: พีระมิดแห่งดวงอาทิตย์
@@ -161,6 +187,8 @@
   lon: -98.8438
   built: 200
   size: 225
+  whs: 414
+  inscribed: 1987
 
 - id: hagia-sophia
   name: ฮาเกียโซเฟีย
@@ -171,6 +199,8 @@
   lon: 28.9802
   built: 537
   size: 80
+  whs: 356
+  inscribed: 1985
 
 - id: round-city
   name: นครทรงกลม
@@ -192,6 +222,8 @@
   lon: 103.8670
   built: 1150
   size: 190
+  whs: 668
+  inscribed: 1992
 
 - id: bayon
   name: ปราสาทบายน
@@ -202,6 +234,8 @@
   lon: 103.8586
   built: 1190
   size: 140
+  whs: 668
+  inscribed: 1992
 
 - id: wat-mahathat-sukhothai
   wiki: "Wat Mahathat (Sukhothai)"
@@ -213,6 +247,8 @@
   lon: 99.7036
   built: 1292
   size: 100
+  whs: 574
+  inscribed: 1991
 
 - id: wat-ratchaburana
   wiki: "Wat Ratchaburana, Ayutthaya"
@@ -224,6 +260,8 @@
   lon: 100.5679
   built: 1424
   size: 60
+  whs: 576
+  inscribed: 1991
 
 - id: wat-phra-si-sanphet
   name: วัดพระศรีสรรเพชญ์
@@ -234,6 +272,8 @@
   lon: 100.5585
   built: 1492
   size: 60
+  whs: 576
+  inscribed: 1991
 
 - id: monks-mound
   name: เนินมังก์ส
@@ -244,6 +284,8 @@
   lon: -90.0620
   built: 950
   size: 290
+  whs: 198
+  inscribed: 1982
 
 - id: great-enclosure
   wiki: "Great Zimbabwe"
@@ -255,6 +297,8 @@
   lon: 30.9338
   built: 1300
   size: 100
+  whs: 364
+  inscribed: 1986
 
 - id: templo-mayor
   name: เทมโปลมายอร์
@@ -265,6 +309,8 @@
   lon: -99.1314
   built: 1325
   size: 80
+  whs: 412
+  inscribed: 1987
 
 - id: coricancha
   name: กอริกันชา (วิหารพระอาทิตย์)
@@ -275,59 +321,61 @@
   lon: -71.9750
   built: 1438
   size: 60
+  whs: 273
+  inscribed: 1983
 
 # ---- more ----
 
-- { id: knossos-palace, wiki: "Knossos", name: พระราชวังคนอสซอส, en: Palace of Knossos, shape: hall, city: knossos, lat: 35.2980, lon: 25.1631, built: -1900, gone: -1375, size: 150 }
-- { id: buyukkale, wiki: "Büyükkale", name: ป้อมบูยุกคาเล, en: Büyükkale citadel, shape: citadel, city: hattusa, lat: 40.0195, lon: 34.6200, built: -1600, gone: -1180, size: 120 }
-- { id: karnak, wiki: "Karnak", name: วิหารคาร์นัก, en: Karnak Temple, shape: hall, city: thebes, lat: 25.7188, lon: 32.6573, built: -1950, size: 250, desc: "กลุ่มวิหารที่ใหญ่ที่สุดของอียิปต์โบราณ สร้างต่อเติมกันมาเกือบ 2,000 ปี" }
-- { id: apadana, name: ท้องพระโรงอะพาดานา, en: Apadana, shape: hall, city: persepolis, lat: 29.9348, lon: 52.8906, built: -515, gone: -330, size: 110 }
+- { id: knossos-palace, wiki: "Knossos", name: พระราชวังคนอสซอส, en: Palace of Knossos, shape: hall, city: knossos, lat: 35.2980, lon: 25.1631, built: -1900, gone: -1375, size: 150, whs: 1733, inscribed: 2025 }
+- { id: buyukkale, wiki: "Büyükkale", name: ป้อมบูยุกคาเล, en: Büyükkale citadel, shape: citadel, city: hattusa, lat: 40.0195, lon: 34.6200, built: -1600, gone: -1180, size: 120, whs: 377, inscribed: 1986 }
+- { id: karnak, wiki: "Karnak", name: วิหารคาร์นัก, en: Karnak Temple, shape: hall, city: thebes, lat: 25.7188, lon: 32.6573, built: -1950, size: 250, desc: "กลุ่มวิหารที่ใหญ่ที่สุดของอียิปต์โบราณ สร้างต่อเติมกันมาเกือบ 2,000 ปี", whs: 87, inscribed: 1979 }
+- { id: apadana, name: ท้องพระโรงอะพาดานา, en: Apadana, shape: hall, city: persepolis, lat: 29.9348, lon: 52.8906, built: -515, gone: -330, size: 110, whs: 114, inscribed: 1979 }
 - { id: pharos, name: ประภาคารฟารอส, en: Lighthouse of Alexandria, shape: tower, city: alexandria, lat: 31.2140, lon: 29.8856, built: -280, gone: 1323, size: 30, desc: หนึ่งในเจ็ดสิ่งมหัศจรรย์ของโลกยุคโบราณ พังลงจากแผ่นดินไหว }
 - { id: library-alexandria, name: หอสมุดแห่งอะเล็กซานเดรีย, en: Library of Alexandria, shape: hall, city: alexandria, lat: 31.2105, lon: 29.9075, built: -285, gone: 270, size: 90, builtRange: [-295, -246], goneRange: [-48, 391], desc: หอสมุดใหญ่ที่สุดของโลกโบราณ อยู่ในย่านพระราชวังบรูคีออน, uncertain: ยังไม่พบซากอาคาร ตำแหน่งบนแผนที่เป็นการประมาณ และไม่รู้ว่าหอสมุดหายไปเมื่อไร อาจเสื่อมไปตั้งแต่หลังไฟไหม้สมัยซีซาร์จนถึงย่านบรูคีออนถูกทำลายราว ค.ศ. 270 }
 - { id: serapeum, name: วิหารเซราเปียม, en: Serapeum of Alexandria, shape: temple, city: alexandria, lat: 31.1825, lon: 29.8963, built: -240, gone: 391, size: 70, desc: วิหารเทพเซราพิสที่เก็บหนังสือสาขาของหอสมุด }
 - { id: bibliotheca-alexandrina, name: บิบลิโอเทกาอะเล็กซานดรินา, en: Bibliotheca Alexandrina, shape: ring, city: alexandria, lat: 31.2089, lon: 29.9092, built: 2002, size: 160 }
-- { id: todaiji, name: วัดโทไดจิ, en: Tōdai-ji, shape: hall, city: nara, lat: 34.6890, lon: 135.8398, built: 752, size: 90, desc: ประดิษฐานพระพุทธรูปไวโรจนะสำริดองค์ใหญ่ }
-- { id: bulguksa, name: วัดพุลกุกซา, en: Bulguksa, shape: pagoda, city: gyeongju, lat: 35.7900, lon: 129.3320, built: 774, size: 60 }
-- { id: tikal-temple-1, name: วิหารที่ 1 แห่งติกัล, en: Tikal Temple I, shape: step, city: tikal, lat: 17.2221, lon: -89.6237, built: 732, size: 50 }
-- { id: el-castillo, wiki: "El Castillo, Chichen Itza", name: พีระมิดเอลกัสตีโย, en: El Castillo, shape: step, city: chichen-itza, lat: 20.6829, lon: -88.5686, built: 900, size: 55 }
-- { id: tschudi, wiki: "Chan Chan", name: พระราชวังชูดี, en: Tschudi Complex, shape: citadel, city: chan-chan, lat: -8.1059, lon: -79.0746, built: 1300, size: 150 }
-- { id: aksum-obelisk, name: เสาโอเบลิสก์แห่งอักซุม, en: Obelisk of Aksum, shape: tower, city: aksum, lat: 14.1316, lon: 38.7193, built: 300, size: 25 }
-- { id: djinguereber, name: มัสยิดจิงกาเรเบอร์, en: Djinguereber Mosque, shape: citadel, city: timbuktu, lat: 16.7713, lon: -3.0084, built: 1327, size: 70 }
-- { id: kilwa-mosque, name: มัสยิดใหญ่แห่งกิลวา, en: Great Mosque of Kilwa, shape: dome, city: kilwa, lat: -8.9574, lon: 39.5085, built: 1100, size: 60 }
-- { id: mezquita, wiki: "Mosque–Cathedral of Córdoba", name: มัสยิดใหญ่กอร์โดบา, en: Mezquita of Córdoba, shape: hall, city: cordoba, lat: 37.8789, lon: -4.7794, built: 785, size: 180 }
-- { id: cairo-citadel, name: ป้อมปราการซาลาดิน, en: Citadel of Cairo, shape: citadel, city: cairo, lat: 30.0299, lon: 31.2611, built: 1176, size: 300 }
-- { id: notre-dame, name: มหาวิหารนอเทรอดาม, en: Notre-Dame de Paris, shape: cathedral, city: paris, lat: 48.8530, lon: 2.3499, built: 1260, size: 120 }
-- { id: st-marks, name: มหาวิหารซานมาร์โก, en: St Mark's Basilica, shape: dome, city: venice, lat: 45.4345, lon: 12.3397, built: 1094, size: 75 }
+- { id: todaiji, name: วัดโทไดจิ, en: Tōdai-ji, shape: hall, city: nara, lat: 34.6890, lon: 135.8398, built: 752, size: 90, desc: ประดิษฐานพระพุทธรูปไวโรจนะสำริดองค์ใหญ่, whs: 870, inscribed: 1998 }
+- { id: bulguksa, name: วัดพุลกุกซา, en: Bulguksa, shape: pagoda, city: gyeongju, lat: 35.7900, lon: 129.3320, built: 774, size: 60, whs: 736, inscribed: 1995 }
+- { id: tikal-temple-1, name: วิหารที่ 1 แห่งติกัล, en: Tikal Temple I, shape: step, city: tikal, lat: 17.2221, lon: -89.6237, built: 732, size: 50, whs: 64, inscribed: 1979 }
+- { id: el-castillo, wiki: "El Castillo, Chichen Itza", name: พีระมิดเอลกัสตีโย, en: El Castillo, shape: step, city: chichen-itza, lat: 20.6829, lon: -88.5686, built: 900, size: 55, whs: 483, inscribed: 1989 }
+- { id: tschudi, wiki: "Chan Chan", name: พระราชวังชูดี, en: Tschudi Complex, shape: citadel, city: chan-chan, lat: -8.1059, lon: -79.0746, built: 1300, size: 150, whs: 366, inscribed: 1986 }
+- { id: aksum-obelisk, name: เสาโอเบลิสก์แห่งอักซุม, en: Obelisk of Aksum, shape: tower, city: aksum, lat: 14.1316, lon: 38.7193, built: 300, size: 25, whs: 15, inscribed: 1980 }
+- { id: djinguereber, name: มัสยิดจิงกาเรเบอร์, en: Djinguereber Mosque, shape: citadel, city: timbuktu, lat: 16.7713, lon: -3.0084, built: 1327, size: 70, whs: 119, inscribed: 1988 }
+- { id: kilwa-mosque, name: มัสยิดใหญ่แห่งกิลวา, en: Great Mosque of Kilwa, shape: dome, city: kilwa, lat: -8.9574, lon: 39.5085, built: 1100, size: 60, whs: 144, inscribed: 1981 }
+- { id: mezquita, wiki: "Mosque–Cathedral of Córdoba", name: มัสยิดใหญ่กอร์โดบา, en: Mezquita of Córdoba, shape: hall, city: cordoba, lat: 37.8789, lon: -4.7794, built: 785, size: 180, whs: 313, inscribed: 1984 }
+- { id: cairo-citadel, name: ป้อมปราการซาลาดิน, en: Citadel of Cairo, shape: citadel, city: cairo, lat: 30.0299, lon: 31.2611, built: 1176, size: 300, whs: 89, inscribed: 1979 }
+- { id: notre-dame, name: มหาวิหารนอเทรอดาม, en: Notre-Dame de Paris, shape: cathedral, city: paris, lat: 48.8530, lon: 2.3499, built: 1260, size: 120, whs: 600, inscribed: 1991 }
+- { id: st-marks, name: มหาวิหารซานมาร์โก, en: St Mark's Basilica, shape: dome, city: venice, lat: 45.4345, lon: 12.3397, built: 1094, size: 75, whs: 394, inscribed: 1987 }
 - { id: bibi-khanym, name: มัสยิดบีบีฆานุม, en: Bibi-Khanym Mosque, shape: dome, city: samarkand, lat: 39.6608, lon: 66.9794, built: 1404, size: 100 }
-- { id: qutb-minar, name: กุตุบมีนาร์, en: Qutb Minar, shape: tower, city: delhi, lat: 28.5245, lon: 77.1855, built: 1220, size: 15, desc: หอคอยอิฐที่สูงที่สุดในโลก สูงราว 73 เมตร }
-- { id: virupaksha, name: วิหารวิรูปักษะ, en: Virupaksha Temple, shape: prang, city: vijayanagara, lat: 15.3350, lon: 76.4600, built: 1350, size: 90 }
-- { id: ruwanwelisaya, name: มหาสถูปรุวันเวลิสยะ, en: Ruwanwelisaya, shape: stupa, city: anuradhapura, lat: 8.3500, lon: 80.3964, built: -140, size: 90 }
-- { id: shwezigon, name: เจดีย์ชเวซีโกง, en: Shwezigon Pagoda, shape: stupa, city: bagan, lat: 21.1950, lon: 94.8945, built: 1102, size: 60 }
-- { id: borobudur, name: บุโรพุทโธ, en: Borobudur, shape: step, civ: mataram, lat: -7.6079, lon: 110.2038, built: 825, size: 120, desc: พุทธสถานขนาดใหญ่ที่สุดในโลก สร้างสมัยราชวงศ์ไศเลนทร์บนเกาะชวา }
+- { id: qutb-minar, name: กุตุบมีนาร์, en: Qutb Minar, shape: tower, city: delhi, lat: 28.5245, lon: 77.1855, built: 1220, size: 15, desc: หอคอยอิฐที่สูงที่สุดในโลก สูงราว 73 เมตร, whs: 233, inscribed: 1993 }
+- { id: virupaksha, name: วิหารวิรูปักษะ, en: Virupaksha Temple, shape: prang, city: vijayanagara, lat: 15.3350, lon: 76.4600, built: 1350, size: 90, whs: 241, inscribed: 1986 }
+- { id: ruwanwelisaya, name: มหาสถูปรุวันเวลิสยะ, en: Ruwanwelisaya, shape: stupa, city: anuradhapura, lat: 8.3500, lon: 80.3964, built: -140, size: 90, whs: 200, inscribed: 1982 }
+- { id: shwezigon, name: เจดีย์ชเวซีโกง, en: Shwezigon Pagoda, shape: stupa, city: bagan, lat: 21.1950, lon: 94.8945, built: 1102, size: 60, whs: 1588, inscribed: 2019 }
+- { id: borobudur, name: บุโรพุทโธ, en: Borobudur, shape: step, civ: mataram, lat: -7.6079, lon: 110.2038, built: 825, size: 120, desc: พุทธสถานขนาดใหญ่ที่สุดในโลก สร้างสมัยราชวงศ์ไศเลนทร์บนเกาะชวา, whs: 592, inscribed: 1991 }
 - { id: phra-pathom, name: พระปฐมเจดีย์ (องค์เดิม), en: Phra Pathom Chedi, shape: stupa, city: nakhon-pathom, lat: 13.8199, lon: 100.0601, built: 600, size: 60 }
 - { id: hariphunchai, name: พระธาตุหริภุญชัย, en: Wat Phra That Hariphunchai, shape: stupa, city: lamphun, lat: 18.5776, lon: 99.0087, built: 1100, size: 40 }
 - { id: chedi-luang, name: วัดเจดีย์หลวง, en: Wat Chedi Luang, shape: stupa, city: chiang-mai, lat: 18.7869, lon: 98.9867, built: 1475, size: 60 }
 
 # ---- modern ----
 
-- { id: forbidden-city, name: พระราชวังต้องห้าม, en: Forbidden City, shape: hall, city: beijing, lat: 39.9163, lon: 116.3972, built: 1420, size: 300 }
-- { id: tower-of-london, name: หอคอยแห่งลอนดอน, en: Tower of London, shape: citadel, city: london, lat: 51.5081, lon: -0.0759, built: 1078, size: 120 }
-- { id: big-ben, name: หอนาฬิกาบิกเบน, en: Elizabeth Tower, shape: tower, city: london, lat: 51.5007, lon: -0.1246, built: 1859, size: 20 }
+- { id: forbidden-city, name: พระราชวังต้องห้าม, en: Forbidden City, shape: hall, city: beijing, lat: 39.9163, lon: 116.3972, built: 1420, size: 300, whs: 439, inscribed: 1987 }
+- { id: tower-of-london, name: หอคอยแห่งลอนดอน, en: Tower of London, shape: citadel, city: london, lat: 51.5081, lon: -0.0759, built: 1078, size: 120, whs: 488, inscribed: 1988 }
+- { id: big-ben, name: หอนาฬิกาบิกเบน, en: Elizabeth Tower, shape: tower, city: london, lat: 51.5007, lon: -0.1246, built: 1859, size: 20, whs: 426, inscribed: 1987 }
 - { id: st-basils, name: มหาวิหารเซนต์บาซิล, en: "St Basil's Cathedral", shape: dome, city: moscow, lat: 55.7525, lon: 37.6231, built: 1561, size: 70 }
-- { id: st-peters, name: มหาวิหารนักบุญเปโตร, en: "St Peter's Basilica", shape: dome, city: rome, lat: 41.9022, lon: 12.4539, built: 1626, size: 210 }
-- { id: taj-mahal, name: ทัชมาฮาล, en: Taj Mahal, shape: dome, city: agra, lat: 27.1751, lon: 78.0421, built: 1648, size: 100, desc: สุสานที่จักรพรรดิชาห์ชะฮันสร้างให้พระมเหสีมุมตาซ มาฮาล }
+- { id: st-peters, name: มหาวิหารนักบุญเปโตร, en: "St Peter's Basilica", shape: dome, city: rome, lat: 41.9022, lon: 12.4539, built: 1626, size: 210, whs: 286, inscribed: 1984 }
+- { id: taj-mahal, name: ทัชมาฮาล, en: Taj Mahal, shape: dome, city: agra, lat: 27.1751, lon: 78.0421, built: 1648, size: 100, desc: สุสานที่จักรพรรดิชาห์ชะฮันสร้างให้พระมเหสีมุมตาซ มาฮาล, whs: 252, inscribed: 1983 }
 - { id: grand-palace, name: พระบรมมหาราชวัง, en: Grand Palace, shape: hall, city: bangkok, lat: 13.7500, lon: 100.4913, built: 1782, size: 200 }
 - { id: wat-arun, name: วัดอรุณราชวราราม, en: Wat Arun, shape: prang, city: bangkok, lat: 13.7437, lon: 100.4888, built: 1851, size: 80, desc: พระปรางค์องค์ใหญ่ริมแม่น้ำเจ้าพระยา ก่อเสร็จสมัยรัชกาลที่ 3 }
-- { id: eiffel, name: หอไอเฟล, en: Eiffel Tower, shape: tower, city: paris, lat: 48.8584, lon: 2.2945, built: 1889, size: 125 }
+- { id: eiffel, name: หอไอเฟล, en: Eiffel Tower, shape: tower, city: paris, lat: 48.8584, lon: 2.2945, built: 1889, size: 125, whs: 600, inscribed: 1991 }
 - { id: brandenburg, name: ประตูบรันเดินบวร์ค, en: Brandenburg Gate, shape: temple, city: berlin, lat: 52.5163, lon: 13.3777, built: 1791, size: 65 }
 - { id: empire-state, name: ตึกเอ็มไพร์สเตต, en: Empire State Building, shape: tower, city: new-york, lat: 40.7484, lon: -73.9857, built: 1931, size: 130 }
 - { id: tokyo-tower, name: โตเกียวทาวเวอร์, en: Tokyo Tower, shape: tower, city: tokyo, lat: 35.6586, lon: 139.7454, built: 1958, size: 90 }
-- { id: sydney-opera, name: โรงอุปรากรซิดนีย์, en: Sydney Opera House, shape: dome, city: sydney, lat: -33.8568, lon: 151.2153, built: 1973, size: 180 }
+- { id: sydney-opera, name: โรงอุปรากรซิดนีย์, en: Sydney Opera House, shape: dome, city: sydney, lat: -33.8568, lon: 151.2153, built: 1973, size: 180, whs: 166, inscribed: 2007 }
 - { id: oriental-pearl, name: หอไข่มุกตะวันออก, en: Oriental Pearl Tower, shape: tower, city: shanghai, lat: 31.2397, lon: 121.4998, built: 1994, size: 50 }
 - { id: burj-khalifa, name: บุรจญ์เคาะลีฟะฮ์, en: Burj Khalifa, shape: tower, city: dubai, lat: 25.1972, lon: 55.2744, built: 2010, size: 160, desc: อาคารที่สูงที่สุดในโลก สูง 828 เมตร }
 - { id: marina-bay, name: มารีนาเบย์แซนด์, en: Marina Bay Sands, shape: hall, city: singapore, lat: 1.2834, lon: 103.8607, built: 2010, size: 200 }
 
-- { id: gobekli-tepe, name: เกอเบกลีเตเป, en: Göbekli Tepe, shape: ring, civ: neolithic-near-east, lat: 37.2231, lon: 38.9225, built: -9500, gone: -8000, size: 30, desc: "วงเสาหินรูปตัว T สลักลายสัตว์ สร้างโดยคนที่ยังล่าสัตว์และเก็บของป่า ก่อนจะมีการเกษตร ถูกทิ้งและดินกลบไปตามเวลา" }
-- { id: tower-of-jericho, name: หอคอยเจริโค, en: Tower of Jericho, shape: tower, city: jericho, lat: 31.8714, lon: 35.4439, built: -8000, size: 9, desc: "หอคอยหินสูงราว 8.5 เมตร มีบันไดอยู่ข้างใน หนึ่งในสิ่งก่อสร้างหินที่เก่าที่สุดในโลก", uncertain: "ไม่รู้ว่าสร้างไว้ทำอะไร อาจใช้ป้องกันน้ำท่วม ใช้ในพิธีกรรม หรือเป็นสัญลักษณ์ของชุมชน" }
+- { id: gobekli-tepe, name: เกอเบกลีเตเป, en: Göbekli Tepe, shape: ring, civ: neolithic-near-east, lat: 37.2231, lon: 38.9225, built: -9500, gone: -8000, size: 30, desc: "วงเสาหินรูปตัว T สลักลายสัตว์ สร้างโดยคนที่ยังล่าสัตว์และเก็บของป่า ก่อนจะมีการเกษตร ถูกทิ้งและดินกลบไปตามเวลา", whs: 1572, inscribed: 2018 }
+- { id: tower-of-jericho, name: หอคอยเจริโค, en: Tower of Jericho, shape: tower, city: jericho, lat: 31.8714, lon: 35.4439, built: -8000, size: 9, desc: "หอคอยหินสูงราว 8.5 เมตร มีบันไดอยู่ข้างใน หนึ่งในสิ่งก่อสร้างหินที่เก่าที่สุดในโลก", uncertain: "ไม่รู้ว่าสร้างไว้ทำอะไร อาจใช้ป้องกันน้ำท่วม ใช้ในพิธีกรรม หรือเป็นสัญลักษณ์ของชุมชน", whs: 1687, inscribed: 2012 }
 - { id: barnenez, name: เนินหินบาร์เนอเนซ, en: Cairn of Barnenez, shape: mound, civ: megalithic-europe, lat: 48.6681, lon: -3.8569, built: -4800, size: 72, desc: "เนินหินยาว 72 เมตรในบริตตานี ข้างในมีห้องฝังศพ 11 ห้อง หนึ่งในสิ่งก่อสร้างที่เก่าที่สุดของยุโรป" }
-- { id: ggantija, name: วิหารจกันติยา, en: Ġgantija, shape: hall, civ: megalithic-europe, lat: 36.0472, lon: 14.2689, built: -3600, size: 40, desc: "วิหารหินใหญ่บนเกาะโกโซ มอลตา ชาวบ้านเล่ากันว่ายักษ์เป็นผู้สร้าง" }
+- { id: ggantija, name: วิหารจกันติยา, en: Ġgantija, shape: hall, civ: megalithic-europe, lat: 36.0472, lon: 14.2689, built: -3600, size: 40, desc: "วิหารหินใหญ่บนเกาะโกโซ มอลตา ชาวบ้านเล่ากันว่ายักษ์เป็นผู้สร้าง", whs: 132, inscribed: 1980 }

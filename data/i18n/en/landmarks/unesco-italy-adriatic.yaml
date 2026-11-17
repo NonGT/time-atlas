@@ -1,0 +1,173 @@
+# English for data/landmarks/unesco-italy-adriatic.yaml.
+
+santa-maria-delle-grazie:
+  desc: "Dominican convent in Milan whose refectory holds Leonardo da Vinci's \"The Last Supper\"."
+valcamonica-rock-drawings:
+  desc: "Over 140,000 figures carved into the rocks of an Alpine valley, made over some 8,000 years up to the Iron Age."
+  uncertain: "The earliest carvings can only be dated roughly to after the Ice Age."
+old-city-dubrovnik:
+  desc: "Port city of the Republic of Ragusa on the Adriatic, ringed by about 2 km of stone walls."
+stari-ras-sopocani:
+  desc: "The first capital of medieval Serbia, with Sopoćani Monastery and some of the finest frescoes of the period."
+diocletians-palace:
+  desc: "Palace Emperor Diocletian built for his retirement, later the heart of the city of Split."
+ohrid:
+  desc: "Lakeside town on Lake Ohrid, a centre of Slavic Christianity in the Middle Ages, with dozens of old churches and frescoes."
+kotor:
+  desc: "Walled port town on the Bay of Kotor, its walls climbing the mountain behind; most were built under Venetian rule."
+hal-saflieni-hypogeum:
+  desc: "Three-level underground cemetery cut into limestone, where some 7,000 Neolithic people were buried."
+  uncertain: "It was used and dug deeper over about 1,500 years."
+valletta:
+  desc: "Fortified city the Knights of St John built after the Great Siege of Malta in 1565, densely packed with Baroque buildings."
+medici-villas:
+  desc: "Fourteen villas and gardens of the Medici in Tuscany, models for the Renaissance country house; this point is the villa at Poggio a Caiano."
+old-city-bern:
+  desc: "Old town on a spur in a bend of the Aare, with a medieval plan and about 6 km of covered arcades."
+abbey-of-saint-gall:
+  desc: "Abbey founded in 719, its church and library rebuilt in Baroque style; the library holds thousands of medieval manuscripts."
+mustair-abbey:
+  desc: "Carolingian monastery in an Alpine valley with the largest surviving cycle of frescoes from around 800."
+studenica-monastery:
+  desc: "The largest and richest Serbian Orthodox monastery, founded by Stefan Nemanja, with 13th-century frescoes."
+piazza-dei-miracoli:
+  desc: "Square holding the cathedral, baptistery and Leaning Tower of Pisa, built when the Pisan Republic was at its height."
+castel-del-monte:
+  desc: "Octagonal castle Emperor Frederick II built on a hill in Apulia, mixing classical, Islamic and Gothic forms."
+san-gimignano:
+  desc: "Tuscan hill town that still has 14 of the stone tower houses its medieval families built."
+berat-gjirokaster:
+  desc: "Ottoman-era towns in Albania with many-windowed houses stepping down the hillsides, where several faiths lived side by side."
+butrint:
+  desc: "Ancient city lived in from Greek and Roman times through the Byzantine and Venetian eras, with a theatre and baptistery still standing."
+sassi-di-matera:
+  desc: "Districts of cave houses cut into a limestone ravine, lived in since the Palaeolithic, with over a hundred rock-cut churches."
+vicenza-palladio:
+  desc: "City where Andrea Palladio designed dozens of buildings; his work became a model for architecture in Britain and America."
+historic-centre-siena:
+  desc: "Medieval city-state in Tuscany with the shell-shaped Piazza del Campo and a striped black-and-white cathedral."
+visoki-decani:
+  desc: "Fourteenth-century Serbian Orthodox monastery, one of four medieval monuments in Kosovo on the List of World Heritage in Danger."
+historic-centre-naples:
+  desc: "City centre that still follows the street grid of Greek Neapolis, layered with churches and palaces from the Middle Ages to the Baroque."
+crespi-dadda:
+  desc: "Cotton-mill village the Crespi family built complete with workers' houses, school and church, a model company town."
+ferrara:
+  desc: "City of the Este family; its planned extension of 1492 is counted as Europe's first modern town plan."
+historic-centre-salzburg:
+  desc: "City of the prince-archbishops built in Italian Baroque style, Mozart's birthplace, under the Hohensalzburg fortress."
+semmering-railway:
+  desc: "Europe's first mountain railway, 41 km long, with multi-tiered viaducts and 14 tunnels."
+schonbrunn-palace:
+  desc: "Baroque summer palace of the Habsburgs with vast gardens and a zoo from 1752, the oldest still open."
+trulli-alberobello:
+  desc: "Over a thousand dry-stone houses with conical roofs, built without mortar, in Apulia."
+san-vitale-ravenna:
+  desc: "One of Ravenna's eight 5th–6th-century monuments, with mosaics of Emperor Justinian and Empress Theodora."
+pienza:
+  desc: "Town Pope Pius II rebuilt as an ideal Renaissance town between 1459 and 1462."
+verona:
+  desc: "City on the Adige with a Roman amphitheatre and medieval buildings from the Scaliger era."
+hallstatt:
+  desc: "Lakeside village below the Dachstein with salt mines worked for some 3,500 years; it gave its name to the Hallstatt culture."
+euphrasian-basilica:
+  desc: "Early Byzantine church complex in Poreč with well-preserved 6th-century mosaics."
+trogir:
+  desc: "Town on a small island that keeps its Greek and Roman street plan, with Romanesque and Gothic buildings and St Lawrence Cathedral."
+royal-palace-turin:
+  desc: "One of more than 20 palaces and residences of the House of Savoy in and around Turin, Baroque of the 17th–18th centuries."
+padua-botanical-garden:
+  desc: "The oldest university botanical garden still in its original place, founded in 1545 to grow medicinal plants."
+cinque-terre:
+  desc: "Fishing villages clinging to cliffs on the Ligurian coast, surrounded by stone-walled vineyard terraces."
+modena-cathedral:
+  desc: "Romanesque cathedral begun by the architect Lanfranco in 1099, with the Ghirlandina tower and Piazza Grande."
+urbino:
+  desc: "Hill town of Duke Federico da Montefeltro, a centre of Renaissance art and Raphael's birthplace."
+pompeii:
+  desc: "Roman town buried whole by the ash of Vesuvius in AD 79; its excavated ruins show everyday Roman life in detail."
+amalfi-coast:
+  desc: "Cliff coast of small towns and terraced lemon groves; Amalfi was a medieval maritime trading republic."
+valle-dei-templi:
+  desc: "Ruins of the Greek city of Akragas in Sicily, with Doric temples along a ridge; the Temple of Concordia is one of the best preserved anywhere."
+villa-romana-del-casale:
+  desc: "Fourth-century Roman country villa in Sicily with the largest and finest surviving floor mosaics, including the \"bikini girls\"."
+su-nuraxi:
+  desc: "Bronze Age nuraghe, a stone tower fortress of Sardinia, surrounded by a village of round stone huts."
+  uncertain: "The central tower can only be dated roughly to the 17th–13th centuries BC."
+paestum:
+  desc: "The Greek city of Poseidonia in the Cilento park, with three of the best-preserved Doric temples outside Greece."
+castles-of-bellinzona:
+  desc: "Three castles and walls the Duchy of Milan built to close the valley leading to the Alpine passes, now in Switzerland."
+hadrians-villa:
+  desc: "Emperor Hadrian's retreat at Tivoli, gathering Greek, Egyptian and Roman architecture in one place."
+stari-most:
+  desc: "Single-arch Ottoman stone bridge destroyed in the war in 1993 and rebuilt in 2004 as a symbol of reconciliation."
+sibenik-cathedral:
+  desc: "Cathedral built entirely of stone with no wood or brick, blending Gothic and Renaissance, with 71 carved stone faces around its walls."
+wachau:
+  desc: "Danube valley between Melk and Krems with terraced vineyards, abbeys and medieval castles."
+basilica-san-francesco-assisi:
+  desc: "Two-storey church holding the tomb of St Francis, painted by Giotto and Cimabue, a model for early Italian art."
+villa-deste:
+  desc: "Cardinal d'Este's villa at Tivoli, whose terraced garden with hundreds of fountains became a model for European gardens."
+val-dorcia:
+  desc: "Tuscan hill landscape laid out as farms by Sienese owners in the 14th–15th centuries, an image repeated in Renaissance painting."
+historic-centre-vienna:
+  desc: "Heart of the Habsburg capital with a Gothic cathedral, Baroque palaces and the 19th-century Ringstrasse, a city of classical music."
+sacro-monte-varallo:
+  desc: "One of nine sacred mountains in northern Italy, with chapels along the slope holding statues that tell the life of Christ."
+etruscan-necropolises:
+  desc: "Burial mounds and tombs fitted out like houses; at Tarquinia, wall paintings show Etruscan life."
+syracuse:
+  desc: "The most powerful Greek city in Sicily and Archimedes' home, with a rock-cut Greek theatre and the older rock tombs of Pantalica."
+palazzi-dei-rolli-genoa:
+  desc: "Streets of palaces Genoese nobles built in the 16th–17th centuries, which took turns hosting state guests under the \"Rolli\" register."
+stari-grad-plain:
+  desc: "Plain on the island of Hvar divided into plots with stone walls by Greek settlers in the 4th century BC, still farmed for grapes and olives."
+lavaux:
+  desc: "Vineyard terraces along about 30 km of Lake Geneva, begun by monks in the 11th century."
+san-marino:
+  desc: "Tiny state on the top of Mount Titano with three towers on the ridge, the oldest surviving republic in the world."
+gamzigrad:
+  desc: "Fortified palace Emperor Galerius built in his birthplace and named after his mother, with fine floor mosaics."
+sokolovic-bridge:
+  desc: "Stone bridge over the Drina designed by Sinan for Grand Vizier Sokolović, the setting of the Nobel-winning novel \"The Bridge on the Drina\"."
+rhaetian-railway:
+  desc: "Narrow-gauge railway across the Alps, opened 1904–1910, with tall viaducts like the Landwasser and spiral climbs."
+mantua-sabbioneta:
+  desc: "Two Gonzaga towns: Mantua remodelled an old city in Renaissance style, while Sabbioneta was built new as an ideal town."
+la-chaux-de-fonds:
+  desc: "Watchmaking towns laid out on a grid after fires, so homes and workshops got full light for fine work."
+idrija-mercury-mine:
+  desc: "The world's two largest mercury mines, in Slovenia and Spain, worked for centuries until they closed around 1995–2003."
+tempietto-longobardo:
+  desc: "Eighth-century chapel in Cividale del Friuli, one of seven sites that show Lombard power in Italy."
+alpine-pile-dwellings:
+  desc: "Remains of over 100 lakeside stilt villages in six countries from about 5000–500 BC; waterlogged wood and food preserve the details of daily life."
+piedmont-vineyards:
+  desc: "Vineyard hills in Piedmont, home of Barolo and Barbaresco, where vines have been grown for wine since Roman times."
+arab-norman-palermo:
+  desc: "Palaces, churches and cathedrals of the Norman Kingdom of Sicily blending Islamic, Byzantine and Western art, such as the Palatine Chapel."
+stecci-tombstones:
+  desc: "About 70,000 carved medieval tombstones across Bosnia, Croatia, Montenegro and Serbia; this point is the Radimlja necropolis."
+  uncertain: "Made from about the 12th to the 16th century, most in the 14th–15th."
+palmanova:
+  desc: "Venetian fortifications of the 16th–17th centuries in three countries, including Palmanova, a nine-pointed star fortress town."
+ivrea:
+  desc: "Town of the typewriter maker Olivetti, with modernist factories, offices and staff housing designed around the community."
+great-spa-towns:
+  desc: "Eleven mineral-water towns in seven countries that flourished from about 1700 to 1930; this point is Spa in Belgium, which gave the word \"spa\"."
+scrovegni-chapel:
+  desc: "Chapel Giotto painted throughout around 1305, one of eight buildings with Padua's 14th-century fresco cycles."
+plecnik-ljubljana:
+  desc: "Bridges, market, library and parks the architect Jože Plečnik designed between the world wars, reshaping Ljubljana as a capital built around people."
+porticoes-of-bologna:
+  desc: "About 62 km of covered arcades; a city law of 1288 required every new house to have a portico."
+appian-way:
+  desc: "Rome's first great road, begun in 312 BC and running about 540 km from Rome to Brindisi, called the \"queen of roads\"."
+domus-de-janas:
+  desc: "Over 3,500 small rock-cut tombs across Sardinia; the name means \"fairy houses\". This point is Anghelu Ruju."
+  uncertain: "They were cut over many periods, roughly 4000–2500 BC."
+condominio-theatres:
+  desc: "Ten horseshoe opera houses that townspeople built together and owned box by box; this point is the Teatro dell'Aquila in Fermo."

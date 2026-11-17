@@ -56,6 +56,7 @@ export const th = {
   maybeBuilt: (span: string) => `อาจสร้างในช่วง ${span}`,
   gone: (year: string) => `ถูกทำลาย/ทิ้งร้าง ${year}`,
   goneSpan: (span: string, year: string) => `ถูกทำลาย/ทิ้งร้าง ช่วง ${span} (บนแผนที่ใช้ ${year})`,
+  unesco: (year: number) => `มรดกโลก UNESCO · ขึ้นทะเบียนปี ${year}`,
   realSize: (m: string) => `ขนาดจริงราว ${m} เมตร (บนแผนที่ขยายให้ใหญ่ขึ้นเพื่อให้มองเห็น)`,
   goLook: 'ไปดู',
   googleImages: 'ค้นรูปใน Google ↗',

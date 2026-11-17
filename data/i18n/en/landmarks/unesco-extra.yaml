@@ -1,0 +1,171 @@
+# English for data/landmarks/unesco-extra.yaml.
+
+melka-kunture:
+  desc: "Sites along the Awash River in the Ethiopian highlands with stone tools and traces of early humans spanning almost two million years."
+  uncertain: "The oldest human traces here are about two million years old, far older than the map’s time range."
+djenne-old-town:
+  desc: "A trading town and centre of Islamic learning on the Niger, built of mud brick, with the largest mud-brick mosque in the world."
+old-city-jerusalem:
+  desc: "A city holy to Judaism, Christianity and Islam, enclosed by walls rebuilt by Sultan Suleiman in the 16th century."
+stone-town-zanzibar:
+  desc: "A Swahili port town on Zanzibar mixing Arab, Persian, Indian and European styles, once East Africa’s main slave market."
+florence-historic-centre:
+  desc: "Birthplace of the Renaissance under the Medici, with the cathedral whose dome by Brunelleschi was finished in 1436."
+citadelle-laferriere:
+  desc: "A mountaintop fortress built by Haitians after independence from France, the largest in the Americas, alongside Sans-Souci Palace."
+bamiyan-buddhas:
+  desc: "Two standing Buddhas, 55 and 38 metres tall, carved into a cliff on the Silk Road and blown up by the Taliban in 2001."
+minaret-of-jam:
+  desc: "A 65-metre brick minaret of the Ghurid dynasty in a remote valley, covered in brick patterns and Kufic script."
+palais-des-papes:
+  desc: "Residence of the popes during their 14th-century stay in Avignon, the largest Gothic palace in Europe."
+red-fort:
+  desc: "A red sandstone fort built by Shah Jahan as the Mughal palace, where India’s prime minister raises the flag every Independence Day."
+pattadakal:
+  desc: "Hindu temples of the Chalukya dynasty that combine the southern vimana and northern shikhara styles side by side."
+elephanta-caves:
+  desc: "Rock-cut cave temples to Shiva on an island in Mumbai harbour, with a six-metre three-headed bust of Shiva."
+  uncertain: "No inscription gives a date; scholars place them between the 5th and 7th centuries."
+chittorgarh:
+  desc: "The largest of the hill forts of Rajasthan and stronghold of the Rajputs of Mewar, with a 15th-century Tower of Victory."
+jeronimos-monastery:
+  desc: "A Manueline monastery paid for by the spice trade, together with the Tower of Belém a memorial of Portugal’s age of discovery."
+hatra:
+  desc: "A round fortified city of an Arab kingdom under Parthian rule that twice held off Roman armies, partly damaged by ISIS in 2015."
+cologne-cathedral:
+  desc: "A Gothic cathedral begun in 1248 and finished to the original plans in 1880, with twin spires 157 metres tall."
+matobo-hills:
+  desc: "Granite hills full of San rock paintings that are still a sacred place for local people today."
+  uncertain: "The paintings span many periods; the oldest may be more than ten thousand years old."
+aqueduct-of-segovia:
+  desc: "A Roman aqueduct of granite blocks laid without mortar, its two tiers of arches nearly 29 metres high crossing Segovia."
+sagrada-familia:
+  desc: "Gaudí’s masterpiece in Barcelona, begun in 1882 and still being built after his death, listed with Park Güell and Casa Milà."
+chaco-canyon:
+  desc: "A ceremonial and trade centre of the Ancestral Puebloans, with great houses of hundreds of rooms such as Pueblo Bonito."
+dalt-vila-ibiza:
+  desc: "A hilltop old town inside Renaissance walls, on an island where the Phoenicians settled and left a large cemetery."
+lake-district:
+  desc: "A landscape of lakes and hill farms that inspired Romantic poets such as Wordsworth and gave rise to the conservation movement."
+  uncertain: "The hill farms took shape from the Middle Ages; the year used is when the Romantic poets made it famous."
+chongoni-rock-art:
+  desc: "About 127 rock shelters in Malawi’s forested uplands with paintings by BaTwa hunter-gatherers and Chewa farmers, still used in rituals."
+  uncertain: "The earliest BaTwa paintings are undated; Chewa paintings continued into the 20th century."
+taos-pueblo:
+  desc: "A multi-storey adobe village of the Pueblo people, lived in continuously for about 600 years."
+  uncertain: "The main buildings went up sometime between about 1000 and 1450."
+lima-historic-centre:
+  desc: "Capital of the Viceroyalty of Peru, founded by Pizarro in 1535, with baroque churches such as the San Francisco monastery."
+saint-petersburg-centre:
+  desc: "The capital Peter the Great founded on the Neva delta in 1703, with the Winter Palace and European-style canals."
+caserta-palace:
+  desc: "Palace of the Bourbon kings of Naples, one of the largest in the world, with long gardens and Vanvitelli’s aqueduct."
+paquime:
+  desc: "An adobe town of the Mogollon culture in northern Mexico, a trade hub between Mesoamerica and the Pueblo world."
+  uncertain: "It flourished from about 1200 to 1450; no exact construction date is known."
+painted-churches-moldavia:
+  desc: "Orthodox churches painted all over their outside walls, such as Voroneț, called the Sistine Chapel of the East."
+prague-historic-centre:
+  desc: "The Bohemian capital that flowered under Emperor Charles IV, with Prague Castle, Charles Bridge and Old Town Square."
+camino-de-santiago:
+  desc: "The pilgrim routes to the tomb of St James in Spain, shown at the Romanesque bridge of Puente la Reina where the routes meet."
+essaouira-medina:
+  desc: "A fortified port laid out on European lines by a French engineer for the sultan of Morocco in the 18th century."
+kunta-kinteh-island:
+  desc: "Ruins of a fort in the Gambia River, built by the Courlanders and taken by the British as a base for the Atlantic slave trade."
+ferto-neusiedlersee:
+  desc: "A lake on the Austria–Hungary border with vineyards, old villages and the Esterházy palace."
+  uncertain: "The landscape grew over many centuries; the year used is the Baroque era when the villages and palace took their present form."
+aquileia:
+  desc: "A major Roman city on the Adriatic whose basilica keeps the largest 4th-century early Christian mosaic floor in Europe."
+vinales-valley:
+  desc: "A valley of dome-shaped limestone hills, tobacco fields and traditional villages in Cuba."
+holy-trinity-column-olomouc:
+  desc: "A 35-metre Baroque column built by the townspeople in thanks for surviving the plague, covered in statues of saints."
+graz-historic-centre:
+  desc: "The capital of Styria with unbroken red roofs from the Middle Ages to the Baroque, and Eggenberg Palace."
+saint-louis-senegal:
+  desc: "A French colonial town on an island at the mouth of the Senegal River, once the capital of French West Africa."
+valparaiso:
+  desc: "A port on steep hills with funiculars and colourful houses, a key Pacific port before the Panama Canal."
+ephesus:
+  desc: "A great Greco-Roman port in Anatolia with the Library of Celsus and the remains of the Temple of Artemis, a Wonder of the World."
+val-di-noto:
+  desc: "Sicilian towns such as Noto rebuilt entirely in Baroque style after the great earthquake of 1693."
+mazagan:
+  desc: "A Portuguese fortified town on the Moroccan coast, known for its Gothic underground cistern."
+calakmul:
+  desc: "Capital of the Maya Snake dynasty and rival of Tikal, with one of the largest Maya pyramids deep in the rainforest."
+trebic-basilica:
+  desc: "A Romanesque-Gothic Benedictine church, listed with one of the best-preserved Jewish quarters outside Israel."
+rio-de-janeiro-landscapes:
+  desc: "A city between mountains and sea, with Christ the Redeemer on Corcovado, Sugarloaf Mountain and the Tijuca Forest."
+avdat:
+  desc: "A Nabataean town in the Negev desert, a stop on the incense trade route from Arabia to the Mediterranean."
+coffee-landscape-colombia:
+  desc: "Coffee farms on Andean hillsides and the small towns of coffee pioneers, such as Salento."
+lope-okanda:
+  desc: "Rainforest and savanna in Gabon with traces of Neolithic and Iron Age settlement and over 1,800 rock carvings."
+  uncertain: "The rock carvings are hard to date; they fall somewhere between the Neolithic and the Iron Age."
+dresden-elbe-valley:
+  desc: "A Baroque city on the Elbe, removed from the World Heritage List in 2009 after the Waldschlösschen Bridge was built across the valley."
+kondoa-rock-art:
+  desc: "Over 150 rock shelters on the Rift Valley escarpment in Tanzania painted with people, animals and hunts, still used in rituals."
+  uncertain: "The paintings come from many periods and their age is debated, from a few centuries to several thousand years."
+harar-jugol:
+  desc: "A walled Islamic town in eastern Ethiopia with over 100 mosques and shrines in its winding lanes."
+bahai-shrine-haifa:
+  desc: "The Shrine of the Báb and its terraced gardens on Mount Carmel, centre of the Bahá’í faith, with the Shrine of Bahá’u’lláh at Acre."
+loropeni-ruins:
+  desc: "High stone walls enclosing a site in Burkina Faso, linked to the trans-Saharan gold trade that peaked in the 14th to 17th centuries."
+  uncertain: "Dating suggests the walls may go back to the 11th century, but this is not certain."
+mijikenda-kaya-forests:
+  desc: "Sacred forests on the Kenyan coast that were once fortified Mijikenda villages and are now places of ancestral ritual."
+leon-cathedral-nicaragua:
+  desc: "The largest cathedral in Central America, built between 1747 and 1814 in a style moving from Baroque to Neoclassical."
+sao-francisco-square:
+  desc: "A square in São Cristóvão laid out when Spain and Portugal shared one crown, framed by a Franciscan convent and churches."
+hiraizumi:
+  desc: "Seat of the Northern Fujiwara, with temples and gardens recreating the Buddhist Pure Land, such as Chūson-ji’s Golden Hall."
+kaesong-monuments:
+  desc: "Capital of the Goryeo dynasty for almost 500 years, with the Manwoldae palace site, a Confucian academy and royal tombs."
+fort-jesus:
+  desc: "A fort the Portuguese built to control the port of Mombasa, taken by Oman in 1698, an example of Italian-style fortification in Africa."
+paraty:
+  desc: "A Portuguese colonial port that shipped gold from Minas Gerais, surrounded by Atlantic Forest and the islands of Ilha Grande."
+villa-savoye:
+  desc: "Le Corbusier’s model house showing his five points of modern architecture, one of 17 works in 7 countries."
+konso-landscape:
+  desc: "Stone terraces on dry hills and walled towns of the Konso people, with carved wooden ancestor figures, kept up for over 21 generations."
+blue-john-crow-mountains:
+  desc: "Forested mountains in Jamaica where escaped Maroons hid and built communities such as Nanny Town."
+bahrain-pearling-trail:
+  desc: "Merchants’ houses, shops and oyster beds in Muharraq, the remains of the Persian Gulf’s pearl-diving economy."
+pimachiowin-aki:
+  desc: "Boreal forest in Canada where the Anishinaabe have hunted, fished and held ceremonies for thousands of years."
+  uncertain: "The Anishinaabe and their ancestors have used this land for about 7,000 years; there is no single structure to date."
+meymand:
+  desc: "An Iranian village of houses dug into soft rock, whose people still move with their herds through the seasons."
+  uncertain: "The age of the cave houses is unclear, usually put at about 2,000 to 3,000 years."
+naumburg-cathedral:
+  desc: "A Romanesque-Gothic cathedral whose west choir holds lifelike statues of its founders, such as Uta, masterpieces of medieval art."
+fallingwater:
+  desc: "The house Frank Lloyd Wright built over a waterfall, one of eight of his buildings on the World Heritage List."
+tehuacan-cuicatlan:
+  desc: "A dry valley with early evidence of maize farming and ancient irrigation works such as the Purrón Dam."
+  uncertain: "Evidence of early farming here is several thousand years old; the year used is an estimate."
+rosia-montana:
+  desc: "Roman gold mines in the Carpathians with kilometres of hand-cut galleries and wax writing tablets."
+quanzhou:
+  desc: "China’s greatest seaport under the Song and Yuan, with temples, mosques and the twin stone pagodas of Kaiyuan Temple."
+douaumont-ossuary:
+  desc: "Over 130 war cemeteries and memorials in Belgium and France, such as the Douaumont Ossuary at Verdun."
+prosecco-hills:
+  desc: "Steep hills in northern Italy with vines on narrow terraces, home of Prosecco wine."
+  uncertain: "The hillside vineyards developed from the 17th century on; the year used is an estimate."
+danube-limes-carnuntum:
+  desc: "A line of Roman forts and camps along the Danube in Germany, Austria and Slovakia, such as Carnuntum."
+yogyakarta-axis:
+  desc: "A north–south axis linking Mount Merapi, the kraton palace and the sea, laid out by the first sultan of Yogyakarta."
+gdynia-modernist-centre:
+  desc: "The centre of the port Poland built between the world wars, one of the largest unified ensembles of modernist architecture in Europe."

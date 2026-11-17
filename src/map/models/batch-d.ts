@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { doubleSided, gable, merge, type Builder, type Kit } from './kit'
+import { doubleSided, gable, merge, staged, type Builder, type Kit } from './kit'
 
 type G = THREE.BufferGeometry
 const PI = Math.PI
@@ -142,8 +142,10 @@ function yinxuPalace(k: Kit) {
   merge(k, posts, k.dark)
 }
 
-function wildGoosePagoda(k: Kit) {
+const wildGoosePagoda = staged([704, 1556], (k, year) => {
   // 64 m of brick in seven storeys on a 4 m terrace, each face with an arched opening and corbelled eaves
+  // 652: Xuanzang's five storeys; 704: rebuilt with ten under Wu Zetian; 1556: the Shaanxi earthquake took three off
+  const n = year >= 1556 ? 7 : year >= 704 ? 10 : 5
   const rm = k.dark, arches: G[] = [], corbels: G[] = []
   k.box(0.96, 0.09, 0.96, 0)
   merge(k, flight(0.62, 0.48, 0, 0.09, 0, 0.16, 6, 'z'))
@@ -153,7 +155,7 @@ function wildGoosePagoda(k: Kit) {
     return s
   }
   let y = 0.09
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < n; i++) {
     const w = 0.56 - i * 0.03, h = i === 0 ? 0.3 : 0.21 - i * 0.008, wall = h - 0.05
     k.add(frustum(w, w, w * 0.96, w * 0.96, wall), y)
     const dw = i === 0 ? 0.11 : 0.075, dh = i === 0 ? 0.17 : 0.1
@@ -171,17 +173,54 @@ function wildGoosePagoda(k: Kit) {
   }
   merge(k, corbels)
   merge(k, arches, rm)
-  const top = 0.56 - 7 * 0.03
+  const top = 0.56 - n * 0.03
   k.add(roof(top + 0.02, top + 0.02, 0.08, { curve: 1 }), y - 0.004, 0, 0, doubleSided(rm))
   k.add(cyl(0.022, 0.022, 0.02, 8), y + 0.07)
   k.add(cyl(0.012, 0.004, 0.09, 8), y + 0.09)
+})
+
+/** Seven-storey pagoda of about 100 m, base 0.17 wide, for Todaiji's lost east and west pagodas. */
+function sevenStorey(k: Kit, rm: THREE.Material, x: number, z: number) {
+  const body: G[] = []
+  k.box(0.2, 0.02, 0.2, 0, x, z)
+  let y = 0.02
+  for (let i = 0; i < 7; i++) {
+    const w = 0.13 - i * 0.008, h = i === 0 ? 0.16 : 0.145
+    body.push(boxg(w, h, w, y, x, z))
+    k.add(roof(w + 0.07, w + 0.07, 0.045, { ridge: 0, lift: 0.012 }), y + h - 0.012, x, z, rm)
+    y += h
+  }
+  merge(k, body)
+  // sorin: the bronze finial of stacked rings
+  k.add(cyl(0.006, 0.004, 0.24, 6), y + 0.02, x, z, k.dark)
+  for (let i = 0; i < 9; i++) k.add(cyl(0.016, 0.016, 0.006, 8), y + 0.05 + i * 0.016, x, z, k.dark)
 }
 
-function todaiji(k: Kit) {
+const todaiji = staged([934, 1362, 1567, 1709], (k, year) => {
   // Daibutsuden: 57 x 50 m and 49 m high, a hipped roof with gilt shibi, a pent-roof skirt (mokoshi) and the cusped karahafu gable over the front window
-  const rm = doubleSided(k.dark), W = 0.633, D = 0.556, zc = -0.07
-  k.box(0.78, 0.025, 0.72, 0, 0, -0.04)
+  // 752: the first hall was 86 m wide, with two ~100 m pagodas to the south-east and south-west (drawn closer in)
+  // 934: west pagoda burned; 1362: east pagoda lost to lightning; 1567: hall burned in the Miyoshi-Matsunaga fighting, Buddha left in the open; 1709: present hall
+  const rm = doubleSided(k.dark), first = year < 1567, W = first ? 0.955 : 0.633, D = 0.556, zc = -0.07
+  k.box(W + 0.15, 0.025, 0.72, 0, 0, -0.04)
   merge(k, flight(0.4, 0.32, 0, 0.025, 0, 0.2, 3, 'z'))
+  // octagonal bronze lantern before the hall
+  k.add(cyl(0.02, 0.016, 0.02, 8), 0.025, 0, 0.27)
+  k.add(cyl(0.005, 0.005, 0.03, 6), 0.045, 0, 0.27)
+  k.add(cyl(0.014, 0.014, 0.025, 8), 0.075, 0, 0.27, k.dark)
+  k.add(new THREE.ConeGeometry(0.024, 0.02, 8), 0.11, 0, 0.27, k.dark)
+  if (year < 934) sevenStorey(k, rm, -0.7, 0.3)
+  if (year < 1362) sevenStorey(k, rm, 0.7, 0.3)
+  if (year >= 1567 && year < 1709) {
+    // stone podium, a few charred column bases and the seated Vairocana on its lotus
+    k.box(0.955, 0.02, D, 0.025, 0, zc)
+    const bases: G[] = []
+    for (let i = 0; i < 11; i++) for (const s of [-1, 1]) bases.push(cyl(0.012, 0.012, 0.012, 6, 0.045, -0.44 + i * 0.088, zc + s * 0.24))
+    merge(k, bases, k.dark)
+    k.add(cyl(0.1, 0.085, 0.05, 12), 0.045, 0, zc, k.dark)
+    k.add(new THREE.SphereGeometry(0.075, 10, 8, 0, PI * 2, 0, PI / 2).scale(1, 1.6, 0.8), 0.095, 0, zc, k.dark)
+    k.add(new THREE.SphereGeometry(0.032, 10, 8), 0.24, 0, zc, k.dark)
+    return
+  }
   k.box(W, 0.17, D, 0.025, 0, zc)
   k.box(0.16, 0.12, 0.01, 0.025, 0, zc + D / 2, k.dark)
   const ov = 0.04, y1 = 0.195
@@ -192,27 +231,27 @@ function todaiji(k: Kit) {
   ]), y1 - 0.01, 0, zc, rm)
   const uw = W - 0.08, ud = D - 0.08, y2 = y1 + 0.24
   k.box(uw, 0.25, ud, y1, 0, zc)
-  // karahafu: an ogee-curved gable breaking the mokoshi at the centre of the front
-  const kh = new THREE.Shape()
-  kh.moveTo(-0.12, 0); kh.bezierCurveTo(-0.06, 0, -0.06, 0.07, 0, 0.075); kh.bezierCurveTo(0.06, 0.07, 0.06, 0, 0.12, 0)
-  kh.lineTo(0.12, -0.012); kh.bezierCurveTo(0.05, -0.012, 0.05, 0.058, 0, 0.062); kh.bezierCurveTo(-0.05, 0.058, -0.05, -0.012, -0.12, -0.012)
-  kh.closePath()
-  const kg = new THREE.ExtrudeGeometry(kh, { depth: 0.1, bevelEnabled: false, curveSegments: 8 })
-  kg.translate(0, 0, -0.1 + 0.03)
-  k.add(kg, y1 + 0.03, 0, zc + D / 2, k.dark)
-  k.box(0.14, 0.045, 0.012, y1 + 0.02, 0, zc + ud / 2 + 0.002, k.dark)
-  k.add(roof(uw + 0.1, ud + 0.1, 0.29, { ridge: 0.42, lift: 0.025 }), y2 - 0.005, 0, zc, rm)
-  const rx = (0.42 * (uw + 0.1)) / 2
+  if (!first) {
+    // karahafu: an ogee-curved gable breaking the mokoshi at the centre of the front
+    const kh = new THREE.Shape()
+    kh.moveTo(-0.12, 0); kh.bezierCurveTo(-0.06, 0, -0.06, 0.07, 0, 0.075); kh.bezierCurveTo(0.06, 0.07, 0.06, 0, 0.12, 0)
+    kh.lineTo(0.12, -0.012); kh.bezierCurveTo(0.05, -0.012, 0.05, 0.058, 0, 0.062); kh.bezierCurveTo(-0.05, 0.058, -0.05, -0.012, -0.12, -0.012)
+    kh.closePath()
+    const kg = new THREE.ExtrudeGeometry(kh, { depth: 0.1, bevelEnabled: false, curveSegments: 8 })
+    kg.translate(0, 0, -0.1 + 0.03)
+    k.add(kg, y1 + 0.03, 0, zc + D / 2, k.dark)
+    k.box(0.14, 0.045, 0.012, y1 + 0.02, 0, zc + ud / 2 + 0.002, k.dark)
+  }
+  const ridge = first ? 0.6 : 0.42
+  k.add(roof(uw + 0.1, ud + 0.1, 0.29, { ridge, lift: 0.025 }), y2 - 0.005, 0, zc, rm)
+  const rx = (ridge * (uw + 0.1)) / 2
   for (const s of [-1, 1]) k.add(frustum(0.02, 0.012, 0.035, 0.012, 0.045), y2 + 0.28, s * rx, zc)
-  // octagonal bronze lantern before the hall
-  k.add(cyl(0.02, 0.016, 0.02, 8), 0.025, 0, 0.27)
-  k.add(cyl(0.005, 0.005, 0.03, 6), 0.045, 0, 0.27)
-  k.add(cyl(0.014, 0.014, 0.025, 8), 0.075, 0, 0.27, k.dark)
-  k.add(new THREE.ConeGeometry(0.024, 0.02, 8), 0.11, 0, 0.27, k.dark)
-}
+})
 
-function bulguksa(k: Kit) {
+const bulguksa = staged([1593, 1604, 1969], (k, year) => {
   // stone terrace with the Cheongun-gyo and Baegun-gyo stairs up to Jahamun gate; galleries enclose Daeungjeon, with Seokgatap (west) and Dabotap (east) in its court
+  // 1593: burned in the Imjin war, leaving the stonework; 1604: rebuilding of the halls begins; 1969: galleries restored
+  const halls = year < 1593 || year >= 1604, galleries = year < 1593 || year >= 1969
   const rm = doubleSided(k.dark), T = 0.07
   k.box(0.94, T, 0.72, 0, 0, -0.13)
   k.box(0.96, 0.01, 0.74, T * 0.45, 0, -0.13, k.dark)
@@ -228,11 +267,23 @@ function bulguksa(k: Kit) {
     r.translate(cx, T + 0.035, cz)
     roofs.push(r)
   }
-  gallery(-0.33, -0.44, -0.33, 0.19); gallery(0.33, -0.44, 0.33, 0.19); gallery(-0.33, -0.44, 0.33, -0.44)
-  gallery(-0.33, 0.19, -0.08, 0.19); gallery(0.08, 0.19, 0.33, 0.19)
-  merge(k, body); merge(k, roofs, rm)
-  hall(k, rm, { z: 0.19, y: T, w: 0.15, d: 0.07, h: 0.05, roofH: 0.05, gable: 0.5 })
-  hall(k, rm, { z: -0.27, y: T, w: 0.3, d: 0.17, h: 0.09, roofH: 0.1, gable: 0.5 })
+  if (galleries) {
+    gallery(-0.33, -0.44, -0.33, 0.19); gallery(0.33, -0.44, 0.33, 0.19); gallery(-0.33, -0.44, 0.33, -0.44)
+    gallery(-0.33, 0.19, -0.08, 0.19); gallery(0.08, 0.19, 0.33, 0.19)
+    merge(k, body); merge(k, roofs, rm)
+  }
+  if (halls) {
+    hall(k, rm, { z: 0.19, y: T, w: 0.15, d: 0.07, h: 0.05, roofH: 0.05, gable: 0.5 })
+    hall(k, rm, { z: -0.27, y: T, w: 0.3, d: 0.17, h: 0.09, roofH: 0.1, gable: 0.5 })
+  } else {
+    // hall plinths with their stone column bases
+    const bases: G[] = []
+    for (const [z, w, d] of [[0.19, 0.15, 0.07], [-0.27, 0.3, 0.17]]) {
+      k.box(w + 0.02, 0.012, d + 0.02, T, 0, z)
+      for (let i = 0; i < 6; i++) for (const s of [-1, 1]) bases.push(boxg(0.012, 0.008, 0.012, T + 0.012, -w / 2 + (i * w) / 5, z + (s * d) / 2))
+    }
+    merge(k, bases, k.dark)
+  }
   // Seokgatap: plain three-storey stone pagoda on a two-tier base
   const sx = -0.13, sz = -0.02
   k.box(0.08, 0.02, 0.08, T, sx, sz); k.box(0.06, 0.03, 0.06, T + 0.02, sx, sz)
@@ -258,7 +309,7 @@ function bulguksa(k: Kit) {
   k.add(cyl(0.016, 0.016, 0.014, 8), y, dx, sz, k.dark); y += 0.014
   k.add(new THREE.ConeGeometry(0.034, 0.018, 8), y + 0.009, dx, sz); y += 0.018
   k.add(cyl(0.004, 0.003, 0.035, 6), y, dx, sz)
-}
+})
 
 function forbiddenCity(k: Kit) {
   // the outer court: Hall of Supreme Harmony (64 x 37 m, double hipped roof) with the Central and Preserving Harmony halls behind it on the three-tier marble terrace, a courtyard closed by galleries and the Gate of Supreme Harmony
@@ -389,7 +440,7 @@ function burjKhalifa(k: Kit) {
   k.add(cyl(0.02, 0.004, 0.18, 6), 3.85)
 }
 
-function empireState(k: Kit) {
+const empireState = staged([1950], (k, year) => {
   // 381 m to the roof, 443 m with the mast: a five-storey base filling the block, then setbacks to a notched shaft and the mooring mast
   const s = 1 / 130, strips: G[] = []
   const tier = (w: number, d: number, y0: number, y1: number) => k.box(w, y1 - y0, d, y0)
@@ -413,8 +464,10 @@ function empireState(k: Kit) {
   k.add(cyl(0.055, 0.05, 0.12, 8), 2.74)
   k.add(cyl(0.045, 0.035, 0.18, 8), 2.86)
   k.add(cyl(0.035, 0.012, 0.06, 8), 3.04)
-  k.add(cyl(0.007, 0.003, 443 * s - 3.1, 6), 3.1)
-}
+  // 1950: TV antenna on top of the mooring mast
+  if (year >= 1950) k.add(cyl(0.007, 0.003, 443 * s - 3.1, 6), 3.1)
+  else k.add(cyl(0.006, 0.002, 0.04, 6), 3.1)
+})
 
 /** Patch of a sphere (radius k times the triangle's circumradius) spanning the triangle A, L, R, bulging away from its centre (upwards). */
 function shell(A: THREE.Vector3, L: THREE.Vector3, R: THREE.Vector3, k = 1.25, n = 10) {
@@ -504,45 +557,83 @@ function pyramidOfTheSun(k: Kit) {
   k.add(frustum(0.14, 0.14, 0.09, 0.09, 0.04), top + 0.05, cx + 0.02, 0, k.dark)
 }
 
-function temploMayor(k: Kit) {
-  // Tenochtitlan's great pyramid, about 45 m: twin shrines on top, Tlaloc to the north and Huitzilopochtli to the south, reached by a double stair on the west face
-  const cx = 0.06
-  const top = terraces(k, [[0.78, 0.98, 0.7, 0.9, 0.17], [0.64, 0.84, 0.56, 0.76, 0.17], [0.5, 0.7, 0.42, 0.62, 0.16], [0.36, 0.56, 0.3, 0.5, 0.14]], cx)
-  const x0 = cx - 0.53, x1 = cx - 0.15, st: G[] = [], bal: G[] = []
-  for (const z of [-0.13, 0.13]) st.push(...flight(x0, x1, 0, top, z, 0.2, 22))
-  merge(k, st)
-  for (const z of [-0.235, -0.0, 0.235]) bal.push(ramp(x0 - 0.01, 0, x1, top, z, 0.03, 0.02))
-  for (const z of [-0.235, -0.02, 0.02, 0.235]) bal.push(boxg(0.04, 0.03, 0.03, 0, x0 - 0.03, z))
-  merge(k, bal, k.dark)
-  const sx = cx + 0.02
-  for (const z of [-0.13, 0.13]) {
-    k.box(0.2, 0.12, 0.2, top, sx, z)
-    k.box(0.004, 0.08, 0.06, top, sx - 0.1, z, k.dark)
-  }
-  // Tlaloc's shrine has a flat banded roof, Huitzilopochtli's a taller crest
-  for (let i = 0; i < 3; i++) k.box(0.21, 0.014, 0.21, top + 0.12 + i * 0.022, sx, -0.13, i % 2 ? k.mat : k.dark)
-  k.box(0.18, 0.012, 0.18, top + 0.186, sx, -0.13)
-  k.add(frustum(0.21, 0.21, 0.12, 0.12, 0.11), top + 0.12, sx, 0.13, k.dark)
-  k.box(0.12, 0.02, 0.12, top + 0.23, sx, 0.13)
+/** Runs build, then scales whatever it added to k.g by f about the origin. */
+function scaled(k: Kit, f: number, build: () => void) {
+  const n = k.g.children.length
+  build()
+  const grp = new THREE.Group()
+  grp.scale.setScalar(f)
+  for (const c of k.g.children.slice(n)) grp.add(c)
+  k.g.add(grp)
 }
 
-function coricancha(k: Kit) {
+const temploMayor = staged([1428, 1487, 1521, 1978], (k, year) => {
+  // Tenochtitlan's great pyramid, about 45 m: twin shrines on top, Tlaloc to the north and Huitzilopochtli to the south, reached by a double stair on the west face
+  // 1325: the first small temple; 1428: enlarged under Itzcoatl; 1487: Ahuitzotl's rebuilding; 1521: razed by the Spanish and built over; 1978: excavated
+  const cx = 0.06
+  if (year >= 1521) {
+    if (year < 1978) { k.add(frustum(0.8, 1.0, 0.76, 0.96, 0.025), 0, cx); return }
+    // excavation: footings of the last stage round the stepped lower bodies of the earlier ones
+    terraces(k, [[0.78, 0.98, 0.76, 0.96, 0.035]], cx)
+    terraces(k, [[0.58, 0.76, 0.52, 0.7, 0.07], [0.48, 0.66, 0.44, 0.6, 0.06]], cx + 0.02)
+    const top = terraces(k, [[0.34, 0.46, 0.3, 0.42, 0.08], [0.27, 0.38, 0.24, 0.34, 0.06]], cx + 0.04)
+    const st: G[] = []
+    for (const z of [-0.08, 0.08]) st.push(...flight(cx + 0.04 - 0.21, cx + 0.04 - 0.12, 0, top, z, 0.11, 8))
+    merge(k, st)
+    for (const z of [-0.08, 0.08]) k.box(0.1, 0.025, 0.1, top, cx + 0.06, z, k.dark)
+    return
+  }
+  scaled(k, year >= 1487 ? 1 : year >= 1428 ? 0.66 : 0.32, () => {
+    const top = terraces(k, [[0.78, 0.98, 0.7, 0.9, 0.17], [0.64, 0.84, 0.56, 0.76, 0.17], [0.5, 0.7, 0.42, 0.62, 0.16], [0.36, 0.56, 0.3, 0.5, 0.14]], cx)
+    const x0 = cx - 0.53, x1 = cx - 0.15, st: G[] = [], bal: G[] = []
+    for (const z of [-0.13, 0.13]) st.push(...flight(x0, x1, 0, top, z, 0.2, 22))
+    merge(k, st)
+    for (const z of [-0.235, -0.0, 0.235]) bal.push(ramp(x0 - 0.01, 0, x1, top, z, 0.03, 0.02))
+    for (const z of [-0.235, -0.02, 0.02, 0.235]) bal.push(boxg(0.04, 0.03, 0.03, 0, x0 - 0.03, z))
+    merge(k, bal, k.dark)
+    const sx = cx + 0.02
+    for (const z of [-0.13, 0.13]) {
+      k.box(0.2, 0.12, 0.2, top, sx, z)
+      k.box(0.004, 0.08, 0.06, top, sx - 0.1, z, k.dark)
+    }
+    // Tlaloc's shrine has a flat banded roof, Huitzilopochtli's a taller crest
+    for (let i = 0; i < 3; i++) k.box(0.21, 0.014, 0.21, top + 0.12 + i * 0.022, sx, -0.13, i % 2 ? k.mat : k.dark)
+    k.box(0.18, 0.012, 0.18, top + 0.186, sx, -0.13)
+    k.add(frustum(0.21, 0.21, 0.12, 0.12, 0.11), top + 0.12, sx, 0.13, k.dark)
+    k.box(0.12, 0.02, 0.12, top + 0.23, sx, 0.13)
+  })
+})
+
+const coricancha = staged([1534], (k, year) => {
   // Inca temple of the sun in Cusco: fine ashlar chambers round a court and the curved wall at its east end, with the church of Santo Domingo built on top after 1534
   const rm = doubleSided(k.dark), T = 0.1
   k.box(0.66, T, 0.42, 0, -0.1, -0.07)
   const curve = new THREE.CylinderGeometry(0.2, 0.215, T, 20, 1, false, 0, PI)
   k.add(curve, T / 2, 0.23, -0.07)
-  // church: nave, apse over the curved wall, bell tower at the west front
   const nz = -0.1, ny = T
-  k.box(0.56, 0.16, 0.15, ny, -0.03, nz)
-  k.add(gable(0.58, 0.17, 0.07), ny + 0.16, -0.03, nz, rm)
-  k.add(new THREE.CylinderGeometry(0.075, 0.075, 0.16, 10, 1, false, 0, PI), ny + 0.08, 0.25, nz)
-  k.add(new THREE.ConeGeometry(0.085, 0.06, 10, 1, false, 0, PI), ny + 0.19, 0.25, nz, rm)
-  k.box(0.1, 0.27, 0.1, ny, -0.33, nz - 0.1)
-  k.box(0.08, 0.06, 0.104, ny + 0.27, -0.33, nz - 0.1, k.dark)
-  k.box(0.104, 0.06, 0.08, ny + 0.27, -0.33, nz - 0.1, k.dark)
-  k.box(0.1, 0.015, 0.1, ny + 0.33, -0.33, nz - 0.1)
-  k.add(new THREE.SphereGeometry(0.04, 10, 6, 0, PI * 2, 0, PI / 2), ny + 0.345, -0.33, nz - 0.1)
+  if (year >= 1534) {
+    // 1534: Dominicans raise the church and convent on the Inca walls: nave, apse over the curved wall, bell tower at the west front
+    k.box(0.56, 0.16, 0.15, ny, -0.03, nz)
+    k.add(gable(0.58, 0.17, 0.07), ny + 0.16, -0.03, nz, rm)
+    k.add(new THREE.CylinderGeometry(0.075, 0.075, 0.16, 10, 1, false, 0, PI), ny + 0.08, 0.25, nz)
+    k.add(new THREE.ConeGeometry(0.085, 0.06, 10, 1, false, 0, PI), ny + 0.19, 0.25, nz, rm)
+    k.box(0.1, 0.27, 0.1, ny, -0.33, nz - 0.1)
+    k.box(0.08, 0.06, 0.104, ny + 0.27, -0.33, nz - 0.1, k.dark)
+    k.box(0.104, 0.06, 0.08, ny + 0.27, -0.33, nz - 0.1, k.dark)
+    k.box(0.1, 0.015, 0.1, ny + 0.33, -0.33, nz - 0.1)
+    k.add(new THREE.SphereGeometry(0.04, 10, 6, 0, PI * 2, 0, PI / 2), ny + 0.345, -0.33, nz - 0.1)
+  } else {
+    // Inti's hall along the terrace, its thatch running into the curved wall's chamber, and smaller shrines to the west
+    k.box(0.4, 0.08, 0.13, ny, 0.0, nz)
+    k.add(gable(0.42, 0.17, 0.1), ny + 0.08, 0.0, nz, rm)
+    k.add(new THREE.CylinderGeometry(0.18, 0.18, 0.06, 16, 1, false, 0, PI), ny + 0.03, 0.23, -0.07)
+    k.add(new THREE.ConeGeometry(0.2, 0.1, 16, 1, false, 0, PI), ny + 0.11, 0.23, -0.07, rm)
+    for (const x of [-0.3, -0.38]) {
+      k.box(0.07, 0.07, 0.12, ny, x, nz)
+      const r = gable(0.12, 0.09, 0.06); r.rotateY(PI / 2)
+      k.add(r, ny + 0.07, x, nz, rm)
+    }
+  }
   // Inca chambers round the court south of the nave, trapezoidal doorways
   const ch: G[] = [], roofs: G[] = [], doors: G[] = []
   const door = new THREE.Shape()
@@ -564,7 +655,7 @@ function coricancha(k: Kit) {
   range(-0.36, 0.25, 0.28, true, PI / 2)
   range(0.16, 0.25, 0.28, true, -PI / 2)
   merge(k, ch); merge(k, roofs, rm); merge(k, doors, k.dark)
-}
+})
 
 function tikalTemple1(k: Kit) {
   // Temple of the Great Jaguar, 47 m: nine steep terraces, one stair up the west face to a three-room temple with a tall roof comb

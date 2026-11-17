@@ -1,0 +1,149 @@
+# English for data/landmarks/unesco-south-southeast-asia.yaml.
+
+kathmandu-valley:
+  desc: The Durbar Squares of Kathmandu, Patan and Bhaktapur with Hindu and Buddhist shrines, mostly built under the Malla kings.
+taxila:
+  desc: Ruined city of ancient Gandhara and a centre of learning and Buddhism, with cities layered from the Persian to the Kushan era.
+takht-i-bahi:
+  desc: A hilltop Buddhist monastery of Gandhara, begun around the 1st century AD and one of the most complete in Pakistan.
+makli-necropolis:
+  desc: One of the largest necropolises in the world, near Thatta, with carved stone tombs of the kings and saints of Sindh.
+lahore-fort:
+  desc: The fort and palace of the Mughal emperors in Lahore, paired with the Shalimar Gardens laid out by Shah Jahan in 1641.
+polonnaruwa:
+  desc: Sri Lanka's second royal capital after Anuradhapura, at its height under Parakramabahu I.
+sigiriya:
+  desc: A palace on top of a rock rising about 180 metres, built by King Kashyapa I, with paintings of celestial maidens on the cliff.
+humayuns-tomb:
+  desc: Tomb of the emperor Humayun, the first Mughal garden tomb in India and a model for the Taj Mahal.
+goa-churches:
+  desc: Churches of Old Goa, once Portugal's capital in Asia; the Basilica of Bom Jesus holds the body of St Francis Xavier.
+khajuraho:
+  desc: Hindu and Jain temples of the Chandela dynasty, known for their rich sculpture including erotic carvings.
+ajanta-caves:
+  desc: Thirty Buddhist cave temples cut into a horseshoe cliff, with the oldest and finest Buddhist wall paintings in India.
+ellora-caves:
+  desc: More than 30 Buddhist, Hindu and Jain caves; the Kailasa temple was carved whole out of a single rock.
+konark-sun-temple:
+  desc: A temple to the sun god Surya built as a giant chariot with 24 carved stone wheels drawn by 7 horses.
+mahabalipuram:
+  desc: The Shore Temple, rock-cut rathas and cliff reliefs of the Pallava dynasty, a model for South Indian architecture.
+chola-temples:
+  desc: The Brihadisvara temple at Thanjavur and two others built by Chola kings, still in worship today.
+agra-fort:
+  desc: Akbar's red sandstone fort and residence of the Mughal emperors; Shah Jahan was held here until his death.
+fatehpur-sikri:
+  desc: A capital Akbar built from scratch, used for about 14 years before it was abandoned.
+bagerhat:
+  desc: A city of mosques built by Khan Jahan Ali in Bengal; the Sixty Dome Mosque is the largest historic mosque in Bangladesh.
+somapura-mahavihara:
+  desc: One of the largest Buddhist monasteries south of the Himalayas, built under the Pala dynasty with 177 cells around a court.
+kandy:
+  desc: The last capital of the Sinhalese kings and home of the Temple of the Tooth, the centre of Buddhism in Sri Lanka.
+luang-prabang:
+  desc: The old royal capital of Lan Xang, where Lao temples stand among French colonial buildings; Wat Xieng Thong is its heart.
+vat-phou:
+  desc: A Khmer temple on a mountainside in Champasak, linked with an ancient city on the Mekong as a sacred landscape.
+vigan:
+  desc: The best preserved Spanish colonial town in Asia, with houses mixing Filipino, Chinese and European styles.
+sanchi:
+  desc: The Great Stupa begun by Ashoka, among the oldest stone structures in India, with carved gateways on four sides.
+dambulla:
+  desc: The largest Buddhist cave temple in Sri Lanka, with about 150 Buddha images and paintings covering the cave ceilings.
+rohtas-fort:
+  desc: A huge fort built by Sher Shah Suri against the Mughals, with over 4 km of walls and hardly altered since.
+sangiran:
+  desc: The richest site in the world for fossils of Java Man, Homo erectus, on the island of Java.
+  uncertain: The fossils are about 1.5 million to a few hundred thousand years old, far older than the map's timeline.
+prambanan:
+  desc: The largest Hindu temple in Indonesia, built for the Trimurti; the central tower for Shiva is 47 metres tall.
+lumbini:
+  desc: Birthplace of the Buddha, where Ashoka came and set up an inscribed stone pillar.
+baroque-churches-philippines:
+  desc: Four Spanish churches with thick buttressed walls against earthquakes; San Agustin in Manila is the oldest stone church in the country.
+hue-monuments:
+  desc: Capital of the Nguyen, Vietnam's last dynasty, with its palaces, citadel walls and royal tombs.
+cordillera-rice-terraces:
+  desc: Rice terraces of the Ifugao high in the mountains of Luzon, watered by a system fed from forested watersheds.
+  uncertain: They were long said to be about 2,000 years old, but newer dating suggests most were built around the 17th century.
+rani-ki-vav:
+  desc: A seven-level stepwell in Gujarat with hundreds of carved deities, built by Queen Udayamati in memory of King Bhima I.
+bhimbetka:
+  desc: Hundreds of rock shelters with prehistoric paintings, traces of the earliest people in India.
+  uncertain: The oldest paintings are about 10,000 years old; some put them as early as 30,000 years.
+sarnath:
+  desc: The Deer Park where the Buddha gave his first sermon; the Dhamek Stupa dates from the Gupta period.
+mountain-railways-india:
+  desc: Three narrow-gauge hill railways from British times, the first being the Darjeeling Himalayan Railway, still run by steam.
+chhatrapati-shivaji-terminus:
+  desc: A Victorian Gothic railway station mixed with Indian motifs, formerly Victoria Terminus and still Mumbai's main station.
+hoi-an:
+  desc: An old trading port on the Thu Bon river with its wooden houses and Japanese Bridge intact, an Asian port of the 15th to 19th centuries.
+my-son:
+  desc: Hindu sanctuary of the Champa kingdom, with brick towers built in a valley over some 900 years, badly damaged in the Vietnam War.
+niah-caves:
+  desc: A great cave in Sarawak on Borneo with some of the oldest traces of modern humans in Southeast Asia.
+  uncertain: People lived in the cave from about 50,000 years ago, earlier than the map's timeline.
+mahabodhi-temple:
+  desc: The temple beside the Bodhi tree where the Buddha attained enlightenment; the present one dates from around the Gupta period and is one of India's oldest brick temples.
+champaner-pavagadh:
+  desc: The abandoned capital of the Gujarat Sultanate, with a Jami Masjid blending Hindu and Islamic art and temples on Pavagadh hill.
+bali-subak:
+  desc: Rice terraces and a water-sharing system run through Balinese water temples, following the Tri Hita Karana philosophy.
+  uncertain: The subak system probably dates back to around the 9th century; the oldest inscription that mentions it is from about 1072.
+melaka-george-town:
+  desc: Two port towns on the Strait of Malacca, ruled in turn by Malays, Portuguese, Dutch and British, with shophouses and places of worship of many cultures.
+preah-vihear:
+  desc: A Khmer temple on a cliff of the Dangrek mountains; the International Court of Justice ruled in 1962 that it lies in Cambodia.
+thang-long-citadel:
+  desc: Seat of Vietnamese power in Hanoi from the Ly dynasty in 1010, with palace remains layered over 13 centuries.
+jantar-mantar-jaipur:
+  desc: Maharaja Jai Singh II's open-air observatory in Jaipur, with the largest stone sundial in the world.
+ho-citadel:
+  desc: A stone citadel built in a few months following feng shui, capital of the Ho dynasty, which held power for only 7 years.
+santiniketan:
+  desc: Rabindranath Tagore's university town of Visva-Bharati, where classes were held in the open and Indian and Asian art met.
+lenggong-valley:
+  desc: Stone tool sites and caves in Perak, where Perak Man, a skeleton about 10,000 years old, was found.
+  uncertain: Stone tools at Bukit Bunuh may be as old as 1.8 million years, but that date is still debated.
+trang-an:
+  desc: Limestone peaks and river caves in Ninh Binh, site of the Hoa Lu capital, with over 30,000 years of human traces.
+pyu-ancient-cities:
+  desc: Halin, Beikthano and Sri Ksetra, walled brick cities of the Pyu, where Buddhism in Myanmar began.
+mumbai-gothic-art-deco:
+  desc: Victorian Gothic and Art Deco buildings facing each other across the Oval Maidan, one of the largest Art Deco ensembles in the world.
+singapore-botanic-gardens:
+  desc: A British colonial botanic garden whose research spread rubber across the Malay peninsula.
+nalanda:
+  desc: One of the oldest Buddhist universities in the world, flourishing for about 800 years until it was sacked around 1200.
+khangchendzonga:
+  desc: Forests and glaciers around the world's third highest peak in Sikkim, sacred land of Buddhists and the Lepcha.
+sambor-prei-kuk:
+  desc: Ishanapura, capital of Chenla, with brick temples from before Angkor that set the pattern for later Khmer art.
+ahmedabad:
+  desc: A walled city built by Sultan Ahmad Shah, with carved stone mosques and wooden houses in its pol lanes, India's first World Heritage City.
+ramappa-temple:
+  desc: A Shiva temple of the Kakatiya dynasty, its tower built of light bricks that float, decorated with carvings of dancers.
+plain-of-jars:
+  desc: Thousands of stone jars on the Xieng Khouang plateau, linked to Iron Age funeral rites.
+  uncertain: It is not known for sure who made them or when; possibly between about 1000 BC and AD 500.
+jaipur:
+  desc: The Pink City, laid out on a grid by Maharaja Jai Singh II following Indian Vastu Shastra.
+ombilin-coal-mine:
+  desc: A Dutch colonial coal mine at Sawahlunto in Sumatra, with a railway carrying coal to the port of Padang, worked by convict labour.
+dholavira:
+  desc: An Indus Valley city on an island in the Rann of Kutch, known for its system of water reservoirs.
+koh-ker:
+  desc: The short-lived capital of Jayavarman IV, with Prasat Thom, a seven-tiered pyramid about 36 metres high.
+hoysala-temples:
+  desc: Star-shaped temples at Belur, Halebidu and Somanathapura, their soapstone walls carved in every inch.
+moidams:
+  desc: Burial mounds of the Ahom kings at Charaideo in Assam, used for royal burials for about 600 years.
+yen-tu:
+  desc: The sacred mountain where King Tran Nhan Tong became a monk and founded Truc Lam, Vietnam's own school of Zen.
+frim-forest-park:
+  desc: A tropical forest replanted on degraded land near Kuala Lumpur, a model for tropical forest restoration.
+maratha-forts:
+  desc: Twelve hill and sea forts of the Maratha Empire; Raigad is where Shivaji was crowned in 1674.
+cambodian-memorial-sites:
+  desc: The S-21 prison and the Choeung Ek killing field of the Khmer Rouge, where tens of thousands were tortured and killed, now museums.

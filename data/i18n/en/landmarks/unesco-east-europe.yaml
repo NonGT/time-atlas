@@ -1,0 +1,185 @@
+# English for data/landmarks/unesco-east-europe.yaml.
+
+krakow-old-town:
+  desc: "Poland's former royal capital, with one of Europe's largest medieval market squares and Wawel Castle."
+warsaw-old-town:
+  desc: "Old town almost entirely destroyed by the Nazis in 1944 and meticulously rebuilt after the war."
+auschwitz-birkenau:
+  desc: "Nazi German concentration and extermination camp where about 1.1 million people, most of them Jews, were murdered."
+wieliczka-salt-mine:
+  desc: "Royal salt mines worked for over 700 years, with chapels and statues carved out of rock salt."
+boyana-church:
+  desc: "Small church outside Sofia whose 1259 frescoes are a masterpiece of medieval Eastern European art."
+madara-rider:
+  desc: "Relief carved 23 m up a cliff, showing a horseman spearing a lion, made by the early Bulgars."
+  uncertain: "Usually dated to the early 8th century, but the date and who made it are still debated."
+kazanlak-tomb:
+  desc: "Beehive tomb of a Thracian ruler under an earth mound, with some of the best-preserved Hellenistic paintings."
+ivanovo-rock-churches:
+  desc: "Churches and monks' cells cut into a river cliff, with Bulgarian wall paintings of the 13th–14th centuries."
+paphos:
+  desc: "Roman seaside city in Cyprus with some of the finest villa floor mosaics, and a centre of the cult of Aphrodite."
+rila-monastery:
+  desc: "Bulgaria's largest Orthodox monastery, founded in the 10th century; the present buildings date from the 1830s."
+nessebar:
+  desc: "Town on a small Black Sea peninsula, founded as a Greek colony and packed with medieval Byzantine churches."
+troodos-painted-churches:
+  desc: "Ten mountain churches and monasteries in Cyprus with Byzantine wall paintings from the 11th to 16th centuries."
+goreme-cappadocia:
+  desc: "Valleys of rock cones carved by Christians into churches, monasteries and homes, with Byzantine frescoes."
+divrigi-great-mosque:
+  desc: "Mosque and hospital in one building, built in 1228–1229 and known for its elaborately carved stone portals."
+sveshtari-tomb:
+  desc: "Getic tomb under a mound, decorated with ten carved female figures serving as supports."
+temple-of-bassae:
+  desc: "Doric temple high in the remote mountains of Arcadia, with the earliest known Corinthian capital."
+delphi:
+  desc: "Sanctuary of Apollo and seat of the Pythia oracle, which the Greeks held to be the centre of the world."
+budapest-danube:
+  desc: "Both banks of the Danube with the Buda Castle Quarter, Parliament, and Andrássy Avenue over continental Europe's first metro."
+holloko:
+  desc: "Palóc village preserving traditional rural Hungarian life; its houses were rebuilt after a fire in 1909."
+mount-nemrut:
+  desc: "Mountaintop burial mound of King Antiochus I of Commagene, surrounded by colossal statues of gods."
+mount-athos:
+  desc: "Holy peninsula of Orthodox monks with 20 monasteries, the first being Great Lavra in 963; women are barred."
+meteora:
+  desc: "Orthodox monasteries perched on top of towering sandstone pillars, begun in the 14th century."
+thessaloniki-byzantine:
+  desc: "Fifteen Early Christian and Byzantine churches in the empire's second city, with fine mosaics."
+hortobagy:
+  desc: "Great puszta grassland grazed by herders for over two thousand years, marked by the Nine-Arch Bridge of 1833."
+xanthos-letoon:
+  desc: "Centre of ancient Lycia, with pillar tombs and the longest known inscription in the Lycian language."
+hierapolis-pamukkale:
+  desc: "Ancient Roman spa city above white limestone terraces formed by hot springs."
+epidaurus:
+  desc: "Sanctuary of the god of healing, with an open-air theatre famed for the best acoustics of the ancient world."
+rhodes-medieval-city:
+  desc: "Walled city ruled by the Knights Hospitaller from 1309 to 1522, with intact walls and the Gothic Street of the Knights."
+mystras:
+  desc: "Hillside fortress town near Sparta, capital of the Despotate of the Morea and a centre of late Byzantine learning."
+olympia:
+  desc: "Sanctuary of Zeus and birthplace of the ancient Olympic Games, held every four years from 776 BC."
+delos:
+  desc: "Sacred island the Greeks held to be the birthplace of Apollo and Artemis, later a busy trading port."
+hosios-loukas:
+  desc: "Byzantine monastery (listed with Daphni and Nea Moni) with the finest gold-ground mosaics of the 11th century."
+zamosc-old-city:
+  desc: "Ideal Renaissance town built by chancellor Jan Zamoyski to an Italian architect's plan in the late 16th century."
+heraion-of-samos:
+  desc: "One of the largest Greek temples, to Hera, listed with the port of Pythagoreio and its aqueduct tunnel through a mountain."
+biertan-fortified-church:
+  desc: "Fortified church of the Transylvanian Saxon villages, walled against raids; Biertan is the largest."
+horezu-monastery:
+  desc: "Monastery founded by Prince Constantin Brâncoveanu, the model of the Brâncovenesc style of Wallachia."
+safranbolu:
+  desc: "Caravan trade town whose Ottoman timber houses of the 18th–19th centuries survive intact."
+cesky-krumlov:
+  desc: "Small town in a bend of the Vltava with the second-largest castle in Czechia and a barely changed medieval core."
+banska-stiavnica:
+  desc: "Silver and gold mining town of the Kingdom of Hungary, home to one of the world's first mining academies (1762)."
+spis-castle:
+  desc: "One of the largest castle ruins in Central Europe, on a rocky hill, listed together with the town of Levoča."
+telc:
+  desc: "Town whose square is lined with gabled Renaissance and Baroque houses, rebuilt after a fire in 1530."
+vlkolinec:
+  desc: "Mountain village that keeps a complete set of traditional Carpathian log houses."
+zelena-hora-church:
+  desc: "Pilgrimage church of St John of Nepomuk on a five-pointed star plan, an unusual blend of Gothic and Baroque."
+kutna-hora:
+  desc: "Silver-mining town once second only to Prague in Bohemia, with the late Gothic Church of St Barbara."
+pannonhalma-archabbey:
+  desc: "Benedictine abbey founded in 996, the oldest in Hungary and still home to monks today."
+lednice-valtice:
+  desc: "Vast designed landscape laid out by the Liechtenstein family between Lednice and Valtice castles in the 18th–19th centuries."
+aigai-vergina:
+  desc: "First capital of Macedon, whose great royal tumulus is thought to hold Philip II, father of Alexander."
+torun-old-town:
+  desc: "Hanseatic town founded by the Teutonic Knights in 1233, full of Gothic brick buildings; birthplace of Copernicus."
+malbork-castle:
+  desc: "The largest brick castle in the world, once the seat of the Grand Master of the Teutonic Knights."
+khirokitia:
+  desc: "Neolithic village of round houses from about 7000 BC, the most important site of its age on Cyprus."
+troy:
+  desc: "Mound of over nine superimposed cities spanning 4,000 years, believed to be the Troy of Homer's Iliad."
+pecs-necropolis:
+  desc: "Underground burial chambers of Roman Sopianae from the 4th century, painted with early Christian art."
+kromeriz:
+  desc: "Palace of the bishops of Moravia, with a well-preserved 17th-century Baroque flower garden."
+holasovice:
+  desc: "Village whose whole green is ringed by South Bohemian folk Baroque farmhouses of the 18th–19th centuries."
+litomysl-castle:
+  desc: "Italian-style Renaissance castle with an arcaded courtyard and walls covered in sgraffito."
+sighisoara:
+  desc: "Hilltop fortified town built by the Transylvanian Saxons, with its clock tower and medieval houses intact."
+maramures-wooden-churches:
+  desc: "Eight Orthodox timber churches with tall slender spires in northern Romania, built in the 17th–19th centuries."
+kalwaria-zebrzydowska:
+  desc: "Baroque pilgrimage landscape with a monastery and Way of the Cross chapels modelled on Jerusalem across the hills."
+sarmizegetusa-regia:
+  desc: "Mountain capital and sanctuary of the Dacians in the Orăștie Mountains, before the Roman conquest in 106."
+mycenae:
+  desc: "Citadel of legendary King Agamemnon, centre of Bronze Age Mycenaean civilization, with the famous Lion Gate."
+patmos-monastery:
+  desc: "Fortified monastery on Patmos built in 1088, near the cave where St John is said to have written Revelation."
+bardejov:
+  desc: "Walled medieval trading town with an intact central square and a Jewish quarter with its great synagogue."
+corfu-old-town:
+  desc: "Port town whose Venetian forts withstood three Ottoman sieges, mixing Venetian, French and British architecture."
+villa-tugendhat:
+  desc: "House in Brno designed by Mies van der Rohe, a landmark of modern architecture."
+lesser-poland-wooden-churches:
+  desc: "Gothic log churches in southern Poland, built in medieval fashion in the 15th–16th centuries."
+churches-of-peace:
+  desc: "Europe's largest timber-framed Lutheran churches, built after the Thirty Years' War without stone and within a year."
+tokaj-wine-region:
+  desc: "Home of sweet Tokaji Aszú wine, with old wine cellars; in 1737 it became the first officially delimited wine region."
+centennial-hall-wroclaw:
+  desc: "The largest reinforced-concrete dome in the world when finished in 1913, in what was then German Breslau."
+slovak-wooden-churches:
+  desc: "Eight timber churches, Catholic, Protestant and Greek Catholic, reflecting the religious diversity of Slovakia."
+selimiye-mosque:
+  desc: "Masterpiece of the architect Sinan in Edirne, with a 31 m dome and minarets over 70 m tall."
+catalhoyuk-mound:
+  desc: "Large Neolithic town of houses packed wall to wall with no streets; people entered through the roofs."
+carpathian-wooden-tserkvas:
+  desc: "Sixteen Orthodox and Greek Catholic timber churches in Poland and Ukraine with tiered domed roofs."
+bursa:
+  desc: "First Ottoman capital, with its mosques and markets and the early Ottoman village of Cumalıkızık."
+pergamon:
+  desc: "Hilltop capital of the Attalid kings, with the steepest ancient theatre, the Altar of Zeus and a great library."
+brancusi-targu-jiu:
+  desc: "Constantin Brâncuși's First World War memorial: the Endless Column, the Gate of the Kiss and the Table of Silence."
+ore-mountain-mining:
+  desc: "Silver, tin and uranium mining landscape across the German-Czech border that set the model for European mining."
+diyarbakir-walls:
+  desc: "Nearly 6 km of black basalt walls, built under Rome and added to by every later ruler, with the Hevsel Gardens on the Tigris."
+philippi:
+  desc: "Town founded by Philip II, later a Roman colony, where St Paul founded the first Christian community in Europe."
+ani:
+  desc: "Ruined capital of the Bagratid kingdom of Armenia, nicknamed the city of 1,001 churches."
+aphrodisias:
+  desc: "City of Aphrodite, famous for its school of marble sculptors and the best-preserved Roman stadium."
+tarnowskie-gory-mine:
+  desc: "Underground lead, silver and zinc mine in Silesia, with the drainage system that let mining go ever deeper."
+zatec-hops:
+  desc: "Town that processed and traded Saaz hops for lager brewing worldwide, with 19th-century hop warehouses and kilns."
+kladruby-stud:
+  desc: "Fields and stud farm set up by the Habsburg court in 1579 to breed Kladruber carriage horses."
+krzemionki:
+  desc: "Neolithic and Bronze Age mines for striped flint, with over 4,000 shafts, used to make stone axes."
+arslantepe:
+  desc: "Settlement mound with one of the earliest palaces, of about 3300 BC, where the oldest known swords were found."
+gordion:
+  desc: "Capital of Phrygia, with a great burial mound linked to King Midas and the legend of the Gordian knot."
+anatolian-wooden-mosques:
+  desc: "Five 13th–14th century Seljuk and beylik mosques whose timber roofs rest on many carved wooden columns."
+zagori:
+  desc: "Stone villages in Greece's Pindus Mountains linked by arched stone bridges, built in the 18th–19th centuries under Ottoman rule."
+porolissum-dacian-limes:
+  desc: "Line of forts and camps Rome built around Dacia after its conquest in 106, with Porolissum as a key point."
+mount-olympus:
+  desc: "Greece's highest mountain, home of the twelve gods in Greek belief, with the sanctuary town of Dion at its foot."
+sardis:
+  desc: "Capital of Lydia, where the first coins were minted, with the largest royal burial mounds in Anatolia."

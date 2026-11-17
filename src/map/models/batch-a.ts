@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { band, doubleSided, gable, merge, type Builder, type Kit } from './kit'
+import { band, doubleSided, gable, merge, staged, type Builder, type Kit } from './kit'
 
 type G = THREE.BufferGeometry
 
@@ -16,6 +16,12 @@ const cy = (rt: number, rb: number, h: number, x: number, y: number, z: number, 
   return g
 }
 const flat = (g: G) => { const n = g.index ? g.toNonIndexed() : g; n.computeVertexNormals(); return n }
+/** Copy of a material with its colour pulled toward another and scaled. */
+const tone = (m: THREE.Material, f: number, to = '#ffffff', t = 0) => {
+  const c = m.clone() as THREE.MeshLambertMaterial
+  c.color.lerp(new THREE.Color(to), t).multiplyScalar(f)
+  return c
+}
 
 /** Rectangular frustum, base at y=0. */
 function frustum(wb: number, db: number, wt: number, dt: number, h: number) {
@@ -110,11 +116,23 @@ function anuZiggurat(k: Kit) {
   k.box(0.03, 0.07, 0.04, h + 0.015, tx + tw / 2 + 0.002, tz, k.dark)
 }
 
-function zigguratOfUr(k: Kit) {
+const zigguratOfUr = staged([-400, 1985], (k, year) => {
   // Ur-Nammu, c. 2100 BC: 62.5 x 43 m first stage 11 m high with sloping buttressed walls, two
   // stages above, and three stairways of 100 steps meeting at a gatehouse on the NE face
   const V = 1.6, s = 1 / 64, zc = -0.2
   const h1 = 11 * s * V, h2 = 5.7 * s * V, h3 = 4 * s * V
+  const ruin = year >= -400, rebuilt = year >= 1985, worn = tone(k.mat, 0.85)
+  if (ruin && !rebuilt) {
+    // -400: abandoned with Ur, the brick slumping into a mound with the upper stages worn away
+    const r = h1 * 0.7
+    k.add(frustum(1.12, 0.8, 1, 0.68, r * 0.35), 0, 0, zc + 0.03, worn)
+    k.add(frustum(0.98, 0.66, 0.84, 0.54, r), 0, 0, zc, worn)
+    k.add(frustum(0.6, 0.44, 0.34, 0.24, h2 * 0.85), r, 0.02, zc - 0.07, worn)
+    k.add(frustum(0.26, 0.2, 0.12, 0.1, h2 * 0.4), r + h2 * 0.85, -0.03, zc - 0.09, worn)
+    // the central stair reduced to a tongue of rubble
+    k.add(frustum(0.16, 0.24, 0.08, 0.1, r * 0.5), 0, 0, 0.2, worn)
+    return
+  }
   k.add(frustum(1, 0.68, 0.92, 0.6, h1), 0, 0, zc)
   const ribs: G[] = []
   for (let i = -5; i <= 5; i++) {
@@ -128,20 +146,26 @@ function zigguratOfUr(k: Kit) {
     r.rotateZ(sx * 0.145); r.translate(sx * 0.49, h1 / 2, zc + i * 0.085); ribs.push(r)
   }
   merge(k, ribs)
-  k.add(frustum(0.6, 0.42, 0.55, 0.37, h2), h1, 0, zc - 0.08)
-  k.add(frustum(0.32, 0.24, 0.29, 0.21, h3), h1 + h2, 0, zc - 0.1)
-  k.box(0.17, 0.07, 0.11, h1 + h2 + h3, 0, zc - 0.1)
-  k.box(0.04, 0.045, 0.012, h1 + h2 + h3, 0, zc - 0.1 + 0.056, k.dark)
   // central stair, two side stairs against the facade, gatehouse where they meet
   k.add(stairs(0.08, 0.43, h1, Math.PI / 2, 24), 0, 0, 0.55)
   k.add(stairs(0.065, 0.4, h1, 0, 24), 0, -0.46, 0.165)
   k.add(stairs(0.065, 0.4, h1, Math.PI, 24), 0, 0.46, 0.165)
+  if (rebuilt) {
+    // 1985: lower facade and stairs rebuilt, the upper stages left as Woolley's excavated stump
+    k.add(frustum(0.58, 0.4, 0.44, 0.3, h2 * 0.75), h1, 0, zc - 0.08, worn)
+    k.add(frustum(0.2, 0.16, 0.1, 0.08, h2 * 0.35), h1 + h2 * 0.75, -0.02, zc - 0.1, worn)
+    return
+  }
+  k.add(frustum(0.6, 0.42, 0.55, 0.37, h2), h1, 0, zc - 0.08)
+  k.add(frustum(0.32, 0.24, 0.29, 0.21, h3), h1 + h2, 0, zc - 0.1)
+  k.box(0.17, 0.07, 0.11, h1 + h2 + h3, 0, zc - 0.1)
+  k.box(0.04, 0.045, 0.012, h1 + h2 + h3, 0, zc - 0.1 + 0.056, k.dark)
   k.box(0.12, 0.07, 0.07, h1, 0, 0.06)
   k.box(0.035, 0.045, 0.074, h1, 0, 0.06, k.dark)
   k.add(stairs(0.06, 0.1, h2, Math.PI / 2, 8), h1, 0, 0.025)
-}
+})
 
-function greatPyramid(k: Kit) {
+const greatPyramid = staged([1356], (k, year) => {
   // Khufu: 230.3 m square, 146.6 m high (51.8 degree faces), entrance 17 m up the north face,
   // inside a paved court and enclosure wall
   const V = 1.1, h = (146.6 / 230) * V, y0 = 0.006
@@ -150,12 +174,24 @@ function greatPyramid(k: Kit) {
     k.box(1.1, 0.03, 0.01, 0, 0, s * 0.545)
     k.box(0.01, 0.03, 1.08, 0, s * 0.545, 0)
   }
-  k.add(pyramid(1, h), y0)
   const ey = (17 / 230) * V
+  if (year < 1356) {
+    k.add(pyramid(1, h), y0, 0, 0, tone(k.mat, 1, '#fbf6ea', 0.35))
+  } else {
+    // 1356: casing loosened by the 1303 quake carted off for Cairo, stepped core and a flat top left
+    const top = h * (138.5 / 146.6), n = 30, steps: G[] = []
+    for (let i = 0; i < n; i++) {
+      const w = 0.985 * (1 - ((i + 1) * top) / n / h)
+      steps.push(bx(w, top / n, w, 0, y0 + (i * top) / n, 0))
+    }
+    merge(k, steps, tone(k.mat, 0.82))
+    // al-Ma'mun's robbers' tunnel below the true entrance
+    k.box(0.024, 0.02, 0.03, y0 + ey * 0.35, 0.02, -0.5 * (1 - (ey * 0.35) / h), k.dark)
+  }
   k.box(0.022, 0.026, 0.03, y0 + ey, 0, -0.5 * (1 - ey / h), k.dark)
   // mortuary temple against the east face and the start of the causeway
   k.box(0.04, 0.035, 0.2, y0, 0.52, 0)
-}
+})
 
 function etemenanki(k: Kit) {
   // Babylon, Schmid's reconstruction: 91 m square, seven stages to about 91 m with the temple of
@@ -229,12 +265,28 @@ function byrsa(k: Kit) {
   k.add(gable(0.2, 0.11, 0.035), y0 + 0.11, 0, -0.01)
 }
 
-function pharos(k: Kit) {
+const pharos = staged([956, 1303], (k, year) => {
   // Thiersch's reconstruction: a square tapering shaft about 56 m, an octagonal stage 27 m, a
   // round lantern with the statue of Zeus on top, over 100 m in all; tritons at the corners
   const y0 = 0.05, h1 = 1.75, h2 = 0.85
   k.box(1, y0, 1, 0)
   k.box(0.94, 0.02, 0.94, y0)
+  if (year >= 1303) {
+    // 1303: the Crete quake brought down all but a stump of the square shaft, rubble at its foot
+    const worn = tone(k.mat, 0.85), hs = 0.62
+    k.add(frustum(0.84, 0.84, 0.81, 0.81, hs), y0 + 0.02, 0, 0, worn)
+    const top = 0.81 - (0.07 * hs) / h1
+    merge(k, [
+      bx(top * 0.45, 0.14, top * 0.3, -top * 0.27, y0 + 0.02 + hs, -top * 0.35),
+      bx(top * 0.3, 0.08, top * 0.5, top * 0.35, y0 + 0.02 + hs, top * 0.25),
+      bx(top * 0.2, 0.22, top * 0.2, -top * 0.4, y0 + 0.02 + hs, top * 0.4),
+      bx(0.2, 0.06, 0.12, 0.5, y0, 0.25, 0.4), bx(0.14, 0.05, 0.18, -0.3, y0, 0.52, -0.3), bx(0.16, 0.04, 0.1, 0.1, y0, -0.53, 0.2),
+    ], worn)
+    const win: G[] = []
+    for (const c of [-0.2, 0, 0.2]) win.push(bx(0.045, 0.08, 0.09, c, y0 + 0.2, 0.42), bx(0.09, 0.08, 0.045, 0.42, y0 + 0.2, c))
+    merge(k, win, k.dark)
+    return
+  }
   k.add(frustum(0.84, 0.84, 0.74, 0.74, h1), y0 + 0.02)
   const win: G[] = []
   for (let r = 0; r < 6; r++) {
@@ -261,6 +313,12 @@ function pharos(k: Kit) {
   }
   merge(k, ow, k.dark)
   y += h2
+  if (year >= 956) {
+    // 956: a quake threw down the lantern and statue, leaving the octagon's broken top
+    const r: G[] = [bx(0.2, 0.06, 0.12, 0.06, y, 0.08), bx(0.12, 0.1, 0.12, -0.12, y, -0.06)]
+    merge(k, r, tone(k.mat, 0.85))
+    return
+  }
   k.add(flat(new THREE.CylinderGeometry(0.33, 0.31, 0.04, 8)), y + 0.02)
   y += 0.04
   // lantern: open colonnade round the fire
@@ -278,7 +336,7 @@ function pharos(k: Kit) {
   y += 0.12
   k.add(new THREE.CylinderGeometry(0.03, 0.04, 0.16, 6), y + 0.08)
   k.add(new THREE.SphereGeometry(0.03, 8, 6), y + 0.18)
-}
+})
 
 function libraryAlexandria(k: Kit) {
   // the Mouseion's library as usually reconstructed: ranges of book rooms round a peristyle court,
@@ -402,11 +460,15 @@ function bibliothecaAlexandrina(k: Kit) {
   k.box(0.03, 0.012, 0.12, top(0.42) - 0.03, -0.12, 0.49)
 }
 
-function karnak(k: Kit) {
+const karnak = staged([-1450, -1290, -350], (k, year) => {
   // precinct of Amun-Re along its east-west axis: the 113 m first pylon, the great court with the
   // kiosk of Taharqa, the hypostyle hall of 134 columns (central 12 rising 21 m), obelisks of
   // Thutmose I and Hatshepsut, the inner pylons, the Akh-menu, and the sacred lake to the south
+  // -1450: Thutmoside pylons IV-VI, obelisks, festival hall, enclosure and lake
+  // -1290: 3rd pylon (Amenhotep III), 2nd pylon and the hypostyle hall (Horemheb, Seti I)
+  // -350: Nectanebo I's unfinished 1st pylon closing the great court
   const V = 1.5, s = 1 / 250
+  const tuth = year >= -1450, rams = year >= -1290, late = year >= -350
   const pylon = (x: number, w: number, d: number, h: number) => {
     const gate = w * 0.13, tw = (w - gate) / 2
     for (const sz of [-1, 1]) {
@@ -416,48 +478,63 @@ function karnak(k: Kit) {
     k.box(gate + 0.004, h * 0.7, d * 0.8, 0, x, 0)
     k.box(gate * 0.5, h * 0.45, d * 0.8 + 0.006, 0, x, 0, k.dark)
   }
-  const cols: G[] = [], small: G[] = []
-  pylon(-0.47, 0.45, 0.06, 43 * s * V)
-  // great court
-  const walls: G[] = [bx(0.34, 0.06, 0.012, -0.27, 0, -0.2), bx(0.12, 0.06, 0.012, -0.38, 0, 0.2), bx(0.12, 0.06, 0.012, -0.16, 0, 0.2)]
-  for (let i = 0; i < 16; i++) for (const z of [-0.18, 0.18]) {
-    const x = -0.425 + i * 0.02
-    if (z > 0 && x > -0.32 && x < -0.2) continue
-    small.push(cy(0.005, 0.006, 0.06, x, 0, z, 6))
+  const cols: G[] = [], small: G[] = [], walls: G[] = []
+  if (late) {
+    pylon(-0.47, 0.45, 0.06, 43 * s * V)
+    // great court
+    walls.push(bx(0.34, 0.06, 0.012, -0.27, 0, -0.2), bx(0.12, 0.06, 0.012, -0.38, 0, 0.2), bx(0.12, 0.06, 0.012, -0.16, 0, 0.2))
+    for (let i = 0; i < 16; i++) for (const z of [-0.18, 0.18]) {
+      const x = -0.425 + i * 0.02
+      if (z > 0 && x > -0.32 && x < -0.2) continue
+      small.push(cy(0.005, 0.006, 0.06, x, 0, z, 6))
+    }
+    for (let i = 0; i < 5; i++) for (const z of [-0.025, 0.025]) cols.push(cy(0.008, 0.009, 21 * s * V, -0.36 + i * 0.045, 0, z, 6))
   }
-  for (let i = 0; i < 5; i++) for (const z of [-0.025, 0.025]) cols.push(cy(0.008, 0.009, 21 * s * V, -0.36 + i * 0.045, 0, z, 6))
-  // temple of Ramesses III breaking through the south wall
-  k.box(0.1, 0.05, 0.16, 0, -0.26, 0.2)
-  k.add(frustum(0.03, 0.12, 0.025, 0.1, 0.085), 0, -0.26, 0.13 - 0.0)
-  pylon(-0.085, 0.4, 0.04, 0.18)
-  // hypostyle hall
-  walls.push(bx(0.21, 0.08, 0.012, 0.04, 0, -0.205), bx(0.21, 0.08, 0.012, 0.04, 0, 0.205))
-  const cH = 21 * s * V, sH = 13 * s * V
-  for (let i = 0; i < 6; i++) for (const z of [-0.025, 0.025]) cols.push(cy(0.009, 0.01, cH, -0.045 + i * 0.034, 0, z, 6))
-  for (let i = 0; i < 9; i++) for (let j = 0; j < 6; j++) for (const sz of [-1, 1]) small.push(cy(0.0065, 0.007, sH, -0.05 + i * 0.0225, 0, sz * (0.065 + j * 0.024), 6))
-  walls.push(bx(0.19, 0.012, 0.016, 0.04, cH, -0.025), bx(0.19, 0.012, 0.016, 0.04, cH, 0.025))
-  for (const sz of [-1, 1]) walls.push(bx(0.2, 0.008, 0.012, 0.04, sH, sz * 0.065))
-  pylon(0.16, 0.38, 0.03, 0.15)
-  // obelisks
-  for (const [x, z] of [[0.19, 0.03], [0.24, -0.03]]) {
-    const o = frustum(0.012, 0.012, 0.008, 0.008, 0.17)
-    k.add(o, 0, x, z)
-    k.add(pyramid(0.008, 0.012), 0.17, x, z)
+  if (rams) {
+    // temple of Ramesses III (c. 1170 BC), later breaking through the court's south wall
+    k.box(0.1, 0.05, 0.16, 0, -0.26, 0.2)
+    k.add(frustum(0.03, 0.12, 0.025, 0.1, 0.085), 0, -0.26, 0.13 - 0.0)
+    pylon(-0.085, 0.4, 0.04, 0.18)
+    // hypostyle hall
+    walls.push(bx(0.21, 0.08, 0.012, 0.04, 0, -0.205), bx(0.21, 0.08, 0.012, 0.04, 0, 0.205))
+    const cH = 21 * s * V, sH = 13 * s * V
+    for (let i = 0; i < 6; i++) for (const z of [-0.025, 0.025]) cols.push(cy(0.009, 0.01, cH, -0.045 + i * 0.034, 0, z, 6))
+    for (let i = 0; i < 9; i++) for (let j = 0; j < 6; j++) for (const sz of [-1, 1]) small.push(cy(0.0065, 0.007, sH, -0.05 + i * 0.0225, 0, sz * (0.065 + j * 0.024), 6))
+    walls.push(bx(0.19, 0.012, 0.016, 0.04, cH, -0.025), bx(0.19, 0.012, 0.016, 0.04, cH, 0.025))
+    for (const sz of [-1, 1]) walls.push(bx(0.2, 0.008, 0.012, 0.04, sH, sz * 0.065))
+    pylon(0.16, 0.38, 0.03, 0.15)
   }
-  pylon(0.215, 0.26, 0.022, 0.1)
-  pylon(0.265, 0.22, 0.02, 0.08)
-  pylon(0.29, 0.18, 0.016, 0.07)
+  if (tuth) {
+    // obelisks
+    for (const [x, z] of [[0.19, 0.03], [0.24, -0.03]]) {
+      const o = frustum(0.012, 0.012, 0.008, 0.008, 0.17)
+      k.add(o, 0, x, z)
+      k.add(pyramid(0.008, 0.012), 0.17, x, z)
+    }
+    pylon(0.215, 0.26, 0.022, 0.1)
+    pylon(0.265, 0.22, 0.02, 0.08)
+    pylon(0.29, 0.18, 0.016, 0.07)
+  }
   k.box(0.04, 0.05, 0.04, 0, 0.33, 0)
+  if (!tuth) {
+    // Senusret I's limestone temple and its court, later swallowed by the Thutmoside rebuild
+    k.box(0.1, 0.045, 0.09, 0, 0.29, 0)
+    k.box(0.03, 0.03, 0.02, 0, 0.235, 0, k.dark)
+    walls.push(seg([0.2, -0.08], [0.4, -0.08], 0.008, 0.035, 0), seg([0.2, 0.08], [0.4, 0.08], 0.008, 0.035, 0))
+    walls.push(seg([0.4, -0.08], [0.4, 0.08], 0.008, 0.035, 0), seg([0.2, -0.08], [0.2, -0.02], 0.008, 0.035, 0), seg([0.2, 0.02], [0.2, 0.08], 0.008, 0.035, 0))
+    merge(k, walls)
+    return
+  }
   // Thutmose III's enclosure and festival hall
   walls.push(bx(0.34, 0.04, 0.01, 0.33, 0, -0.13), bx(0.34, 0.04, 0.01, 0.33, 0, 0.13), bx(0.01, 0.04, 0.27, 0.5, 0, 0))
   k.box(0.1, 0.05, 0.2, 0, 0.44, 0)
   k.box(0.07, 0.006, 0.16, 0.05, 0.44, 0, k.dark)
   merge(k, walls)
-  merge(k, [...cols, ...small])
+  if (rams) merge(k, [...cols, ...small])
   // sacred lake
   k.box(0.22, 0.004, 0.14, 0, 0.21, 0.37, k.dark)
   merge(k, [bx(0.23, 0.008, 0.008, 0.21, 0, 0.3), bx(0.23, 0.008, 0.008, 0.21, 0, 0.44), bx(0.008, 0.008, 0.14, 0.1, 0, 0.37), bx(0.008, 0.008, 0.14, 0.32, 0, 0.37)])
-}
+})
 
 function apadana(k: Kit) {
   // Persepolis audience hall: 60 m square hall of 36 columns behind mud-brick walls, porticoes of
@@ -654,7 +731,19 @@ function roundCity(k: Kit) {
   k.box(0.06, 0.004, 0.06, 0.03, 0, 0.115, k.dark)
 }
 
-function cairoCitadel(k: Kit) {
+/** al-Nasir Muhammad mosque (1318) with its green-tiled dome and two minarets. */
+function nasirMosque(k: Kit, Y: number) {
+  const nx = 0.03, nz = 0.17
+  k.box(0.1, 0.035, 0.08, Y, nx, nz)
+  k.box(0.06, 0.004, 0.04, Y + 0.035, nx + 0.01, nz, k.dark)
+  k.add(new THREE.SphereGeometry(0.018, 10, 5, 0, Math.PI * 2, 0, Math.PI / 2), Y + 0.035, nx - 0.035, nz)
+  for (const [mx, mz] of [[nx + 0.05, nz - 0.04], [nx - 0.05, nz - 0.04]]) {
+    k.add(new THREE.CylinderGeometry(0.005, 0.006, 0.09, 8), Y + 0.045, mx, mz)
+    k.add(new THREE.ConeGeometry(0.006, 0.02, 8), Y + 0.1, mx, mz)
+  }
+}
+
+const cairoCitadel = staged([1318, 1848], (k, year) => {
   // Salah al-Din's citadel on its spur of the Muqattam: walls with round towers around the
   // southern and northern enclosures; the Muhammad Ali mosque (1848) with its 52 m dome, half
   // domes and two 82 m pencil minarets, and the al-Nasir Muhammad mosque
@@ -672,12 +761,19 @@ function cairoCitadel(k: Kit) {
   // wall between the two enclosures, with Bab al-Qulla
   walls.push(seg([-0.14, -0.16], [0.17, 0.1], 0.014, 0.04, Y))
   towers.push(cy(0.022, 0.024, 0.06, 0.02, Y, -0.03, 10))
-  // northern enclosure barracks and the Harem palace
-  walls.push(bx(0.2, 0.03, 0.04, 0.22, Y, -0.3, -0.3), bx(0.2, 0.03, 0.04, 0.3, Y, -0.12, -0.3), bx(0.12, 0.04, 0.12, 0.05, Y, -0.25))
-  // Gawhara palace south of the mosque
-  walls.push(bx(0.12, 0.035, 0.07, -0.1, Y, 0.34))
+  const modern = year >= 1848
+  if (modern) {
+    // northern enclosure barracks and the Harem palace, Gawhara palace south of the mosque
+    walls.push(bx(0.2, 0.03, 0.04, 0.22, Y, -0.3, -0.3), bx(0.2, 0.03, 0.04, 0.3, Y, -0.12, -0.3), bx(0.12, 0.04, 0.12, 0.05, Y, -0.25))
+    walls.push(bx(0.12, 0.035, 0.07, -0.1, Y, 0.34))
+  } else if (year >= 1318) {
+    // al-Nasir Muhammad's Striped Palace on the western edge, cleared by Muhammad Ali for his mosque
+    walls.push(bx(0.16, 0.04, 0.12, -0.17, Y, 0.13), bx(0.08, 0.03, 0.1, -0.06, Y, 0.3))
+  }
   merge(k, walls)
   merge(k, towers)
+  if (year >= 1318) nasirMosque(k, Y)
+  if (!modern) return
   // Muhammad Ali mosque: prayer hall 41 m square, courtyard on the west
   const hx = -0.14, hz = 0.12, hw = 41 * s, hh = 0.07
   k.box(hw, hh, hw, Y, hx, hz)
@@ -722,16 +818,7 @@ function cairoCitadel(k: Kit) {
     for (const b of [0.45, 0.72]) k.add(new THREE.CylinderGeometry(0.011, 0.009, 0.008, 8), Y + (mH - 0.05) * b, mx, mz)
     k.add(new THREE.ConeGeometry(0.0065, 0.05, 8), Y + mH - 0.025, mx, mz)
   }
-  // al-Nasir Muhammad mosque with its green-tiled dome and two minarets
-  const nx = 0.03, nz = 0.17
-  k.box(0.1, 0.035, 0.08, Y, nx, nz)
-  k.box(0.06, 0.004, 0.04, Y + 0.035, nx + 0.01, nz, k.dark)
-  k.add(new THREE.SphereGeometry(0.018, 10, 5, 0, Math.PI * 2, 0, Math.PI / 2), Y + 0.035, nx - 0.035, nz)
-  for (const [mx, mz] of [[nx + 0.05, nz - 0.04], [nx - 0.05, nz - 0.04]]) {
-    k.add(new THREE.CylinderGeometry(0.005, 0.006, 0.09, 8), Y + 0.045, mx, mz)
-    k.add(new THREE.ConeGeometry(0.006, 0.02, 8), Y + 0.1, mx, mz)
-  }
-}
+})
 
 export const batch_a: Record<string, Builder> = {
   'anu-ziggurat': anuZiggurat,

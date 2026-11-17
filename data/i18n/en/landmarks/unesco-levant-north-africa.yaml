@@ -1,0 +1,145 @@
+# English for data/landmarks/unesco-levant-north-africa.yaml.
+
+old-city-of-damascus:
+  desc: One of the oldest continuously inhabited cities in the world, centred on the Umayyad Mosque completed in 715.
+old-city-of-aleppo:
+  desc: A caravan trading city with a hilltop citadel and covered souks, heavily damaged in the Syrian civil war.
+bosra:
+  desc: Capital of the Roman province of Arabia, with one of the best-preserved Roman theatres, built in black basalt.
+palmyra:
+  desc: A desert oasis city on the caravan routes of Syria. The Temple of Bel was blown up in 2015.
+medina-of-tunis:
+  desc: Capital of the Hafsid dynasty, with the Zaytuna Mosque, souks and over a hundred palaces.
+el-jem-amphitheatre:
+  desc: One of the largest Roman amphitheatres in the world, seating about 35,000.
+abu-mena:
+  desc: A Christian pilgrimage town around the tomb of Saint Menas, now endangered by a rising water table.
+qalat-bani-hammad:
+  desc: Ruins of the fortified mountain capital of the Hammadid dynasty, whose old minaret still stands.
+fes-el-bali:
+  desc: A walled old city of tangled lanes, home to the al-Qarawiyyin mosque and university founded in 859.
+tassili-najjer:
+  desc: Over 15,000 rock paintings and engravings recording the Sahara's change from green land to desert.
+  uncertain: The age of the oldest paintings is still debated.
+leptis-magna:
+  desc: Birthplace of Emperor Septimius Severus, who rebuilt it lavishly; one of the best-preserved Roman cities.
+sabratha:
+  desc: A Phoenician port that became a Roman city, with a three-storey theatre facing the sea.
+mzab-valley:
+  desc: Five fortified Ibadi towns in the desert, plain houses climbing each hill to a mosque.
+cyrene:
+  desc: The largest Greek colony in Africa, with the temples of Apollo and Zeus.
+djemila:
+  desc: A Roman town on a mountain ridge, its plan fitted to the terrain, with forums, temples and churches.
+tipasa:
+  desc: A Punic trading post by the sea that became a Roman town, near the Royal Mausoleum of Mauretania.
+timgad:
+  desc: A military colony founded by Trajan on a perfect grid, a model of Roman town planning.
+tadrart-acacus:
+  desc: Thousands of rock paintings in a central Saharan range, from wild animals to cattle herds and camels.
+  uncertain: The age of the oldest paintings is estimated from style and is uncertain.
+anjar:
+  desc: A short-lived Umayyad town with a Roman-style grid of two crossing main streets.
+baalbek:
+  desc: The largest Roman temple complex, whose Temple of Jupiter stands on stones weighing hundreds of tonnes.
+byblos:
+  desc: An ancient Phoenician port that shipped cedar to Egypt and is tied to the origins of the Phoenician alphabet.
+  uncertain: The date it became a town is estimated from the excavated layers.
+tyre:
+  desc: The Phoenician sea power; most surviving remains are Roman, such as a huge hippodrome.
+petra:
+  desc: The Nabataean capital carved into pink sandstone cliffs, best known for al-Khazneh, the Treasury.
+qusayr-amra:
+  desc: An Umayyad desert lodge and bathhouse whose walls are covered in early Islamic paintings.
+medina-of-marrakesh:
+  desc: Capital of the Almoravids and Almohads, with the Koutoubia minaret and Jemaa el-Fnaa square.
+kerkouane:
+  desc: The only Punic town whose plan survives, abandoned after the Punic Wars and never built over by Rome.
+ghadames:
+  desc: The "pearl of the desert", an oasis town of linked mud houses with shaded covered lanes and rooftop paths for women.
+  uncertain: The oasis was settled by Roman times, but the age of the old town as it stands is unclear.
+ait-benhaddou:
+  desc: A fortified earthen village on the trans-Saharan caravan route, used as a set for many films.
+  uncertain: The mud buildings are constantly rebuilt; none of the standing ones is older than the 17th century.
+medina-of-sousse:
+  desc: An Aghlabid port with a ribat and Great Mosque, a model of an early Islamic coastal town.
+kairouan:
+  desc: Founded by the Arabs in 670; its Great Mosque became the model for mosques across the Maghreb.
+casbah-of-algiers:
+  desc: An Ottoman-era old town of tightly packed white houses running down to the sea, a stronghold in the war of independence.
+as-salt:
+  desc: A late Ottoman trading town of yellow stone houses on the hills, where Muslims and Christians lived side by side.
+ksour-of-mauritania:
+  desc: Four trans-Saharan caravan towns; Chinguetti was a centre of Islamic learning with libraries of old manuscripts.
+medina-of-meknes:
+  desc: Capital of Sultan Moulay Ismail, ringed by walls and monumental gates, mixing Islamic and European styles.
+dougga:
+  desc: A Numidian hill town that became Roman; its Capitol still stands out.
+volubilis:
+  desc: A Roman town on the far western frontier of the empire, with a triumphal arch and fine mosaics.
+medina-of-tetouan:
+  desc: Rebuilt by Muslim refugees from al-Andalus, a link between Moroccan and Spanish culture.
+qadisha-valley:
+  desc: A refuge for Maronite Christian hermits, with cliff and cave monasteries, and an ancient grove of Lebanon cedars.
+  uncertain: Tradition dates the Qannubin monastery to the 4th century, but firm evidence starts in the Middle Ages.
+saint-catherine-area:
+  desc: One of the oldest working Christian monasteries, below Mount Sinai where Moses is said to have received the Ten Commandments.
+masada:
+  desc: Herod's clifftop palace fortress, the last stronghold of the Jewish revolt, which fell to Rome in 73.
+old-city-of-acre:
+  desc: A walled Ottoman port town built over a Crusader town that survives almost intact underground.
+gebel-barkal:
+  desc: The sacred mountain of Kush at Napata, with the Temple of Amun, palaces and pyramids of the Nubian pharaohs.
+umm-ar-rasas:
+  desc: A Roman fort and Christian town whose Church of Saint Stephen has a mosaic floor mapping the region's cities.
+white-city-tel-aviv:
+  desc: Over 4,000 Bauhaus-style buildings put up by emigré architects from Europe in the 1930s.
+tel-megiddo:
+  desc: A mound of more than 20 city layers, listed with Hazor and Beersheba; known for its Iron Age water systems.
+  uncertain: Whether the Iron Age gate and palaces belong to Solomon's time or the Omride dynasty is still debated.
+krak-des-chevaliers:
+  desc: The Knights Hospitaller's castle, the best-preserved Crusader castle, listed together with Saladin's Castle.
+meroe:
+  desc: The later capital of Kush, with over two hundred small, steep pyramids.
+dead-cities:
+  desc: About 40 abandoned Byzantine villages, including the Church of Saint Simeon built around the hermit's pillar.
+beit-guvrin-maresha:
+  desc: Thousands of caves cut into the chalk, used as dovecotes, olive presses and tombs.
+wadi-rum:
+  desc: A red sandstone desert valley with tens of thousands of rock carvings and inscriptions spanning 12,000 years of human life.
+  uncertain: The earliest traces of people in the valley can only be dated roughly.
+rabat:
+  desc: A capital that joins an old medina and a French colonial new town, with the Almohads' unfinished Hassan Tower.
+church-of-the-nativity:
+  desc: Built over the cave held to be Jesus's birthplace, one of the oldest churches in continuous use.
+  uncertain: The present building is Justinian's rebuilding; the exact year is unknown.
+al-maghtas:
+  desc: The spot on the Jordan River where Jesus is believed to have been baptised by John, with ruins of Byzantine churches.
+beit-shearim:
+  desc: A Roman-era Jewish catacomb necropolis, burial place of Rabbi Judah, compiler of the Mishnah.
+battir:
+  desc: Stone terraces on the hillsides still watered by an ancient system for sharing spring water.
+  uncertain: The terraces were built up over thousands of years; their exact age is unknown.
+old-city-of-hebron:
+  desc: A Mamluk-era old town around the Cave of the Patriarchs, Abraham's tomb, enclosed by Herodian walls.
+djerba:
+  desc: An island where farmsteads, Ibadi mosques and synagogues are spread out, a way of living in a dry land.
+  uncertain: The settlement pattern took shape gradually over many centuries.
+rashid-karami-fair:
+  desc: Oscar Niemeyer's work in Tripoli, left unfinished when the Lebanese civil war began in 1975.
+umm-el-jimal:
+  desc: A village of black basalt with Byzantine to Umayyad houses and churches still standing several storeys high.
+saint-hilarion-monastery:
+  desc: An early Christian monastery in Gaza founded by Saint Hilarion, placed straight on the List in Danger.
+sidi-bou-said:
+  desc: A clifftop village of white houses and blue doors above the Gulf of Tunis that drew European artists and writers.
+  uncertain: The village grew slowly around a saint's tomb; most buildings date from the 18th and 19th centuries.
+sebastia:
+  desc: Site of Samaria, royal capital of the Kingdom of Israel, later rebuilt by Herod as Sebaste.
+mount-amel-castles:
+  desc: Five fortresses in southern Lebanon, the best known being the Crusader Beaufort Castle; placed straight on the List in Danger.
+nahal-mearot:
+  desc: Caves on Mount Carmel with traces of Neanderthals and modern humans over hundreds of thousands of years.
+  uncertain: People lived here for about 500,000 years, longer than the timeline can show.
+abu-simbel:
+  desc: Ramesses II's rock-cut temples, cut up and moved to higher ground to escape the Aswan Dam reservoir in the 1960s.

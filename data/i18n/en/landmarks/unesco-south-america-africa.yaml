@@ -1,0 +1,235 @@
+# English for data/landmarks/unesco-south-america-africa.yaml.
+
+old-town-quito:
+  desc: A Spanish colonial city high in the Andes, full of Baroque churches and monasteries. One of the very first World Heritage Sites.
+ouro-preto:
+  desc: A gold-rush town of Portuguese colonial Brazil, with Baroque churches by the sculptor Aleijadinho.
+olinda:
+  desc: A Portuguese port grown rich on sugar, burned by the Dutch in 1631 and rebuilt, with churches and convents on hills above the sea.
+machu-picchu:
+  desc: A ridge-top city built for the emperor Pachacuti. The Spanish never found it, so it survived almost intact.
+san-ignacio-mini:
+  desc: Ruins of the mission villages the Jesuits set up for the Guaraní, best known for the red sandstone church at San Ignacio Miní.
+cartagena-old-town:
+  desc: A walled port through which Spain shipped silver and gold back to Europe, with the most complete set of fortifications in South America.
+salvador-pelourinho:
+  desc: Brazil's first capital and a centre of the African slave trade. The Pelourinho quarter has brightly painted houses and Baroque churches.
+chavin-de-huantar:
+  desc: The ceremonial centre of the Chavín culture, with stone galleries beneath the temple and carvings of a feline-faced god.
+bom-jesus-congonhas:
+  desc: A Baroque hilltop church fronted by twelve soapstone prophets carved by Aleijadinho.
+potosi:
+  desc: A silver-mining town under the Cerro Rico, the world's largest source of silver in the 16th century, at the cost of countless indigenous workers' lives.
+brasilia:
+  desc: A capital built from scratch on the central plateau, planned by Lúcio Costa with buildings by Oscar Niemeyer.
+chiquitos-missions:
+  desc: Still-inhabited mission villages in the Bolivian forest, with wooden churches mixing Baroque design and local craftsmanship.
+gran-pajaten:
+  desc: A cloud forest in the Andes hiding stone ruins of the Chachapoya, such as Gran Pajatén with its round buildings.
+  uncertain: The exact date is unknown. The Chachapoya built in the cloud forest from about the 9th to the 15th century.
+sucre-old-town:
+  desc: A whitewashed Spanish colonial city where Bolivia declared its independence in 1825.
+tiwanaku:
+  desc: A sacred city near Lake Titicaca with the stepped Akapana pyramid and the Gate of the Sun.
+serra-da-capivara:
+  desc: Hundreds of rock shelters with ancient paintings, evidence that people lived in South America for a very long time.
+  uncertain: The age is disputed. The oldest paintings may be around 12,000 years old, and some traces of people are claimed to be over 30,000 years old.
+trinidad-jesus-missions:
+  desc: Ruins of Jesuit missions in Paraguay. The stone church at Trinidad has carved angels playing music.
+coro:
+  desc: An early Spanish colonial town in Venezuela with rare earthen houses blending Mudéjar and Dutch styles.
+nazca-lines:
+  desc: Giant drawings on the desert floor of animals, plants and straight lines several kilometres long, best seen from above.
+  uncertain: The Nazca and earlier cultures made the lines over a long period, from about 500 BCE to 500 CE.
+rapa-nui:
+  desc: A remote Pacific island where Polynesian settlers raised nearly a thousand stone moai statues.
+  uncertain: It is not known exactly when moai carving began, probably around the 12th or 13th century.
+mompox:
+  desc: A river port on the Magdalena that once linked the coast with the interior, its colonial houses still intact.
+tierradentro:
+  desc: Underground tombs cut into the rock, with spiral stairs and walls painted in red and black patterns.
+san-agustin:
+  desc: The largest group of ancient stone statues and tombs in South America, at the headwaters of the Magdalena.
+  uncertain: The culture's chronology is unclear. Most statues probably date from about 1 to 900 CE.
+colonia-del-sacramento:
+  desc: A town founded by Portugal across the river from Buenos Aires and fought over with Spain, so its streets mix both nations' plans.
+sao-luis:
+  desc: A city founded by the French and taken by the Portuguese, with more azulejo-tiled houses than anywhere else in Latin America.
+cuenca-ecuador:
+  desc: A Spanish colonial town in an Andean valley that still keeps the grid plan laid out in 1557.
+samaipata:
+  desc: A whole sandstone hill carved with channels and basins for ritual, later joined by an Inca town beside it.
+  uncertain: It is not known who began the carving or when, possibly the Mojocoya around the 4th century, before the Inca took it over.
+diamantina:
+  desc: An 18th-century diamond-mining town in Brazil, its brightly painted colonial houses set among barren rocky hills.
+cueva-de-las-manos:
+  desc: A cave in Patagonia whose walls are covered with stencilled hands and guanaco hunting scenes, about 9,000 years old.
+paramaribo:
+  desc: A Dutch colonial town in South America, with white-painted wooden buildings blending Dutch design and local craftsmanship.
+churches-of-chiloe:
+  desc: All-timber churches on the Chiloé islands, built by local carpenters on the Jesuit mission model. The church at Achao is the oldest.
+caracas-university-city:
+  desc: A campus designed by Carlos Raúl Villanueva, combining modern architecture with works by famous artists.
+goias-velho:
+  desc: An 18th-century gold-rush town in central Brazil, an intact example of a colonial town deep in the interior.
+jesuit-block-cordoba:
+  desc: The Jesuit complex in Argentina, with its church, university and the outlying estancias that supported the order.
+arequipa:
+  desc: A white city built of sillar volcanic stone below the El Misti volcano, rebuilt many times after earthquakes.
+quebrada-de-humahuaca:
+  desc: A long valley in Argentina used as a trade route for ten thousand years, with hilltop forts and ancient farming terraces.
+chiribiquete:
+  desc: Flat-topped rock mountains in the Colombian Amazon whose walls carry tens of thousands of ancient paintings.
+  uncertain: The age of the paintings is disputed. Some may be over 12,000 years old, and painting went on into much later times.
+humberstone:
+  desc: Saltpetre works and company towns in the Atacama Desert, abandoned after synthetic fertilisers arrived.
+sewell:
+  desc: A copper miners' town on an Andean slope with no streets for cars, only stairways between the houses.
+inca-road:
+  desc: A network of some 30,000 km of roads across the Andes. The Q'eswachaka rope bridge is still rewoven every year.
+fray-bentos:
+  desc: A meat-processing plant on the Uruguay River that sent meat extract and corned beef around the world.
+pampulha:
+  desc: Buildings around a lake designed by the young Niemeyer, best known for the curved-roof church of São Francisco.
+valongo-wharf:
+  desc: A stone wharf in Rio de Janeiro where around a million enslaved Africans were brought ashore.
+cristo-obrero:
+  desc: A brick church with undulating walls by the engineer Eladio Dieste in Uruguay.
+sitio-burle-marx:
+  desc: The home and experimental garden of landscape architect Roberto Burle Marx, holding thousands of tropical plant species.
+chankillo:
+  desc: Thirteen towers along a ridge used to track the sunrise through the year, the oldest solar calendar in the Americas.
+chinchorro:
+  desc: Fishing people on the Atacama coast made mummies some 2,000 years before Egypt, the oldest artificial mummies in the world.
+jodensavanne:
+  desc: A Sephardic Jewish sugar plantation settlement in Suriname, with the ruins of the Beracha ve Shalom synagogue and its cemeteries.
+esma:
+  desc: A former naval school that the military government used as a secret detention and torture centre from 1976 to 1983.
+teatro-amazonas:
+  desc: An opera house in the middle of the Amazon built on rubber money, listed together with the Theatro da Paz in Belém.
+lower-awash:
+  desc: A fossil site of human ancestors where the skeleton known as "Lucy", about 3.2 million years old, was found.
+  uncertain: The fossils here are far older than the map's timeline, around 3 to 4 million years.
+tiya-stelae:
+  desc: Thirty-six stone stelae carved with swords and symbols, standing over graves in southern Ethiopia.
+  uncertain: Who made them and when is not known, probably around the 12th to 14th century.
+lower-omo:
+  desc: A human fossil site where one of the oldest known Homo sapiens skulls was found.
+  uncertain: The fossils here are far older than the map's timeline. The Omo Kibish skull is about 230,000 years old.
+lalibela:
+  desc: Eleven churches carved down into solid rock under King Lalibela as a new Jerusalem.
+fasil-ghebbi:
+  desc: A group of stone castles of the Ethiopian emperors at Gondar, begun under Emperor Fasilides.
+goree-island:
+  desc: A small island off Dakar that was a slave-trading post. Its House of Slaves with the "Door of No Return" is a memorial to the trade.
+elmina-castle:
+  desc: The oldest European fort in sub-Saharan Africa, one of dozens of gold and slave trading forts on the Ghana coast.
+asante-buildings:
+  desc: Clay shrines with relief decoration from the Asante kingdom, only a few of which survive around Kumasi.
+ngorongoro:
+  desc: A volcanic crater full of wildlife, including Olduvai Gorge and the Laetoli footprints of human ancestors.
+  uncertain: The Laetoli footprints are about 3.7 million years old, far older than the map's timeline.
+abomey-palaces:
+  desc: The earthen palaces of twelve kings of Dahomey, with wall reliefs telling the kingdom's history.
+khami:
+  desc: Capital of the Torwa state after Great Zimbabwe, with stacked stone platforms decorated with patterned walling.
+bandiagara:
+  desc: Dogon villages along a 150 km cliff, with cone-roofed granaries and old Tellem dwellings in the rock face.
+island-of-mozambique:
+  desc: A Portuguese port on the sea route to India, blending Swahili, Arab and European cultures.
+cradle-of-humankind:
+  desc: A group of limestone caves including Sterkfontein, where more human ancestor fossils have been found than anywhere else.
+  uncertain: The fossils in these caves are about 2 to 3.5 million years old, far older than the map's timeline.
+robben-island:
+  desc: The prison island for political prisoners under apartheid, where Nelson Mandela was held for 18 years.
+sukur:
+  desc: A chief's palace on a hill in Nigeria, surrounded by villages, terraced fields and ancient iron furnaces.
+ambohimanga:
+  desc: The sacred royal city of the Merina kings in Madagascar, with wooden palaces and royal tombs on the hilltop.
+drakensberg-rock-art:
+  desc: Mountains whose rock shelters hold tens of thousands of San paintings, the most in sub-Saharan Africa.
+  uncertain: The paintings were made over thousands of years up to the 19th century. The oldest may be about 4,000 years old.
+tsodilo:
+  desc: Rocky hills in the Kalahari with over 4,500 paintings, revered by the San as a home of spirits.
+  uncertain: People have lived here for about 100,000 years, but most of the paintings cannot be dated.
+kasubi-tombs:
+  desc: A thatched dome-shaped house where the kings of Buganda are buried. It burned in 2010 and has been rebuilt.
+lamu-old-town:
+  desc: The oldest and best-preserved Swahili town, with coral stone houses, carved wooden doors and narrow car-free lanes.
+mapungubwe:
+  desc: The hilltop capital of the first kingdom in southern Africa, where the famous golden rhinoceros was found.
+osun-osogbo:
+  desc: The sacred forest of the Yoruba goddess Osun beside the Osun River, with many shrines and sculptures.
+tomb-of-askia:
+  desc: The 17-metre mud pyramid tomb of the Songhai emperor Askia Muhammad at Gao.
+koutammakou:
+  desc: The land of the Batammariba, whose two-storey tower-like mud houses called takienta became a symbol of Togo.
+mulanje-mountain:
+  desc: A granite massif in Malawi that local peoples regard as the home of ancestors and gods.
+  uncertain: The mountain has been sacred for centuries, with no clear starting date.
+senegambia-stone-circles:
+  desc: Over a thousand stone circles over graves along the Gambia River. The group at Wassu is the best known.
+  uncertain: The circles were raised over a long period, from about the 3rd century BCE to the 16th century.
+aapravasi-ghat:
+  desc: The depot in Mauritius that received indentured labourers from India, almost half a million of them after slavery was abolished.
+twyfelfontein:
+  desc: Over 2,000 San rock engravings in Namibia of rhinos, elephants, giraffes and animal tracks.
+  uncertain: The engravings are hard to date. The oldest may be about 6,000 years old.
+le-morne-brabant:
+  desc: A seaside mountain in Mauritius where runaway slaves hid, a symbol of the fight against slavery.
+  uncertain: Runaway slaves hid here throughout the 18th century until abolition in 1835, with no clear starting date.
+richtersveld:
+  desc: A mountain desert where the Nama still move their herds with the seasons and live in traditional mat houses.
+  uncertain: Khoikhoi and Nama seasonal herding goes back around 2,000 years, with no clear starting date.
+agadez:
+  desc: A Tuareg mud-brick gateway to the Sahara whose 27-metre mud minaret is the tallest in the world.
+cidade-velha:
+  desc: The first European colonial town in the tropics, on Cape Verde, a stopover in the transatlantic slave trade.
+grand-bassam:
+  desc: The first capital of French colonial Côte d'Ivoire, with colonial buildings by the lagoon and a fishing village.
+saloum-delta:
+  desc: Mangroves with over 200 ancient shell mounds, some of them used as burial mounds.
+  uncertain: The shell mounds built up over many centuries, with no clear starting date.
+bassari-country:
+  desc: A mountain landscape of the Bassari, Fula and Bedik peoples, who keep their traditional villages and rituals.
+  uncertain: The villages were founded at different times, with no clear starting date.
+thimlich-ohinga:
+  desc: Mortarless dry-stone walls enclosing a settlement in Kenya, the best-preserved example around Lake Victoria.
+ennedi-rock-art:
+  desc: Sandstone cliffs in the Sahara in Chad with thousands of paintings going back to when the Sahara was green.
+  uncertain: The paintings are hard to date. The oldest probably come from the African Humid Period.
+mbanza-kongo:
+  desc: Capital of the Kingdom of Kongo, with the ruins of the Kulumbimbi church of 1549, one of the oldest in sub-Saharan Africa.
+  uncertain: The founding date is unknown. The Kongo court was probably here from about the 14th century.
+khomani:
+  desc: Kalahari sands where the ǂKhomani San have hunted and gathered since the Stone Age.
+  uncertain: Human traces here go back to the Stone Age, with no clear starting date.
+asmara:
+  desc: Eritrea's capital, built up by Italy in the 1930s, with its Art Deco and modernist buildings intact, such as the Fiat Tagliero service station.
+kigali-genocide-memorial:
+  desc: The memorial at Gisozi and three others, remembering the roughly 800,000 Tutsi killed in 1994.
+burkina-iron-sites:
+  desc: Ancient iron-smelting furnaces. The one at Douroula is about 2,800 years old, early evidence of ironworking in Africa.
+gedeo-landscape:
+  desc: Shaded coffee forests of the Gedeo in the Ethiopian highlands, scattered with thousands of ancient stelae.
+  uncertain: The stelae in the area have not been firmly dated.
+ivory-coast-sudanese-mosques:
+  desc: Eight small mud mosques with projecting timbers and conical towers along the trans-Saharan trade routes.
+  uncertain: The mosques were built at different times between the 17th and 19th centuries.
+mandela-legacy-sites:
+  desc: Places in the struggle against apartheid, from Sharpeville to the Union Buildings where Mandela was sworn in as president in 1994.
+tiebele-royal-court:
+  desc: Kassena earthen houses that women paint every year with geometric patterns in red, black and white.
+  uncertain: It is not known when the court was founded, probably between the 16th and 18th century.
+gedi-ruins:
+  desc: A ruined Swahili town in the Kenyan coastal forest with a mosque, palace and coral stone houses, abandoned around the 17th century.
+diepkloof:
+  desc: Rock shelters and coastal caves with early evidence of modern human behaviour, such as engraved ostrich eggshell.
+  uncertain: The finds in these caves are about 60,000 to 160,000 years old, far older than the map's timeline.
+diy-gid-biy:
+  desc: Dry-stone platforms on hills in the Mandara Mountains of Cameroon, whose purpose is still a mystery.
+  uncertain: Who built them is unknown. Dating points to about the 12th to 17th century.
+rocas-sao-tome:
+  desc: Portuguese colonial cocoa and coffee plantations worked by forced labour from the mainland, once the world's largest cocoa exporter.
+comoros-medinas:
+  desc: Walled old towns of the sultanates of the Comoros, with Swahili-style coral stone houses, mosques and palaces.

@@ -3,7 +3,8 @@ import { MercatorCoordinate, type CustomLayerInterface, type CustomRenderMethodI
 import type { City, Landmark } from '../data/schema'
 import type { Store } from '../store'
 import type { IsLand } from './landMask'
-import { buildShape } from './shapes'
+import { buildShape, phasesOf } from './shapes'
+import { MODELS } from './models'
 import { FLAT_ZOOM } from './style'
 
 const CITY_ZOOM = FLAT_ZOOM + 0.1
@@ -31,8 +32,14 @@ const smooth = (a: number, b: number, x: number) => { const t = Math.min(1, Math
 
 interface Building { i: number; x: number; y: number; w: number; h: number; yaw: number; s: number; spd: number }
 interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds: Building[]; vis: number }
-// reach: how far the model extends from its anchor, as a multiple of size
-interface LandmarkModel { lm: Landmark; obj: THREE.Object3D; size: number; reach: number; s: number }
+// one obj per phase, starting at the years in starts, built on first use; reach: how far the model extends from its anchor, as a multiple of size
+interface LandmarkModel { lm: Landmark; g: THREE.Group; objs: (THREE.Object3D | undefined)[]; starts: number[]; phase: number; size: number; reach: number; s: number }
+
+const reachOf = (obj: THREE.Object3D) => {
+  obj.updateMatrixWorld(true)
+  const b = new THREE.Box3().setFromObject(obj)
+  return Math.hypot(Math.max(-b.min.x, b.max.x), Math.max(-b.min.y, b.max.y))
+}
 
 // Mercator y points south. The flip to north lives in the camera (see render) rather than in each object,
 // because three.js reverses face culling for mirrored objects and doesn't know the camera mirrors too.
@@ -124,20 +131,35 @@ export class Cities3D implements CustomLayerInterface {
     this.cities.push({ city: c, pmax, mesh, blds, vis: 0 })
   }
 
+  private genericReach = new Map<string, number>()
+
   private buildLandmark(l: Landmark) {
-    const obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id)
-    if (l.uncertain) obj.traverse(o => {
-      const m = (o as THREE.Mesh).material as THREE.Material | undefined
-      if (m) { m.transparent = true; m.opacity = 0.45; m.depthWrite = false }
-    })
     const g = anchor(l.lon, l.lat)
-    g.add(obj)
-    obj.visible = false
     this.scene.add(g)
-    obj.updateMatrixWorld(true)
-    const b = new THREE.Box3().setFromObject(obj)
-    const reach = Math.hypot(Math.max(-b.min.x, b.max.x), Math.max(-b.min.y, b.max.y))
-    this.landmarks.push({ lm: l, obj, size: landmarkSize(l), reach, s: 0 })
+    const starts = phasesOf(l.id, l.built)
+    const m: LandmarkModel = { lm: l, g, objs: starts.map(() => undefined), starts, phase: 0, size: landmarkSize(l), reach: 0, s: 0 }
+    if (MODELS[l.id]) m.reach = Math.max(...starts.map((_, i) => reachOf(this.phaseObj(m, i))))
+    else {
+      // generic shapes all share a footprint, so measure one of each and build the rest when first seen
+      let r = this.genericReach.get(l.shape)
+      if (r === undefined) this.genericReach.set(l.shape, (r = reachOf(buildShape(l.shape, '#888888'))))
+      m.reach = r
+    }
+    this.landmarks.push(m)
+  }
+
+  private phaseObj(m: LandmarkModel, i: number) {
+    let obj = m.objs[i]
+    if (obj) return obj
+    const l = m.lm
+    obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id, m.starts[i])
+    if (l.uncertain) obj.traverse(o => {
+      const mat = (o as THREE.Mesh).material as THREE.Material | undefined
+      if (mat) { mat.transparent = true; mat.opacity = 0.45; mat.depthWrite = false }
+    })
+    obj.visible = false
+    m.g.add(obj)
+    return (m.objs[i] = obj)
   }
 
   /**
@@ -188,7 +210,7 @@ export class Cities3D implements CustomLayerInterface {
       const lat = m.lm.lat + off[i].y / M_PER_DEG_LAT, lon = m.lm.lon + off[i].x / (M_PER_DEG_LON * Math.cos((m.lm.lat * Math.PI) / 180))
       this.placed.set(m.lm.id, [lon, lat])
       const g = anchor(lon, lat)
-      m.obj.parent!.matrix.copy(g.matrix)
+      m.g.matrix.copy(g.matrix)
     })
   }
 
@@ -198,6 +220,13 @@ export class Cities3D implements CustomLayerInterface {
   }
 
   private onYear() {
+    const y = this.store.year
+    for (const m of this.landmarks) {
+      if (m.objs.length < 2) continue
+      let i = m.starts.length - 1
+      while (i > 0 && y < m.starts[i]) i--
+      if (i !== m.phase) { const old = m.objs[m.phase]; if (old) old.visible = false; m.phase = i }
+    }
     for (const m of this.cities) m.vis = m.blds.length * Math.sqrt(this.store.pop(m.city) / m.pmax)
     this.map.triggerRepaint()
   }
@@ -229,13 +258,19 @@ export class Cities3D implements CustomLayerInterface {
       })
       m.mesh.instanceMatrix.needsUpdate = true
     }
+    // with a thousand-odd landmarks, skip the ones far outside the view (city zoom shows a few tens of km)
+    const c = this.map.getCenter(), far = 4 / Math.cos((c.lat * Math.PI) / 180)
     for (const l of this.landmarks) {
+      const near = Math.abs(l.lm.lat - c.lat) < 4 && Math.abs(((l.lm.lon - c.lng + 540) % 360) - 180) < far
       const t = this.store.landmarkShown(l.lm) ? 1 : 0
+      if (!near) { l.s = t; const o = l.objs[l.phase]; if (o) o.visible = false; continue }
       l.s = step(l.s, t, 2.5)
       if (Math.abs(t - l.s) > 0.003) animating = true
       const s = l.s * zf
-      l.obj.visible = s > 0.003
-      l.obj.scale.set(l.size * Math.min(1, s * 2), l.size * Math.min(1, s * 2), l.size * s)
+      const o = l.objs[l.phase] ?? (s > 0.003 ? this.phaseObj(l, l.phase) : undefined)
+      if (!o) continue
+      o.visible = s > 0.003
+      o.scale.set(l.size * Math.min(1, s * 2), l.size * Math.min(1, s * 2), l.size * s)
     }
     this.wasVisible = visible
     if (!visible) return

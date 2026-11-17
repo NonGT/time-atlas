@@ -45,7 +45,7 @@ export function setupUI(store: Store, act: Actions) {
   $<HTMLInputElement>('opt-unc').addEventListener('change', e => store.setUncertain((e.target as HTMLInputElement).checked))
   $<HTMLInputElement>('opt-stop').addEventListener('change', e => (store.stopAtEvents = (e.target as HTMLInputElement).checked))
 
-  const timeline = setupTimeline(store, e => act.goToEvent(e))
+  const timeline = setupTimeline(store, e => act.goToEvent(e), l => act.goToLandmark(l))
   // panels above the timeline sit on its real height, which changes with wrapping and screen size
   const tlPanel = document.querySelector<HTMLElement>('.timeline')!
   new ResizeObserver(() => document.documentElement.style.setProperty('--tl-h', `${tlPanel.offsetHeight}px`)).observe(tlPanel)
@@ -171,6 +171,7 @@ export function setupUI(store: Store, act: Actions) {
         <div class="stat"><span class="pop">${t.built(fmtYear(l.built), !!l.builtRange)}</span>${status}</div>
         ${l.builtRange ? `<div class="meta">${t.maybeBuilt(fmtSpan(l.builtRange))}</div>` : ''}
         ${l.gone !== undefined ? `<div class="meta">${l.goneRange ? t.goneSpan(fmtSpan(l.goneRange), fmtYear(l.gone)) : t.gone(fmtYear(l.gone))}</div>` : ''}
+        ${l.whs ? `<a class="whs" href="https://whc.unesco.org/en/list/${l.whs}" target="_blank" rel="noopener">${t.unesco(l.inscribed!)}</a>` : ''}
         ${l.desc ? `<p>${esc(l.desc)}</p>` : ''}
         ${uncNote(l.uncertain)}
         <figure class="lm-photo" hidden><a target="_blank" rel="noopener"><img alt=""></a><figcaption></figcaption></figure>

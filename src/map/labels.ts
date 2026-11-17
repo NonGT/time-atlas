@@ -24,9 +24,8 @@ export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [n
     el.className = `label label-lm${l.uncertain ? ' unc' : ''}`
     el.textContent = l.name
     el.addEventListener('click', e => { e.stopPropagation(); store.select({ kind: 'landmark', landmark: l }) })
-    const marker = new Marker({ element: el, anchor: 'top', offset: [0, 8], opacityWhenCovered: '0' })
-      .setLngLat(placeOf(l)).addTo(map)
-    return { l, el, marker }
+    const marker = new Marker({ element: el, anchor: 'top', offset: [0, 8], opacityWhenCovered: '0' }).setLngLat(placeOf(l))
+    return { l, el, marker, on: false }
   })
 
   const update = () => {
@@ -37,7 +36,15 @@ export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [n
       x.el.dataset.rank = String(store.selection?.kind === 'city' && store.selection.city === x.c ? 1e9 : p)
       x.pop.textContent = fmtPopShort(p)
     }
-    for (const x of landmarks) x.el.hidden = !(z >= 8 && store.mode === 'city' && store.landmarkShown(x.l))
+    // there are over a thousand landmarks, so only the ones in view get a marker on the map
+    const b = z >= 8 && store.mode === 'city' ? map.getBounds() : null
+    if (b) b.extend([b.getWest() - (b.getEast() - b.getWest()) * 0.25, b.getSouth() - (b.getNorth() - b.getSouth()) * 0.25])
+      .extend([b.getEast() + (b.getEast() - b.getWest()) * 0.25, b.getNorth() + (b.getNorth() - b.getSouth()) * 0.25])
+    for (const x of landmarks) {
+      const show = !!b && store.landmarkShown(x.l) && b.contains(x.marker.getLngLat())
+      if (show !== x.on) { if (show) x.marker.addTo(map); else x.marker.remove(); x.on = show }
+      x.el.hidden = !show
+    }
     scheduleDeclutter()
   }
 

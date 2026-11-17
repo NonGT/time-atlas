@@ -58,6 +58,7 @@ export const en: Dict = {
   maybeBuilt: span => `Possibly built ${span}`,
   gone: year => `Destroyed or abandoned ${year}`,
   goneSpan: (span, year) => `Destroyed or abandoned ${span} (the map uses ${year})`,
+  unesco: year => `UNESCO World Heritage · inscribed ${year}`,
   realSize: m => `About ${m} m across in reality (drawn larger on the map so it can be seen)`,
   goLook: 'Go there',
   googleImages: 'Search Google Images ↗',

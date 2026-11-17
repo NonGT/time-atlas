@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { doubleSided, gable, merge, type Builder, type Kit } from './kit'
+import { doubleSided, gable, merge, staged, type Builder, type Kit } from './kit'
 
 type Num = number | ((t: number) => number)
 const val = (v: Num, t: number) => (typeof v === 'number' ? v : v(t))
@@ -261,35 +261,54 @@ function greatEnclosure(k: Kit) {
   k.add(new THREE.CylinderGeometry(0.008, 0.013, 0.06, 12), 0.03, tx - 0.05, tz - 0.035)
 }
 
-function aksumObelisk(k: Kit) {
+// ~400 fell and broke (date uncertain), 1937 shipped to Rome, 2008 re-erected after its return
+const aksumObelisk = staged([400, 1937, 2008], (k, year) => {
   // 24 m granite stele carved as a tower house: false door at the foot, storeys of windows divided by
   // beam-end bands, crowned by a rounded head. Base 2.65 x 1.56 m; height capped for the map.
   const H = 2.6, wb = 0.8, db = 0.47, taper = 0.78
-  const plinth: THREE.BufferGeometry[] = [boxG(1.04, 0.05, 0.72, 0), boxG(0.92, 0.05, 0.6, 0.05)]
+  merge(k, [boxG(1.04, 0.05, 0.72, 0), boxG(0.92, 0.05, 0.6, 0.05)])
+  if (year >= 1937 && year < 2008) return
   const y0 = 0.1, door = 0.32, storeys = 9, sh = (H - door) / storeys
   const wAt = (y: number) => wb * (1 - (1 - taper) * ((y - y0) / H)), dAt = (y: number) => db * (1 - (1 - taper) * ((y - y0) / H))
-  const body: THREE.BufferGeometry[] = [...plinth], dark: THREE.BufferGeometry[] = []
-  body.push(frustum(wb, door, db, wAt(y0 + door), dAt(y0 + door), y0))
-  for (const s of [-1, 1]) dark.push(boxG(0.22, door * 0.75, 0.04, y0, 0, s * (db / 2 + 0.002)))
+  // three pieces, split where it broke, each with its own body and dark parts
+  const body: THREE.BufferGeometry[][] = [[], [], []], dark: THREE.BufferGeometry[][] = [[], [], []]
+  const piece = (i: number) => (i < 3 ? 0 : i < 6 ? 1 : 2)
+  body[0].push(frustum(wb, door, db, wAt(y0 + door), dAt(y0 + door), y0))
+  for (const s of [-1, 1]) dark[0].push(boxG(0.22, door * 0.75, 0.04, y0, 0, s * (db / 2 + 0.002)))
   for (let i = 0; i < storeys; i++) {
-    const y = y0 + door + i * sh, w0 = wAt(y), d0 = dAt(y), w1 = wAt(y + sh), d1 = dAt(y + sh)
-    body.push(frustum(w0, sh, d0, w1, d1, y))
+    const y = y0 + door + i * sh, w0 = wAt(y), d0 = dAt(y), w1 = wAt(y + sh), d1 = dAt(y + sh), p = piece(i)
+    body[p].push(frustum(w0, sh, d0, w1, d1, y))
     // beam-end band at each floor
-    body.push(boxG(w0 + 0.03, 0.035, d0 + 0.03, y))
+    body[p].push(boxG(w0 + 0.03, 0.035, d0 + 0.03, y))
     const wy = y + sh * 0.35, ww = wAt(wy), wd = dAt(wy)
-    for (const x of [-0.22, 0.22]) for (const s of [-1, 1]) dark.push(boxG(0.1, sh * 0.42, 0.04, wy, x * (ww / wb), s * (wd / 2 + 0.002)))
-    for (const s of [-1, 1]) dark.push(boxG(0.04, sh * 0.42, 0.08, wy, s * (ww / 2 + 0.002), 0))
+    for (const x of [-0.22, 0.22]) for (const s of [-1, 1]) dark[p].push(boxG(0.1, sh * 0.42, 0.04, wy, x * (ww / wb), s * (wd / 2 + 0.002)))
+    for (const s of [-1, 1]) dark[p].push(boxG(0.04, sh * 0.42, 0.08, wy, s * (ww / 2 + 0.002), 0))
   }
-  merge(k, body)
-  merge(k, dark, k.dark)
   // rounded head, a half disc across the broad face
   const top = y0 + H, wt = wAt(top), dt = dAt(top)
   const s = new THREE.Shape()
   s.moveTo(-wt / 2, 0); s.lineTo(wt / 2, 0); s.absarc(0, 0, wt / 2, 0, Math.PI, false)
   const head = new THREE.ExtrudeGeometry(s, { depth: dt, bevelEnabled: false, curveSegments: 16 })
-  head.translate(0, 0, -dt / 2)
-  k.add(head, top)
-}
+  head.translate(0, top, -dt / 2)
+  if (year >= 400 && year < 1937) {
+    // lying on its broad face south of the base, foot to the west, shortened so the pieces stay near the anchor
+    const L = 0.6, starts = [y0, y0 + door + 3 * sh, y0 + door + 6 * sh], ends = [starts[1], starts[2], top + wt / 2]
+    let x = -0.92
+    for (let p = 0; p < 3; p++) {
+      const m = new THREE.Matrix4().makeTranslation(0, -starts[p], 0)
+      m.premultiply(new THREE.Matrix4().makeRotationX(-Math.PI / 2))
+      m.premultiply(new THREE.Matrix4().makeRotationY(-Math.PI / 2))
+      m.premultiply(new THREE.Matrix4().makeScale(L, 0.5, 0.6))
+      m.premultiply(new THREE.Matrix4().makeRotationY([0.05, -0.12, 0.2][p]))
+      m.premultiply(new THREE.Matrix4().makeTranslation(x, (dAt(starts[p]) / 2 + 0.017) * 0.5, 0.62 + [0, 0.04, -0.03][p]))
+      for (const g of [...body[p], ...dark[p], ...(p === 2 ? [head] : [])]) g.applyMatrix4(m)
+      x += (ends[p] - starts[p]) * L + 0.08
+    }
+  }
+  merge(k, body.flat())
+  merge(k, dark.flat(), k.dark)
+  k.add(head, 0)
+})
 
 function djinguereber(k: Kit) {
   // mud-brick mosque of about 70 x 60 m: a flat-roofed prayer hall with buttressed walls topped by pinnacles,
@@ -337,62 +356,84 @@ function djinguereber(k: Kit) {
   merge(k, dark, k.dark)
 }
 
-function kilwaMosque(k: Kit) {
+// ~1320 Sultan al-Hasan ibn Sulaiman's domed extension, ~1850 roofs fallen in after the town was abandoned
+const kilwaMosque = staged([1320, 1850], (k, year) => {
   // coral-stone mosque, qibla to the north: the older flat-roofed hall of 9 bays and the 14th-century
   // extension to the south, a pillared hall roofed by alternating domes and barrel vaults, with a larger dome
-  const V = 1.6, S = 60
+  const V = 1.6, S = 60, ruin = year >= 1850
   const ph = (4 / S) * V, slab = 0.012, roofY = ph + slab
   const solid: THREE.BufferGeometry[] = [], dark: THREE.BufferGeometry[] = []
   const xw = 0.26, zN = -0.5, zM = -0.13, zS = 0.5
-  // old hall: walls, flat roof with parapet and a few roof domes
-  solid.push(boxG(2 * xw, ph + slab, zM - zN, 0, 0, (zN + zM) / 2))
-  solid.push(boxG(2 * xw, 0.012, 0.012, roofY, 0, zN + 0.006), boxG(0.012, 0.012, zM - zN, roofY, -xw + 0.006, (zN + zM) / 2))
-  solid.push(boxG(0.012, 0.012, zM - zN, roofY, xw - 0.006, (zN + zM) / 2))
-  for (let i = 0; i < 3; i++) dark.push(boxG(0.03, 0.004, 0.03, roofY, -0.17 + i * 0.17, (zN + zM) / 2))
+  if (!ruin) {
+    // old hall: walls, flat roof with parapet and a few roof domes
+    solid.push(boxG(2 * xw, ph + slab, zM - zN, 0, 0, (zN + zM) / 2))
+    solid.push(boxG(2 * xw, 0.012, 0.012, roofY, 0, zN + 0.006), boxG(0.012, 0.012, zM - zN, roofY, -xw + 0.006, (zN + zM) / 2))
+    solid.push(boxG(0.012, 0.012, zM - zN, roofY, xw - 0.006, (zN + zM) / 2))
+    for (let i = 0; i < 3; i++) dark.push(boxG(0.03, 0.004, 0.03, roofY, -0.17 + i * 0.17, (zN + zM) / 2))
+  } else {
+    // roofless shell: the qibla wall stands, the side walls are broken down, columns are stumps
+    const t = 0.02, zc = (zN + zM) / 2
+    solid.push(boxG(2 * xw, ph, t, 0, 0, zN + t / 2))
+    solid.push(boxG(t, ph * 0.7, zM - zN, 0, -xw + t / 2, zc), boxG(t, ph * 0.45, (zM - zN) * 0.6, 0, xw - t / 2, zN + (zM - zN) * 0.3))
+    solid.push(boxG(t, ph * 0.2, (zM - zN) * 0.4, 0, xw - t / 2, zM - (zM - zN) * 0.2))
+    dark.push(boxG(2 * xw - 2 * t, 0.002, zM - zN - t, 0, 0, zc + t / 2))
+    for (let i = 1; i < 4; i++) for (const z of [zN + 0.13, zN + 0.25]) {
+      const c = new THREE.CylinderGeometry(0.011, 0.012, ph * (0.2 + ((i * 3 + (z > zc ? 1 : 0)) % 4) * 0.1), 8)
+      c.translate(-xw + (i * xw) / 2, (c.parameters.height) / 2, z)
+      solid.push(c)
+    }
+  }
   // mihrab niche bulging from the north wall
   const mih = new THREE.CylinderGeometry(0.04, 0.04, ph * 0.9, 12, 1, false, Math.PI / 2, Math.PI)
   mih.translate(0, (ph * 0.9) / 2, zN)
   solid.push(mih)
-  // extension: 3 x 4 bays on pillars
-  const cols = 3, rows = 4, bx = (2 * xw) / cols, bz = (zS - zM) / rows
-  for (let i = 0; i <= cols; i++) for (let j = 0; j <= rows; j++) {
-    const c = new THREE.CylinderGeometry(0.011, 0.012, ph, 8)
-    c.translate(-xw + i * bx, ph / 2, zM + j * bz)
-    solid.push(c)
-  }
-  solid.push(boxG(2 * xw + 0.02, slab, zS - zM + 0.01, ph, 0, (zM + zS) / 2))
-  solid.push(boxG(0.02, ph, zS - zM, 0, -xw - 0.002, (zM + zS) / 2))
-  dark.push(boxG(2 * xw - 0.03, 0.002, zS - zM - 0.02, 0, 0.005, (zM + zS) / 2))
-  for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
-    const x = -xw + (i + 0.5) * bx, z = zM + (j + 0.5) * bz
-    if (i === 2 && j === 0) {
-      // the great dome
-      solid.push(boxG(bx * 0.95, 0.025, bz * 0.95, roofY, x, z))
-      const d = new THREE.SphereGeometry(bx * 0.47, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2)
-      d.scale(1, 1.25, 1)
-      d.translate(x, roofY + 0.025, z)
-      solid.push(d)
-    } else if ((i + j) % 2 === 0) {
-      const d = new THREE.SphereGeometry(Math.min(bx, bz) * 0.4, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2)
-      d.translate(x, roofY, z)
-      solid.push(d)
-    } else {
-      const r = bx * 0.42
-      const v = new THREE.CylinderGeometry(r, r, bz * 0.9, 12, 1, false, -Math.PI / 2, Math.PI)
-      v.rotateX(-Math.PI / 2)
-      v.scale(1, 0.7, 1)
-      v.translate(x, roofY, z)
-      solid.push(v)
+  if (year >= 1320) {
+    // extension: 3 x 4 bays on pillars; after the collapse a few bays on the west keep their vaults
+    const cols = 3, rows = 4, bx = (2 * xw) / cols, bz = (zS - zM) / rows
+    const kept = (i: number, j: number) => !ruin || (i === 0 && j > 0) || (i === 1 && j === 2)
+    const holds = (i: number, j: number) => [[i - 1, j - 1], [i, j - 1], [i - 1, j], [i, j]].some(([a, b]) => a >= 0 && b >= 0 && a < cols && b < rows && kept(a, b))
+    for (let i = 0; i <= cols; i++) for (let j = 0; j <= rows; j++) {
+      const h = holds(i, j) ? ph : ph * 0.3
+      const c = new THREE.CylinderGeometry(0.011, 0.012, h, 8)
+      c.translate(-xw + i * bx, h / 2, zM + j * bz)
+      solid.push(c)
+    }
+    if (!ruin) solid.push(boxG(2 * xw + 0.02, slab, zS - zM + 0.01, ph, 0, (zM + zS) / 2))
+    solid.push(boxG(0.02, ruin ? ph * 0.6 : ph, zS - zM, 0, -xw - 0.002, (zM + zS) / 2))
+    dark.push(boxG(2 * xw - 0.03, 0.002, zS - zM - 0.02, 0, 0.005, (zM + zS) / 2))
+    for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
+      if (!kept(i, j)) continue
+      const x = -xw + (i + 0.5) * bx, z = zM + (j + 0.5) * bz
+      if (ruin) solid.push(boxG(bx + 0.01, slab, bz + 0.01, ph, x, z))
+      if (i === 2 && j === 0) {
+        // the great dome
+        solid.push(boxG(bx * 0.95, 0.025, bz * 0.95, roofY, x, z))
+        const d = new THREE.SphereGeometry(bx * 0.47, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2)
+        d.scale(1, 1.25, 1)
+        d.translate(x, roofY + 0.025, z)
+        solid.push(d)
+      } else if ((i + j) % 2 === 0) {
+        const d = new THREE.SphereGeometry(Math.min(bx, bz) * 0.4, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2)
+        d.translate(x, roofY, z)
+        solid.push(d)
+      } else {
+        const r = bx * 0.42
+        const v = new THREE.CylinderGeometry(r, r, bz * 0.9, 12, 1, false, -Math.PI / 2, Math.PI)
+        v.rotateX(-Math.PI / 2)
+        v.scale(1, 0.7, 1)
+        v.translate(x, roofY, z)
+        solid.push(v)
+      }
     }
   }
   // courtyard to the east with low walls
-  const cx0 = xw, cx1 = 0.5, cz0 = -0.5, cz1 = -0.05, wh = ph * 0.45
+  const cx0 = xw, cx1 = 0.5, cz0 = -0.5, cz1 = -0.05, wh = ph * (ruin ? 0.25 : 0.45)
   solid.push(boxG(cx1 - cx0, wh, 0.016, 0, (cx0 + cx1) / 2, cz0 + 0.008), boxG(cx1 - cx0, wh, 0.016, 0, (cx0 + cx1) / 2, cz1 - 0.008))
   solid.push(boxG(0.016, wh, cz1 - cz0, 0, cx1 - 0.008, (cz0 + cz1) / 2))
   dark.push(boxG(0.06, 0.01, 0.08, 0, 0.4, -0.3))
   merge(k, solid)
   merge(k, dark, k.dark)
-}
+})
 
 function greatBath(k: Kit) {
   // Mohenjo-daro citadel mound: the Great Bath, a 12 x 7 m brick tank 2.4 m deep with steps at both ends,

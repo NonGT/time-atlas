@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { gable, merge, type Builder, type Kit } from './kit'
+import { gable, merge, staged, type Builder, type Kit } from './kit'
 
 type G = THREE.BufferGeometry
 const SQ2 = Math.SQRT2
@@ -24,6 +24,16 @@ const done = (k: Kit, m: G[], d: G[] = [], em: G[] = [], ed: G[] = []) => {
   if (ed.length) merge(k, ed, k.dark)
 }
 const dirs: [number, number][] = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+const tint = (k: Kit, f: number, to: string, t: number) => {
+  const c = (k.mat as THREE.MeshLambertMaterial).clone()
+  c.color.lerp(new THREE.Color(to), t).multiplyScalar(f)
+  c.emissive.multiplyScalar(f)
+  return c
+}
+// bare weathered brick once the plaster is gone, and jungle overgrowth
+const worn = (k: Kit): Kit => ({ ...k, mat: tint(k, 0.72, '#a8603a', 0.4) })
+const moss = (k: Kit) => tint(k, 0.7, '#4f7438', 0.75)
 
 /** Flight of steps on side (dx, dz): top at distance r0 from (cx, cz), running l outward and h down to y0. */
 function stairs(o: G[], dx: number, dz: number, r0: number, l: number, h: number, w: number, y0 = 0, n = 6, cx = 0, cz = 0) {
@@ -161,10 +171,12 @@ function lotusBud(m: G[], d: G[], x: number, z: number, y: number, s: number) {
   m.push(at(lathe(bud, 12, 0.08 * s, 0.4 * s, Math.PI / 12), x, y + 0.272 * s, z))
 }
 
-function watMahathatSukhothai(k: Kit) {
+// ~1600: Sukhothai deserted after its people were moved south, the wooden roofs rot away
+const watMahathatSukhothai = staged([1600], (k, year) => {
   // main lotus-bud chedi on a square platform ringed by eight satellites (Khmer prangs at the corners),
   // two tall mondop with standing Buddhas (พระอัฏฐารส) north and south, the big pillared viharn to the east
-  const m: G[] = [], d: G[] = []
+  const ruin = year >= 1600
+  const m: G[] = [], d: G[] = [], e: G[] = []
   m.push(bx(0.96, 0.01, 0.76, 0.02, 0, 0))
   const cx = -0.18
   m.push(bx(0.36, 0.025, 0.36, cx, 0.01, 0))
@@ -182,19 +194,49 @@ function watMahathatSukhothai(k: Kit) {
   for (let i = 0; i < 9; i++) for (const z of [-0.06, -0.025, 0.025, 0.06]) m.push(bx(0.011, 0.07, 0.011, vx - 0.17 + i * 0.04, 0.035, z))
   m.push(bx(0.04, 0.025, 0.06, vx - 0.18, 0.035, 0))
   m.push(at(lathe([[1, 0], [0.9, 0.3], [0.45, 0.45], [0.5, 0.7], [0.35, 0.95], [0.15, 1.05], [0, 1.15]], 10, 0.025, 0.08), vx - 0.18, 0.06, 0))
-  // a few small chedis among the ruins
+  if (!ruin) {
+    // low walls and the tiered timber roof carried on the columns
+    for (const s of [-1, 1]) m.push(bx(0.42, 0.025, 0.008, vx, 0.035, s * 0.08))
+    m.push(bx(0.008, 0.07, 0.17, vx - 0.206, 0.035, 0))
+    thaiRoof(e, 0.44, 0.2, vx, 0.105, 0, false, 3, 0.03)
+  }
   for (const [x, z] of [[0.1, -0.3], [0.2, -0.3], [0.3, -0.3], [0.1, 0.3], [0.2, 0.3], [0.3, 0.3], [0.44, -0.2], [0.44, 0.2]])
     bellChedi(m, d, x, z, 0.01, 0.022, 0.13, 8)
-  done(k, m, d)
+  done(ruin ? worn(k) : k, m, d, [], e)
+})
+
+/** Thai viharn facing east: platform, walls and a tiered roof, or once burnt only wall stubs and rows of columns. */
+function viharn(m: G[], d: G[], e: G[], x: number, y: number, l: number, w: number, h: number, ruin: boolean) {
+  m.push(bx(l, 0.015, w, x, y, 0))
+  y += 0.015
+  if (ruin) {
+    d.push(bx(l - 0.03, 0.002, w - 0.03, x, y, 0))
+    for (const s of [-1, 1]) m.push(bx(l, h * 0.3, 0.012, x, y, s * (w / 2 - 0.006)))
+    m.push(bx(0.012, h * 0.75, w, x - l / 2 + 0.006, y, 0))
+    for (const s of [-1, 1]) m.push(bx(0.012, h * 0.4, w * 0.3, x + l / 2 - 0.006, y, s * w * 0.35))
+    const n = Math.round(l / 0.04)
+    for (let i = 0; i < n; i++) for (const z of [-w * 0.22, w * 0.22]) m.push(cyl(0.006, 0.006, h * 0.85, x - l / 2 + 0.03 + (i * (l - 0.06)) / (n - 1), y, z, 6))
+    return
+  }
+  m.push(bx(l, h, w, x, y, 0))
+  d.push(bx(0.003, h * 0.6, w * 0.25, x + l / 2 + 0.0015, y, 0))
+  thaiRoof(e, l + 0.03, w + 0.04, x, y + h, 0, false, 3, 0.025)
 }
 
-function watRatchaburana(k: Kit) {
+// 1767: Ayutthaya sacked and burnt by the Burmese
+const watRatchaburana = staged([1767], (k, year) => {
   // Khmer-style prang on a high redented base with steep stairs, four small chedis at the corners, cloister around
-  const m: G[] = [], d: G[] = [], V = 1.5
+  const ruin = year >= 1767
+  const m: G[] = [], d: G[] = [], e: G[] = [], V = 1.5
   m.push(bx(0.9, 0.012, 0.8, 0.05, 0, 0))
   for (const s of [-1, 1]) {
     m.push(bx(0.72, 0.035, 0.02, -0.02, 0.012, s * 0.36), bx(0.02, 0.035, 0.72, -0.37, 0.012, 0))
     m.push(bx(0.02, 0.035, 0.28, 0.33, 0.012, s * 0.22))
+    if (!ruin) {
+      // the cloister gallery's roof
+      e.push(at(gable(0.74, 0.05, 0.03), -0.02, 0.047, s * 0.36), at(gable(0.74, 0.05, 0.03).rotateY(Math.PI / 2), -0.37, 0.047, 0))
+      e.push(at(gable(0.3, 0.05, 0.03).rotateY(Math.PI / 2), 0.33, 0.047, s * 0.22))
+    }
   }
   redent(m, 0.42, 0.06, 0, 0.012, 0, 0.82)
   redent(m, 0.32, 0.07, 0, 0.072, 0, 0.82)
@@ -202,34 +244,35 @@ function watRatchaburana(k: Kit) {
   for (const [dx, dz] of dirs) stairs(m, dx, dz, 0.1, dx > 0 ? 0.2 : 0.15, 0.2, 0.05, 0.012, 8)
   prang(m, d, 0, 0, 0.2, 0.065, (40 / 60) * V - 0.2)
   for (const sx of [-1, 1]) for (const sz of [-1, 1]) bellChedi(m, d, sx * 0.165, sz * 0.165, 0.072, 0.04, 0.3, 12)
-  // viharn ruin east: walls, dark floor, column stubs
-  m.push(bx(0.16, 0.015, 0.14, 0.42, 0, 0))
-  d.push(bx(0.13, 0.002, 0.11, 0.42, 0.015, 0))
-  for (const s of [-1, 1]) m.push(bx(0.16, 0.05, 0.012, 0.42, 0.015, s * 0.064))
-  m.push(bx(0.012, 0.07, 0.14, 0.494, 0.015, 0))
-  for (let i = 0; i < 4; i++) for (const z of [-0.03, 0.03]) m.push(cyl(0.006, 0.006, 0.06, 0.36 + i * 0.035, 0.015, z, 6))
-  done(k, m, d)
-}
+  viharn(m, d, e, 0.42, 0, 0.16, 0.14, 0.07, ruin)
+  done(ruin ? worn(k) : k, m, d, [], e)
+})
 
-function watPhraSiSanphet(k: Kit) {
-  // three Ayutthaya bell chedis in an east-west row (1492-1530), each with four porches, small mondop between them
-  const m: G[] = [], d: G[] = []
+// 1767: Ayutthaya sacked, the gilded Phra Si Sanphet image melted down and the viharn burnt
+const watPhraSiSanphet = staged([1767], (k, year) => {
+  // three Ayutthaya bell chedis in an east-west row (1492-1530), each with four porches, small mondop between them,
+  // the Wihan Luang that housed the 16 m standing Buddha to the east
+  const ruin = year >= 1767
+  const m: G[] = [], d: G[] = [], e: G[] = []
   m.push(bx(1.0, 0.02, 0.36, 0, 0, 0))
-  for (const x of [-0.33, 0, 0.33]) {
-    redent(m, 0.24, 0.04, x, 0.02, 0, 0.8)
-    redent(m, 0.19, 0.03, x, 0.06, 0, 0.8)
+  for (const x of [-0.39, -0.16, 0.07]) {
+    redent(m, 0.2, 0.035, x, 0.02, 0, 0.8)
+    redent(m, 0.16, 0.03, x, 0.055, 0, 0.8)
     for (const [dx, dz] of dirs) {
-      const px = x + dx * 0.115, pz = dz * 0.115
-      m.push(bx(dx ? 0.05 : 0.06, 0.07, dx ? 0.06 : 0.05, px, 0.06, pz))
-      d.push(bx(dx ? 0.003 : 0.025, 0.045, dx ? 0.025 : 0.003, px + dx * 0.026, 0.06, pz + dz * 0.026))
-      prasatSpire(m, px, pz, 0.13, 0.026, 0.1)
+      const px = x + dx * 0.096, pz = dz * 0.096
+      m.push(bx(dx ? 0.042 : 0.05, ruin ? 0.045 : 0.06, dx ? 0.05 : 0.042, px, 0.055, pz))
+      d.push(bx(dx ? 0.003 : 0.021, 0.038, dx ? 0.021 : 0.003, px + dx * 0.022, 0.055, pz + dz * 0.022))
+      if (!ruin) prasatSpire(m, px, pz, 0.115, 0.022, 0.085)
     }
-    bellChedi(m, d, x, 0, 0.09, 0.11, 0.72, 18)
+    bellChedi(m, d, x, 0, 0.085, 0.092, 0.62, 18)
   }
-  done(k, m, d)
-}
+  viharn(m, d, e, 0.33, 0.02, 0.3, 0.16, 0.075, ruin)
+  done(ruin ? worn(k) : k, m, d, [], e)
+})
 
-function virupaksha(k: Kit) {
+// 1442: Proluganti Tippa, an officer of Deva Raya II, builds the big east gopuram;
+// 1510: Krishnadevaraya adds the inner gopuram and the pillared ranga mandapa for his coronation
+const virupaksha = staged([1442, 1510], (k, year) => {
   // 50 m eastern gopuram of nine tiers, courtyards with a smaller inner gopuram, sanctum with a stepped vimana to the west
   const m: G[] = [], d: G[] = []
   m.push(bx(0.94, 0.008, 0.6, -0.03, 0, 0))
@@ -259,29 +302,55 @@ function virupaksha(k: Kit) {
     const n = tiers > 6 ? 9 : 5
     for (let i = 0; i < n; i++) m.push(at(lathe([[0.6, 0], [1, 0.3], [0.6, 0.6], [0.3, 0.7], [0, 1]], 6, r * 0.18, r * 0.9), x, y + r * 0.95, -l * 0.35 + (i * l * 0.7) / (n - 1)))
   }
-  gopuram(0.37, 0.3, 0.16, 0.09, 9, 0.058)
-  gopuram(0.0, 0.17, 0.09, 0.06, 4, 0.04)
+  if (year >= 1442) gopuram(0.37, 0.3, 0.16, 0.09, 9, 0.058)
+  else m.push(bx(0.1, 0.07, 0.14, 0.37, 0, 0), bx(0.11, 0.01, 0.15, 0.37, 0.07, 0))
+  const raya = year >= 1510
+  if (raya) gopuram(0.0, 0.17, 0.09, 0.06, 4, 0.04)
   // sanctum: pillared mandapa then the vimana
-  m.push(bx(0.2, 0.05, 0.16, -0.15, 0.008, 0))
-  d.push(bx(0.21, 0.008, 0.17, -0.15, 0.058, 0))
+  const ml = raya ? 0.2 : 0.09
+  m.push(bx(ml, 0.05, 0.16, -0.25 + ml / 2, 0.008, 0))
+  d.push(bx(ml + 0.01, 0.008, 0.17, -0.25 + ml / 2, 0.058, 0))
   m.push(bx(0.12, 0.08, 0.12, -0.3, 0.008, 0))
   const vim = [[1, 0], [1, 0.12], [0.85, 0.14], [0.85, 0.26], [0.7, 0.28], [0.7, 0.4], [0.55, 0.42], [0.55, 0.54], [0.42, 0.56], [0.48, 0.66], [0.35, 0.78], [0.08, 0.84], [0.1, 0.92], [0, 1]]
   m.push(at(lathe(vim, 4, 0.06 * SQ2, 0.24, Math.PI / 4), -0.3, 0.088, 0))
   done(k, m, d)
-}
+})
 
-function ruwanwelisaya(k: Kit) {
+// 1017: Anuradhapura abandoned after the Chola conquest, the stupa slumps into an overgrown mound;
+// 1940: restoration begun in 1873 finished with the new pinnacle
+const ruwanwelisaya = staged([1017, 1940], (k, year) => {
   // 90 m bubble-shaped dome on three rings, square platform with the elephant wall, harmika and a tall spire, 103 m
+  const ruin = year >= 1017 && year < 1940
   const m: G[] = [], d: G[] = []
   m.push(bx(1.0, 0.035, 1.0, 0, 0, 0))
   d.push(bx(1.004, 0.012, 1.004, 0, 0.008, 0))
   const el: G[] = []
   for (let i = 0; i < 17; i++) {
     const t = -0.46 + (i * 0.92) / 16
-    for (const s of [-1, 1]) el.push(bx(0.022, 0.026, 0.012, t, 0.005, s * 0.506), bx(0.012, 0.026, 0.022, s * 0.506, 0.005, t))
+    for (const s of [-1, 1]) {
+      if (ruin && (i * 7 + s * 3 + 17) % 5 < 2) continue
+      el.push(bx(0.022, 0.026, 0.012, t, 0.005, s * 0.506), bx(0.012, 0.026, 0.022, s * 0.506, 0.005, t))
+    }
   }
   m.push(...el)
   m.push(bx(0.8, 0.02, 0.8, 0, 0.035, 0))
+  if (ruin) {
+    // a grassy hill with a stub of the square harmika on top
+    const g: G[] = []
+    for (const [dx, dz] of dirs) m.push(bx(dx ? 0.08 : 0.12, 0.012, dx ? 0.12 : 0.08, dx * 0.5, 0, dz * 0.5))
+    const mound: number[][] = [[1.12, 0]]
+    for (let i = 1; i <= 10; i++) { const a = (i / 10) * (Math.PI / 2); mound.push([Math.cos(a) * (1 + 0.12 * Math.cos(a)), Math.sin(a) * 0.95]) }
+    g.push(at(lathe(mound, 32, 0.33, 0.33), 0, 0.055, 0))
+    for (let i = 0; i < 9; i++) {
+      const a = i * 2.4, r = 0.36 + (i % 3) * 0.02
+      g.push(at(new THREE.SphereGeometry(0.025 + (i % 2) * 0.012, 8, 6), Math.cos(a) * r, 0.065, Math.sin(a) * r))
+    }
+    const top = 0.055 + 0.33 * 0.95
+    m.push(bx(0.07, 0.04, 0.06, 0.005, top - 0.02, 0), bx(0.04, 0.025, 0.03, -0.01, top + 0.02, 0.01))
+    done(worn(k), m, d)
+    merge(k, g, moss(k))
+    return
+  }
   for (const [dx, dz] of dirs) m.push(bx(dx ? 0.08 : 0.12, 0.02, dx ? 0.12 : 0.08, dx * 0.5, 0, dz * 0.5))
   const R = 0.31, y0 = 0.055
   m.push(cyl(R + 0.04, R + 0.04, 0.02, 0, y0, 0, 40), cyl(R + 0.025, R + 0.025, 0.02, 0, y0 + 0.02, 0, 40), cyl(R + 0.01, R + 0.01, 0.02, 0, y0 + 0.04, 0, 40))
@@ -297,7 +366,7 @@ function ruwanwelisaya(k: Kit) {
   m.push(cyl(0.04, 0.04, 0.06, 0, top + 0.082, 0, 16))
   m.push(at(lathe(spirePts(9), 16, 0.045, 0.5), 0, top + 0.142, 0))
   done(k, m, d)
-}
+})
 
 function shwezigon(k: Kit) {
   // three square terraces with central stairs on each side, octagonal plinth, gilded bell, lotus and banana-bud spire with hti
@@ -324,9 +393,12 @@ function shwezigon(k: Kit) {
   done(k, m, d)
 }
 
-function borobudur(k: Kit) {
+// ~1000: abandoned as the court moved to East Java, then half buried in ash and jungle;
+// 1911: van Erp's restoration rebuilds the round terraces and the main stupa
+const borobudur = staged([1000, 1911], (k, year) => {
   // 123 m square base, five redented square terraces, three round terraces with 32 + 24 + 16 bell stupas, main stupa 35 m up
-  const m: G[] = [], d: G[] = [], st: G[] = []
+  const ruin = year >= 1000 && year < 1911
+  const m: G[] = [], d: G[] = [], st: G[] = [], g: G[] = []
   const sq = [[1.0, 0.04], [0.86, 0.035], [0.77, 0.035], [0.68, 0.035], [0.6, 0.035], [0.53, 0.03]]
   let y = 0
   for (const [w, h] of sq) {
@@ -341,17 +413,36 @@ function borobudur(k: Kit) {
     y += 0.028
     for (let i = 0; i < n; i++) {
       const a = (i / n) * Math.PI * 2
-      st.push(at(lathe(bell, 6, 0.014, 0.026), Math.cos(a) * rs, y, Math.sin(a) * rs))
+      if (ruin && (i * 5 + n) % 7 < 3) continue
+      st.push(at(lathe(bell, 6, 0.014, ruin && i % 4 === 1 ? 0.014 : 0.026), Math.cos(a) * rs, y, Math.sin(a) * rs))
     }
   }
   m.push(cyl(0.065, 0.065, 0.015, 0, y, 0, 24))
+  if (ruin) {
+    // main stupa broken open at the top, the lower galleries buried under an earth slope, trees on the terraces
+    m.push(at(lathe([[1, 0], [1, 0.3], [0.96, 0.5], [0.8, 0.72], [0.55, 0.74], [0.5, 0.66], [0, 0.66]], 20, 0.058, 0.07), 0, y + 0.015, 0))
+    const slope = new THREE.CylinderGeometry(0.4 * SQ2, 0.52 * SQ2, 0.08, 4, 1, true)
+    slope.rotateY(Math.PI / 4)
+    g.push(at(slope, 0, 0.04, 0))
+    for (let i = 0; i < 22; i++) {
+      const a = i * 2.39996, r = 0.2 + ((i * 37) % 23) / 23 * 0.24
+      const h = r > 0.38 ? 0.09 : r > 0.3 ? 0.15 : 0.2
+      g.push(at(new THREE.SphereGeometry(0.022 + (i % 3) * 0.008, 7, 5), Math.cos(a) * r, h, Math.sin(a) * r))
+    }
+    done(worn(k), m, d)
+    merge(worn(k), st)
+    merge(k, g, moss(k))
+    return
+  }
   m.push(at(lathe([[1, 0], [1, 0.3], [0.96, 0.5], [0.75, 0.8], [0.4, 0.97], [0, 1]], 20, 0.058, 0.07), 0, y + 0.015, 0))
   m.push(bx(0.03, 0.022, 0.03, 0, y + 0.083, 0), cyl(0.012, 0.002, 0.06, 0, y + 0.105, 0, 8))
   done(k, m, d)
   merge(k, st)
-}
+})
 
-function phraPathom(k: Kit) {
+// ~1100: a Khmer-style prang raised on top of the old stupa;
+// 1870: King Mongkut's 120 m bell chedi (begun 1853) encases both, finished in orange glazed tiles
+const phraPathom = staged([1100, 1870], (k, year) => {
   // the original Dvaravati stupa (about 39 m): inverted-bowl dome on a drum, square terrace with four stairs, harmika and parasols
   const m: G[] = [], d: G[] = []
   m.push(bx(0.84, 0.05, 0.84, 0, 0, 0))
@@ -359,16 +450,34 @@ function phraPathom(k: Kit) {
     m.push(bx(dx ? 0.12 : 0.1, 0.03, dx ? 0.1 : 0.12, dx * 0.47, 0, dz * 0.47))
     d.push(bx(dx ? 0.1 : 0.05, 0.006, dx ? 0.05 : 0.1, dx * 0.47, 0.03, dz * 0.47))
   }
+  if (year >= 1870) {
+    // round cloister of galleries around the chedi
+    m.push(cyl(0.415, 0.415, 0.035, 0, 0.05, 0, 48))
+    d.push(cyl(0.42, 0.4, 0.012, 0, 0.085, 0, 48))
+    const tiles = tint(k, 1, '#d4823a', 0.6)
+    const c: G[] = [], cd: G[] = []
+    bellChedi(c, cd, 0, 0, 0.05, 0.37, 1.9, 40)
+    done(k, m, d)
+    merge(k, c, tiles)
+    merge(k, cd, k.dark)
+    return
+  }
   m.push(cyl(0.34, 0.34, 0.05, 0, 0.05, 0, 40), cyl(0.36, 0.36, 0.012, 0, 0.1, 0, 40))
   const dome: number[][] = []
   for (let i = 0; i <= 10; i++) { const a = (i / 10) * (Math.PI / 2); dome.push([Math.cos(a), Math.sin(a) * 0.95]) }
   m.push(at(lathe(dome, 32, 0.32, 0.4), 0, 0.112, 0))
   const t = 0.112 + 0.38
+  if (year >= 1100) {
+    m.push(bx(0.12, 0.03, 0.12, 0, t - 0.02, 0))
+    prang(m, d, 0, 0, t + 0.01, 0.045, 0.36, 12, 6)
+    done(k, m, d)
+    return
+  }
   m.push(bx(0.09, 0.05, 0.09, 0, t - 0.01, 0), bx(0.11, 0.01, 0.11, 0, t + 0.04, 0))
   m.push(cyl(0.008, 0.008, 0.2, 0, t + 0.05, 0, 6))
   for (let i = 0; i < 4; i++) m.push(cyl(0.07 - i * 0.014, 0.05 - i * 0.012, 0.012, 0, t + 0.08 + i * 0.04, 0, 16))
   done(k, m, d)
-}
+})
 
 function hariphunchai(k: Kit) {
   // 46 m gilded Lanna chedi inside a railing with corner parasols, the viharn luang to the east facing the Kuang river
@@ -398,8 +507,9 @@ function hariphunchai(k: Kit) {
   done(k, m, d, [], e)
 }
 
-function chediLuang(k: Kit) {
-  // 60 m square Lanna chedi left a ruin by the 1545 earthquake: stepped base, naga stairs on four sides, elephants, niches up top
+// 1545: an earthquake brings down the upper 30 m or so, leaving the flat broken top
+const chediLuang = staged([1545], (k, year) => {
+  // 60 m square Lanna chedi, about 82 m tall when finished: stepped base, naga stairs on four sides, elephants, niches up top
   const m: G[] = [], d: G[] = [], V = 1.3
   const tiers = [[0.8, 0.08], [0.66, 0.1], [0.54, 0.1]]
   let y = 0
@@ -426,34 +536,43 @@ function chediLuang(k: Kit) {
     d.push(bx(dx ? 0.003 : 0.06, 0.1 * V, dx ? 0.06 : 0.003, dx * 0.2265, y + 0.02, dz * 0.2265))
   }
   y += 0.14 * V
-  // broken stump of the bell
   m.push(bx(0.32, 0.03, 0.32, 0, y, 0))
+  if (year < 1545) {
+    bellChedi(m, d, 0, 0, y + 0.03, 0.15, 0.5, 24)
+    done(k, m, d)
+    return
+  }
+  // broken stump of the bell
   m.push(at(lathe([[1, 0], [1, 0.25], [0.92, 0.3], [0.92, 0.5], [0.85, 0.6], [0.7, 0.75], [0, 0.78]], 24, 0.13, 0.12), 0, y + 0.03, 0))
   m.push(bx(0.12, 0.05, 0.14, 0.02, y + 0.1, -0.01), bx(0.07, 0.04, 0.06, -0.02, y + 0.14, 0.02))
   done(k, m, d)
-}
+})
 
-function grandPalace(k: Kit) {
+// 1882: Chakri Maha Prasat completed
+const grandPalace = staged([1882], (k, year) => {
   // Chakri Maha Prasat (1882): Victorian three-storey halls under Thai tiered roofs and three prasat spires,
   // Dusit Maha Prasat to the west (cruciform, tall spire), Amarin Winitchai hall to the east
   const m: G[] = [], d: G[] = [], e: G[] = [], V = 1.6
   m.push(bx(1.0, 0.01, 0.52, 0, 0, 0))
   for (const s of [-1, 1]) m.push(bx(1.0, 0.03, 0.01, 0, 0.01, s * 0.255), bx(0.01, 0.03, 0.52, s * 0.495, 0.01, 0))
   // Chakri: long front facing north, three pavilions
+  const chakri = year >= 1882
   const z0 = 0.06, wh = 0.09
-  m.push(bx(0.44, wh, 0.07, 0, 0.01, z0))
-  for (const fy of [0.03, 0.065]) for (const sz of [-1, 1]) d.push(bx(0.4, 0.014, 0.003, 0, fy, z0 + sz * 0.0365))
-  thaiRoof(e, 0.44, 0.08, 0, 0.01 + wh, z0, false, 2, 0.03)
-  const pav = (x: number, w: number, dd: number, h: number, sh: number) => {
-    m.push(bx(w, h, dd, x, 0.01, z0))
-    for (const fy of [0.03, 0.065, 0.1]) for (const sz of [-1, 1]) d.push(bx(w * 0.8, 0.014, 0.003, x, fy, z0 + sz * (dd / 2 + 0.0015)))
-    thaiRoof(e, w + 0.02, dd * 0.7, x, 0.01 + h, z0, false, 3, 0.02)
-    thaiRoof(e, dd + 0.02, w * 0.7, x, 0.01 + h, z0, true, 3, 0.02)
-    prasatSpire(m, x, z0, 0.01 + h + 0.035, w * 0.36, sh)
+  if (chakri) {
+    m.push(bx(0.44, wh, 0.07, 0, 0.01, z0))
+    for (const fy of [0.03, 0.065]) for (const sz of [-1, 1]) d.push(bx(0.4, 0.014, 0.003, 0, fy, z0 + sz * 0.0365))
+    thaiRoof(e, 0.44, 0.08, 0, 0.01 + wh, z0, false, 2, 0.03)
+    const pav = (x: number, w: number, dd: number, h: number, sh: number) => {
+      m.push(bx(w, h, dd, x, 0.01, z0))
+      for (const fy of [0.03, 0.065, 0.1]) for (const sz of [-1, 1]) d.push(bx(w * 0.8, 0.014, 0.003, x, fy, z0 + sz * (dd / 2 + 0.0015)))
+      thaiRoof(e, w + 0.02, dd * 0.7, x, 0.01 + h, z0, false, 3, 0.02)
+      thaiRoof(e, dd + 0.02, w * 0.7, x, 0.01 + h, z0, true, 3, 0.02)
+      prasatSpire(m, x, z0, 0.01 + h + 0.035, w * 0.36, sh)
+    }
+    pav(0, 0.1, 0.16, 0.14, 0.3 * V)
+    for (const s of [-1, 1]) pav(s * 0.2, 0.07, 0.11, 0.12, 0.22 * V)
+    m.push(bx(0.06, 0.04, 0.05, 0, 0.01, z0 - 0.1))
   }
-  pav(0, 0.1, 0.16, 0.14, 0.3 * V)
-  for (const s of [-1, 1]) pav(s * 0.2, 0.07, 0.11, 0.12, 0.22 * V)
-  m.push(bx(0.06, 0.04, 0.05, 0, 0.01, z0 - 0.1))
   // Dusit Maha Prasat
   const dx = -0.37, dz = 0.0
   m.push(bx(0.06, 0.025, 0.06, dx, 0.01, dz))
@@ -465,7 +584,7 @@ function grandPalace(k: Kit) {
   m.push(bx(0.09, 0.05, 0.2, 0.38, 0.01, -0.02))
   thaiRoof(e, 0.2, 0.11, 0.38, 0.06, -0.02, true, 3, 0.025)
   done(k, m, d, [], e)
-}
+})
 
 function watArun(k: Kit) {
   // central prang about 80 m on three stepped terraces, four satellite prangs at the corners, four mondops at the cardinal points

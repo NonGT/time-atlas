@@ -4,6 +4,7 @@ import { parse } from 'yaml'
 export const SHAPES = [
   'pyramid', 'ziggurat', 'step', 'temple', 'arena', 'dome', 'pagoda',
   'hall', 'prang', 'stupa', 'citadel', 'mound', 'ring', 'tower', 'cathedral',
+  'town', 'cave', 'terrace', 'bridge', 'castle', 'wall', 'factory', 'monolith', 'mosque', 'church', 'garden',
 ] as const
 
 export const TAGS = ['founding', 'culture', 'war', 'tech', 'religion', 'politics', 'disaster'] as const
@@ -55,6 +56,9 @@ const Landmark = z.object({
   uncertain,
   builtRange: range.optional(),
   goneRange: range.optional(),
+  // UNESCO World Heritage site number (whc.unesco.org/en/list/<whs>) and the year it was inscribed
+  whs: z.number().int().positive().optional(),
+  inscribed: year.optional(),
 })
 
 const Event = z.object({
@@ -196,6 +200,7 @@ export function buildDataset(raw: Record<string, string>): Dataset {
     if (l.gone !== undefined && l.gone <= l.built) problems.push(`landmarks.yaml › ${l.id} › gone: ต้องมากกว่า built`)
     if (l.builtRange && !inRange(l.builtRange, l.built)) problems.push(`landmarks.yaml › ${l.id} › builtRange: ต้องครอบปี built และเรียงจากน้อยไปมาก`)
     if (l.goneRange && (l.gone === undefined || !inRange(l.goneRange, l.gone))) problems.push(`landmarks.yaml › ${l.id} › goneRange: ต้องใส่ gone และช่วงต้องครอบปี gone`)
+    if ((l.whs === undefined) !== (l.inscribed === undefined)) problems.push(`landmarks.yaml › ${l.id}: whs และ inscribed ต้องใส่คู่กัน`)
     if ((l.builtRange || l.goneRange) && !l.uncertain) problems.push(`landmarks.yaml › ${l.id}: ใส่ช่วงปีแล้วต้องใส่ uncertain อธิบายด้วย`)
   }
   d.events.forEach((e, i) => {

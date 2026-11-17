@@ -1,7 +1,10 @@
 import * as THREE from 'three'
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 
-export type Builder = (k: Kit) => void
+/** Gets the year the model is being built for; models that change over time list those years in phases. */
+export type Builder = ((k: Kit, year: number) => void) & { phases?: number[] }
+
+export const staged = (phases: number[], build: (k: Kit, year: number) => void): Builder => Object.assign(build, { phases })
 
 export interface Kit {
   g: THREE.Group

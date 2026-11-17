@@ -1,0 +1,207 @@
+# English for data/landmarks/unesco-east-asia-pacific.yaml.
+
+kakadu:
+  desc: "Aboriginal rock art at Ubirr and Nourlangie, recording tens of thousands of years of continuous life"
+  uncertain: "Aboriginal people have lived here for at least about 65,000 years, but the age of individual paintings is unclear"
+willandra-lakes:
+  desc: "Ancient lake basins where the Mungo remains were found, among the oldest ritual burials in the world"
+  uncertain: "The Lake Mungo burials are about 40,000 years old, older than the map's timeline"
+tasmanian-wilderness:
+  desc: "Wilderness with caves lived in during the Ice Age, such as Kutikina, the southernmost human presence of that time"
+  uncertain: "The caves were lived in roughly 35,000 to 12,000 years ago, older than the map's timeline"
+tongariro:
+  desc: "Volcanoes sacred to the Māori, given to the state by their chief in 1887 to become New Zealand's first national park"
+mount-tai:
+  desc: "A sacred mountain where Chinese emperors performed the rites to Heaven and Earth from the time of the First Emperor"
+great-wall:
+  desc: "Thousands of kilometres of northern frontier walls; the First Emperor joined older walls, and most of what stands today is Ming"
+mogao-caves:
+  desc: "Nearly 500 Buddhist cave temples on the Silk Road at Dunhuang, with murals and statues spanning a thousand years"
+qin-shi-huang-mausoleum:
+  desc: "Burial mound of China's first emperor, surrounded by thousands of terracotta warriors"
+uluru:
+  desc: "A giant sandstone rock in the desert, sacred to the Aṉangu, with rock art and Dreaming stories tied to it"
+  uncertain: "Aboriginal people have lived in the area for tens of thousands of years, but no exact date can be given"
+zhoukoudian:
+  desc: "Caves where Peking Man, a Homo erectus several hundred thousand years old, was found with traces of fire"
+  uncertain: "The fossils are about 700,000 to 200,000 years old, far older than the map's timeline"
+huangshan:
+  desc: "Granite peaks above seas of cloud, named in the Tang era and an inspiration for Chinese painting and poetry"
+horyuji:
+  desc: "A Buddhist temple founded by Prince Shōtoku with the oldest wooden buildings in the world"
+  uncertain: "The temple was founded in 607, but the present buildings may be a rebuild after a fire in 670"
+himeji-castle:
+  desc: "The finest surviving original Japanese castle, white-walled and untouched by war and earthquakes"
+kyoto-monuments:
+  desc: "Seventeen temples, shrines and a castle of Japan's capital for a thousand years, such as Kiyomizu-dera and Kinkaku-ji"
+chengde-mountain-resort:
+  desc: "Summer palace park of the Qing emperors, ringed by temples in Tibetan and Mongol styles"
+temple-of-confucius-qufu:
+  desc: "The shrine to Confucius in his home town, first built the year after his death and enlarged for over two thousand years"
+wudang-mountains:
+  desc: "Taoist temple complex on Mount Wudang built by the Yongle Emperor, by legend the home of tai chi"
+potala-palace:
+  desc: "The Dalai Lamas' palace on Red Hill in Lhasa, built on the site of Songtsen Gampo's 7th-century palace"
+shirakawa-go:
+  desc: "Villages of steep thatched gasshō-style houses built to bear heavy mountain snow"
+haeinsa-janggyeong-panjeon:
+  desc: "Halls holding the 80,000-plus woodblocks of the Tripitaka Koreana, designed for natural ventilation"
+jongmyo:
+  desc: "Ancestral shrine of the Joseon kings, where rites with court music are still held every year"
+hiroshima-peace-memorial:
+  desc: "The ruin left standing near the hypocentre of the 1945 atomic bomb, a memorial to nuclear destruction"
+itsukushima-shrine:
+  desc: "A Shinto shrine built over the water, with its red torii gate standing in the sea"
+lushan:
+  desc: "A mountain that was a centre of Buddhism, Taoism and Confucian learning, and an inspiration for generations of Chinese poets"
+leshan-giant-buddha:
+  desc: "A 71-metre Buddha carved from a cliff, the largest premodern statue in the world, near the sacred Mount Emei"
+old-town-lijiang:
+  desc: "A Naxi town on the Yunnan uplands, with canals running past wooden houses and stone bridges"
+  uncertain: "The town dates from the Song and Yuan, but most of the houses seen today are Ming and Qing"
+pingyao:
+  desc: "A town with intact Ming walls that was the banking centre of China under the Qing"
+suzhou-gardens:
+  desc: "Scholars' gardens such as the Humble Administrator's Garden, miniature landscapes of hills and water"
+changdeokgung:
+  desc: "A Joseon palace laid out to follow the land, with the Secret Garden behind it"
+hwaseong-fortress:
+  desc: "The walls of Suwon built by King Jeongjo, mixing Eastern and Western fortification methods"
+summer-palace:
+  desc: "Qing imperial park on Kunming Lake, rebuilt by Empress Dowager Cixi after it was burned in 1860"
+temple-of-heaven:
+  desc: "Where the Ming and Qing emperors offered sacrifices to Heaven for good harvests"
+kuk-swamp:
+  desc: "A New Guinea highland swamp with traces of planting and drainage ditches, one of the places farming began"
+  uncertain: "Plant use goes back about 10,000 years, while the planting mounds and drains are about 7,000 to 4,000 years old"
+wuyi-mountains:
+  desc: "Mountains where Zhu Xi founded his Neo-Confucian academy, and the home of Da Hong Pao oolong tea"
+dazu-rock-carvings:
+  desc: "Tens of thousands of Buddhist, Taoist and Confucian cliff carvings; the main group at Baodingshan dates from the Song"
+nikko-shrines:
+  desc: "Tōshō-gū, the shrine of Tokugawa Ieyasu, lavishly carved and gilded"
+shuri-castle:
+  desc: "Gusuku castles of the Ryukyu Kingdom on Okinawa, a trading hub between China, Japan and Southeast Asia"
+gyeongju-historic-areas:
+  desc: "The Silla capital, with the Daereungwon royal tombs, Cheomseongdae observatory and Buddhist art on Namsan"
+korean-dolmens:
+  desc: "Hundreds of Bronze Age stone burial dolmens; Korea has more dolmens than anywhere else"
+  uncertain: "The dolmens date across the Bronze Age and cannot be given one year"
+dujiangyan:
+  desc: "A Qin-era irrigation system still in use, dividing the Min River without a dam, beside Mount Qingcheng, a cradle of Taoism"
+xidi-hongcun:
+  desc: "Huizhou merchant villages in Anhui, white-walled, black-roofed houses along streams and ponds"
+  uncertain: "The villages were founded in the Song, but the houses seen today are Ming and Qing"
+longmen-grottoes:
+  desc: "Caves and niches with about a hundred thousand Buddhas by the Yi River, carved from the Northern Wei to the Tang"
+ming-tombs:
+  desc: "Imperial tombs laid out by feng shui, such as the Thirteen Ming Tombs outside Beijing"
+yungang-grottoes:
+  desc: "Northern Wei Buddhist caves with colossal carved Buddhas, a model for early Chinese Buddhist art"
+goguryeo-tombs:
+  desc: "Goguryeo royal tombs near Pyongyang, their inner walls painted with daily life and beliefs"
+  uncertain: "The more than 30 tombs were built at different times across the 5th to 7th centuries"
+historic-centre-macao:
+  desc: "The first Portuguese port in China, mixing European churches and Chinese temples such as the Ruins of St. Paul's and A-Ma Temple"
+honghe-hani-rice-terraces:
+  desc: "Rice terraces built by the Hani down the mountainsides of Yunnan, watered from forests on the peaks"
+  uncertain: "The Hani are thought to have begun the terraces about 1,300 years ago, but there is no exact date"
+kaiping-diaolou:
+  desc: "Multi-storey fortified tower houses paid for by overseas Chinese, mixing Chinese and Western styles"
+fujian-tulou:
+  desc: "Round, multi-storey rammed-earth houses of the Hakka, each home to a whole clan"
+royal-exhibition-building:
+  desc: "A domed hall built for the 1880 international exhibition, where Australia's first federal parliament opened"
+koguryo-ji-an:
+  desc: "Early Koguryo capitals on the Yalu, with stepped stone tombs and the Gwanggaeto Stele"
+kumano-kodo:
+  desc: "The Kumano shrines, the temples of Mount Kōya and forest pilgrimage trails walked for over a thousand years"
+  uncertain: "The shrines and routes grew gradually during the Heian period"
+iwami-ginzan:
+  desc: "A silver mine that produced around a third of the world's silver in the 16th and 17th centuries"
+mount-wutai:
+  desc: "The sacred mountain of Manjushri, with the Nanchan Temple hall, the oldest wooden building in China"
+chief-roi-mata-domain:
+  desc: "The residence, death place and mass grave of a legendary chief on Efate, Vanuatu"
+dengfeng-monuments:
+  desc: "Shaolin Temple, the Songyue Pagoda, the oldest in China, and an ancient observatory around Mount Song"
+port-arthur:
+  desc: "Prisons for convicts transported from Britain; Port Arthur in Tasmania is the best known"
+joseon-royal-tombs:
+  desc: "Forty Joseon royal tombs sited by feng shui; King Taejo's at Donggureung is the first"
+hahoe-yangdong:
+  desc: "Joseon-era villages of yangban clans, laid out to fit the hills and river"
+west-lake-hangzhou:
+  desc: "A lake of causeways, temples and pagodas that shaped landscape gardens and painting in China, Japan and Korea"
+bikini-atoll:
+  desc: "The atoll where the United States set off 23 nuclear tests, a symbol of the nuclear age"
+rock-islands-palau:
+  desc: "Mushroom-shaped limestone islands in a lagoon, with stone villages abandoned in the 17th and 18th centuries"
+  uncertain: "The stone villages were lived in roughly from the 11th to the 17th century, but when they began is unclear"
+xanadu:
+  desc: "Kublai Khan's summer capital described by Marco Polo, blending a Chinese plan with Mongol steppe life"
+levuka:
+  desc: "Fiji's first colonial port and first capital, with 19th-century wooden buildings along the shore"
+mount-fuji:
+  desc: "Japan's sacred mountain, a place of pilgrimage and the subject of ukiyo-e prints"
+namhansanseong:
+  desc: "A mountain fortress and emergency capital of Joseon, where King Injo took refuge from the Manchu invasion of 1636"
+grand-canal:
+  desc: "The longest canal in the world, linking Hangzhou with Beijing; its main stretches were finished under the Sui"
+tomioka-silk-mill:
+  desc: "Japan's first government machine silk mill, which made Japan a leading exporter of raw silk"
+laosicheng:
+  desc: "Seat of a tusi chieftain, the system by which China let local leaders govern minority peoples"
+baekje-historic-areas:
+  desc: "Gongsanseong fortress and temples of Baekje's later capitals, the kingdom that carried Buddhism and art to Japan"
+meiji-industrial-sites:
+  desc: "Shipyards, ironworks and coal mines such as Hashima Island that made Japan an industrial nation"
+oura-church-nagasaki:
+  desc: "Villages and churches of Christians who kept their faith in secret during more than 250 years of prohibition"
+dosan-seowon:
+  desc: "Joseon Neo-Confucian academies, such as Dosan Seowon of the scholar Yi Hwang"
+nan-madol:
+  desc: "A city of nearly a hundred artificial islets built of basalt columns, the seat of the Saudeleur dynasty on Pohnpei"
+  uncertain: "Megalithic building began around the 12th century, but no exact year is known"
+huashan-rock-art:
+  desc: "Red cliff paintings of people and bronze drums along the Zuojiang, made by ancestors of the Zhuang"
+  uncertain: "The paintings were made from about the 5th century BCE to the 2nd century CE"
+okinoshima:
+  desc: "An island closed to the public, once used for rites for safe voyages to Korea and China"
+gulangyu:
+  desc: "An island off Xiamen that was an international settlement, with mixed Western and Chinese villas and a piano culture"
+tongdosa:
+  desc: "Seven mountain monasteries continuously home to monks for over a thousand years; Tongdosa enshrines relics of the Buddha"
+budj-bim:
+  desc: "Channels and weirs built by the Gunditjmara to trap eels, one of the oldest aquaculture systems in the world"
+  uncertain: "The oldest parts are about 6,600 years old, but the system was extended over thousands of years"
+liangzhu:
+  desc: "A Neolithic walled city with water dams, evidence of an early state in China some 5,000 years ago"
+daisen-kofun:
+  desc: "Giant keyhole-shaped tombs of early Japanese rulers; Daisen Kofun is the largest in Japan"
+sannai-maruyama:
+  desc: "A large Jōmon village of settled people who did not farm, with a huge wooden-pillar building"
+mount-kumgang:
+  desc: "Korea's famed Diamond Mountains, with old Buddhist temples such as Pyohunsa"
+jingmai-tea-forests:
+  desc: "Old tea forests grown under the canopy by the Blang and Dai of Yunnan for a thousand years"
+  uncertain: "Tea growing is thought to have begun around the 10th century, but there is no firm evidence"
+gaya-tumuli:
+  desc: "Burial mounds of the Gaya confederacy, small states in southern Korea that prospered on iron trade"
+  uncertain: "The tombs were built across the 1st to 6th centuries"
+sado-gold-mines:
+  desc: "The largest gold mines of Edo Japan, worked by hand long before machines came"
+murujuga:
+  desc: "Over a million petroglyphs on the Burrup Peninsula, one of the largest and oldest rock art sites in the world"
+  uncertain: "The evidence is far older than the map's timeline and its exact age is debated"
+beijing-drum-tower:
+  desc: "Beijing's 7.8 km north-south axis, from Yongdingmen through the Forbidden City to the Drum and Bell Towers"
+western-xia-mausoleums:
+  desc: "Royal tombs of the Tangut Western Xia below the Helan Mountains, wrecked by the Mongol conquest"
+bangudae-petroglyphs:
+  desc: "Rock carvings of whales and whaling by the Bangucheon stream, some of the oldest evidence of whaling"
+  uncertain: "The carvings' age is debated, from the Neolithic to the Bronze Age"
+asuka-fujiwara:
+  desc: "Japan's early capitals, where Buddhism and state systems came in from China and Korea; Fujiwara-kyō was the first planned capital"
+jingdezhen:
+  desc: "China's porcelain capital, whose Ming and Qing imperial kilns made porcelain shipped worldwide"
