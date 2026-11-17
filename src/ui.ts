@@ -27,6 +27,8 @@ export interface Actions {
   goToCity(c: City): void
   goToLandmark(l: Landmark): void
   goToEvent(e: HistEvent): void
+  orbitLandmark(l: Landmark): void
+  orbiting(): string | null
 }
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T
@@ -176,14 +178,15 @@ export function setupUI(store: Store, act: Actions) {
         ${uncNote(l.uncertain)}
         <figure class="lm-photo" hidden><a target="_blank" rel="noopener"><img alt=""></a><figcaption></figcaption></figure>
         <div class="meta">${t.realSize(l.size.toLocaleString('en-US'))}</div>
-        <button type="button" class="go" data-go>${t.goLook}</button>`
+        <div class="go-row"><button type="button" class="go" data-go>${t.goLook}</button><button type="button" class="go" data-orbit="${l.id}">${act.orbiting() === l.id ? t.orbitStop : t.orbit}</button></div>`
       body.querySelector('[data-go]')!.addEventListener('click', () => act.goToLandmark(l))
+      body.querySelector('[data-orbit]')!.addEventListener('click', () => act.orbitLandmark(l))
       const google = document.createElement('a')
       google.className = 'go ghost'
       google.target = '_blank'; google.rel = 'noopener'
       google.href = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(l.en ?? l.name)}`
       google.textContent = t.googleImages
-      body.querySelector('[data-go]')!.after(google)
+      body.querySelector('.go-row')!.append(google)
       void showPhoto(l)
     } else {
       const e = s.event

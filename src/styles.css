@@ -27,6 +27,13 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .maplibregl-ctrl-group { background: var(--panel); border: 1px solid var(--line); }
 .maplibregl-ctrl-group button + button { border-top-color: var(--line); }
 .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1) sepia(.3); }
+.camera-ctl button { display: grid; place-items: center; }
+.camera-ctl svg { width: 18px; height: 18px; fill: none; stroke: var(--soft); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.camera-ctl button:hover svg { stroke: var(--fg); }
+.camera-ctl .needle { transform-origin: 12px 12px; transform-box: view-box; }
+.camera-ctl .needle path { stroke: none; }
+.camera-ctl .needle .n { fill: #e0644a; }
+.camera-ctl .needle .s { fill: var(--soft); }
 .maplibregl-ctrl-attrib, .maplibregl-ctrl-attrib.maplibregl-compact { background: rgba(5, 7, 13, .75) !important; color: var(--muted); font-size: 10px; }
 .maplibregl-ctrl-attrib a { color: var(--muted); }
 .maplibregl-ctrl-attrib a:hover { color: var(--fg); }
@@ -96,7 +103,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .chip:hover { border-color: var(--accent); }
 .go { margin-top: 12px; background: none; border: 1px solid rgba(240, 179, 94, .5); color: var(--accent); border-radius: 4px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
 .go:hover { background: rgba(240, 179, 94, .12); }
-.go.ghost { display: inline-block; margin-left: 8px; border-color: var(--line); color: var(--soft); text-decoration: none; }
+.go-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.go-row .go { margin-top: 0; }
+.go.ghost { display: inline-block; border-color: var(--line); color: var(--soft); text-decoration: none; }
 .lm-photo { margin: 10px 0 4px; }
 .lm-photo img { display: block; width: 100%; max-height: 220px; object-fit: contain; border-radius: 4px; background: rgba(255, 255, 255, .04); }
 .lm-photo figcaption { margin-top: 4px; font-size: 11px; color: var(--muted); }

@@ -12,6 +12,7 @@ import { Cities3D, cityRadius, landmarkSize } from './map/cities3d'
 import { addCityGlow } from './map/cityGlow'
 import { Borders } from './map/borders'
 import { setupSearch } from './search'
+import { CameraControl, Orbit } from './camera'
 import { addLabels } from './map/labels'
 import { setupUI } from './ui'
 
@@ -65,10 +66,13 @@ async function start() {
     attributionControl: { compact: true, customAttribution: 'Borders: <a href="https://github.com/aourednik/historical-basemaps">historical-basemaps</a>' },
   })
   if (import.meta.env.DEV) Object.assign(window, { __map: map, __store: store })
-  map.addControl(new NavigationControl({ visualizePitch: true }), 'top-right')
+  map.addControl(new NavigationControl({ showCompass: false }), 'top-right')
+  const orbit = new Orbit(map)
+  map.addControl(new CameraControl(orbit), 'top-right')
 
   const ease = (target: { lng: number; lat: number; zoom: number; pitch?: number }) => {
     store.setPlaying(false)
+    orbit.stop()
     map.flyTo({ center: [target.lng, target.lat], zoom: target.zoom, pitch: target.pitch ?? 0, bearing: target.pitch ? -18 : 0, speed: 1.1, curve: 1.5, essential: true })
   }
   // zoom so a span of `meters` covers about 45% of the shorter side of the screen
@@ -85,6 +89,13 @@ async function start() {
       if (!store.landmarkStanding(l)) store.setYear(l.built + 10)
       ease({ lng: l.lon, lat: l.lat, zoom: Math.min(14, zoomFor(landmarkSize(l) * 5, l.lat)), pitch: 60 })
     },
+    orbitLandmark(l: Landmark) {
+      if (orbit.current === l.id) return orbit.stop()
+      if (!store.landmarkStanding(l)) store.setYear(l.built + 10)
+      // circle the spot the model is drawn at, which can be nudged off its real one by a neighbour
+      orbit.start(l.id, cities3d?.placeOf(l) ?? [l.lon, l.lat], Math.min(16, zoomFor(landmarkSize(l) * 1.4, l.lat)))
+    },
+    orbiting: () => orbit.current,
     goToEvent(e: HistEvent) {
       store.setPlaying(false)
       store.setYear(e.year)
@@ -110,11 +121,17 @@ async function start() {
     switchLocale(langSel.value as Locale, { year: store.year, lng: c.lng, lat: c.lat, zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), sel } satisfies Resume)
   })
   let labels: ReturnType<typeof addLabels>
+  let cities3d: Cities3D | undefined
+  orbit.onChange(id => {
+    const b = document.querySelector<HTMLButtonElement>('[data-orbit]')
+    if (b) b.textContent = b.dataset.orbit === id ? t.orbitStop : t.orbit
+  })
+  store.on('select', s => { if (s?.kind !== 'landmark' || s.landmark.id !== orbit.current) orbit.stop() })
 
   await map.once('load')
   const isLand = await loadLandMask(`${BASE}geo/land-10m.json`)
   addCityGlow(map, store, id => store.select({ kind: 'city', city: store.cityById.get(id)! }))
-  const cities3d = new Cities3D(store, isLand)
+  cities3d = new Cities3D(store, isLand)
   map.addLayer(cities3d)
   if (import.meta.env.DEV) Object.assign(window, { __c3d: cities3d })
   await new Borders(map, store, `${BASE}geo/borders`).init('water')
