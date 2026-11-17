@@ -74,6 +74,7 @@ export const th = {
   camLeft: 'หมุนกล้องไปทางซ้าย',
   camRight: 'หมุนกล้องไปทางขวา',
   camTilt: 'เอียงกล้องให้เห็นแบบ 3 มิติ',
+  camTiltSlider: 'ความเอียงของกล้อง',
   camFlat: 'เอียงกล้องกลับลงมามองจากด้านบน',
   googleImages: 'ค้นรูปใน Google ↗',
   photoBy: (credit: string) => `ภาพ: ${credit}`,

@@ -93,7 +93,8 @@ async function start() {
       if (orbit.current === l.id) return orbit.stop()
       if (!store.landmarkStanding(l)) store.setYear(l.built + 10)
       // circle the spot the model is drawn at, which can be nudged off its real one by a neighbour
-      orbit.start(l.id, cities3d?.placeOf(l) ?? [l.lon, l.lat], Math.min(16, zoomFor(landmarkSize(l) * 1.4, l.lat)))
+      // a user already closer in stays at their zoom
+      orbit.start(l.id, cities3d?.placeOf(l) ?? [l.lon, l.lat], Math.max(map.getZoom(), Math.min(16, zoomFor(landmarkSize(l) * 1.4, l.lat))))
     },
     orbiting: () => orbit.current,
     goToEvent(e: HistEvent) {

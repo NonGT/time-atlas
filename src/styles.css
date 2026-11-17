@@ -30,6 +30,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .camera-ctl button { display: grid; place-items: center; }
 .camera-ctl svg { width: 18px; height: 18px; fill: none; stroke: var(--soft); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .camera-ctl button:hover svg { stroke: var(--fg); }
+.camera-ctl .cam-tilt { display: block; writing-mode: vertical-lr; direction: rtl; width: 29px; height: 84px; margin: 0; padding: 6px 0; border-top: 1px solid var(--line); background: none; accent-color: var(--accent); cursor: pointer; }
+.camera-ctl .cam-tilt + button { border-top: 1px solid var(--line); }
 .camera-ctl .needle { transform-origin: 12px 12px; transform-box: view-box; }
 .camera-ctl .needle path { stroke: none; }
 .camera-ctl .needle .n { fill: #e0644a; }

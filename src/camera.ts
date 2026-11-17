@@ -17,6 +17,8 @@ const ICONS = {
 export class CameraControl implements IControl {
   private el = document.createElement('div')
   private needle!: SVGElement
+  private slider = document.createElement('input')
+  private dragging = false
   private map?: MapLibre
 
   constructor(private orbit?: Orbit) {}
@@ -48,6 +50,20 @@ export class CameraControl implements IControl {
     btn('left', t.camLeft, ICONS.left, () => turn(-ROTATE_STEP))
     btn('right', t.camRight, ICONS.right, () => turn(ROTATE_STEP))
     btn('up', t.camTilt, ICONS.up, () => tilt(TILT_STEP))
+    const s = this.slider
+    s.type = 'range'
+    s.min = '0'
+    s.max = String(MAX_PITCH)
+    s.className = 'cam-tilt'
+    s.title = t.camTiltSlider
+    s.setAttribute('aria-label', t.camTiltSlider)
+    s.addEventListener('input', () => {
+      const pitch = +s.value
+      if (!this.orbit?.nudge({ pitch })) map.jumpTo({ pitch })
+    })
+    s.addEventListener('pointerdown', () => (this.dragging = true))
+    addEventListener('pointerup', () => { this.dragging = false; this.sync() })
+    this.el.append(s)
     btn('down', t.camFlat, ICONS.down, () => tilt(-TILT_STEP))
     map.on('rotate', this.sync)
     map.on('pitch', this.sync)
@@ -63,6 +79,7 @@ export class CameraControl implements IControl {
 
   private sync = () => {
     const m = this.map!
+    if (!this.dragging) this.slider.value = String(m.getPitch())
     // squash the needle with the tilt, as MapLibre's own compass does
     this.needle.style.transform = `scale(1, ${1 / Math.cos((m.getPitch() * Math.PI) / 180) ** 0.5}) rotate(${-m.getBearing()}deg)`
   }

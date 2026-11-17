@@ -76,6 +76,7 @@ export const en: Dict = {
   camLeft: 'Rotate left',
   camRight: 'Rotate right',
   camTilt: 'Tilt for a 3D view',
+  camTiltSlider: 'Camera tilt',
   camFlat: 'Tilt back toward top-down',
   googleImages: 'Search Google Images ↗',
   photoBy: credit => `Photo: ${credit}`,
