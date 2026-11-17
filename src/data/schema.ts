@@ -5,6 +5,7 @@ export const SHAPES = [
   'pyramid', 'ziggurat', 'step', 'temple', 'arena', 'dome', 'pagoda',
   'hall', 'prang', 'stupa', 'citadel', 'mound', 'ring', 'tower', 'cathedral',
   'town', 'cave', 'terrace', 'bridge', 'castle', 'wall', 'factory', 'monolith', 'mosque', 'church', 'garden',
+  'mountain', 'volcano', 'hills', 'valley', 'lake', 'forest', 'rockart', 'islands',
 ] as const
 
 export const TAGS = ['founding', 'culture', 'war', 'tech', 'religion', 'politics', 'disaster'] as const
@@ -44,6 +45,8 @@ const City = z.object({
 const Landmark = z.object({
   id, name: z.string(), en: z.string().optional(),
   shape: z.enum(SHAPES),
+  // a place rather than a building (a sacred mountain, a wine region): `built` is when it starts to matter
+  site: z.boolean().optional(),
   lat, lon,
   built: year,
   gone: year.optional(),

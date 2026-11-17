@@ -40,7 +40,7 @@ Negative years are BCE. Adding a city:
   population: [[-350, 0], [-340, 20], [-221, 100], [-206, 0]]
 ```
 
-Landmark shapes: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral, town, cave, terrace, bridge, castle, wall, factory, monolith, mosque, church, garden. A new shape goes in `src/map/shapes.ts` and its name in `SHAPES` in `src/data/schema.ts`. A landmark can have its own model in `src/map/models/`, keyed by id; a model wrapped in `staged([years], ...)` is rebuilt for each of those years, so it can show a building growing, being altered or falling into ruin.
+Landmark shapes: pyramid, ziggurat, step, temple, arena, dome, pagoda, hall, prang, stupa, citadel, mound, ring, tower, cathedral, town, cave, terrace, bridge, castle, wall, factory, monolith, mosque, church, garden, and for places that are not buildings mountain, volcano, hills, valley, lake, forest, rockart, islands (in `src/map/nature.ts`). `site: true` marks such a place, so its card says สถานที่สำคัญ and `built` reads as the year it starts to matter. A new shape goes in `src/map/shapes.ts` and its name in `SHAPES` in `src/data/schema.ts`. A landmark can have its own model in `src/map/models/`, keyed by id; a model wrapped in `staged([years], ...)` is rebuilt for each of those years, so it can show a building growing, being altered or falling into ruin.
 
 ## Languages
 

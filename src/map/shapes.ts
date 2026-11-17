@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import type { Shape } from '../data/schema'
 import { MODELS } from './models'
+import { buildNature } from './nature'
 
 /** Years at which a landmark's model changes, after it is built. */
 export const phasesOf = (id: string, built: number) => [built, ...(MODELS[id]?.phases ?? []).filter(y => y > built)]
@@ -34,7 +35,7 @@ export function buildShape(shape: Shape, color: string, id?: string, year = 0): 
 
   const model = id ? MODELS[id] : undefined
   if (model) model({ g, mat, dark, add, box }, year)
-  else switch (shape) {
+  else if (!buildNature(shape, id ?? color, add, mat, dark)) switch (shape) {
     case 'pyramid':
       add(cone4(0.72, 0.9), 0.45)
       add(cone4(0.32, 0.4), 0.2, 0.75, 0.5)
@@ -166,16 +167,20 @@ export function buildShape(shape: Shape, color: string, id?: string, year = 0): 
       const mouth = new THREE.CircleGeometry(0.13, 12, 0, Math.PI)
       mouth.scale(1.3, 1.2, 1)
       add(mouth, 0.01, 0, 0.405, new THREE.MeshBasicMaterial({ color: '#141210' }))
-      box(0.5, 0.012, 0.25, 0, 0, 0.5)
+      box(0.4, 0.012, 0.2, 0, 0, 0.48, new THREE.MeshLambertMaterial({ color: '#7a6d5a' }))
       break
     }
-    case 'terrace':
+    case 'terrace': {
+      // fields stepping up a hillside, in field colours rather than the civ tint
+      const fields = [new THREE.MeshLambertMaterial({ color: '#7d9a4f', emissive: '#18220c' }), new THREE.MeshLambertMaterial({ color: '#94a85a', emissive: '#1c2410' })]
       for (let i = 0; i < 6; i++) {
         const t = new THREE.CylinderGeometry(0.5 - i * 0.075, 0.52 - i * 0.075, 0.06, 28)
         t.scale(1, 1, 0.75)
-        add(t, 0.03 + i * 0.06, i * 0.02, 0, i % 2 ? dark : mat)
+        add(t, 0.03 + i * 0.06, i * 0.02, 0, fields[i % 2])
       }
+      box(0.08, 0.05, 0.06, 0.36, 0.12, 0); add(new THREE.ConeGeometry(0.065, 0.045, 4).rotateY(Math.PI / 4), 0.43, 0.12, 0, dark)
       break
+    }
     case 'bridge': {
       box(1.04, 0.035, 0.14, 0.2)
       for (const x of [-0.5, -0.17, 0.17, 0.5]) box(0.07, 0.2, 0.16, 0, x, 0)

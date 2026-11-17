@@ -163,13 +163,13 @@ export function setupUI(store: Store, act: Actions) {
     } else if (s.kind === 'landmark') {
       const l = s.landmark
       const city = l.city ? store.cityById.get(l.city) : undefined
-      const status = store.year < l.built ? pill(t.notBuilt, 'none') : store.landmarkStanding(l) ? pill(t.standing, 'up') : pill(t.destroyed, 'down')
+      const status = l.site ? (store.landmarkStanding(l) || store.year < l.built ? '' : pill(t.destroyed, 'none')) : store.year < l.built ? pill(t.notBuilt, 'none') : store.landmarkStanding(l) ? pill(t.standing, 'up') : pill(t.destroyed, 'down')
       body.innerHTML = `
-        <p class="eyebrow">${t.landmark}</p>
+        <p class="eyebrow">${l.site ? t.site : t.landmark}</p>
         <h2>${heading(l.name)}</h2>
         <div class="sub">${[alsoEn(l.name, l.en), city ? esc(city.name) : ''].filter(Boolean).join(' · ')}</div>
-        <div class="stat"><span class="pop">${t.built(fmtYear(l.built), !!l.builtRange)}</span>${status}</div>
-        ${l.builtRange ? `<div class="meta">${t.maybeBuilt(fmtSpan(l.builtRange))}</div>` : ''}
+        <div class="stat"><span class="pop">${(l.site ? t.since : t.built)(fmtYear(l.built), !!l.builtRange)}</span>${status}</div>
+        ${l.builtRange ? `<div class="meta">${(l.site ? t.maybeSince : t.maybeBuilt)(fmtSpan(l.builtRange))}</div>` : ''}
         ${l.gone !== undefined ? `<div class="meta">${l.goneRange ? t.goneSpan(fmtSpan(l.goneRange), fmtYear(l.gone)) : t.gone(fmtYear(l.gone))}</div>` : ''}
         ${l.whs ? `<a class="whs" href="https://whc.unesco.org/en/list/${l.whs}" target="_blank" rel="noopener">${t.unesco(l.inscribed!)}</a>` : ''}
         ${l.desc ? `<p>${esc(l.desc)}</p>` : ''}

@@ -50,7 +50,7 @@ export function setupSearch(store: Store, act: Actions) {
       const en = it.en && it.en !== it.name ? ` · ${esc(it.en)}` : ''
       const when = h.kind === 'city' ? fmtYear(store.firstYear(h.item)) : fmtYear(h.item.built)
       return `<li role="option" id="sr-${i}" aria-selected="${i === active}" data-i="${i}">` +
-        `<span class="nm">${esc(it.name)}</span><span class="dt">${h.kind === 'city' ? t.searchCity : t.searchLandmark} · ${when}${en}</span></li>`
+        `<span class="nm">${esc(it.name)}</span><span class="dt">${h.kind === 'city' ? t.searchCity : h.item.site ? t.searchSite : t.searchLandmark} · ${when}${en}</span></li>`
     }).join('')
     input.setAttribute('aria-expanded', 'true')
     if (active >= 0) input.setAttribute('aria-activedescendant', `sr-${active}`)

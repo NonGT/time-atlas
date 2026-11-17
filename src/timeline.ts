@@ -95,7 +95,7 @@ export function setupTimeline(store: Store, goToEvent: (e: HistEvent) => void, g
     b.setAttribute('aria-label', `${fmtYear(l.built)}: ${l.name}`)
     b.addEventListener('click', () => { store.select({ kind: 'landmark', landmark: l }); goToLandmark(l) })
     b.addEventListener('pointerenter', () => {
-      tip.innerHTML = `<b>${t.built(fmtYear(l.built), !!l.builtRange)}</b>${esc(l.name)}${l.whs ? `<em>${t.unesco(l.inscribed!)}</em>` : ''}`
+      tip.innerHTML = `<b>${(l.site ? t.since : t.built)(fmtYear(l.built), !!l.builtRange)}</b>${esc(l.name)}${l.whs ? `<em>${t.unesco(l.inscribed!)}</em>` : ''}`
       tip.hidden = false
       const r = b.getBoundingClientRect(), tr = tip.getBoundingClientRect()
       tip.style.left = `${Math.min(innerWidth - tr.width - 12, Math.max(12, r.left + r.width / 2 - tr.width / 2))}px`
