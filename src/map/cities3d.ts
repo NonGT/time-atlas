@@ -41,6 +41,24 @@ interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds:
 // one obj per phase, starting at the years in starts, built on first use; reach: how far the model extends from its anchor, as a multiple of size
 interface LandmarkModel { lm: Landmark; g: THREE.Group; objs: (THREE.Object3D | undefined)[]; starts: number[]; phase: number; size: number; reach: number; s: number; zf?: number }
 
+// an uncertain landmark is drawn see-through until the latest year it could have been built
+const sureFrom = (l: Landmark) => l.builtRange?.[1] ?? l.built
+const FADED = 0.45
+function setFaded(obj: THREE.Object3D, faded: boolean) {
+  if (obj.userData.faded === faded) return
+  obj.userData.faded = faded
+  obj.traverse(o => {
+    const mats = (o as THREE.Mesh).material as THREE.Material | THREE.Material[] | undefined
+    for (const mat of mats ? [mats].flat() : []) {
+      const own = (mat.userData.own ??= { transparent: mat.transparent, opacity: mat.opacity, depthWrite: mat.depthWrite })
+      mat.transparent = faded || own.transparent
+      mat.opacity = faded ? own.opacity * FADED : own.opacity
+      mat.depthWrite = faded ? false : own.depthWrite
+      mat.needsUpdate = true
+    }
+  })
+}
+
 const reachOf = (obj: THREE.Object3D) => {
   obj.updateMatrixWorld(true)
   const b = new THREE.Box3().setFromObject(obj)
@@ -186,10 +204,7 @@ export class Cities3D implements CustomLayerInterface {
     const ratio = l.height ? (l.height / l.size) * HEIGHT_EXAG : undefined
     obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id, m.starts[i], isNatural(l) ? ratio : undefined)
     if (m.zf === undefined) this.fitHeight(m, [obj])
-    if (l.uncertain) obj.traverse(o => {
-      const mat = (o as THREE.Mesh).material as THREE.Material | undefined
-      if (mat) { mat.transparent = true; mat.opacity = 0.45; mat.depthWrite = false }
-    })
+    if (l.uncertain) setFaded(obj, this.store.year < sureFrom(l))
     obj.visible = false
     m.g.add(obj)
     return (m.objs[i] = obj)
@@ -259,6 +274,11 @@ export class Cities3D implements CustomLayerInterface {
       let i = m.starts.length - 1
       while (i > 0 && y < m.starts[i]) i--
       if (i !== m.phase) { const old = m.objs[m.phase]; if (old) old.visible = false; m.phase = i }
+    }
+    for (const m of this.landmarks) {
+      if (!m.lm.uncertain) continue
+      const faded = y < sureFrom(m.lm)
+      for (const o of m.objs) if (o) setFaded(o, faded)
     }
     for (const m of this.cities) m.vis = m.blds.length * Math.sqrt(this.store.pop(m.city) / m.pmax)
     this.map.triggerRepaint()

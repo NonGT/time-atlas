@@ -25,7 +25,7 @@ All data lives in `data/` as YAML. Save a file and a page opened with `npm run d
 - `i18n/`: translations, see below.
 - `detail/`: smaller events kept for a later, more detailed layer. The app doesn't load them. The timeline only shows events that mattered to the world as a whole: wars, states rising and falling, major disasters.
 
-Events and landmarks whose date or place is not settled get an `uncertain` note, and optionally a range of possible years (`range` for events, `builtRange` and `goneRange` for landmarks). They are drawn differently and can be hidden with the "Uncertain" toggle. Borders the source marks as approximate (`BORDERPRECISION` 1, which is everything before about 1650) belong to the same layer and are drawn dashed.
+Events and landmarks whose date or place is not settled get an `uncertain` note, and optionally a range of possible years (`range` for events, `builtRange` and `goneRange` for landmarks). They are drawn differently (a landmark's model is see-through until the last year of its `builtRange`, or its `built` year without one) and can be hidden with the "Uncertain" toggle. Borders the source marks as approximate (`BORDERPRECISION` 1, which is everything before about 1650) belong to the same layer and are drawn dashed.
 
 Negative years are BCE. Adding a city:
 

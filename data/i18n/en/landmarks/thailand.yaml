@@ -1,0 +1,52 @@
+# English for data/landmarks/thailand.yaml.
+
+wat-phra-kaew:
+  desc: The temple inside the Grand Palace that houses the Emerald Buddha. A tiered, glass-inlaid ordination hall, the golden Phra Si Rattana Chedi, the Royal Pantheon and giant guardian yaksha.
+wat-pho:
+  desc: Rebuilt by Rama I on an older Ayutthaya temple. Home of the 46-metre Reclining Buddha and the four tiled great chedis of the first reigns, and a centre of traditional Thai medicine.
+golden-mount:
+  desc: Rama III began a great chedi here but the soft ground gave way. Rama IV raised an artificial hill instead, and Rama V crowned it with a gilded chedi holding relics of the Buddha.
+loha-prasat:
+  desc: Built by Rama III after the metal palaces of Sri Lanka and India. Three tiers and 37 metal spires, one for each factor of enlightenment; the only Loha Prasat still standing.
+wat-suthat:
+  desc: Its great vihara holds the Phra Si Sakyamuni brought from Sukhothai. In front stands the red Giant Swing, once used in the Brahmin swinging ceremony.
+wat-benchamabophit:
+  desc: An ordination hall of Italian marble designed by Prince Naris, Thai in form with Western materials. It is the temple on the five-baht coin.
+phra-sumen-fort:
+  desc: An octagonal fort on the Chao Phraya, one of two left of the city wall built by Rama I.
+ananta-samakhom:
+  desc: A marble throne hall in Italian Renaissance style, begun under Rama V and finished under Rama VI. It housed the first parliament after the 1932 revolution.
+democracy-monument:
+  desc: Marks the 1932 change to constitutional rule. Four 24-metre wings round a tray holding the constitution; later the rallying point of the 1973 and 1992 uprisings.
+victory-monument:
+  desc: Built after the 1940–41 Franco-Thai war. Five bayonet-shaped pillars rise above statues of soldiers, police and civilians.
+phra-nakhon-khiri:
+  desc: Rama IV's summer palace on a three-peaked hill at Phetchaburi, with throne halls, an observatory tower and the Phra That Chom Phet chedi.
+bang-pa-in:
+  desc: A riverside palace first built by King Prasat Thong and revived by Rama V, with the Aisawan Thiphya-Art pavilion in its pond and Chinese and European style halls.
+wat-chaiwatthanaram:
+  desc: Built by King Prasat Thong on the Chao Phraya. A Khmer-style central prang ringed by corner prangs and eight chapels; burnt when Ayutthaya fell in 1767.
+wat-yai-chai-mongkhon:
+  desc: The chronicles say King Naresuan raised its great chedi to celebrate his elephant-duel victory. Rows of Buddha images line the courtyard.
+  uncertain: The date of the chedi comes from chronicles written long after the event, and the versions disagree.
+wat-phra-si-rattana-mahathat-phitsanulok:
+  desc: Temple of the Phra Phuttha Chinnarat, often called the most beautiful Buddha image in Thailand. The great prang was built over an older chedi in the Ayutthaya period.
+prang-sam-yot:
+  desc: Three linked laterite prangs in Bayon style, first a Khmer Hindu shrine and later turned into a Buddhist temple.
+  uncertain: The date is estimated from its Jayavarman VII period style.
+phimai:
+  desc: The largest Khmer temple in Thailand, a white sandstone Mahayana shrine at the end of the ancient road from Angkor. Its central prang was a model for Angkor Wat.
+  uncertain: The date is estimated from inscriptions and the style of Jayavarman VI's reign.
+phanom-rung:
+  desc: A Shiva sanctuary on the rim of an extinct volcano. A processional way lined with posts and three naga bridges lead up to it; its Vishnu lintel came back from the United States in 1988.
+  uncertain: The main sanctuary dates to the early to mid 12th century, but the hilltop was a sacred site from the 10th.
+doi-suthep:
+  desc: Legend says King Kuena let a white elephant carry a relic up the mountain and built the temple where it stopped. A golden Lanna chedi reached by a 306-step naga stairway.
+  uncertain: The founding year comes from legend, and the versions differ by a few years.
+phra-that-phanom:
+  desc: A lotus-bud reliquary on the Mekong revered on both banks, enlarged by Lan Xang several times. It collapsed entirely in 1975 and was rebuilt by 1979.
+  uncertain: The Urangkhathat legend dates it to the Buddha's lifetime; the lowest brick base may be 7th to 10th century.
+river-kwai-bridge:
+  desc: The steel bridge of the Death Railway, built by Japan with prisoners of war and Asian labourers to reach Burma. Bombed in 1945, its repaired middle spans are square trusses unlike the curved originals.
+hellfire-pass:
+  desc: A rock cutting dug by prisoners of war with hammers and chisels, worked at night by torchlight, hence its name. It took about twelve weeks and cost many lives.
