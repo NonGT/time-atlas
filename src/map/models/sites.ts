@@ -7,8 +7,9 @@ const lambert = (color: string, emissive = '#000000') => new THREE.MeshLambertMa
 // Mount Fuji from the north-east: the snow-capped cone and Lake Kawaguchi at its foot, with the Sengen
 // shrine torii from 806 and the Chureito pagoda (1963) on the hill opposite.
 const fuji = staged([806, 1963], (k, year) => {
-  const h = 0.62, pts: THREE.Vector2[] = []
-  for (let i = 0; i <= 14; i++) { const t = i / 14; pts.push(new THREE.Vector2(0.5 - 0.43 * Math.pow(t, 0.55), h * t)) }
+  // about 3000 m of relief on a 35 km base, drawn somewhat steeper so the cone still reads
+  const h = 0.34, pts: THREE.Vector2[] = []
+  for (let i = 0; i <= 14; i++) { const t = i / 14; pts.push(new THREE.Vector2(0.5 - 0.44 * Math.pow(t, 0.5), h * t)) }
   pts.push(new THREE.Vector2(0.045, h * 0.96))
   const cone = new THREE.LatheGeometry(pts, 40).toNonIndexed()
   // snow line dips down the gullies, so it is ragged rather than a clean ring
@@ -61,7 +62,7 @@ function uluru(k: Kit) {
     const x = p.getX(i), y = p.getY(i), z = p.getZ(i), a = Math.atan2(z, x)
     // steep sides, a broad rounded top, vertical gullies
     const f = 1 + 0.04 * Math.sin(a * 14)
-    p.setXYZ(i, x * 1.3 * f, Math.min(y, 0.26) * 1.3 + Math.max(0, y - 0.26) * 0.5, z * 0.6 * f)
+    p.setXYZ(i, x * 1.3 * f, Math.min(y, 0.26) * 0.42 + Math.max(0, y - 0.26) * 0.2, z * 0.6 * f)
   }
   rock.computeVertexNormals()
   k.add(rock, 0, 0, 0, lambert('#b5532f', '#2c0f06'))
@@ -71,10 +72,10 @@ function uluru(k: Kit) {
 // Ngorongoro: the collapsed caldera, a green rim around a grassy floor with Lake Magadi
 function ngorongoro(k: Kit) {
   const rim = lambert('#4e6d3a', '#121c0c'), floor = lambert('#8a9a55', '#1a2010')
-  k.add(band([0.5, 0.42, 0], [0.4, 0.33, 0.26], 48), 0, 0, 0, rim)
-  k.add(band([0.4, 0.33, 0.26], [0.33, 0.27, 0.06], 48), 0, 0, 0, rim)
-  k.add(new THREE.CircleGeometry(0.33, 40).rotateX(-Math.PI / 2).scale(1, 1, 0.82), 0.06, 0, 0, floor)
-  k.add(new THREE.CircleGeometry(0.1, 20).rotateX(-Math.PI / 2).scale(1.4, 1, 0.7), 0.062, 0.06, 0.05, lambert('#9ab6c4', '#18242a'))
+  k.add(band([0.5, 0.42, 0], [0.4, 0.33, 0.11], 48), 0, 0, 0, rim)
+  k.add(band([0.4, 0.33, 0.11], [0.33, 0.27, 0.03], 48), 0, 0, 0, rim)
+  k.add(new THREE.CircleGeometry(0.33, 40).rotateX(-Math.PI / 2).scale(1, 1, 0.82), 0.03, 0, 0, floor)
+  k.add(new THREE.CircleGeometry(0.1, 20).rotateX(-Math.PI / 2).scale(1.4, 1, 0.7), 0.032, 0.06, 0.05, lambert('#9ab6c4', '#18242a'))
 }
 
 // Nazca: figures scratched into the desert, here the hummingbird and long straight lines

@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { MercatorCoordinate, type CustomLayerInterface, type CustomRenderMethodInput, type Map as MLMap } from 'maplibre-gl'
-import { shownFrom, type City, type Landmark } from '../data/schema'
+import { isNatural, shownFrom, type City, type Landmark } from '../data/schema'
 import type { Store } from '../store'
 import type { IsLand } from './landMask'
 import { buildShape, phasesOf } from './shapes'
@@ -12,6 +12,12 @@ const CITY_ZOOM = FLAT_ZOOM + 0.1
 const LM_EXAG = 22
 const LM_MIN = 1400
 const LM_MAX = 5000
+// heights follow the real height/footprint ratio, a little taller so they still read from the tilted camera
+const HEIGHT_EXAG = 1.3
+// drawn taller on purpose (long, low structures that are a sliver at true proportions), or whose `size`
+// covers more ground than the model shows, so the ratio would squash them
+const DRAWN_TALL: ReadonlySet<string> = new Set(['forth-bridge', 'aqueduct-of-segovia', 'great-wall', 'aksum-obelisk'])
+const GROUPS: ReadonlySet<string> = new Set(['town', 'citadel', 'garden', 'wall', 'terrace', 'factory', 'cave', 'mound', 'ring', 'bridge', 'rockart', 'hills', 'monolith'])
 const M_PER_DEG_LAT = 110574
 const M_PER_DEG_LON = 111320
 
@@ -33,7 +39,7 @@ const smooth = (a: number, b: number, x: number) => { const t = Math.min(1, Math
 interface Building { i: number; x: number; y: number; w: number; h: number; yaw: number; s: number; spd: number }
 interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds: Building[]; vis: number }
 // one obj per phase, starting at the years in starts, built on first use; reach: how far the model extends from its anchor, as a multiple of size
-interface LandmarkModel { lm: Landmark; g: THREE.Group; objs: (THREE.Object3D | undefined)[]; starts: number[]; phase: number; size: number; reach: number; s: number }
+interface LandmarkModel { lm: Landmark; g: THREE.Group; objs: (THREE.Object3D | undefined)[]; starts: number[]; phase: number; size: number; reach: number; s: number; zf?: number }
 
 const reachOf = (obj: THREE.Object3D) => {
   obj.updateMatrixWorld(true)
@@ -140,7 +146,12 @@ export class Cities3D implements CustomLayerInterface {
     // a natural place on a generic shape shows bare until its built year, then with its shrine or village
     const starts = MODELS[l.id] || from === l.built ? phasesOf(l.id, from) : [from, l.built]
     const m: LandmarkModel = { lm: l, g, objs: starts.map(() => undefined), starts, phase: 0, size: landmarkSize(l), reach: 0, s: 0 }
-    if (MODELS[l.id]) m.reach = Math.max(...starts.map((_, i) => reachOf(this.phaseObj(m, i))))
+    if (MODELS[l.id]) {
+      m.zf = 1
+      const objs = starts.map((_, i) => this.phaseObj(m, i))
+      m.reach = Math.max(...objs.map(reachOf))
+      this.fitHeight(m, objs)
+    }
     else {
       // generic shapes all share a footprint, so measure one of each and build the rest when first seen
       let r = this.genericReach.get(l.shape)
@@ -150,11 +161,31 @@ export class Cities3D implements CustomLayerInterface {
     this.landmarks.push(m)
   }
 
+  /**
+   * Buildings are squashed or stretched as a whole to their real proportions, measured on the tallest
+   * phase so a building under construction stays short. Natural shapes are built at the right relief instead.
+   */
+  private fitHeight(m: LandmarkModel, objs: THREE.Object3D[]) {
+    const l = m.lm
+    m.zf = 1
+    // towns, complexes and landscapes have their parts drawn wider than life too, so they keep their look
+    if (!l.height || isNatural(l) || (!MODELS[l.id] && GROUPS.has(l.shape)) || DRAWN_TALL.has(l.id)) return
+    let w = 0, h = 0
+    for (const o of objs) {
+      const b = new THREE.Box3().setFromObject(o)
+      if (b.max.z > h) { h = b.max.z; w = Math.max(b.max.x - b.min.x, b.max.y - b.min.y) }
+    }
+    // only ever lowered, and not past the point where the shape stops reading
+    if (w > 0 && h > 0) m.zf = Math.min(1, Math.max(0.6, ((l.height / l.size) * HEIGHT_EXAG * w) / h))
+  }
+
   private phaseObj(m: LandmarkModel, i: number) {
     let obj = m.objs[i]
     if (obj) return obj
     const l = m.lm
-    obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id, m.starts[i])
+    const ratio = l.height ? (l.height / l.size) * HEIGHT_EXAG : undefined
+    obj = buildShape(l.shape, this.store.colorOfLandmark(l), l.id, m.starts[i], isNatural(l) ? ratio : undefined)
+    if (m.zf === undefined) this.fitHeight(m, [obj])
     if (l.uncertain) obj.traverse(o => {
       const mat = (o as THREE.Mesh).material as THREE.Material | undefined
       if (mat) { mat.transparent = true; mat.opacity = 0.45; mat.depthWrite = false }
@@ -272,7 +303,7 @@ export class Cities3D implements CustomLayerInterface {
       const o = l.objs[l.phase] ?? (s > 0.003 ? this.phaseObj(l, l.phase) : undefined)
       if (!o) continue
       o.visible = s > 0.003
-      o.scale.set(l.size * Math.min(1, s * 2), l.size * Math.min(1, s * 2), l.size * s)
+      o.scale.set(l.size * Math.min(1, s * 2), l.size * Math.min(1, s * 2), l.size * s * (l.zf ?? 1))
     }
     this.wasVisible = visible
     if (!visible) return

@@ -51,6 +51,8 @@ const Landmark = z.object({
   built: year,
   gone: year.optional(),
   size: z.number().positive(),
+  // real height in metres of the tallest part (relief for natural places); models are scaled to it
+  height: z.number().positive().optional(),
   city: z.string().optional(),
   civ: z.string().optional(),
   desc: z.string().optional(),
@@ -100,8 +102,9 @@ export type Polity = z.infer<typeof Polity>
 export type Shape = (typeof SHAPES)[number]
 
 const NATURAL: ReadonlySet<string> = new Set(['mountain', 'volcano', 'lake', 'forest', 'valley', 'islands'])
+export const isNatural = (l: Landmark) => !!l.site && NATURAL.has(l.shape)
 /** Year a landmark appears on the map. Natural places were there long before the year they came to matter. */
-export const shownFrom = (l: Landmark) => (l.site && NATURAL.has(l.shape) ? -Infinity : l.built)
+export const shownFrom = (l: Landmark) => (isNatural(l) ? -Infinity : l.built)
 export type Tag = (typeof TAGS)[number]
 
 export interface Dataset {

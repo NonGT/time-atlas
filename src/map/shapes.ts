@@ -12,7 +12,7 @@ export const phasesOf = (id: string, from: number) => [from, ...(MODELS[id]?.pha
  * To add a shape: add a case here and its name to SHAPES in data/schema.ts.
  * A landmark with a model registered under its id in models/ uses that instead of its generic shape.
  */
-export function buildShape(shape: Shape, color: string, id?: string, year = 0): THREE.Object3D {
+export function buildShape(shape: Shape, color: string, id?: string, year = 0, relief?: number): THREE.Object3D {
   const g = new THREE.Group()
   const base = new THREE.Color(color)
   const mat = new THREE.MeshLambertMaterial({
@@ -35,7 +35,7 @@ export function buildShape(shape: Shape, color: string, id?: string, year = 0): 
 
   const model = id ? MODELS[id] : undefined
   if (model) model({ g, mat, dark, add, box }, year)
-  else if (!buildNature(shape, id ?? color, add, mat, dark, year === -Infinity)) switch (shape) {
+  else if (!buildNature(shape, id ?? color, add, mat, dark, year === -Infinity, relief)) switch (shape) {
     case 'pyramid':
       add(cone4(0.72, 0.9), 0.45)
       add(cone4(0.32, 0.4), 0.2, 0.75, 0.5)

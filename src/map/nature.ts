@@ -75,8 +75,13 @@ function hill(add: Add, m: THREE.Material, x: number, z: number, r: number, h: n
 }
 
 /** `bare` leaves out the people's part (shrine, houses, fields), for the years before the place came to matter. */
-export function buildNature(shape: string, id: string, add: Add, mat: THREE.Material, dark: THREE.Material, bare = false) {
+/**
+ * `relief` is the real height over footprint ratio when known; the landform is built to it, while the
+ * shrine and houses keep their size so they don't turn into slabs.
+ */
+export function buildNature(shape: string, id: string, add: Add, mat: THREE.Material, dark: THREE.Material, bare = false, relief?: number) {
   const rnd = rng(id)
+  const fit = (drawn: number) => (relief ? Math.min(2, Math.max(0.12, relief / drawn)) : 1)
   if (bare) {
     // anything tinted with the civ colour is the human part; draw it with nothing
     const none = () => new THREE.Mesh()
@@ -86,16 +91,17 @@ export function buildNature(shape: string, id: string, add: Add, mat: THREE.Mate
   switch (shape) {
     case 'mountain': {
       const m = painted()
-      add(paintByHeight(peak(0.42, 0.75, rnd), 0.75, 0.3, 0.86), 0, 0.02, -0.05, m)
-      add(paintByHeight(peak(0.28, 0.48, rnd), 0.48, 0.4), 0, -0.3, 0.05, m)
-      add(paintByHeight(peak(0.24, 0.38, rnd), 0.38, 0.45), 0, 0.32, 0.12, m)
+      const k = fit(0.75)
+      add(paintByHeight(peak(0.42, 0.75 * k, rnd), 0.75 * k, 0.3, 0.86), 0, 0.02, -0.05, m)
+      add(paintByHeight(peak(0.28, 0.48 * k, rnd), 0.48 * k, 0.4), 0, -0.3, 0.05, m)
+      add(paintByHeight(peak(0.24, 0.38 * k, rnd), 0.38 * k, 0.45), 0, 0.32, 0.12, m)
       // the shrine or temple that makes it a cultural site, with a path of steps up the front
       shrine(add, mat, dark, 0.05, 0.42)
-      for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.03, 0.012, 0.03), 0.06 + i * 0.07, 0.04 - i * 0.012, 0.33 - i * 0.07, mat)
+      for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.03, 0.012, 0.03), 0.06 + i * 0.07 * k, 0.04 - i * 0.012, 0.33 - i * 0.07, mat)
       return true
     }
     case 'volcano': {
-      const h = 0.62, pts: THREE.Vector2[] = []
+      const h = 0.62 * fit(0.62), pts: THREE.Vector2[] = []
       // concave flanks rising to a flat-topped crater rim
       for (let i = 0; i <= 10; i++) { const t = i / 10; pts.push(new THREE.Vector2(0.5 - 0.42 * Math.pow(t, 0.62), h * t)) }
       pts.push(new THREE.Vector2(0.05, h * 0.94))
@@ -108,7 +114,8 @@ export function buildNature(shape: string, id: string, add: Add, mat: THREE.Mate
     case 'hills': {
       const g = flat(C.grass), rows = flat(C.forest)
       ground(add, C.grass.clone().multiplyScalar(0.9))
-      for (const [x, z, r, h] of [[-0.3, -0.2, 0.32, 0.18], [0.25, -0.25, 0.28, 0.14], [0.05, 0.18, 0.3, 0.12]] as const) hill(add, g, x, z, r, h)
+      const k = fit(0.18)
+      for (const [x, z, r, h] of [[-0.3, -0.2, 0.32, 0.18], [0.25, -0.25, 0.28, 0.14], [0.05, 0.18, 0.3, 0.12]] as const) hill(add, g, x, z, r, h * k)
       // vine or tea rows on a lower terrace in front
       for (let i = 0; i < 7; i++) add(new THREE.BoxGeometry(0.5, 0.025, 0.018), 0.025, 0.05, 0.3 + (i - 3) * 0.035, rows)
       add(new THREE.BoxGeometry(0.1, 0.06, 0.07), 0.13, 0.05, 0.18, mat)
@@ -120,8 +127,8 @@ export function buildNature(shape: string, id: string, add: Add, mat: THREE.Mate
       const g = flat(C.grass), f = flat(C.forest)
       ground(add, C.grass.clone().multiplyScalar(0.9))
       for (const s of [-1, 1]) {
-        hill(add, f, s * 0.4, -0.18, 0.22, 0.3, 1.2)
-        hill(add, g, s * 0.4, 0.22, 0.2, 0.2, 1.1)
+        hill(add, f, s * 0.4, -0.18, 0.22, 0.3 * fit(0.3), 1.2)
+        hill(add, g, s * 0.4, 0.22, 0.2, 0.2 * fit(0.3), 1.1)
       }
       // the river winds down the middle
       const w = water()
@@ -150,7 +157,7 @@ export function buildNature(shape: string, id: string, add: Add, mat: THREE.Mate
         const a = rnd() * Math.PI * 2, r = 0.42 + rnd() * 0.1
         tree(add, f, Math.cos(a) * r, Math.sin(a) * r * 0.82, 0.07 + rnd() * 0.06)
       }
-      hill(add, flat(C.grass), -0.3, -0.38, 0.22, 0.16)
+      hill(add, flat(C.grass), -0.3, -0.38, 0.22, 0.16 * fit(0.16))
       for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.045, 0.04, 0.035), 0.02, 0.28 + i * 0.05, 0.3 - i * 0.02, i % 2 ? mat : dark)
       return true
     }
@@ -191,13 +198,13 @@ export function buildNature(shape: string, id: string, add: Add, mat: THREE.Mate
         const a = i * 1.1 + rnd(), r = i ? 0.22 + rnd() * 0.2 : 0
         const s = i ? 0.07 + rnd() * 0.06 : 0.15
         // steep-sided, tree-capped: the islets stand well out of the water
-        const isl = new THREE.DodecahedronGeometry(s, 1).scale(1, 1.6, 0.85)
+        const isl = new THREE.DodecahedronGeometry(s, 1).scale(1, 1.6 * fit(0.24), 0.85)
         const p = isl.attributes.position
         for (let k = 0; k < p.count; k++) p.setY(k, Math.max(0, p.getY(k)))
         isl.computeVertexNormals()
         add(isl, 0.01, Math.cos(a) * r, Math.sin(a) * r * 0.85, i % 2 ? rk : f)
       }
-      add(new THREE.BoxGeometry(0.05, 0.04, 0.04), 0.03 + 0.15 * 1.6 - 0.02, 0, 0, mat)
+      add(new THREE.BoxGeometry(0.05, 0.04, 0.04), 0.01 + 0.15 * 1.6 * fit(0.24) + 0.01, 0, 0, mat)
       return true
     }
   }
