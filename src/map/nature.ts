@@ -74,8 +74,15 @@ function hill(add: Add, m: THREE.Material, x: number, z: number, r: number, h: n
   add(new THREE.SphereGeometry(r, 16, 6, 0, Math.PI * 2, 0, Math.PI / 2).scale(1, h / r, sz), 0, x, z, m)
 }
 
-export function buildNature(shape: string, id: string, add: Add, mat: THREE.Material, dark: THREE.Material) {
+/** `bare` leaves out the people's part (shrine, houses, fields), for the years before the place came to matter. */
+export function buildNature(shape: string, id: string, add: Add, mat: THREE.Material, dark: THREE.Material, bare = false) {
   const rnd = rng(id)
+  if (bare) {
+    // anything tinted with the civ colour is the human part; draw it with nothing
+    const none = () => new THREE.Mesh()
+    const real = add
+    add = (geo, y, x, z, m) => (m === mat || m === dark ? none() : real(geo, y, x, z, m))
+  }
   switch (shape) {
     case 'mountain': {
       const m = painted()

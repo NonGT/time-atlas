@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { MercatorCoordinate, type CustomLayerInterface, type CustomRenderMethodInput, type Map as MLMap } from 'maplibre-gl'
-import type { City, Landmark } from '../data/schema'
+import { shownFrom, type City, type Landmark } from '../data/schema'
 import type { Store } from '../store'
 import type { IsLand } from './landMask'
 import { buildShape, phasesOf } from './shapes'
@@ -136,7 +136,9 @@ export class Cities3D implements CustomLayerInterface {
   private buildLandmark(l: Landmark) {
     const g = anchor(l.lon, l.lat)
     this.scene.add(g)
-    const starts = phasesOf(l.id, l.built)
+    const from = shownFrom(l)
+    // a natural place on a generic shape shows bare until its built year, then with its shrine or village
+    const starts = MODELS[l.id] || from === l.built ? phasesOf(l.id, from) : [from, l.built]
     const m: LandmarkModel = { lm: l, g, objs: starts.map(() => undefined), starts, phase: 0, size: landmarkSize(l), reach: 0, s: 0 }
     if (MODELS[l.id]) m.reach = Math.max(...starts.map((_, i) => reachOf(this.phaseObj(m, i))))
     else {
@@ -179,7 +181,7 @@ export class Cities3D implements CustomLayerInterface {
     const pairs: [number, number][] = []
     for (let i = 0; i < L.length; i++) for (let j = i + 1; j < L.length; j++) {
       const a = L[i].lm, b = L[j].lm
-      if (a.built >= (b.gone ?? Infinity) || b.built >= (a.gone ?? Infinity)) continue
+      if (shownFrom(a) >= (b.gone ?? Infinity) || shownFrom(b) >= (a.gone ?? Infinity)) continue
       if (Math.abs(a.lat - b.lat) > 0.5 || Math.abs(a.lon - b.lon) > 0.5) continue
       pairs.push([i, j])
     }

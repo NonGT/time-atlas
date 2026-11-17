@@ -1,12 +1,12 @@
 import * as THREE from 'three'
-import { band, merge, type Kit } from './kit'
+import { band, merge, staged, type Kit } from './kit'
 
 type G = THREE.BufferGeometry
 const lambert = (color: string, emissive = '#000000') => new THREE.MeshLambertMaterial({ color, emissive })
 
-// Mount Fuji from the north-east: the snow-capped cone, Lake Kawaguchi at its foot and the
-// Chureito pagoda on the hill opposite. Pilgrims climbed to the summit shrine from the Sengen shrines below.
-function fuji(k: Kit) {
+// Mount Fuji from the north-east: the snow-capped cone and Lake Kawaguchi at its foot, with the Sengen
+// shrine torii from 806 and the Chureito pagoda (1963) on the hill opposite.
+const fuji = staged([806, 1963], (k, year) => {
   const h = 0.62, pts: THREE.Vector2[] = []
   for (let i = 0; i <= 14; i++) { const t = i / 14; pts.push(new THREE.Vector2(0.5 - 0.43 * Math.pow(t, 0.55), h * t)) }
   pts.push(new THREE.Vector2(0.045, h * 0.96))
@@ -32,9 +32,17 @@ function fuji(k: Kit) {
   const lake = new THREE.CircleGeometry(0.2, 24).rotateX(-Math.PI / 2).scale(1.5, 1, 0.45)
   k.add(lake, 0.012, 0.12, 0.4, lambert('#4f7891', '#0d1b26'))
 
-  // the hill with the red five-storey Chureito pagoda
   k.add(new THREE.SphereGeometry(0.14, 14, 6, 0, Math.PI * 2, 0, Math.PI / 2).scale(1, 0.6, 0.8), 0, -0.36, 0.38, lambert('#5e7a44', '#141c0c'))
   const red = lambert('#b8402e', '#2a0c08'), roofs = lambert('#2f2a2a')
+  if (year >= 806) {
+    // a torii of the Sengen shrine at the foot of the climbing route
+    const t: G[] = []
+    for (const dx of [-0.025, 0.025]) t.push(new THREE.CylinderGeometry(0.004, 0.004, 0.07, 6).translate(0.36 + dx, 0.035, 0.14))
+    t.push(new THREE.BoxGeometry(0.075, 0.008, 0.01).translate(0.36, 0.072, 0.14), new THREE.BoxGeometry(0.06, 0.005, 0.008).translate(0.36, 0.058, 0.14))
+    merge(k, t, red)
+  }
+  if (year < 1963) return
+  // the red five-storey Chureito pagoda on the hill opposite
   const body: G[] = [], tops: G[] = []
   for (let i = 0; i < 5; i++) {
     const w = 0.05 - i * 0.006, y = 0.08 + i * 0.03
@@ -43,13 +51,7 @@ function fuji(k: Kit) {
   }
   tops.push(new THREE.CylinderGeometry(0.002, 0.002, 0.05, 4).translate(-0.36, 0.25, 0.38))
   merge(k, body, red); merge(k, tops, roofs)
-
-  // a torii of the Sengen shrine at the foot of the climbing route
-  const t: G[] = []
-  for (const dx of [-0.025, 0.025]) t.push(new THREE.CylinderGeometry(0.004, 0.004, 0.07, 6).translate(0.36 + dx, 0.035, 0.14))
-  t.push(new THREE.BoxGeometry(0.075, 0.008, 0.01).translate(0.36, 0.072, 0.14), new THREE.BoxGeometry(0.06, 0.005, 0.008).translate(0.36, 0.058, 0.14))
-  merge(k, t, red)
-}
+})
 
 // Uluru: one rounded, flat-topped block of red arkose with fluted sides, on the desert plain
 function uluru(k: Kit) {
@@ -73,7 +75,6 @@ function ngorongoro(k: Kit) {
   k.add(band([0.4, 0.33, 0.26], [0.33, 0.27, 0.06], 48), 0, 0, 0, rim)
   k.add(new THREE.CircleGeometry(0.33, 40).rotateX(-Math.PI / 2).scale(1, 1, 0.82), 0.06, 0, 0, floor)
   k.add(new THREE.CircleGeometry(0.1, 20).rotateX(-Math.PI / 2).scale(1.4, 1, 0.7), 0.062, 0.06, 0.05, lambert('#9ab6c4', '#18242a'))
-  k.add(new THREE.BoxGeometry(0.07, 0.04, 0.05), 0.2, -0.3, -0.3, k.mat)
 }
 
 // Nazca: figures scratched into the desert, here the hummingbird and long straight lines

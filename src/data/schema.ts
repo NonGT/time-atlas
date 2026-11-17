@@ -98,6 +98,10 @@ export type Landmark = z.infer<typeof Landmark>
 export type HistEvent = z.infer<typeof Event>
 export type Polity = z.infer<typeof Polity>
 export type Shape = (typeof SHAPES)[number]
+
+const NATURAL: ReadonlySet<string> = new Set(['mountain', 'volcano', 'lake', 'forest', 'valley', 'islands'])
+/** Year a landmark appears on the map. Natural places were there long before the year they came to matter. */
+export const shownFrom = (l: Landmark) => (l.site && NATURAL.has(l.shape) ? -Infinity : l.built)
 export type Tag = (typeof TAGS)[number]
 
 export interface Dataset {

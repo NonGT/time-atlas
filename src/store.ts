@@ -1,4 +1,4 @@
-import type { City, Civilization, Dataset, HistEvent, Landmark } from './data/schema'
+import { shownFrom, type City, type Civilization, type Dataset, type HistEvent, type Landmark } from './data/schema'
 import { TimeScale, valueAt } from './time'
 
 export type Mode = 'city' | 'glow'
@@ -67,7 +67,7 @@ export class Store {
     if (l.civ) return this.civ.get(l.civ)!.color
     return this.colorOfCity(this.cityById.get(l.city!)!)
   }
-  landmarkStanding(l: Landmark, y = this.year) { return y >= l.built && (l.gone === undefined || y < l.gone) }
+  landmarkStanding(l: Landmark, y = this.year) { return y >= shownFrom(l) && (l.gone === undefined || y < l.gone) }
   landmarkShown(l: Landmark) { return this.shows(l) && this.landmarkStanding(l) }
   firstYear(c: City) { return c.population.find(p => p[1] > 0)?.[0] ?? c.population[0][0] }
 
