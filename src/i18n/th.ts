@@ -29,6 +29,11 @@ export const th = {
   tlFitTip: 'ดูทั้งหมด (0)',
   tlMiniTip: 'ลากเพื่อเลื่อนช่วงเวลาที่ดู',
   yearSlider: 'ปี',
+  search: 'ค้นหาสถานที่',
+  searchHint: 'ค้นหาเมืองหรือสิ่งก่อสร้าง',
+  searchNone: 'ไม่พบสถานที่',
+  searchCity: 'เมือง',
+  searchLandmark: 'สิ่งก่อสร้าง',
 
   tags: {
     founding: 'สถาปนา',

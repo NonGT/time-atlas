@@ -31,6 +31,11 @@ export const en: Dict = {
   tlFitTip: 'Show all (0)',
   tlMiniTip: 'Drag to move the visible period',
   yearSlider: 'Year',
+  search: 'Search places',
+  searchHint: 'Search cities or buildings',
+  searchNone: 'No places found',
+  searchCity: 'City',
+  searchLandmark: 'Building',
 
   tags: {
     founding: 'Founding',

@@ -11,6 +11,7 @@ import { loadLandMask } from './map/landMask'
 import { Cities3D, cityRadius, landmarkSize } from './map/cities3d'
 import { addCityGlow } from './map/cityGlow'
 import { Borders } from './map/borders'
+import { setupSearch } from './search'
 import { addLabels } from './map/labels'
 import { setupUI } from './ui'
 
@@ -97,6 +98,7 @@ async function start() {
   }
 
   const { showToast } = setupUI(store, actions)
+  setupSearch(store, actions)
 
   const langSel = document.getElementById('lang') as HTMLSelectElement
   langSel.innerHTML = Object.entries(LOCALES).map(([k, label]) => `<option value="${k}">${label}</option>`).join('')
