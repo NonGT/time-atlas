@@ -37,7 +37,7 @@ const hash = (s: string) => [...s].reduce((h, c) => (Math.imul(h, 31) + c.charCo
 const smooth = (a: number, b: number, x: number) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t) }
 
 interface Building { i: number; x: number; y: number; w: number; h: number; yaw: number; s: number; spd: number }
-interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds: Building[]; vis: number }
+interface CityModel { city: City; pmax: number; mesh: THREE.InstancedMesh; blds: Building[]; vis: number; settled?: number }
 // one obj per phase, starting at the years in starts, built on first use; reach: how far the model extends from its anchor, as a multiple of size
 interface LandmarkModel { lm: Landmark; g: THREE.Group; objs: (THREE.Object3D | undefined)[]; starts: number[]; phase: number; size: number; reach: number; s: number; zf?: number }
 
@@ -87,6 +87,11 @@ export class Cities3D implements CustomLayerInterface {
   private renderer!: THREE.WebGLRenderer
   private scene = new THREE.Scene()
   private camera = new THREE.Camera()
+  // Everything is placed relative to the view centre, moved each frame. Mercator coordinates near 1 lose about two
+  // metres to float32 rounding on the GPU, so at close zoom vertices would snap around as the camera moves.
+  private world = new THREE.Group()
+  private origin = new THREE.Matrix4()
+  private compiled = false
   private cities: CityModel[] = []
   private landmarks: LandmarkModel[] = []
   private last = performance.now()
@@ -104,6 +109,8 @@ export class Cities3D implements CustomLayerInterface {
     const sun = new THREE.DirectionalLight(0xfff0d8, 2.2)
     sun.position.set(0.35, -0.55, 1)
     this.scene.add(sun)
+    this.world.matrixAutoUpdate = false
+    this.scene.add(this.world)
 
     for (const l of this.store.data.landmarks) this.buildLandmark(l)
     this.fitLandmarks()
@@ -151,7 +158,7 @@ export class Cities3D implements CustomLayerInterface {
     blds.forEach((_, k) => mesh.setColorAt(k, base.clone().multiplyScalar(0.6 + rnd() * 0.35)))
     const g = anchor(c.lon, c.lat)
     g.add(mesh)
-    this.scene.add(g)
+    this.world.add(g)
     this.cities.push({ city: c, pmax, mesh, blds, vis: 0 })
   }
 
@@ -159,7 +166,7 @@ export class Cities3D implements CustomLayerInterface {
 
   private buildLandmark(l: Landmark) {
     const g = anchor(l.lon, l.lat)
-    this.scene.add(g)
+    this.world.add(g)
     const from = shownFrom(l)
     // a natural place on a generic shape shows bare until its built year, then with its shrine or village
     const starts = MODELS[l.id] || from === l.built ? phasesOf(l.id, from) : [from, l.built]
@@ -280,11 +287,18 @@ export class Cities3D implements CustomLayerInterface {
       const faded = y < sureFrom(m.lm)
       for (const o of m.objs) if (o) setFaded(o, faded)
     }
-    for (const m of this.cities) m.vis = m.blds.length * Math.sqrt(this.store.pop(m.city) / m.pmax)
+    for (const m of this.cities) { m.vis = m.blds.length * Math.sqrt(this.store.pop(m.city) / m.pmax); m.settled = undefined }
     this.map.triggerRepaint()
   }
 
   render(_gl: WebGLRenderingContext | WebGL2RenderingContext, args: CustomRenderMethodInput) {
+    // compile every shader the models need up front (all models are still in the scene on the first frame),
+    // off the main thread where the browser allows, instead of stalling when each kind of material first shows
+    if (!this.compiled) {
+      this.compiled = true
+      this.renderer.resetState()
+      void this.renderer.compileAsync(this.scene, this.camera)
+    }
     const now = performance.now()
     const dt = Math.min(0.05, (now - this.last) / 1000)
     this.last = now
@@ -297,10 +311,13 @@ export class Cities3D implements CustomLayerInterface {
     const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), P = new THREE.Vector3(), S = new THREE.Vector3(), Z = new THREE.Vector3(0, 0, 1)
 
     for (const m of this.cities) {
+      // nothing to redo for a city whose buildings have finished growing at this zoom
+      if (m.settled === zf) continue
+      let moving = false
       m.blds.forEach((b, k) => {
         const t = b.i < m.vis ? 1 : 0
         b.s = step(b.s, t, b.spd)
-        if (Math.abs(t - b.s) > 0.003) animating = true
+        if (Math.abs(t - b.s) > 0.003) moving = true
         const s = b.s * zf
         if (s < 0.003) M.makeScale(0, 0, 0)
         else {
@@ -310,13 +327,17 @@ export class Cities3D implements CustomLayerInterface {
         m.mesh.setMatrixAt(k, M)
       })
       m.mesh.instanceMatrix.needsUpdate = true
+      if (moving) animating = true
+      else m.settled = zf
     }
     // with a thousand-odd landmarks, skip the ones far outside the view (city zoom shows a few tens of km)
     const c = this.map.getCenter(), far = 4 / Math.cos((c.lat * Math.PI) / 180)
     for (const l of this.landmarks) {
       const near = Math.abs(l.lm.lat - c.lat) < 4 && Math.abs(((l.lm.lon - c.lng + 540) % 360) - 180) < far
       const t = this.store.landmarkShown(l.lm) ? 1 : 0
-      if (!near) { l.s = t; const o = l.objs[l.phase]; if (o) o.visible = false; continue }
+      // out of the scene graph entirely, or three.js would still update its matrices every frame
+      if (!near) { l.s = t; if (l.g.parent) this.world.remove(l.g); continue }
+      if (!l.g.parent) this.world.add(l.g)
       l.s = step(l.s, t, 2.5)
       if (Math.abs(t - l.s) > 0.003) animating = true
       const s = l.s * zf
@@ -328,7 +349,11 @@ export class Cities3D implements CustomLayerInterface {
     this.wasVisible = visible
     if (!visible) return
 
-    this.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix as unknown as number[]).multiply(FLIP_Y)
+    const o = MercatorCoordinate.fromLngLat(c, 0)
+    this.origin.makeTranslation(o.x, -o.y, 0)
+    this.world.matrix.makeTranslation(-o.x, o.y, 0)
+    this.world.matrixWorldNeedsUpdate = true
+    this.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix as unknown as number[]).multiply(FLIP_Y).multiply(this.origin)
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert()
     this.renderer.resetState()
     this.renderer.render(this.scene, this.camera)

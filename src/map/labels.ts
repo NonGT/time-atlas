@@ -57,15 +57,26 @@ export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [n
     const weight = (el: HTMLElement) => (el.classList.contains('polity') ? -2 : el.classList.contains('label-lm') ? -1 : Number(el.dataset.rank ?? 0))
     all.sort((a, b) => weight(b) - weight(a))
     const placed: DOMRect[] = []
-    for (const el of all) {
-      el.style.visibility = ''
-      const r = el.getBoundingClientRect()
+    // measure everything before changing anything: visibility doesn't move boxes, but interleaving
+    // reads with writes forced a layout per label
+    const rects = all.map(el => el.getBoundingClientRect())
+    all.forEach((el, i) => {
+      const r = rects[i]
       const hit = r.width > 0 && placed.some(p => r.left < p.right + 2 && r.right > p.left - 2 && r.top < p.bottom + 1 && r.bottom > p.top - 1)
-      if (hit) el.style.visibility = 'hidden'
-      else placed.push(r)
-    }
+      const v = hit ? 'hidden' : ''
+      if (el.style.visibility !== v) el.style.visibility = v
+      if (!hit) placed.push(r)
+    })
   }
   const scheduleDeclutter = () => { if (!pending) pending = requestAnimationFrame(declutter) }
+  // measuring every label forces a layout, so while the map moves do it a few times a second, not every frame
+  let lastMove = 0
+  const onMove = () => {
+    const now = performance.now()
+    if (now - lastMove < 120) return
+    lastMove = now
+    scheduleDeclutter()
+  }
   const highlight = () => {
     const s = store.selection
     for (const x of cities) x.el.classList.toggle('sel', s?.kind === 'city' && s.city === x.c)
@@ -78,7 +89,7 @@ export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [n
   store.on('borders', scheduleDeclutter)
   map.on('zoomend', update)
   map.on('moveend', update)
-  map.on('move', scheduleDeclutter)
+  map.on('move', onMove)
   update()
 
   let pulse: Marker | null = null
