@@ -5,7 +5,7 @@ import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from
 import type { Polity } from '../data/schema'
 import type { Store } from '../store'
 
-interface Snapshot { year: number; file: string }
+interface Snapshot { year: number; file: string; fine?: boolean }
 type Kind = 'state' | 'culture' | 'hidden'
 interface Label { name: string; kind: Kind; approx: boolean; lng: number; lat: number; w: number; h: number }
 interface Loaded { fc: FeatureCollection; labels: Label[] }
@@ -14,8 +14,14 @@ const CULTURE = /hunter|gatherer|farmer|nomad|culture|peoples|tribes|pastoral|fi
 const FADE_MS = 700
 const MORPH_MS = 1100
 const EMPTY: FeatureCollection = { type: 'FeatureCollection', features: [] }
-// above this zoom the current snapshot is swapped for its unsimplified version
+// above these zooms the current snapshot is swapped for its unsimplified version, then for the one
+// whose firm borders follow Natural Earth province edges
 const DETAIL_ZOOM = 4.5
+const FINE_ZOOM = 6.5
+// from here on today's borders apply, so OpenStreetMap's own lines replace the snapshot's when zoomed in
+const MODERN_YEAR = 2011
+type Level = '' | 'hi/' | 'fine/'
+
 
 function hashColor(name: string) {
   let h = 0
@@ -42,7 +48,8 @@ export class Borders {
   private index: Snapshot[] = []
   private cache = new Map<string, Promise<Loaded>>()
   private current = ''
-  private shownHi = false
+  private shownLevel: Level = ''
+  private modern = false
   private front: 'a' | 'b' = 'a'
   private fade = { a: 0, b: 0 }
   private geo = { a: 0, b: 0 }
@@ -75,9 +82,21 @@ export class Borders {
         },
       }, beforeLayer)
     }
+    this.map.addLayer({
+      id: 'borders-modern', type: 'line', source: 'omt', 'source-layer': 'boundary', minzoom: FINE_ZOOM,
+      filter: ['all', ['==', ['get', 'admin_level'], 2], ['!=', ['get', 'maritime'], 1]],
+      paint: {
+        'line-color': '#d8cfb8',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 7, 1.6, 12, 2.6],
+        'line-opacity': 0,
+      },
+    }, beforeLayer)
     this.applyUncertain()
     this.store.on('uncertain', () => { this.applyUncertain(); this.placeLabels() })
-    this.store.on('year', () => void this.update())
+    this.store.on('year', () => {
+      void this.update()
+      if ((this.store.year >= MODERN_YEAR) !== this.modern) this.applyOpacity()
+    })
     this.store.on('borders', () => { this.applyOpacity(); this.placeLabels() })
     this.map.on('move', () => this.placeLabels())
     this.map.on('zoomend', () => void this.refreshDetail())
@@ -102,23 +121,30 @@ export class Borders {
   private load(file: string) {
     let p = this.cache.get(file)
     if (!p) {
-      p = fetch(`${this.base}/${file}`).then(r => r.json()).then((fc: FeatureCollection) => this.decorate(fc, this.index.find(s => s.file === file.replace(/^hi\//, ''))?.year ?? 0))
+      p = fetch(`${this.base}/${file}`).then(r => r.json()).then((fc: FeatureCollection) => this.decorate(fc, this.index.find(s => s.file === file.replace(/^(hi|fine)\//, ''))?.year ?? 0))
       p.catch(() => this.cache.delete(file))
       this.cache.set(file, p)
       // detailed files are large, keep only the one in use
-      if (file.startsWith('hi/')) for (const k of this.cache.keys()) if (k.startsWith('hi/') && k !== file) this.cache.delete(k)
+      const dir = file.match(/^(hi|fine)\//)?.[0]
+      if (dir) for (const k of this.cache.keys()) if (k.startsWith(dir) && k !== file) this.cache.delete(k)
     }
     return p
   }
 
+  private levelAt(file: string): Level {
+    const z = this.map.getZoom()
+    if (z >= FINE_ZOOM && this.index.find(s => s.file === file)?.fine) return 'fine/'
+    return z >= DETAIL_ZOOM ? 'hi/' : ''
+  }
+
   private async refreshDetail() {
     const file = this.current
-    const hi = this.map.getZoom() >= DETAIL_ZOOM
-    if (!file || hi === this.shownHi || this.morphing) return
-    const loaded = await this.load(hi ? `hi/${file}` : file).catch(() => null)
-    if (!loaded || file !== this.current || this.morphing || hi !== this.map.getZoom() >= DETAIL_ZOOM) return
+    const level = this.levelAt(file)
+    if (!file || level === this.shownLevel || this.morphing) return
+    const loaded = await this.load(level + file).catch(() => null)
+    if (!loaded || file !== this.current || this.morphing || level !== this.levelAt(file)) return
     this.setData(this.front, loaded.fc)
-    this.shownHi = hi
+    this.shownLevel = level
   }
 
   private decorate(fc: FeatureCollection, year: number): Loaded {
@@ -165,7 +191,7 @@ export class Borders {
     const from = this.shown[this.front], back = this.front === 'a' ? 'b' : 'a'
     this.setLabels(back, loaded.labels)
     this.front = back
-    this.shownHi = false
+    this.shownLevel = ''
     this.animate()
     this.morphTo(back, from, loaded.fc)
   }
@@ -228,6 +254,12 @@ export class Borders {
       for (const id of [`borders-${k}-line`, `borders-${k}-line-approx`])
         this.map.setPaintProperty(id, 'line-opacity', ['interpolate', ['linear'], ['zoom'], 5, 0.75 * f, 8, 0.35 * f])
     }
+    // snapshot lines hand over to the base map's own lines between zoom 7 and 8
+    this.modern = this.store.year >= MODERN_YEAR
+    const modern = this.store.borders && this.modern
+    this.map.setPaintProperty('borders-modern', 'line-opacity', modern ? ['interpolate', ['linear'], ['zoom'], 7, 0, 8, 0.55] : 0)
+    if (modern) for (const k of ['a', 'b'] as const) this.map.setPaintProperty(`borders-${k}-line`, 'line-opacity',
+      ['interpolate', ['linear'], ['zoom'], 5, 0.75 * this.geo[k], 7, 0.4 * this.geo[k], 8, 0])
     for (const m of this.markers) m.el.style.opacity = String(this.store.borders ? this.fade[m.owner] : 0)
   }
 
