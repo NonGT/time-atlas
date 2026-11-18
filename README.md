@@ -14,6 +14,10 @@ npm run validate   # check the data files only
 npm run i18n       # report missing translations and Thai text changed since translating
 ```
 
+## Code style
+
+Formatting and lint come from [Biome](https://biomejs.dev/) (`biome.json`): 2 spaces, single quotes, semicolons, 120 columns. `npm run format` fixes what it can, `npm run lint` only reports. `npm run check` runs it together with `tsc` and the data check, and pull requests run the same checks in CI. For VS Code, install the Biome extension; `.vscode/settings.json` makes it format on save.
+
 ## Editing the data
 
 All data lives in `data/` as YAML. Save a file and a page opened with `npm run dev` reloads. If something is malformed, the page lists the file, item and field at fault.

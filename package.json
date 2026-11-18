@@ -6,10 +6,12 @@
     "dev": "vite",
     "build": "npm run check && vite build",
     "preview": "vite preview",
-    "check": "tsc && tsx scripts/validate-data.ts",
+    "check": "biome check && tsc && tsx scripts/validate-data.ts",
     "validate": "tsx scripts/validate-data.ts",
     "fetch-geo": "tsx scripts/fetch-geo.ts",
-    "i18n": "tsx scripts/i18n.ts"
+    "i18n": "tsx scripts/i18n.ts",
+    "lint": "biome check",
+    "format": "biome check --write"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +26,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.8",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^26.6.6",
     "@types/three": "^0.187.0",
