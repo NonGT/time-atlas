@@ -4,6 +4,8 @@ A 3D globe with a timeline showing cities and empires as they rise, grow and fal
 
 Zoomed out you see a globe with glowing cities and the borders of the era. Zoom in and the map flattens out to show the cities themselves as low-poly buildings.
 
+Live at https://nonagon-io.github.io/time-atlas/
+
 ```
 npm install
 npm run dev        # http://localhost:5173
