@@ -1,7 +1,7 @@
-import type { StyleSpecification } from 'maplibre-gl'
+import type { StyleSpecification } from 'maplibre-gl';
 
 // Globe while zoomed out, flat web mercator once zoomed in past ~6.5.
-export const FLAT_ZOOM = 6.5
+export const FLAT_ZOOM = 6.5;
 
 export const style: StyleSpecification = {
   version: 8,
@@ -17,7 +17,8 @@ export const style: StyleSpecification = {
     omt: {
       type: 'vector',
       url: 'https://tiles.openfreemap.org/planet',
-      attribution: '<a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution:
+        '<a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
     dem: {
       type: 'raster-dem',
@@ -31,7 +32,9 @@ export const style: StyleSpecification = {
   layers: [
     { id: 'land', type: 'background', paint: { 'background-color': '#262a2a' } },
     {
-      id: 'hillshade', type: 'hillshade', source: 'dem',
+      id: 'hillshade',
+      type: 'hillshade',
+      source: 'dem',
       paint: {
         'hillshade-exaggeration': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 8, 0.4],
         'hillshade-shadow-color': '#0b0d10',
@@ -40,21 +43,33 @@ export const style: StyleSpecification = {
       },
     },
     {
-      id: 'desert', type: 'fill', source: 'omt', 'source-layer': 'landcover',
+      id: 'desert',
+      type: 'fill',
+      source: 'omt',
+      'source-layer': 'landcover',
       filter: ['==', ['get', 'class'], 'sand'],
       paint: { 'fill-color': '#4a3f2c', 'fill-opacity': 0.45 },
     },
     {
-      id: 'ice', type: 'fill', source: 'omt', 'source-layer': 'landcover',
+      id: 'ice',
+      type: 'fill',
+      source: 'omt',
+      'source-layer': 'landcover',
       filter: ['==', ['get', 'class'], 'ice'],
       paint: { 'fill-color': '#c9d2db', 'fill-opacity': 0.18 },
     },
     {
-      id: 'water', type: 'fill', source: 'omt', 'source-layer': 'water',
+      id: 'water',
+      type: 'fill',
+      source: 'omt',
+      'source-layer': 'water',
       paint: { 'fill-color': '#0b1626', 'fill-opacity': 0.94 },
     },
     {
-      id: 'rivers', type: 'line', source: 'omt', 'source-layer': 'waterway',
+      id: 'rivers',
+      type: 'line',
+      source: 'omt',
+      'source-layer': 'waterway',
       filter: ['==', ['get', 'class'], 'river'],
       minzoom: 3,
       paint: {
@@ -64,4 +79,4 @@ export const style: StyleSpecification = {
       },
     },
   ],
-}
+};

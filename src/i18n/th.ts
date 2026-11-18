@@ -1,4 +1,4 @@
-const n = (x: number) => Math.round(x).toLocaleString('en-US')
+const n = (x: number) => Math.round(x).toLocaleString('en-US');
 
 export const th = {
   title: 'แผนที่เวลา',
@@ -91,11 +91,11 @@ export const th = {
   yearShort: (y: number) => (y < 0 ? `${n(-y)} BC` : y === 0 ? '1 AD' : `${y}`),
   // Buddhist Era: 1 CE = BE 544, and neither calendar has a year 0
   yearAlt: (y: number) => {
-    const be = y < 0 ? 544 + y : y + 543
-    return be > 0 ? `พ.ศ. ${be}` : `${n(1 - be)} ปีก่อน พ.ศ.`
+    const be = y < 0 ? 544 + y : y + 543;
+    return be > 0 ? `พ.ศ. ${be}` : `${n(1 - be)} ปีก่อน พ.ศ.`;
   },
   pop: (k: number) => (k <= 0 ? '—' : k < 1 ? '< 1,000 คน' : `≈ ${n(Math.round(k) * 1000)} คน`),
-  popShort: (k: number) => (k >= 1000 ? (k / 1000).toFixed(1).replace(/\.0$/, '') + ' ล้าน' : `${Math.round(k)}k`),
-}
+  popShort: (k: number) => (k >= 1000 ? `${(k / 1000).toFixed(1).replace(/\.0$/, '')} ล้าน` : `${Math.round(k)}k`),
+};
 
-export type Dict = typeof th
+export type Dict = typeof th;

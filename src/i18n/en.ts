@@ -1,10 +1,11 @@
-import type { Dict } from './th'
+import type { Dict } from './th';
 
-const n = (x: number) => Math.round(x).toLocaleString('en-US')
+const n = (x: number) => Math.round(x).toLocaleString('en-US');
 
 export const en: Dict = {
   title: 'Time Atlas',
-  tagline: "Scroll through 12,000 years of the world's settlements, cities and empires. Zoom in to see the cities themselves.",
+  tagline:
+    "Scroll through 12,000 years of the world's settlements, cities and empires. Zoom in to see the cities themselves.",
   loading: 'Loading map…',
   language: 'Language',
   cityStyle: 'How cities are shown',
@@ -92,5 +93,5 @@ export const en: Dict = {
   yearShort: y => (y < 0 ? `${n(-y)} BC` : y === 0 ? '1 AD' : `${y}`),
   yearAlt: () => '',
   pop: k => (k <= 0 ? '—' : k < 1 ? '< 1,000 people' : `≈ ${n(Math.round(k) * 1000)} people`),
-  popShort: k => (k >= 1000 ? (k / 1000).toFixed(1).replace(/\.0$/, '') + 'M' : `${Math.round(k)}k`),
-}
+  popShort: k => (k >= 1000 ? `${(k / 1000).toFixed(1).replace(/\.0$/, '')}M` : `${Math.round(k)}k`),
+};

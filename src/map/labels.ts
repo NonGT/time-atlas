@@ -1,108 +1,140 @@
-import { onFarSide } from './farSide'
-import { Marker, type Map as MLMap } from 'maplibre-gl'
-import type { Landmark } from '../data/schema'
-import type { Store } from '../store'
-import { fmtPopShort } from '../time'
+import { Marker, type Map as MLMap } from 'maplibre-gl';
+import type { Landmark } from '../data/schema';
+import type { Store } from '../store';
+import { fmtPopShort } from '../time';
+import { onFarSide } from './farSide';
 
 /** HTML labels (Thai text renders properly here, unlike in WebGL symbol layers). */
 export function addLabels(map: MLMap, store: Store, placeOf: (l: Landmark) => [number, number] = l => [l.lon, l.lat]) {
   const cities = store.data.cities.map(c => {
-    const el = document.createElement('button')
-    el.type = 'button'
-    el.className = 'label'
-    el.innerHTML = `<i style="background:${store.colorOfCity(c)}"></i><span></span><small></small>`
-    el.querySelector('span')!.textContent = c.name
-    el.addEventListener('click', e => { e.stopPropagation(); store.select({ kind: 'city', city: c }) })
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'label';
+    el.innerHTML = `<i style="background:${store.colorOfCity(c)}"></i><span></span><small></small>`;
+    el.querySelector('span')!.textContent = c.name;
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      store.select({ kind: 'city', city: c });
+    });
     const marker = new Marker({ element: el, anchor: 'bottom-left', offset: [6, -4], opacityWhenCovered: '0' })
-      .setLngLat([c.lon, c.lat]).addTo(map)
-    return { c, el, marker, pop: el.querySelector('small')! }
-  })
+      .setLngLat([c.lon, c.lat])
+      .addTo(map);
+    return { c, el, marker, pop: el.querySelector('small')! };
+  });
 
   const landmarks = store.data.landmarks.map(l => {
-    const el = document.createElement('button')
-    el.type = 'button'
-    el.className = `label label-lm${l.uncertain ? ' unc' : ''}`
-    el.textContent = l.name
-    el.addEventListener('click', e => { e.stopPropagation(); store.select({ kind: 'landmark', landmark: l }) })
-    const marker = new Marker({ element: el, anchor: 'top', offset: [0, 8], opacityWhenCovered: '0' }).setLngLat(placeOf(l))
-    return { l, el, marker, on: false }
-  })
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = `label label-lm${l.uncertain ? ' unc' : ''}`;
+    el.textContent = l.name;
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      store.select({ kind: 'landmark', landmark: l });
+    });
+    const marker = new Marker({ element: el, anchor: 'top', offset: [0, 8], opacityWhenCovered: '0' }).setLngLat(
+      placeOf(l),
+    );
+    return { l, el, marker, on: false };
+  });
 
   const update = () => {
-    const z = map.getZoom()
+    const z = map.getZoom();
     for (const x of cities) {
-      const p = store.pop(x.c)
-      x.el.hidden = p < 0.5 || onFarSide(map, x.c.lon, x.c.lat)
-      x.el.dataset.rank = String(store.selection?.kind === 'city' && store.selection.city === x.c ? 1e9 : p)
-      x.pop.textContent = fmtPopShort(p)
+      const p = store.pop(x.c);
+      x.el.hidden = p < 0.5 || onFarSide(map, x.c.lon, x.c.lat);
+      x.el.dataset.rank = String(store.selection?.kind === 'city' && store.selection.city === x.c ? 1e9 : p);
+      x.pop.textContent = fmtPopShort(p);
     }
     // there are over a thousand landmarks, so only the ones in view get a marker on the map
-    const b = z >= 8 && store.mode === 'city' ? map.getBounds() : null
-    if (b) b.extend([b.getWest() - (b.getEast() - b.getWest()) * 0.25, b.getSouth() - (b.getNorth() - b.getSouth()) * 0.25])
-      .extend([b.getEast() + (b.getEast() - b.getWest()) * 0.25, b.getNorth() + (b.getNorth() - b.getSouth()) * 0.25])
+    const b = z >= 8 && store.mode === 'city' ? map.getBounds() : null;
+    if (b)
+      b.extend([
+        b.getWest() - (b.getEast() - b.getWest()) * 0.25,
+        b.getSouth() - (b.getNorth() - b.getSouth()) * 0.25,
+      ]).extend([
+        b.getEast() + (b.getEast() - b.getWest()) * 0.25,
+        b.getNorth() + (b.getNorth() - b.getSouth()) * 0.25,
+      ]);
     for (const x of landmarks) {
-      const show = !!b && store.landmarkShown(x.l) && b.contains(x.marker.getLngLat())
-      if (show !== x.on) { if (show) x.marker.addTo(map); else x.marker.remove(); x.on = show }
-      x.el.hidden = !show
+      const show = !!b && store.landmarkShown(x.l) && b.contains(x.marker.getLngLat());
+      if (show !== x.on) {
+        if (show) x.marker.addTo(map);
+        else x.marker.remove();
+        x.on = show;
+      }
+      x.el.hidden = !show;
     }
-    scheduleDeclutter()
-  }
+    scheduleDeclutter();
+  };
 
   // Hide labels that would overlap a more important one: selected city, then bigger cities,
   // then landmarks, and polity names last.
-  let pending = 0
+  let pending = 0;
   const declutter = () => {
-    pending = 0
-    const all = [...document.querySelectorAll<HTMLElement>('.label:not([hidden]), .polity:not([hidden])')]
-    const weight = (el: HTMLElement) => (el.classList.contains('polity') ? -2 : el.classList.contains('label-lm') ? -1 : Number(el.dataset.rank ?? 0))
-    all.sort((a, b) => weight(b) - weight(a))
-    const placed: DOMRect[] = []
+    pending = 0;
+    const all = [...document.querySelectorAll<HTMLElement>('.label:not([hidden]), .polity:not([hidden])')];
+    const weight = (el: HTMLElement) =>
+      el.classList.contains('polity') ? -2 : el.classList.contains('label-lm') ? -1 : Number(el.dataset.rank ?? 0);
+    all.sort((a, b) => weight(b) - weight(a));
+    const placed: DOMRect[] = [];
     // measure everything before changing anything: visibility doesn't move boxes, but interleaving
     // reads with writes forced a layout per label
-    const rects = all.map(el => el.getBoundingClientRect())
+    const rects = all.map(el => el.getBoundingClientRect());
     all.forEach((el, i) => {
-      const r = rects[i]
-      const hit = r.width > 0 && placed.some(p => r.left < p.right + 2 && r.right > p.left - 2 && r.top < p.bottom + 1 && r.bottom > p.top - 1)
-      const v = hit ? 'hidden' : ''
-      if (el.style.visibility !== v) el.style.visibility = v
-      if (!hit) placed.push(r)
-    })
-  }
-  const scheduleDeclutter = () => { if (!pending) pending = requestAnimationFrame(declutter) }
+      const r = rects[i];
+      const hit =
+        r.width > 0 &&
+        placed.some(p => r.left < p.right + 2 && r.right > p.left - 2 && r.top < p.bottom + 1 && r.bottom > p.top - 1);
+      const v = hit ? 'hidden' : '';
+      if (el.style.visibility !== v) el.style.visibility = v;
+      if (!hit) placed.push(r);
+    });
+  };
+  const scheduleDeclutter = () => {
+    if (!pending) pending = requestAnimationFrame(declutter);
+  };
   // measuring every label forces a layout, so while the map moves do it a few times a second, not every frame
-  let lastMove = 0
+  let lastMove = 0;
   const onMove = () => {
-    const now = performance.now()
-    if (now - lastMove < 120) return
-    lastMove = now
-    scheduleDeclutter()
-  }
+    const now = performance.now();
+    if (now - lastMove < 120) return;
+    lastMove = now;
+    scheduleDeclutter();
+  };
   const highlight = () => {
-    const s = store.selection
-    for (const x of cities) x.el.classList.toggle('sel', s?.kind === 'city' && s.city === x.c)
-    for (const x of landmarks) x.el.classList.toggle('sel', s?.kind === 'landmark' && s.landmark === x.l)
-  }
-  store.on('year', update)
-  store.on('mode', update)
-  store.on('uncertain', update)
-  store.on('select', () => { highlight(); update() })
-  store.on('borders', scheduleDeclutter)
-  map.on('zoomend', update)
-  map.on('moveend', update)
-  map.on('move', onMove)
-  update()
+    const s = store.selection;
+    for (const x of cities) x.el.classList.toggle('sel', s?.kind === 'city' && s.city === x.c);
+    for (const x of landmarks) x.el.classList.toggle('sel', s?.kind === 'landmark' && s.landmark === x.l);
+  };
+  store.on('year', update);
+  store.on('mode', update);
+  store.on('uncertain', update);
+  store.on('select', () => {
+    highlight();
+    update();
+  });
+  store.on('borders', scheduleDeclutter);
+  map.on('zoomend', update);
+  map.on('moveend', update);
+  map.on('move', onMove);
+  update();
 
-  let pulse: Marker | null = null
+  let pulse: Marker | null = null;
   return {
     pulseAt(lng: number, lat: number) {
-      pulse?.remove()
-      const el = document.createElement('div')
-      el.className = 'pulse'
+      pulse?.remove();
+      const el = document.createElement('div');
+      el.className = 'pulse';
       // the ring animates transform, so it must not be the marker element MapLibre positions with transform
-      el.appendChild(document.createElement('i'))
-      pulse = new Marker({ element: el, opacityWhenCovered: '0' }).setLngLat([lng, lat]).addTo(map)
-      const mine = pulse
-      setTimeout(() => { if (pulse === mine) { mine.remove(); pulse = null } }, 6000)
+      el.appendChild(document.createElement('i'));
+      pulse = new Marker({ element: el, opacityWhenCovered: '0' }).setLngLat([lng, lat]).addTo(map);
+      const mine = pulse;
+      setTimeout(() => {
+        if (pulse === mine) {
+          mine.remove();
+          pulse = null;
+        }
+      }, 6000);
     },
-  }
+  };
 }
